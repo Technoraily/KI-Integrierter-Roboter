@@ -4,6 +4,47 @@ Stand 11.10.2026, nach den Gutachten zu Antrieb und Steuerung und dem Entscheid 
 
 Vorhanden und eingeplant: 3× NEMA 17 (17CS04A-170E, für J1, J3, J4), Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A (für erste Versuche), Küchenwaage, Kleinteile.
 
+## Was jetzt bestellt werden kann und was nicht
+
+Massgebend für «jetzt»: Das Teil hängt nicht vom CAD ab und wird für den Schulter-Test oder den Steuerungstest gebraucht. Diese Liste geht den Tabellen weiter unten vor, wo sie abweicht (grösseres Netzteil, Reserve bei Treibern und Lagern).
+
+**Jetzt bestellen – für den Schulter-Test (ca. 100 CHF):**
+
+| Teil | Menge | ca. CHF |
+|---|---|---|
+| NEMA 17, 60 mm, ≥ 0,65 Nm, 1,5–2,0 A, 5-mm-Welle | 1 | 12 |
+| Tischnetzteil 24 V, 10 A, geschlossen + Adapter Hohlstecker auf Schraubklemmen | 1 | 23 |
+| TMC2209 mit Kühlkörper | 10 (7 gebraucht, 3 Reserve) | 30 |
+| Rillenkugellager 608-2RS | 20 | 8 |
+| Einschmelzgewinde M3, 100 Stk. | 1 | 4 |
+| Schrauben-Sortiment M3 Innensechskant | 1 | 6 |
+| Messuhr 0,01 mm mit Magnetstativ | 1 | 12 |
+| Infrarot-Thermometer | 1 | 7 |
+
+**Jetzt sinnvoll mitzubestellen – für den Steuerungstest, braucht keine Mechanik (ca. 70 CHF):**
+
+| Teil | Menge | ca. CHF |
+|---|---|---|
+| BTT Octopus mit **STM32F446** (nicht H723) | 1 | 45 |
+| USB-C-Kabel | 1 | 3 |
+| NEMA 17, 40 mm, ca. 0,4 Nm (später Schiene; bis dahin vierter Testmotor und Ersatz) | 1 | 10 |
+| Lüfter 4010, 24 V | 1 | 2 |
+| Not-Aus-Taster, rastend, zwei Kontakte | 1 | 3 |
+| Endschalter mit Rolle | 10 | 2 |
+| Sicherungshalter mit 10-A-Sicherung | 1 | 2 |
+
+**Warten:**
+
+| Teil | Warum warten |
+|---|---|
+| Alle Riemen und Riemenscheiben | Zähnezahlen, Längen und Bohrungen legt erst das CAD des Schultergelenks fest |
+| 8-mm-Wellen | Längen aus dem CAD |
+| Dünnringlager 6810, Zugfeder | Basis und Gewichtsausgleich sind noch nicht konstruiert |
+| Motoren für J5 und J6 | erst Stufe B; die Hand kann sich nach dem Schulter-Test noch ändern |
+| Greifer-Servo, 5-V-Wandler | Stufe B |
+| Kabel, Stecker, Crimpzange, Geflechtschlauch | erst beim Zusammenbau von Stufe A nötig; Längen dann bekannt |
+| Schiene (Führungen, Profile, Schleppkette) | Stufe C; Bezugsquelle für die langen Teile ist noch offen |
+
 ## Prüfstand: Schultergelenk J2 (drei Riemenstufen)
 
 Der Prüfstand ist das spätere Schultergelenk in Originalgrösse; alle Teile ausser Messuhr und Thermometer werden im Arm weiterverwendet.
