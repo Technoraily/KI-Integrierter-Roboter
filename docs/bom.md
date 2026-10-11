@@ -61,6 +61,20 @@ Prüfstand und Rest zusammen: knapp 150 CHF.
 | Kabel, Stecker | – | 8 |
 | **Summe Stufe B** | | **~60** |
 
+## Ausbaustufe C – Schiene J0, 1000 mm Verfahrweg (Grobschätzung)
+
+| Teil | Menge | ca. CHF |
+|---|---|---|
+| Linearführung MGN12 mit Wagen MGN12H, 1250 mm (oder gestossen) | 2 + 4 Wagen | 50 |
+| Aluprofil 2040, 1250 mm | 2 | 30 |
+| NEMA 17, 40 mm | 1 | 10 |
+| GT2-Riemen offen 10 mm, 3 m, mit Ritzel und Umlenkrolle | 1 Satz | 8 |
+| Schleppkette 10 × 15 mm, 1 m | 1 | 6 |
+| Endschalter, Winkel, Nutensteine, Schrauben | – | 10 |
+| **Summe Stufe C** | | **~115** |
+
+Steuerung über den vorhandenen Uno + CNC-Shield, daher keine weiteren Elektronikkosten. Lange Führungen und Profile sind auf AliExpress teuer im Versand; das wird vor Stufe C geklärt.
+
 ## Filament
 
 - PLA: ca. 2–2,5 kg (Struktur und Verkleidung).

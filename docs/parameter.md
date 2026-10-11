@@ -14,6 +14,9 @@ Status: **Startwert** = aus dem Konzept, noch nicht geprüft · **gerechnet** = 
 | `H_schulter` | 170 mm | Tischfläche → Achse J2 | Startwert |
 | `D_flansch_lochkreis` | 31,5 mm | Werkzeugflansch ISO 9409-1, 4× M5 | fix |
 | `Bauraum_max` | 240 mm | grösste Kantenlänge eines Druckteils | fix |
+| `a_lochbild_basis` | 120 mm | Lochbild Basis ↔ Schlitten/Grundplatte, 4× M5 im Quadrat | Startwert |
+| `L_verfahrweg` | 1000 mm | Verfahrweg der Schiene J0 (Stufe C) | fix |
+| `b_spur` | ≥ 150 mm | Abstand der beiden Linearführungen | Startwert |
 
 ## Gelenke
 

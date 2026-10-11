@@ -16,6 +16,7 @@ Quelle: Auftrag und Rückfragen vom 11.10.2026. Jede Anforderung hat eine Nummer
 | A8 | Vollständige, passende Verkleidung – nicht nur ein Gerüst |
 | A9 | Bebilderte Bauanleitung und Dokumentation entstehen im Projekt |
 | A10 | Vorgehen nach klarem Plan, Qualität vor Tempo |
+| A11 | Der ganze Roboter steht auf einer angetriebenen Schiene mit ca. 1000 mm Verfahrweg (ergänzt 11.10.2026; Bau als Stufe C nach dem Arm, Basis wird jetzt schon dafür vorbereitet) |
 
 ## Soll
 

@@ -13,6 +13,10 @@ Selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, BambuLab 
 | Steuerung | Mega-2560-Board + `grbl-Mega-5X`, TMC2209, 24 V |
 | Software | Python auf dem PC (Kinematik, Bahnplanung, später Kamera/KI) |
 
+![Aufbau und Antriebe](docs/bilder/uebersicht.png)
+
+Der Arm steht später auf einer angetriebenen Schiene mit 1000 mm Verfahrweg (Stufe C).
+
 ## Stand
 
 Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) abgeschlossen: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen, Gutachten 8/10. Als Nächstes: Phase 2, Getriebe-Prüfstand (J2-Modul) und [Motorvermessung](docs/motorvermessung.md). Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).

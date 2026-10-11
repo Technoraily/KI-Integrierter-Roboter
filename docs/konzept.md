@@ -92,6 +92,17 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 ### 3.6 Software
 Python-Paket: Vorwärts-/Rückwärtskinematik (analytisch), Arbeitsraum- und Momentensimulation, G-Code-Streaming, Jog-Oberfläche, Teach-&-Playback, Kalibrierung. Später: OpenCV, Hand-Auge-Kalibrierung, KI-Aufgabenplanung.
 
+### 3.7 Schiene J0 (ergänzt 11.10.2026, Bau als Stufe C)
+
+Der ganze Roboter steht auf einem Schlitten, der ihn auf einer Schiene verfährt. Übersicht: `docs/bilder/uebersicht.png`.
+
+- **Verfahrweg ca. 1000 mm**, Schiene rund 1250 mm lang.
+- **Führung:** zwei parallele Linearführungen (MGN12) auf Aluprofilen, Spurweite ≥ 150 mm. Zwei Führungen sind nötig, weil der ausgestreckte Arm mit 1 kg ein Kippmoment von rund 12 Nm auf den Schlitten bringt.
+- **Antrieb:** NEMA 17 (ein vierter 40-mm-Motor, neu) mit offenem GT2-Riemen 10 mm; Kabel in einer Schleppkette.
+- **Steuerung:** der vorhandene **Arduino Uno + CNC-Shield** mit GRBL als eigene kleine Steuerung nur für die Schiene – die günstigste Lösung, weil alles vorhanden ist und `grbl-Mega-5X` nur 6 Achsen kann. Der PC koordiniert Arm und Schiene. Einschränkung: Schiene und Arm fahren keine gemeinsame, bahntreue Bewegung; die Schiene positioniert den Arm.
+- **Jetzt schon vorgesehen:** Die Basis bekommt ein Lochbild für den Schlitten (4× M5 auf 120 × 120 mm), damit die Schiene später ohne Umbau darunterkommt. Bis dahin wird die Basis mit denselben Löchern auf eine Platte geschraubt.
+- **Offen für Stufe C:** Führungen und Profile mit 1250 mm Länge sind auf AliExpress teuer im Versand oder gar nicht lieferbar; evtl. Profile lokal beziehen oder die Schiene aus zwei Stücken stossen. Genauigkeit der Schiene (Ziel ≤ ±0,1 mm) und ebene Unterlage.
+
 ## 4. Kosten Kaufteile (AliExpress, ehrlich gerechnet)
 
 Der Arm wird in **zwei Ausbaustufen** gebaut, damit der Start unter 150 CHF bleibt:
@@ -101,7 +112,8 @@ Der Arm wird in **zwei Ausbaustufen** gebaut, damit der Start unter 150 CHF blei
 | **A – Prüfstand + J1–J3** | Board, 3× TMC2209 + Kühlung, Lager, Riemen/Ritzel, Seil, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~150** |
 | **B – Hand J4–J6 + Greifer** | 3 Motoren, 3× TMC2209, Lager, Riemen, Servo, 5-V-Wandler, Kabel | **~60–80** |
 | Reserve 15 %, evtl. 24-V-Netzteil (~15), evtl. stärkerer J2-Motor (~12) | | ~25–50 |
-| **Gesamt realistisch** | | **~175–250** |
+| **Arm gesamt realistisch** | | **~175–250** |
+| **C – Schiene 1000 mm** (später) | 2 Linearführungen, Aluprofile, Motor, Riemen, Schleppkette, Endschalter | **~100–120** |
 
 Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtlich (ohne neues Netzteil und ohne Zusatzmotor am unteren Ende der Spanne). Filament: ca. 2–2,5 kg PLA + ca. 0,5 kg PETG.
 
@@ -117,7 +129,8 @@ Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtli
 7. **Elektronik & Firmware komplett** – Verdrahtungsplan, grbl-Mega-5X, Referenzfahrt, Soft-Limits, Not-Aus.
 8. **Software & Kalibrierung** – Jog-UI, Wiederholgenauigkeit messen, Abgleich mit Abschnitt 2.
 9. **Dokumentation finalisieren** – Bauanleitung mit Renderings/Explosionsbildern, BOM, Verdrahtung, Inbetriebnahme, Fehlersuche.
-10. **Später:** Kamera-KI, Greiferwechsler, evtl. Closed-Loop-Motoren.
+10. **Stufe C: Schiene J0** – Schlitten, Führungen, Riemenantrieb, Steuerung über Uno + CNC-Shield, Einbindung in die Python-Software (Schienenposition als siebte Koordinate).
+11. **Später:** Kamera-KI, Greiferwechsler, evtl. Closed-Loop-Motoren.
 
 Die Dokumentation wächst in jeder Phase mit.
 
