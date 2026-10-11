@@ -17,20 +17,29 @@ G = 9.81
 SICHERHEIT_SOLL = 1.5
 
 
-def gelenkmomente(q, nutzlast: float) -> np.ndarray:
+def _gliedmassen(nutzlast: float) -> np.ndarray:
+    """Je Glied eine Zeile (m·x, m·y, m·z, m) im Koordinatensystem des Glieds."""
+    summen = np.zeros((6, 4))
+    for glied, ort, kg in [(m.glied, m.ort, m.kg) for m in p.MASSEN] + [
+        (6, p.ORT_NUTZLAST, nutzlast)
+    ]:
+        summen[glied - 1] += (*(kg * np.array(ort)), kg)
+    return summen
+
+
+def gelenkmomente(q, nutzlast: float, lagen=None, gliedmassen=None) -> np.ndarray:
     """Betrag des Schwerkraftmoments an jedem Gelenk (Nm) in Stellung q (rad)."""
-    lagen = gliedlagen(q)
-    massen = [(m.glied, m.ort, m.kg) for m in p.MASSEN]
-    massen.append((6, p.ORT_NUTZLAST, nutzlast))
+    lagen = gliedlagen(q) if lagen is None else lagen
+    gliedmassen = _gliedmassen(nutzlast) if gliedmassen is None else gliedmassen
 
     momente = np.zeros(6)
-    for glied, ort, kg in massen:
-        ort_welt = (lagen[glied - 1] @ np.array([*ort, 1.0]))[:3]
-        kraft = np.array([0.0, 0.0, -kg * G])
-        for i in range(glied):  # jedes Gelenk bis und mit <glied> trägt die Masse
-            achse = lagen[i][:3, 2 if ACHSEN[i] == "z" else 1]
-            hebel = ort_welt - lagen[i][:3, 3]
-            momente[i] += achse @ np.cross(hebel, kraft)
+    moment_1, masse = np.zeros(3), 0.0  # Σ m·ort (Welt) und Σ m aller Glieder ab Gelenk i
+    for i in reversed(range(6)):  # Gelenk i trägt alle Glieder ab i
+        moment_1 += (lagen[i] @ gliedmassen[i])[:3]
+        masse += gliedmassen[i, 3]
+        achse = lagen[i][:3, 2 if ACHSEN[i] == "z" else 1]
+        hebel_mal_masse = moment_1 - masse * lagen[i][:3, 3]
+        momente[i] = achse @ np.cross(hebel_mal_masse, (0.0, 0.0, -G))
     return np.abs(momente)
 
 
@@ -48,14 +57,16 @@ def maximalmomente(nutzlast: float, max_ausladung: float | None = None):
     """Grösstes Moment je Gelenk und grösste erreichte Ausladung des Flanschs."""
     groesste = np.zeros(6)
     reichweite = 0.0
+    gliedmassen = _gliedmassen(nutzlast)
     for q2, q3, q4, q5, q6 in _raster():
         q = (0.0, q2, q3, q4, q5, q6)
-        flansch = gliedlagen(q)[-1][:3, 3]
+        lagen = gliedlagen(q)
+        flansch = lagen[-1][:3, 3]
         ausladung = math.hypot(flansch[0], flansch[1])
         if max_ausladung is not None and ausladung > max_ausladung:
             continue
         reichweite = max(reichweite, ausladung)
-        groesste = np.maximum(groesste, gelenkmomente(q, nutzlast))
+        groesste = np.maximum(groesste, gelenkmomente(q, nutzlast, lagen, gliedmassen))
     return groesste, reichweite
 
 
@@ -67,7 +78,10 @@ def bericht() -> bool:
     alles_ok = True
     for titel, nutzlast, grenze in faelle:
         momente, reichweite = maximalmomente(nutzlast, grenze)
-        print(f"\n{titel}  (grösste Ausladung {reichweite * 1000:.0f} mm)")
+        print(
+            f"\n{titel}  (Flansch bis {reichweite * 1000:.0f} mm, "
+            f"Lastschwerpunkt {p.ORT_NUTZLAST[2] * 1000:.0f} mm davor)"
+        )
         print(f"{'Gelenk':<7}{'Last Nm':>9}{'verfügbar Nm':>14}{'Sicherheit':>12}{'°/s':>7}")
         for antrieb, last in zip(p.ANTRIEBE, momente):
             # J1 trägt bei senkrechter Achse keine Schwerkraft

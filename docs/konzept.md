@@ -6,7 +6,9 @@
 
 Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – ausdrücklich **kein** abgespecktes Baukit. Er soll Aufgaben zuverlässig und so präzise wie in PLA möglich erledigen, eine saubere Verkleidung haben, mit Standardteilen von AliExpress auskommen und möglichst wenig Kaufteile brauchen. Konstruktion (Fusion 360 via MCP), bebilderte Bauanleitung und Dokumentation entstehen im Projekt selbst. Kamera-KI und automatischer Greiferwechsel folgen später, werden aber von Anfang an mechanisch/elektrisch vorgesehen.
 
-**Festgelegt mit dem Nutzer:** 6 Achsen · ca. 400–450 mm Reichweite · 0,5–1 kg Nutzlast · Kaufteile wenn machbar < 150 CHF für den Anfang · vorhanden: 3× NEMA 17 (Typ unbekannt), Arduino Uno + CNC-Shield + A4988, Netzteil, Kleinteile.
+**Festgelegt mit dem Nutzer:** 6 Achsen · ca. 400–450 mm Reichweite · 1 kg Nutzlast im ganzen Arbeitsraum · Kaufteile wenn machbar < 150 CHF für den Anfang · vorhanden: 3× NEMA 17 (17CS04A-170E), Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A, Küchenwaage, Kleinteile.
+
+**Massgebende Zahlen:** Untersetzungen, Motoren und Lasten stehen aktuell in `docs/parameter.md` und `docs/lastrechnung.md`; dieses Dokument beschreibt Architektur und Vorgehen.
 
 **Ausgangslage:** Projektordner `C:\Claude\KI-Integrierter Roboter` ist leer, kein Git-Repo. Fusion-360-MCP antwortet (ping OK).
 
@@ -31,7 +33,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 
 ### 3.1 Steuerung – Abweichung vom Wunsch (begründet)
 - **Uno + CNC-Shield reicht nicht:** GRBL auf dem Uno steuert nur 3 unabhängige Achsen, der Speicher ist voll.
-- **Empfehlung: Mega-2560-basiertes Board mit Firmware `grbl-Mega-5X`** (6 Achsen, verifiziert: Achsen 4/5 auf den Sockeln E0/E1, Achse 6 auf D49/D51/D53 an AUX-3; Endschalter der Achsen 4–6 auf D42/D44/D57).
+- **Empfehlung: Mega-2560-basiertes Board mit Firmware `grbl-Mega-5X`** (6 Achsen, verifiziert: Achsen 4/5 auf den Sockeln E0/E1, Achse 6 auf D49/D51/D53 – am MKS Gen L über den Stecker EXP2; Endschalter der Achsen 4–6 siehe `docs/verdrahtung.md`).
   - Board: **MKS Gen L V2.x als Erstwahl** (Mega integriert, 12–24 V). RAMPS 1.4/1.6 nur mit Umbau (Diode D1 entfernen, Mega separat speisen) – daher nicht empfohlen. Pin-Belegung wird in Phase 1 gegen `cpu_map.h` geprüft, bevor bestellt wird.
   - 6. Treiber auf externem Treiberträger.
   - **24 V als Soll** (deutlich mehr Drehmoment bei Drehzahl). Vorhandenes Netzteil in Phase 1 prüfen.
@@ -48,18 +50,24 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 | Gelenk | Motor | Untersetzung | Bauart |
 |---|---|---|---|
 | J1 Basis | NEMA 17 (vorhanden) | ~20:1 | 2-stufig Riemen, spielfrei gespannt |
-| J2 Schulter | NEMA 17 60 mm (0,65 Nm, neu, ~12 CHF) | **90:1** | Riemen-Vorstufe + Endstufe laut Prüfstand; Ausgleichsfeder |
-| J3 Ellbogen | NEMA 17 (vorhanden), Motor nahe Schulter | ~50:1 | wie J2, kleiner |
+| J2 Schulter | NEMA 17 60 mm (0,65 Nm, neu, ~12 CHF) | **72:1** | Riemen 16:96 × Capstan 12:1; Ausgleichsfeder |
+| J3 Ellbogen | NEMA 17 (vorhanden), Motor nahe Schulter | ~60:1 | wie J2, kleiner |
 | J4 Unterarm-Rolle | NEMA 17 (vorhanden) | ~20:1 | 2-stufig GT2 |
-| J5 Hand-Nicken | NEMA 17 34 mm (neu), im Unterarm | ~20:1 | GT2 2-stufig |
+| J5 Hand-Nicken | NEMA 17 34 mm (neu), im Unterarm | ~25:1 | GT2 2-stufig |
 | J6 Flansch-Rolle | NEMA 14 (neu) | ~8:1 | GT2 |
 
-- **Die Endstufe für J2/J3 ist bewusst noch offen** und wird im Prüfstand entschieden (siehe Phase 2). Kandidaten:
+- **Die Endstufe für J2/J3 wird im Prüfstand entschieden** (siehe Phase 2). Geprüft wird **nacheinander, nicht parallel**: zuerst (a); nur wenn (a) das Gate nicht besteht, folgt (b), danach (c). Das spart Teile für Varianten, die vielleicht nie gebraucht werden. Kandidaten:
   - (a) Capstan-Seiltrieb (Seil auf Trommel + Segment; spielfrei, sehr günstig; belegt beim gedruckten Arm «Forte» mit ≤ 0,6 mm Wiederholfehler) – **Favorit**
   - (b) gedrucktes Zykloidgetriebe mit zwei versetzten Scheiben und einstellbarem Spiel (Messung aus der Literatur: ~0,76° unbelastet → nur mit Nachweis)
   - (c) Mehrstufen-Riemen mit breiter HTD-3M/5M-Endstufe (GT2 6 mm ist für ~290 N Trumkraft an J2 zu schwach)
-- **Capstan-Auslegung (Favorit):** Riemen-Vorstufe 5–6:1 (GT2 16 Z → 80–96 Z) × Capstan 14–16:1 (Segmentradius 70–80 mm, Trommel ~10 mm). Dyneema 1,5 mm oder doppelt geführt, mit Nachspannschraube. Trommel als 8-mm-Stahlwelle, beidseitig gelagert (kein gedruckter Zapfen). Segment J2 ≈ 180° (Halbscheibe), J3 ≈ 270° (Vollscheibe am Ellbogen, Riemen durch den Oberarm). Massen und Bauraum fliessen in die Simulation von Phase 1 ein.
-- **Lastrechnung:** aktuelle Zahlen in `docs/lastrechnung.md` (1 kg ausgestreckt: Schulter 10,9 Nm, Sicherheit 2,4). Ursprüngliche Abschätzung: Schulter statisch ≈ 7,4 Nm (0,5 kg ausgestreckt). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (~0,28 Nm statt 0,4 Nm Haltemoment, gültig bis ca. 300–500 U/min) und η ≈ 0,65: bei 90:1 ≈ 16 Nm → Sicherheit ≈ 2,2. Daraus folgen an J2 realistisch 20–33°/s; die Schrittrate (30 kHz) ist nicht der Engpass.
+- **Capstan-Auslegung J2 (Stand nach Gutachten Phase 1):**
+  - Vorstufe: GT2-Riemen **10 mm breit**, 16 Z → 96 Z (6:1), Riemenlänge 280 mm (Achsabstand ~80 mm).
+  - Endstufe: Trommel Ø 14 mm, Segmentradius 84 mm → 12:1. Gesamt 72:1.
+  - **Trommel und 96-Z-Rad sind ein einziges Druckteil (PETG)**, das auf zwei 608-Lagern um eine feststehende 8-mm-Stahlachse läuft. Das Drehmoment bleibt im Druckteil, es braucht keine Nabe auf der Welle; die Achse trägt nur die Seilquerkraft. Die Seilenden werden im Druckteil verankert (Querloch + Klemmschraube), nicht auf Stahl.
+  - Seil: Dyneema 1,5 mm, **doppelt geführt** (zwei Seile nebeneinander), je mit Nachspannschraube am Segment. Biegeverhältnis 14 : 1,5 ≈ 9.
+  - Segment J2 überdeckt **≥ 200°**, damit bei ±90° Platz für Verankerung und Endanschlag bleibt.
+  - J3 gleich aufgebaut, kleiner (Zielwerte im CAD der Stufe A; Riemen durch den Oberarm).
+- **Lastrechnung:** siehe `docs/lastrechnung.md` (1 kg ausgestreckt: Schulter 11,8 Nm, Sicherheit 1,8 bei vorsichtigem Wirkungsgrad 0,65). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (ca. 70 % des Haltemoments, gültig bis ca. 300–500 U/min), nicht mit dem Haltemoment. An J2 ergibt das rund 33°/s; die Schrittrate (30 kHz) ist nicht der Engpass.
 - Die drei vorhandenen Motoren werden in Phase 1 **vermessen** (Länge, Wicklungswiderstand, Haltemoment mit Hebel + Waage, Drehzahltest an 24 V); danach wird die Tabelle fixiert.
 
 ### 3.3 Lagerung und Struktur
@@ -100,7 +108,7 @@ Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtli
 
 0. **Projektgerüst** – Ordner, lokales Git-Repo, `README.md`, Anforderungen, Parameterliste. Das Projekt läuft vollständig lokal (Entscheid vom 11.10.2026: keine Cloud-Sitzung, kein GitHub-Repo).
 1. **Detailkonzept** – vorhandene Motoren + Netzteil vermessen; Python-Kinematik mit Arbeitsraum- und Momentensimulation (bestätigt Armlängen und Untersetzungen **vor** dem CAD); Board-Pinmapping prüfen; definitive BOM Stufe A mit AliExpress-Suchbegriffen. *Gate: Agent-Review.*
-2. **Getriebe-Prüfstand (Risiko zuerst)** – Varianten (a)/(b)/(c) als Module in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die beste Variante wird Standardmodul.
+2. **Getriebe-Prüfstand (Risiko zuerst)** – erster Schritt: Haltemoment der vorhandenen Motoren mit gedrucktem Hebel und Waage messen (`docs/motorvermessung.md`) und die Lastrechnung damit bestätigen. Dann das J2-Modul in Variante (a) in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben; (b)/(c) nur bei Nichtbestehen. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die beste Variante wird Standardmodul.
 3. **CAD Stufe A:** Kaufteil-Dummys → Basis/J1 → Schulter/J2 → Oberarm/J3, inkl. Kabelführung, Endanschlägen, Sensoren. Pro Baugruppe Interferenz-/Druckbarkeitsprüfung + Agent-Review.
 4. **Bau Stufe A** – drucken, montieren, Board + Firmware für 3 Achsen in Betrieb nehmen (inkl. Not-Aus, Referenzfahrt), mit Testgewicht anstelle der Hand prüfen (Genauigkeit, Haltetest).
 5. **CAD + Bau Stufe B:** Unterarm/J4 → Handgelenk J5/J6 → Flansch → Greifer.
@@ -137,11 +145,12 @@ software/    Python-Paket (Kinematik, Simulation, Steuerung, UI), tests/
 - Prüfstand: Messwerte gegen Fehlerbudget Abschnitt 2.
 - CAD: keine Interferenzen über den Gelenkbereich, Teile im Bauraum, Fusion-Massen bestätigen die Lastrechnung.
 - Software: Unit-Tests FK→IK→FK.
-- Gesamt: Referenzfahrt-Wiederholbarkeit; 50× Punkt anfahren mit Messuhr; 0,5 kg ausgestreckt 30 min halten (Erwärmung, Kriechen); Not-Aus- und Stromausfalltest.
+- Gesamt: Referenzfahrt-Wiederholbarkeit; 50× Punkt anfahren mit Messuhr; 1 kg ausgestreckt 30 min halten (Erwärmung, Kriechen); Not-Aus- und Stromausfalltest.
 
 ## 10. Hauptrisiken
-- Getriebespiel/-verschleiss → Variantenvergleich in Phase 2, bevor der Arm konstruiert wird.
+- Getriebespiel/-verschleiss → Prüfstand mit Gate in Phase 2, bevor der Arm konstruiert wird.
 - PLA-Kriechen, Motorwärme → PETG-Motorplatten, Federausgleich, Lüftung.
 - Schrittverlust (offener Regelkreis) → Sicherheit > 2 an J2, Referenzfahrt, späterer Closed-Loop-Pfad.
 - Budget: Gesamtarm voraussichtlich 175–250 CHF statt 150 → Ausbaustufen.
-- Capstan: Seilkriechen und lastabhängige Nachgiebigkeit (~0,1° bei Lastwechsel 0→0,5 kg) → Haltetest im Prüfstand, Nachspannung, ggf. Variante (c).
+- Capstan: Seilkriechen und lastabhängige Nachgiebigkeit (~0,16° bzw. gut 1 mm am Flansch bei Lastwechsel 0→1 kg, dazu Strukturbiegung; Eigenfrequenz nur ~10 Hz) → Seil doppelt geführt, Haltetest im Prüfstand, Nachspannung, ggf. Variante (b)/(c).
+- Motormomente der vorhandenen Motoren sind noch Annahmen → Messung als erster Schritt von Phase 2; J3 ist am empfindlichsten.

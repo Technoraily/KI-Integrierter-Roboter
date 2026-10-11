@@ -45,10 +45,10 @@ class Antrieb:
 # J2: NEMA 17 60 mm; J5: NEMA 17 34 mm; J6: NEMA 14.
 ANTRIEBE = (
     Antrieb("J1", 20, 0.28, 0.85),
-    Antrieb("J2", 90, 0.45, 0.65),
-    Antrieb("J3", 50, 0.28, 0.65),
+    Antrieb("J2", 72, 0.45, 0.65),  # Riemen 16:96 x Capstan 12:1
+    Antrieb("J3", 60, 0.28, 0.65),
     Antrieb("J4", 20, 0.28, 0.85),
-    Antrieb("J5", 20, 0.18, 0.85),
+    Antrieb("J5", 25, 0.18, 0.85),
     Antrieb("J6", 8, 0.08, 0.90),
 )
 
@@ -77,6 +77,9 @@ MASSEN = (
     Masse("Motor J6 + Stufe", 5, (0, 0, 0.020), 0.18),
     Masse("Reserve Wechsler + Kamera", 6, (0, 0, 0.000), 0.15),
     Masse("Greifer", 6, (0, 0, 0.040), 0.15),
+    Masse("Verkleidung + Kabel Oberarm", 2, (0, 0, 0.100), 0.18),
+    Masse("Verkleidung + Kabel Unterarm", 3, (0, 0, 0.090), 0.15),
+    Masse("Verkleidung + Kabel Hand", 5, (0, 0, 0.010), 0.07),
 )
 
 # Schwerpunkt der Nutzlast im Flansch-Koordinatensystem (30 mm seitlich versetzt,

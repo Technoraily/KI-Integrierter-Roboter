@@ -52,17 +52,21 @@ def vorwaerts(q) -> np.ndarray:
     return gliedlagen(q)[-1]
 
 
-def rueckwaerts(ziel: np.ndarray, ellbogen: int = 1, hand: int = 1) -> np.ndarray:
-    """Gelenkwinkel für eine Flanschlage (4x4).
+def rueckwaerts(
+    ziel: np.ndarray, ellbogen: int = 1, hand: int = 1, schulter: int = 1
+) -> np.ndarray:
+    """Gelenkwinkel eines Lösungszweigs für eine Flanschlage (4x4).
 
-    ellbogen = +1/-1 wählt das Vorzeichen von q3, hand = +1/-1 das von q5.
+    ellbogen = +1/-1 wählt das Vorzeichen von q3, hand = +1/-1 das von q5,
+    schulter = -1 dreht J1 um 180° und greift über Kopf nach hinten.
+    Die Gelenkgrenzen werden hier nicht geprüft, siehe loesungen().
     Wirft ValueError, wenn das Ziel ausserhalb der Reichweite liegt.
     """
     r, pos = ziel[:3, :3], ziel[:3, 3]
     mitte = pos - p.L_HAND * r[:, 2]  # Handgelenkmitte
 
-    q1 = math.atan2(mitte[1], mitte[0])
-    radial = math.hypot(mitte[0], mitte[1])
+    q1 = math.atan2(schulter * mitte[1], schulter * mitte[0])
+    radial = schulter * math.hypot(mitte[0], mitte[1])
     hoehe = mitte[2] - p.H_SCHULTER
 
     l1, l2 = p.L_OBERARM, p.L_UNTERARM
@@ -77,11 +81,48 @@ def rueckwaerts(ziel: np.ndarray, ellbogen: int = 1, hand: int = 1) -> np.ndarra
     r36 = r03.T @ r
     s5 = math.hypot(r36[0, 2], r36[1, 2])
     if s5 < 1e-9:  # Singularität: J4 und J6 fluchten, q4 frei gewählt
-        q4, q5, q6 = 0.0, math.atan2(0.0, r36[2, 2]), math.atan2(r36[1, 0], r36[0, 0])
-        if r36[2, 2] < 0:
-            q6 = math.atan2(-r36[1, 0], -r36[0, 0])
+        q4 = 0.0
+        if r36[2, 2] > 0:
+            q5, q6 = 0.0, math.atan2(r36[1, 0], r36[0, 0])
+        else:  # Hand ganz zurückgeklappt: R36 = Ry(pi) · Rz(q6)
+            q5, q6 = math.pi, math.atan2(r36[1, 0], -r36[0, 0])
     else:
         q5 = hand * math.atan2(s5, r36[2, 2])
         q4 = math.atan2(hand * r36[1, 2], hand * r36[0, 2])
         q6 = math.atan2(hand * r36[2, 1], -hand * r36[2, 0])
     return np.array([q1, q2, q3, q4, q5, q6])
+
+
+def in_grenzen(q, toleranz: float = 1e-9) -> bool:
+    """Liegen alle sechs Winkel (rad) im Gelenkbereich?"""
+    return all(
+        math.radians(lo) - toleranz <= w <= math.radians(hi) + toleranz
+        for w, (lo, hi) in zip(q, p.GELENKBEREICH)
+    )
+
+
+def loesungen(ziel: np.ndarray) -> list[np.ndarray]:
+    """Alle Lösungszweige (bis zu 8), die innerhalb der Gelenkgrenzen liegen."""
+    gefunden = []
+    for schulter in (1, -1):
+        for ellbogen in (1, -1):
+            for hand in (1, -1):
+                try:
+                    q = rueckwaerts(ziel, ellbogen, hand, schulter)
+                except ValueError:
+                    return []
+                if in_grenzen(q):
+                    gefunden.append(q)
+    return gefunden
+
+
+def naechste_loesung(ziel: np.ndarray, q_aktuell) -> np.ndarray:
+    """Lösung innerhalb der Grenzen mit dem kleinsten Gelenkweg ab q_aktuell.
+
+    Wirft ValueError, wenn das Ziel nicht erreichbar ist.
+    """
+    kandidaten = loesungen(ziel)
+    if not kandidaten:
+        raise ValueError("Ziel nicht innerhalb der Gelenkgrenzen erreichbar")
+    q_aktuell = np.asarray(q_aktuell)
+    return min(kandidaten, key=lambda q: float(np.abs(q - q_aktuell).max()))
