@@ -37,3 +37,12 @@ Der neue 60-mm-Motor für J2 wird nach der Lieferung genauso gemessen.
 | J2 (60 mm) | | | | | |
 
 Die Lastrechnung braucht für die vorhandenen Motoren 0,21 Nm nutzbares Moment, damit J3 mit 60:1 die Sicherheit 1,5 hält (angenommen sind 0,28 Nm). Liegt der Messwert darunter, wird J3 auf 70:1 erhöht (siehe `docs/lastrechnung.md`).
+
+## Messhebel drucken
+
+![Messhebel](../cad/renders/Messhebel.png)
+
+Datei: `cad/export/stl/Messhebel.stl` (124 × 19 × 8 mm). Flach auf das Druckbett legen, PLA, 4 Wände, 40 % Infill, keine Stützen.
+
+- Die 5,1-mm-Bohrung kommt auf die Motorwelle; eine M3-Schraube mit Mutter quer durch das geschlitzte Ende klemmt den Hebel fest. Hat die Welle eine Abflachung, die Schraube so ausrichten, dass der Schlitz darüber liegt.
+- Die runde Nocke sitzt genau 100 mm von der Wellenmitte entfernt und drückt auf die Waage.
