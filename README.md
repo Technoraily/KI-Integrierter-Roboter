@@ -19,7 +19,22 @@ Der Arm steht später auf einer angetriebenen Schiene mit 1000 mm Verfahrweg (St
 
 ## Stand
 
-Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) abgeschlossen: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen, Gutachten 8/10. Als Nächstes: Phase 2, Getriebe-Prüfstand (J2-Modul) und [Motorvermessung](docs/motorvermessung.md). Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).
+Stand vom 11.10.2026 (Ende des ersten Arbeitstags). Der vollständige Plan steht in [docs/konzept.md](docs/konzept.md).
+
+**Abgeschlossen**
+- Phase 0 (Projektgerüst) und Phase 1 (Detailkonzept): Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen, 13 Tests grün.
+- Gutachten: Gesamtkonzept 8/10, Detailkonzept 8/10, Steuerung für 7 Achsen 8/10 (Protokolle in `docs/reviews/`).
+- Entscheide: 1 kg Nutzlast im ganzen Arbeitsraum; Schiene als 7. Achse, koordiniert mit dem Arm; alle Achsen nur über Zahnriemen (GT2 und HTD), kein Seiltrieb; Steuerung BTT Octopus + grblHAL.
+- Messhebel für die [Motorvermessung](docs/motorvermessung.md): `cad/export/stl/Messhebel.stl`.
+
+**Nächster Schritt**
+- Phase 2: Schultergelenk J2 als Prüfstand in Fusion 360 konstruieren (drei Riemenstufen: GT2 20:72, HTD-3M 16:64, HTD-5M 18:90; Auslegung in `docs/konzept.md` 3.2 und `docs/parameter.md`), dann begutachten lassen und die Riemen-/Scheiben-/Wellenliste verbindlich machen.
+- In Fusion existieren aus einem verworfenen Ansatz zwei Seitenwangen für das Seiltrieb-Layout; sie werden für das Riemen-Layout neu aufgebaut.
+
+**Beschaffung für den Schulter-Test**
+- Vorhanden bzw. bestellt: NEMA 17 mit 60 mm (ca. 0,7 Nm), Netzteil 24 V / 100 W mit Hohlstecker 5,5 × 2,5 mm, Delock-Adapter auf Schraubklemmen, M3-Schrauben; ausgewählt: Kugellager 608ZZ, Einschmelzgewinde M3 × 4 × 5.
+- Noch offen: 2× TMC2209, Messuhr (Thermometer ist verzichtbar), Motorkabel prüfen. Riemen, Scheiben und 8-mm-Wellen erst nach dem CAD.
+- Offene Rückfragen an den Nutzer: Wicklungswiderstand der drei vorhandenen Motoren (17CS04A-170E); Schultermotor mit Doppelwelle (-SZ) oder normal; Multimeter und Lötkolben vorhanden?
 
 ## Aufbau des Repos
 
