@@ -29,19 +29,34 @@ Status: **Startwert** = aus dem Konzept, noch nicht geprüft · **gerechnet** = 
 | J5 | ±110° | 25 | NEMA 17, 34 mm | gerechnet |
 | J6 | ±180° | 8 | NEMA 14 | gerechnet |
 
-## Capstan-Modul J2
+## Prüfstand J2, Variante S (Seiltrieb)
 
 | Name | Wert | Bedeutung | Status |
 |---|---|---|---|
-| `z_ritzel` | 16 | Zähne Motorritzel GT2 | Startwert |
-| `z_rad` | 96 | Zähne gedrucktes Rad (Ø ca. 61 mm) | Startwert |
-| `b_riemen` | 10 mm | Riemenbreite | Startwert |
-| `L_riemen` | 280 mm | Riemenlänge → Achsabstand ca. 80 mm | Startwert |
-| `d_trommel` | 14 mm | Wickeldurchmesser der Seiltrommel | Startwert |
-| `r_segment` | 84 mm | Wickelradius des Segments | Startwert |
-| `w_segment` | ≥ 200° | überdeckter Winkel des Segments | Startwert |
+| `S_z_ritzel` | 20 | Zähne Motorritzel GT2 | Startwert |
+| `S_z_rad` | 120 | Zähne gedrucktes Rad (Ø 76,4 mm) | Startwert |
+| `S_b_riemen` | 10 mm | Riemenbreite GT2 | Startwert |
+| `S_L_riemen` | 300 mm | Riemenlänge → Achsabstand ca. 73 mm | Startwert |
+| `S_d_trommel` | 12,5 mm | Rillengrund der Seiltrommel (Seilmitte Ø 14 mm) | Startwert |
+| `S_r_segment` | 83,25 mm | Rillengrund des Segments (Seilmitte R 84 mm) | Startwert |
+| `S_p_rille` | 1,8 mm | Steigung der Schraubenrille auf der Trommel | Startwert |
+| `S_L_trommel` | 32 mm | Länge der Trommel | Startwert |
+| `S_w_segment` | ≥ 200° | überdeckter Winkel des Segments | Startwert |
 | `d_seil` | 1,5 mm | Dyneema, doppelt geführt | Startwert |
-| `d_achse` | 8 mm | mitdrehende Stahlachse als Kern von Rad + Trommel, in 608-Lagern | Startwert |
+
+## Prüfstand J2, Variante R (nur Zahnriemen)
+
+| Name | Wert | Bedeutung | Status |
+|---|---|---|---|
+| `R_z1` | 20 : 72 | Stufe 1, GT2 10 mm, Riemen 200 mm | Startwert |
+| `R_z2` | 16 : 64 | Stufe 2, HTD-3M 15 mm, Riemen 252 mm | Startwert |
+| `R_z3` | 18 : 90 | Stufe 3, HTD-5M 15 mm, Riemen 525 mm | Startwert |
+
+## Gemeinsam
+
+| Name | Wert | Bedeutung | Status |
+|---|---|---|---|
+| `d_achse` | 8 mm | Stahlachsen (Zwischenwellen, Trommelachse), in 608-Lagern | Startwert |
 
 ## Drucktoleranzen
 

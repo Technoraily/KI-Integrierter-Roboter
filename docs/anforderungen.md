@@ -22,7 +22,7 @@ Quelle: Auftrag und Rückfragen vom 11.10.2026. Jede Anforderung hat eine Nummer
 
 | Nr. | Anforderung |
 |---|---|
-| B1 | Kaufteile für den Anfang unter 150 CHF (Gesamtarm realistisch 175–250 CHF, daher zwei Ausbaustufen) |
+| B1 | Kaufteile für den Anfang unter 150 CHF (nach den Erweiterungen realistisch: Arm rund 300 CHF, mit Schiene rund 415 CHF; daher Ausbaustufen, erste Bestellung ca. 110 CHF) |
 | B2 | NEMA-17-Schrittmotoren; vorhandene Teile weiterverwenden (3× NEMA 17 Typ 17CS04A-170E, Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A, Küchenwaage, Kleinteile) |
 | B3 | Steuerung möglichst nah an Arduino/GRBL – Abweichung erlaubt, wenn begründet besser (gewählt: grblHAL auf BTT Octopus, weil 7 synchrone Achsen nötig sind) |
 
