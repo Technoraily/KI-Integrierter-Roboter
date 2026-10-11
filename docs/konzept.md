@@ -1,6 +1,6 @@
 # Projektplan: 6-Achs-Roboterarm «von Grund auf» (PLA, BambuLab A1, AliExpress-Teile)
 
-*Stand 11.10.2026: Gesamtkonzept 8/10, Detailkonzept 8/10, Steuerung für 7 Achsen 8/10; Antrieb J2/J3 wird am Prüfstand in zwei Varianten entschieden. Protokolle in `docs/reviews/`.*
+*Stand 11.10.2026: Gesamtkonzept 8/10, Detailkonzept 8/10, Steuerung für 7 Achsen 8/10; Antrieb: alle Achsen über Zahnriemen (GT2 und HTD), Schultergelenk wird als Prüfstand gebaut. Protokolle in `docs/reviews/`.*
 
 ## 1. Kontext
 
@@ -51,39 +51,26 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 - **Ehrliches Genauigkeitsziel für «Greifer steht»: ±0,5–1 mm.** Das verlangt Absolutgenauigkeit. Der Engpass ist nicht die Stückelung, sondern die Ausrichtung der Schiene (0,1° Richtungsfehler = 1,7 mm über 1000 mm), die Nachgiebigkeit der Antriebe und Fehler in Nullpunkten und Armlängen. Die Schienenrichtung wird deshalb vermessen und in der Software hinterlegt.
 
 ### 3.2 Antriebe
-| Gelenk | Motor | Untersetzung | Bauart |
-|---|---|---|---|
-| J1 Basis | NEMA 17 (vorhanden) | ~20:1 | 2-stufig Riemen, spielfrei gespannt |
-| J2 Schulter | NEMA 17 60 mm (0,65 Nm, neu, ~12 CHF) | **72:1** | Riemen 16:96 × Capstan 12:1; Ausgleichsfeder |
-| J3 Ellbogen | NEMA 17 (vorhanden), Motor nahe Schulter | ~60:1 | wie J2, kleiner |
-| J4 Unterarm-Rolle | NEMA 17 (vorhanden) | ~20:1 | 2-stufig GT2 |
-| J5 Hand-Nicken | NEMA 17 34 mm (neu), im Unterarm | ~25:1 | GT2 2-stufig |
-| J6 Flansch-Rolle | NEMA 14 (neu) | ~8:1 | GT2 |
+**Entscheid des Nutzers vom 11.10.2026: alle Achsen laufen nur über Zahnriemen, kein Seiltrieb.** GT2 (2-mm-Zähne) überall dort, wo die Riemenkraft klein ist; HTD (3- bzw. 5-mm-Zähne, 15 mm breit) in den Stufen mit hoher Kraft. Hintergrund und Zahlen: `docs/reviews/2026-10-11-antrieb-j2-j3.md`.
 
-- **Die Endstufe für J2/J3 wird am Prüfstand entschieden.** Entscheid des Nutzers vom 11.10.2026: **beide Varianten bauen und messen**, weil das Gutachten nur Schätzwerte für Spiel und Steifigkeit liefern konnte (`docs/reviews/2026-10-11-antrieb-j2-j3.md`).
-  - Variante S (Seiltrieb): Zahnriemen-Vorstufe + Capstan. Gutachten 7/10; kein Spiel, steifer, günstiger, aber heikle Montage und Seilkriechen.
-  - Variante R (nur Zahnriemen): drei Stufen mit HTD-Profil in der Endstufe. Gutachten 6/10; vertraute Technik, kriechfrei, aber geschätzt 0,05–0,15° Spiel und halbe Steifigkeit.
-  - «Alles GT2» (auch in der Endstufe) ist ausgeschieden (3/10): Ein 10-mm-GT2-Riemen trägt ca. 44 N, nötig wären 140 N dauernd und 250 N in der Spitze.
-  - Ein gedrucktes Zykloidgetriebe bleibt nur als letzte Rückfallebene.
-- **Variante S – Auslegung J2:**
-  - Vorstufe: GT2 **10 mm**, **20 Z → 120 Z** (6:1, Rad Ø 76 mm), Riemen 300 mm (Achsabstand ca. 73 mm). Trumkraft 26 N dauernd, 46 N bei vollem Antriebsmoment.
-  - Endstufe 12:1, **auf Seilmitte gerechnet**: Rillengrund Trommel Ø 12,5 mm, Rillengrund Segment R 83,25 mm, Seil 1,5 mm. Die reale Übersetzung wird am Prüfstand eingemessen und in der Firmware hinterlegt.
-  - **Trommel mit Schraubenrille** (Steigung 1,8 mm), ca. 32 mm lang: 5,4 Windungen Hub + 3 Haltewindungen. Das Segment hat entsprechend seitlich versetzte Rillen für die beiden Seile.
-  - **Trommel und 120-Z-Rad sind ein Druckteil (PETG)** auf einer mitdrehenden 8-mm-Stahlachse, die beidseitig in 608-Lagern im Gehäuse läuft (Lagersitz ≥ 10 mm lang).
-  - Seil: Dyneema 1,5 mm, doppelt geführt. Entweder Markenware (SK78/DM20) oder die AliExpress-Schnur 24 h mit ca. 30 % der Bruchlast vorrecken. **Verankerung über Stahlstift oder Schraube mit Unterlegscheibe**, nicht nur Klemmung im PETG; Nachspannschraube je Seil.
-  - Segment J2 überdeckt ≥ 200°; J3 bräuchte ≥ 290° (im CAD der Stufe A zu prüfen).
-- **Variante R – Auslegung J2 (72:1):**
+| Gelenk | Motor | Untersetzung | Stufe 1 | Stufe 2 | Stufe 3 |
+|---|---|---|---|---|---|
+| J0 Schiene | NEMA 17 (neu) | – | GT2 10 mm, Ritzel 20 Z, offener Riemen | – | – |
+| J1 Basis | NEMA 17 (vorhanden) | 20:1 | GT2 10 mm, 20 : 80 | HTD-3M 15 mm, 16 : 80 | – |
+| J2 Schulter | NEMA 17 60 mm (neu) | 72:1 | GT2 10 mm, 20 : 72 | HTD-3M 15 mm, 16 : 64 | HTD-5M 15 mm, 18 : 90 |
+| J3 Ellbogen | NEMA 17 (vorhanden), Motor nahe Schulter | 60:1 | GT2 10 mm, 16 : 60 | HTD-3M 15 mm, 16 : 64 | HTD-5M 15 mm, 15 : 60 |
+| J4 Unterarm-Rolle | NEMA 17 (vorhanden) | 20:1 | GT2 10 mm, 20 : 100 | HTD-3M 15 mm, 16 : 64 | – |
+| J5 Hand-Nicken | NEMA 17 34 mm (neu), im Unterarm | 18,75:1 | GT2 10 mm, 16 : 80 | HTD-3M 15 mm, 16 : 60 | – |
+| J6 Flansch-Rolle | NEMA 14 (neu) | 8:1 | GT2 10 mm, 16 : 40 | GT2 10 mm, 16 : 50 | – |
 
-  | Stufe | Riemen | Zähne | Scheiben-Ø | Riemenlänge | Trumkraft Dauer / Spitze | zulässig |
-  |---|---|---|---|---|---|---|
-  | 1 | GT2 10 mm | 20 : 72 | 12,7 / 45,8 mm | 200 mm | 26 / 46 N | 44 N |
-  | 2 | HTD-3M 15 mm | 16 : 64 | 15,3 / 61,1 mm | 252 mm | 77 / 138 N | 168 N |
-  | 3 | HTD-5M 15 mm | 18 : 90 | 28,6 / 143,2 mm | 525 mm | 164 / 294 N | 268 N |
-
-  Kleine Scheiben gekauft (Alu), grosse gedruckt. Zwei Zwischenwellen 8 mm in 608-Lagern. Stufe 3 ist in der Spitze leicht überlastet (Faktor 1,1); wenn R gewinnt, auf 25 mm Breite gehen.
-- Beide Varianten benutzen denselben Motor, dieselbe Abtriebsachse und dieselbe Messaufnahme, damit die Messwerte vergleichbar sind.
-- **Lastumkehr:** J2 schwenkt über die Senkrechte, das Schwerkraftmoment wechselt dort das Vorzeichen. Die Annahme «einseitig anliegend» aus dem Fehlerbudget gilt also nicht überall; Spiel in der Endstufe wirkt dort voll.
-- **Lastrechnung:** siehe `docs/lastrechnung.md` (1 kg ausgestreckt: Schulter 11,8 Nm, Sicherheit 1,8 bei vorsichtigem Wirkungsgrad 0,65). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (ca. 70 % des Haltemoments, gültig bis ca. 300–500 U/min), nicht mit dem Haltemoment. An J2 ergibt das rund 33°/s; die Schrittrate ist nicht der Engpass.
+- **Regel:** zulässige Riemenkraft GT2 10 mm ca. 44 N, HTD-3M 15 mm ca. 168 N, HTD-5M 15 mm ca. 268 N (Herstellertabelle, vom Gutachter nur teilweise gegengeprüft). Die letzte Stufe jedes Gelenks trägt das volle Gelenkmoment; deshalb reicht GT2 dort nur an J6 und an der Schiene.
+- **J2 und J3** sind vom Gutachter durchgerechnet. **J1, J4, J5 und J6 sind eine eigene Auslegung nach derselben Regel und noch nicht begutachtet**; sie werden mit dem CAD der jeweiligen Baugruppe geprüft.
+- **Trumkräfte J2:** Stufe 1: 26 N dauernd / 46 N Spitze; Stufe 2: 77 / 138 N; Stufe 3: 164 / 294 N. Stufe 3 ist in der Spitze leicht überlastet (Faktor 1,1) → falls der Prüfstand das bestätigt, 25 mm Breite.
+- **Bauweise:** Kleine Scheiben (16–20 Zähne) sind gekaufte Aluscheiben, grosse werden gedruckt (PETG). Zwischenwellen 8 mm Stahl in 608-Lagern. Ob Zwischenstufen als ein Druckteil (grosses Rad + kleines Ritzel) auf fester Achse laufen oder auf mitdrehenden Wellen sitzen, entscheidet das CAD.
+- **Erwartete Schwächen gegenüber einem spielfreien Antrieb** (Schätzung des Gutachters, der Prüfstand misst nach): 0,05–0,15° Umkehrspiel in der HTD-Endstufe (0,4–1,2 mm am Flansch) und 30–100 Nm/° Steifigkeit. J2 schwenkt über die Senkrechte, dort wechselt das Schwerkraftmoment das Vorzeichen und das Spiel wirkt voll.
+- **Verworfen:** «alles GT2» auch in der Endstufe (3/10, Riemen 3- bis 6-fach überlastet); Seiltrieb (7/10, vom Nutzer nicht gewünscht); gedrucktes Zykloidgetriebe (nur letzte Rückfallebene).
+- **Prüfstand:** das Schultergelenk J2 in Originalgrösse (siehe Phase 2).
+- **Lastrechnung:** siehe `docs/lastrechnung.md` (1 kg ausgestreckt: Schulter 11,8 Nm, Sicherheit 1,8 bei vorsichtigem Wirkungsgrad 0,65 für drei Riemenstufen). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (ca. 70 % des Haltemoments, gültig bis ca. 300–500 U/min), nicht mit dem Haltemoment. An J2 ergibt das rund 33°/s; die Schrittrate ist nicht der Engpass.
 - Die Motoren werden als erster Schritt von Phase 2 **vermessen** (`docs/motorvermessung.md`: Länge, Wicklungswiderstand, Haltemoment mit Hebel + Waage, Drehzahltest an 24 V); danach wird die Tabelle fixiert.
 
 ### 3.3 Lagerung und Struktur
@@ -91,7 +78,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 - J2–J6: Standard-Rillenkugellager paarweise vorgespannt.
 - Tragstruktur als geschlossene Schalen; **Verkleidung als separate, geclipste/verschraubte Deckel**.
 - M3/M4 + Einschmelzgewinde, Passstifte für Wiederholbarkeit.
-- **Materialwahl (PETG vom Nutzer freigegeben):** PLA bleibt Standard für Tragschalen und Verkleidung (steifer). **PETG für wärme- und kriechkritische Teile:** Motorplatten, Seilverankerungen/Spannelemente, Teile direkt am Motor. Bei Getriebeteilen (Segment, Riemenscheiben) entscheidet der Prüfstand zwischen PLA und PETG. Belüftete Motorräume.
+- **Materialwahl (PETG vom Nutzer freigegeben):** PLA bleibt Standard für Tragschalen und Verkleidung (steifer). **PETG für wärme- und kriechkritische Teile:** Motorplatten, Spannelemente, Teile direkt am Motor. Bei Getriebeteilen (Riemenscheiben) entscheidet der Prüfstand zwischen PLA und PETG. Belüftete Motorräume.
 - Kabelführung ist Teil der Tragstruktur-Konstruktion (Hohlwellen-Durchmesser, Verdrehwinkel), nicht Nacharbeit.
 
 ### 3.4 Sicherheit
@@ -122,23 +109,23 @@ Der ganze Roboter steht auf einem Schlitten, der ihn auf einer Schiene verfährt
 
 ## 4. Kosten Kaufteile (AliExpress, ehrlich gerechnet)
 
-Der Arm wird in Ausbaustufen gebaut. Das ursprüngliche Startbudget von 150 CHF reicht nach den Erweiterungen (1 kg aussen, 7 synchrone Achsen, zwei Prüfstand-Varianten) nur noch für die erste Bestellung (Prüfstand, ca. 110 CHF):
+Der Arm wird in Ausbaustufen gebaut. Das ursprüngliche Startbudget von 150 CHF reicht nach den Erweiterungen (1 kg aussen, 7 synchrone Achsen) nur noch für die erste Bestellung (Prüfstand, ca. 95 CHF):
 
 | Stufe | Inhalt | CHF |
 |---|---|---|
-| **A – Prüfstand + J1–J3** | Board (BTT Octopus), 3× TMC2209 + Kühlung, Lager, Riemen/Ritzel, Seil, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~210** |
-| **B – Hand J4–J6 + Greifer** | 2 Motoren, Lager, Riemen, Servo, 5-V-Wandler, Kabel | **~50** |
+| **A – Prüfstand + J1–J3** | Board (BTT Octopus), 3× TMC2209 + Kühlung, Lager, Riemen/Scheiben, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~200** |
+| **B – Hand J4–J6 + Greifer** | 2 Motoren, Lager, Riemen/Scheiben, Servo, 5-V-Wandler, Kabel | **~65** |
 | Reserve 15 % | | ~40 |
-| **Arm gesamt realistisch** | | **~300** |
+| **Arm gesamt realistisch** | | **~310** |
 | **C – Schiene 1000 mm** (später) | 2 Linearführungen, Aluprofile, Motor, Riemen, Schleppkette, Endschalter | **~100–120** |
 
-Mit Schiene rund 415 CHF. Alle Preise sind Schätzungen. Filament: ca. 2–2,5 kg PLA + ca. 0,5 kg PETG.
+Mit Schiene rund 425 CHF. Alle Preise sind Schätzungen. Filament: ca. 2–2,5 kg PLA + ca. 0,5 kg PETG.
 
 ## 5. Vorgehen in Phasen (jede endet mit einem Gate)
 
 0. **Projektgerüst** – Ordner, lokales Git-Repo, `README.md`, Anforderungen, Parameterliste. Das Projekt läuft vollständig lokal (Entscheid vom 11.10.2026: keine Cloud-Sitzung, kein GitHub-Repo).
 1. **Detailkonzept** (abgeschlossen, Gutachten 8/10) – Python-Kinematik mit Arbeitsraum- und Momentensimulation (bestätigt Armlängen und Untersetzungen **vor** dem CAD); definitive BOM Stufe A mit AliExpress-Suchbegriffen. *Gate: Agent-Review.*
-2. **Getriebe-Prüfstand (Risiko zuerst)** – erster Schritt: Haltemoment der vorhandenen Motoren mit gedrucktem Hebel und Waage messen (`docs/motorvermessung.md`) und die Lastrechnung damit bestätigen. Dann das J2-Modul in **beiden Varianten S und R** in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben und gegeneinander messen. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die bessere Variante wird Standardmodul für J2 und J3.
+2. **Getriebe-Prüfstand (Risiko zuerst)** – erster Schritt: Haltemoment der vorhandenen Motoren mit gedrucktem Hebel und Waage messen (`docs/motorvermessung.md`) und die Lastrechnung damit bestätigen. Dann das J2-Modul (drei Riemenstufen) in Fusion konstruieren, drucken und mit Uno + CNC-Shield antreiben. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen der Lagersitze, Riemenspannung); Spiel nach 10 000 Zyklen; Erwärmung. Besteht das Modul, wird es Standard für J2 und (kleiner) J3; sonst wird die Endstufe verbreitert oder die Nutzlast gesenkt.
 2b. **Machbarkeitstest Steuerung** – sobald das Board da ist, ohne Mechanik: grblHAL mit 7 Achsen, 7 Treiber, die vorhandenen Motoren reihum umgesteckt, Streaming mit G93 aus Python, Not-Aus-Signal, Servo-Weg (Prüfpunkte in `docs/verdrahtung.md`). **Abbruchkriterium:** Lässt sich grblHAL nicht mit 7 Achsen kompilieren und flashen, oder fahren nicht alle 7 Achsen in einem Satz synchron, wird auf Marlin gewechselt.
 3. **CAD Stufe A:** Kaufteil-Dummys → Basis/J1 → Schulter/J2 → Oberarm/J3, inkl. Kabelführung, Endanschlägen, Sensoren. Pro Baugruppe Interferenz-/Druckbarkeitsprüfung + Agent-Review.
 4. **Bau Stufe A** – drucken, montieren, Board + Firmware in Betrieb nehmen (inkl. Not-Aus, Referenzfahrt), mit Testgewicht anstelle der Hand prüfen (Genauigkeit, Haltetest).
@@ -183,6 +170,6 @@ software/    Python-Paket (Kinematik, Simulation, Steuerung, UI), tests/
 - Getriebespiel/-verschleiss → Prüfstand mit Gate in Phase 2, bevor der Arm konstruiert wird.
 - PLA-Kriechen, Motorwärme → PETG-Motorplatten, Federausgleich, Lüftung.
 - Schrittverlust (offener Regelkreis) → Sicherheit ≥ 1,8 an allen Gelenken (vorsichtig gerechnet), Referenzfahrt, späterer Closed-Loop-Pfad.
-- Budget: Arm rund 300 CHF, mit Schiene rund 415 CHF statt der anfangs gewünschten 150 → Ausbaustufen, erste Bestellung ca. 110 CHF.
-- Capstan: Seilkriechen und lastabhängige Nachgiebigkeit (~0,16° bzw. gut 1 mm am Flansch bei Lastwechsel 0→1 kg, dazu Strukturbiegung; Eigenfrequenz nur ~10 Hz) → Seil doppelt geführt, Haltetest im Prüfstand, Nachspannung, ggf. Variante (b)/(c).
+- Budget: Arm rund 310 CHF, mit Schiene rund 425 CHF statt der anfangs gewünschten 150 → Ausbaustufen, erste Bestellung ca. 95 CHF.
+- Riemenantrieb an J2/J3: Umkehrspiel und Nachgiebigkeit der HTD-Endstufe sind nur geschätzt; drei Stufen brauchen Platz (ca. 60–70 mm Breite) → Prüfstand misst beides, bevor der Arm konstruiert wird.
 - Motormomente der vorhandenen Motoren sind noch Annahmen → Messung als erster Schritt von Phase 2; J3 ist am empfindlichsten.

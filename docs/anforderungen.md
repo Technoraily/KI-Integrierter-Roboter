@@ -16,13 +16,14 @@ Quelle: Auftrag und Rückfragen vom 11.10.2026. Jede Anforderung hat eine Nummer
 | A8 | Vollständige, passende Verkleidung – nicht nur ein Gerüst |
 | A9 | Bebilderte Bauanleitung und Dokumentation entstehen im Projekt |
 | A10 | Vorgehen nach klarem Plan, Qualität vor Tempo |
+| A12 | Alle Achsen werden über Zahnriemen angetrieben, kein Seiltrieb (Entscheid 11.10.2026) |
 | A11 | Der ganze Roboter steht auf einer angetriebenen Schiene mit ca. 1000 mm Verfahrweg (ergänzt 11.10.2026; Bau als Stufe C nach dem Arm, Basis wird jetzt schon dafür vorbereitet). **Arm und Schiene arbeiten koordiniert:** z. B. bleibt der Greifer an einem Punkt im Raum, während der Arm auf der Schiene fährt |
 
 ## Soll
 
 | Nr. | Anforderung |
 |---|---|
-| B1 | Kaufteile für den Anfang unter 150 CHF (nach den Erweiterungen realistisch: Arm rund 300 CHF, mit Schiene rund 415 CHF; daher Ausbaustufen, erste Bestellung ca. 110 CHF) |
+| B1 | Kaufteile für den Anfang unter 150 CHF (nach den Erweiterungen realistisch: Arm rund 310 CHF, mit Schiene rund 425 CHF; daher Ausbaustufen, erste Bestellung ca. 95 CHF) |
 | B2 | NEMA-17-Schrittmotoren; vorhandene Teile weiterverwenden (3× NEMA 17 Typ 17CS04A-170E, Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A, Küchenwaage, Kleinteile) |
 | B3 | Steuerung möglichst nah an Arduino/GRBL – Abweichung erlaubt, wenn begründet besser (gewählt: grblHAL auf BTT Octopus, weil 7 synchrone Achsen nötig sind) |
 

@@ -1,7 +1,7 @@
 """Zeichnet die Übersichtsskizze des Roboters (Seitenansicht) nach uebersicht.png.
 
 Aufruf:  python docs/bilder/uebersicht_zeichnen.py
-Masse in mm, entsprechen docs/parameter.md. Die Schiene ist ein Vorschlag.
+Masse in mm, entsprechen docs/parameter.md.
 """
 
 import math
@@ -14,7 +14,7 @@ MASSSTAB = 2.0  # Pixel pro mm
 NULL = (860, 1010)  # Pixel der Schlittenoberkante unter der J1-Achse
 
 GRAU, DUNKEL, RAND = (222, 226, 232), (150, 158, 170), (70, 76, 86)
-MOTOR, RIEMEN, SEIL, SCHIENE = (240, 160, 70), (36, 110, 160), (214, 40, 40), (120, 170, 120)
+MOTOR, RIEMEN, SCHIENE = (240, 160, 70), (36, 110, 160), (120, 170, 120)
 TEXT = (30, 30, 30)
 
 
@@ -108,12 +108,12 @@ kasten(punkt(W, 150, 26), 24, 24, MOTOR, "M6")
 
 # Gelenke und Seiltriebe
 kreis(S, 40, "white")
-bogen(S, 40, -75, 125, SEIL)
-kreis(punkt(S, 205, 47), 7, MOTOR)  # Seiltrommel J2
+bogen(S, 40, -75, 125, RIEMEN)
+kreis(punkt(S, 205, 47), 7, MOTOR)  # Ritzel der Endstufe J2
 kreis(S, 6, RAND)
 kreis(E, 28, "white")
-bogen(E, 28, -40, 190, SEIL)
-kreis(punkt(E, 250, 34), 6, MOTOR)  # Seiltrommel J3
+bogen(E, 28, -40, 190, RIEMEN)
+kreis(punkt(E, 250, 34), 6, MOTOR)  # Ritzel der Endstufe J3
 kreis(E, 5, RAND)
 kreis(W, 15, "white")
 kreis(W, 4, RAND)
@@ -133,14 +133,14 @@ z.text((B / 2, 44), "Roboterarm: Aufbau und Antriebe (Seitenansicht, Schema)",
        font=schrift(40, True), fill=TEXT, anchor="mm")
 
 zeilen = [
-    (E, "J3  Ellbogen", "M3: NEMA 17 nahe der Schulter · Zahnriemen + Seiltrieb 60:1"),
-    (punkt(E, 100, 60), "J4  Unterarm drehen", "M4: NEMA 17 · Zahnriemen 20:1"),
-    (W, "J5  Hand nicken", "M5: NEMA 17 (34 mm) im Unterarm · Zahnriemen 25:1"),
-    (punkt(W, 150, 40), "J6  Flansch drehen", "M6: NEMA 14 · Zahnriemen 8:1"),
+    (E, "J3  Ellbogen", "M3: NEMA 17 nahe der Schulter · GT2 + HTD-3M + HTD-5M, 60:1"),
+    (punkt(E, 100, 60), "J4  Unterarm drehen", "M4: NEMA 17 · GT2 + HTD-3M, 20:1"),
+    (W, "J5  Hand nicken", "M5: NEMA 17 (34 mm) im Unterarm · GT2 + HTD-3M, 18,75:1"),
+    (punkt(W, 150, 40), "J6  Flansch drehen", "M6: NEMA 14 · GT2 zweistufig, 8:1"),
     (G, "Greifer am Normflansch", "ISO 9409, später Wechselsystem und Kamera"),
-    (S, "J2  Schulter", "M2: NEMA 17 (60 mm) · Zahnriemen + Seiltrieb 72:1"),
-    ((40, 60), "J1  Basis drehen", "M1: NEMA 17 · Zahnriemen zweistufig 20:1"),
-    ((250, -6), "J0  Schiene (neu, Vorschlag)", "M0: NEMA 17 · Zahnriemen, zwei Linearführungen"),
+    (S, "J2  Schulter", "M2: NEMA 17 (60 mm) · GT2 + HTD-3M + HTD-5M, 72:1"),
+    ((40, 60), "J1  Basis drehen", "M1: NEMA 17 · GT2 + HTD-3M, 20:1"),
+    ((250, -6), "J0  Schiene", "M0: NEMA 17 · GT2 offen, zwei Linearführungen"),
 ]
 x_text = 1700
 for i, (ziel, titel, detail) in enumerate(zeilen):
@@ -152,8 +152,8 @@ for i, (ziel, titel, detail) in enumerate(zeilen):
     z.text((x_text, y + 36), detail, font=schrift(21), fill=(70, 70, 70))
 
 # --- Legende und Masse links ---
-legende = [(GRAU, "Druckteile (PLA / PETG)"), (MOTOR, "Motor / Seiltrommel"),
-           (RIEMEN, "Zahnriemen"), (SEIL, "Seil (Dyneema)"), (SCHIENE, "Linearführung")]
+legende = [(GRAU, "Druckteile (PLA / PETG)"), (MOTOR, "Motor / Ritzel"),
+           (RIEMEN, "Zahnriemen (GT2 / HTD)"), (SCHIENE, "Linearführung")]
 for i, (farbe, name) in enumerate(legende):
     y = 130 + i * 42
     z.rounded_rectangle([50, y, 96, y + 26], radius=5, fill=farbe, outline=RAND, width=2)
