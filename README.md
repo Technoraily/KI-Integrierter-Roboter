@@ -6,11 +6,11 @@ Selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, BambuLab 
 
 | | |
 |---|---|
-| Achsen | 6 (Knickarm mit Zentralhand) |
+| Achsen | 6 (Knickarm mit Zentralhand) + Schiene als 7. Achse, koordiniert |
 | Reichweite | 450 mm (Schulter → Flansch) |
 | Nutzlast | 1 kg im ganzen Arbeitsraum |
 | Wiederholgenauigkeit | ≤ ±0,5 mm (unidirektional, nach Referenzfahrt, bei gleichbleibender Last) |
-| Steuerung | Mega-2560-Board + `grbl-Mega-5X`, TMC2209, 24 V |
+| Steuerung | BTT Octopus (STM32F446) + grblHAL, 7 synchrone Achsen, TMC2209, 24 V |
 | Software | Python auf dem PC (Kinematik, Bahnplanung, später Kamera/KI) |
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
@@ -27,7 +27,7 @@ Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) abgeschlossen: K
 |---|---|
 | `docs/` | Anforderungen, Konzept, Parameter, Lastrechnung, Stückliste, Bauanleitung, Prüfprotokolle |
 | `cad/` | Exporte aus Fusion 360 (STL, STEP) und Renderings für die Anleitung |
-| `firmware/` | Konfiguration für `grbl-Mega-5X` |
+| `firmware/` | Konfiguration für grblHAL |
 | `software/` | Python-Paket für Kinematik, Simulation und Steuerung |
 
 ## Arbeitsweise

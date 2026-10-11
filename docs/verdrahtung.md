@@ -1,33 +1,51 @@
 # Verdrahtung (Vorstufe)
 
-Stand 11.10.2026: Pin-Belegung der Firmware geklärt, Board noch nicht bestellt. Der vollständige Verdrahtungsplan folgt in Phase 7.
+Stand 11.10.2026: Steuerung neu gewählt, weil Arm und Schiene koordiniert fahren müssen (7 synchrone Achsen). Board noch nicht bestellt. Der vollständige Verdrahtungsplan folgt in Phase 7.
 
-## Pin-Belegung `grbl-Mega-5X` (RAMPS-Karte)
+## Board und Firmware
 
-Quelle: [`cpu_map.h`](https://raw.githubusercontent.com/fra589/grbl-Mega-5X/edge/grbl/cpu_map.h), `CPU_MAP_2560_RAMPS_BOARD`; vom Gutachter gegengeprüft. Das MKS Gen L verwendet laut [Marlin-Pin-Datei](https://raw.githubusercontent.com/MarlinFirmware/Marlin/2.1.x/Marlin/src/pins/ramps/pins_MKS_GEN_L_V21.h) die RAMPS-Belegung, die Treibersockel passen also ohne Änderung.
+- **BTT Octopus mit STM32F446** (v1.1 oder Pro), 24 V, 8 Treibersockel.
+- **grblHAL**, Treiber `STM32F4xx`, Board-Map [`btt_octopus_pro_map.h`](https://raw.githubusercontent.com/grblHAL/STM32F4xx/master/boards/btt_octopus_pro_map.h) («BTT Octopus Pro v1.1», für F429/F446 mit 12-MHz-Quarz). grblHAL unterstützt 3–8 Achsen ([`config.h`](https://raw.githubusercontent.com/grblHAL/core/master/config.h)).
+- Rückfallebene: Marlin 2.1 (bis 9 Achsen; Servo dort auf PB6).
 
-| Achse | Gelenk | Sockel | Step | Dir | Enable | Endschalter Min | Endschalter Max |
-|---|---|---|---|---|---|---|---|
-| 1 (X) | J1 | X | A0 | A1 | D38 | D3 | D2 |
-| 2 (Y) | J2 | Y | A6 | A7 | A2 | D14 | D15 |
-| 3 (Z) | J3 | Z | D46 | D48 | A8 | D18 | D19 |
-| 4 (A) | J4 | E0 | D26 | D28 | D24 | D42 | D40 |
-| 5 (B) | J5 | E1 | D36 | D34 | D30 | D44 | D59 |
-| 6 (C) | J6 | extern | D49 | D51 | D53 | D57 | D58 |
+## Achszuordnung
 
-Pro Achse wird nur ein Endschalter gebraucht (Referenzfahrt); die Max-Eingänge bleiben frei. Spindel-PWM (D8/D6/D9 wählbar) ist für den Greifer-Servo vorgesehen.
+| Achse | Buchstabe | Einheit | Treiber im Stillstand |
+|---|---|---|---|
+| J1 Basis | X | Grad | Absenkung |
+| J2 Schulter | Y | Grad | voller Haltestrom |
+| J3 Ellbogen | Z | Grad | voller Haltestrom |
+| J4 Unterarm-Rolle | A | Grad | Absenkung |
+| J5 Hand-Nicken | B | Grad | voller Haltestrom |
+| J6 Flansch-Rolle | C | Grad | Absenkung |
+| J0 Schiene | U | mm | Absenkung |
+| – | (8. Sockel) | – | Reserve |
 
-## Besonderheiten des MKS Gen L V2.x
+Die Zuordnung der Buchstaben zu den Sockeln Motor 0–7 wird beim Kompilieren festgelegt und mit dem Machbarkeitstest dokumentiert.
 
-1. **Achse 6 (D49/D51/D53)** liegt am Display-/SD-Stecker EXP2 (RAMPS-Standard: SD-Detect, MOSI, SS). Ohne Display sind die Pins frei; dort wird der externe Treiberträger angeschlossen.
-2. **Endschalter der Achsen 4–6.** Das Board hat laut Hersteller-PDF die Stecker EXP1, EXP2 und AUX-1, aber kein AUX-2. D42/D44 sind deshalb sehr wahrscheinlich nicht herausgeführt. Lösung: in `cpu_map.h` die Min-Endschalter der Achsen 4–6 auf die freien Max-Stecker von X/Y/Z legen (D2, D15, D19). Die Firmware wird ohnehin selbst kompiliert.
-3. **DIAG-Jumper offen lassen.** D2 und D15 sind auf dem Board per Jumper mit den DIAG-Pins der Treibersockel E0/E1 verbunden. Für die Lösung aus Punkt 2 müssen diese Jumper offen sein.
-4. **UART-Jumper offen lassen.** A9–A12 sind in der Firmware Reset, Feed Hold, Cycle Start und Safety Door, auf dem Board aber die UART/CS-Leitungen der Treibersockel. Die TMC2209 laufen standalone; mit gesteckten UART-Jumpern drohen Fehlauslösungen. Feed Hold, Cycle Start und Safety Door werden in `config.h` deaktiviert, soweit sie nicht gebraucht werden.
+## Ein- und Ausgänge laut Board-Map
 
-Vor der Board-Bestellung: das Hersteller-PDF ([makerbase-mks/MKS-GEN_L](https://github.com/makerbase-mks/MKS-GEN_L), Ordner `hardware`) optisch auf EXP2 und AUX-1 prüfen. Das ist ein Punkt für Phase 3/4, nicht für den Prüfstand – der läuft mit Uno und CNC-Shield.
+- 8 Endschalter-Eingänge (PG6, PG9–PG15): einer je Achse für die Referenzfahrt, der achte für das zweite Ende der Schiene.
+- Reset/E-Stop, Feed Hold, Cycle Start: PF3–PF5. **Der Not-Aus trennt die Motorspannung und zieht zusätzlich den E-Stop-Eingang**, damit die Firmware den Positionsverlust kennt.
+- Kein Servo-Ausgang in der Map. Der Greifer-Servo läuft über den vorhandenen Arduino Uno (USB, von Python angesprochen) mit eigenem 5-V-Wandler.
+- Reserve für später (Greiferwechsler, Sensoren): PB6/PB7, PC0 und der achte Treibersockel.
+
+## Vor der Bestellung zu prüfen
+
+1. Angebot nennt ausdrücklich **STM32F446** (nicht H723).
+2. Schaltplan des Octopus v1.1 gegen die Pro-Map vergleichen, falls das v1.1 gekauft wird (Marlin nutzt für beide dieselbe Pin-Datei, daher sehr wahrscheinlich gleich).
+
+## Im Machbarkeitstest zu klären (Phase 4, vor dem Schienenbau)
+
+1. grblHAL mit 7 Achsen kompilieren und flashen; 7 Motoren leer laufen lassen.
+2. Sätze mit G93 aus Python streamen; Pufferverhalten und Durchsatz beobachten (Bedarf: 10–50 Sätze/s).
+3. TMC2209 standalone: Stillstandsstrom-Absenkung je Sockel über den PDN-Pin ein- bzw. ausschalten.
+4. Referenzfahrt: Reihenfolge und Einzelreferenzierung der 7 Achsen (z. B. J3 vor J2).
+5. Not-Aus-Signal an PF3 und Wiederanlauf.
+6. Servo-Weg über den Uno.
 
 ## Festgelegt
 
-- Versorgung 24 V; Not-Aus trennt die Motorspannung.
-- J2, J3, J5: voller Haltestrom, Motoren dauernd bestromt (`$1=255`). J1, J4, J6: Stillstandsstrom-Absenkung.
-- Greifer-Servo über eigenen 5-V-Wandler, nicht aus dem Board-Regler.
+- Versorgung 24 V.
+- Schrittraten liegen mit rund 20–30 kHz weit unter der Grenze des Boards.
+- Jeder Bewegungssatz wird mit G93 (Zeitvorgabe) gesendet.

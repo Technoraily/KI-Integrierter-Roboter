@@ -31,20 +31,24 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 
 ## 3. Architekturentscheide
 
-### 3.1 Steuerung – Abweichung vom Wunsch (begründet)
-- **Uno + CNC-Shield reicht nicht:** GRBL auf dem Uno steuert nur 3 unabhängige Achsen, der Speicher ist voll.
-- **Empfehlung: Mega-2560-basiertes Board mit Firmware `grbl-Mega-5X`** (6 Achsen, verifiziert: Achsen 4/5 auf den Sockeln E0/E1, Achse 6 auf D49/D51/D53 – am MKS Gen L über den Stecker EXP2; Endschalter der Achsen 4–6 siehe `docs/verdrahtung.md`).
-  - Board: **MKS Gen L V2.x als Erstwahl** (Mega integriert, 12–24 V). RAMPS 1.4/1.6 nur mit Umbau (Diode D1 entfernen, Mega separat speisen) – daher nicht empfohlen. Pin-Belegung wird in Phase 1 gegen `cpu_map.h` geprüft, bevor bestellt wird.
-  - 6. Treiber auf externem Treiberträger.
-  - **24 V als Soll** (deutlich mehr Drehmoment bei Drehzahl). Vorhandenes Netzteil in Phase 1 prüfen.
-  - In Phase 1 kurz gegenprüfen: Marlin mit Rotationsachsen auf demselben Board als Alternative.
-- **Warum nicht ESP32/FluidNC:** Die auf AliExpress gängigen Boards haben nur 3–5 Achsen; echte 6-Achs-Boards sind teurer und schwerer zu beschaffen. Bleibt Upgrade-Pfad.
-- **Treiber pro Achse:**
-  - J2, J3, J5 (schwerkraftbelastet): TMC2209 mit Kühlkörper + Lüfter, **voller Haltestrom**, Motoren dauernd bestromt (`$1=255`).
-  - J1, J4, J6: TMC2209 mit Stillstandsstrom-Absenkung.
-  - Vorhandene A4988 nur für den Prüfstand.
-- **Uno + CNC-Shield** bleiben im Einsatz: Prüfstand-Steuerung (Phase 2), später Greiferwechsel-Station.
-- **Aufgabenteilung:** Firmware fährt nur synchron Gelenkwinkel (G-Code in Grad). Kinematik, Bahnplanung und später Kamera/KI laufen in **Python auf dem PC**.
+### 3.1 Steuerung – Abweichung vom Wunsch (begründet; neu gewählt am 11.10.2026 wegen der 7. Achse)
+- **Anforderung:** Arm und Schiene fahren koordiniert, z. B. bleibt der Greifer an einem Punkt im Raum stehen, während der Arm auf der Schiene fährt. Dafür müssen **alle 7 Achsen synchron von einer Steuerung** interpoliert werden.
+- **Was deshalb ausscheidet:** Uno + CNC-Shield (GRBL kann 3 Achsen) und das zuvor geplante Mega-Board mit `grbl-Mega-5X` (höchstens 6 Achsen).
+- **Board: BTT Octopus mit STM32F446** (v1.1 oder Pro, ca. 45 CHF): 8 Treibersockel, 8 Endschalter-Eingänge, 24 V. Beim Kauf auf die MCU **F446** achten – die Varianten mit H723 passen nicht zur Firmware. Vor der Bestellung den Schaltplan des v1.1 gegen die Pro-Pinbelegung prüfen.
+- **Firmware: grblHAL mit 7 Achsen** (kann 3–8 Achsen, hat eine Board-Map für den Octopus, unterstützt G93, bis 300 kHz Schrittrate). Bleibt in der GRBL-Welt: `$`-Einstellungen, `$H`, Statusabfrage, Streaming-Protokoll. **Marlin 2.1 (bis 9 Achsen) ist die Rückfallebene.** 7 Achsen unter grblHAL sind im Feld wenig erprobt → früher Machbarkeitstest (Phase 4).
+- **Achszuordnung:** J1–J3 = X/Y/Z, J4–J6 = A/B/C, Schiene J0 = U. Die Firmware behandelt alle als reine Einheiten (Grad bzw. mm).
+- **Treiber:** 7× TMC2209 im Standalone-Betrieb (UART ist unter grblHAL auf diesem Board ungetestet), 24 V, Kühlkörper + Lüfter.
+  - J2, J3, J5 (schwerkraftbelastet): **voller Haltestrom**, Motoren dauernd bestromt (`$1=255`).
+  - J0, J1, J4, J6: Stillstandsstrom-Absenkung.
+  - Offen: Im Standalone-Betrieb wird die Absenkung über den PDN-Pin je Sockel gewählt; wie das auf dem Octopus per Jumper geht, wird beim Machbarkeitstest geklärt.
+- **Greifer-Servo:** Die Board-Map hat keinen Servo-Ausgang. Der Servo läuft deshalb über den **vorhandenen Arduino Uno**, den Python per USB anspricht. Alternative: einen freien Pin in der Board-Map umdefinieren.
+- **Uno + CNC-Shield + A4988** bleiben im Einsatz: Prüfstand-Steuerung (Phase 2), danach Greifer-Servo und später Greiferwechsel-Station.
+- **Aufgabenteilung:** Die Firmware fährt nur Gelenk-Sollwerte synchron. Kinematik, Bahnplanung und später Kamera/KI laufen in **Python auf dem PC**.
+- **Koordinierte Bewegung:** Python zerlegt die Fahrt in kurze Stücke, rechnet für jeden Stützpunkt die Gelenkwinkel und sendet Sätze mit allen 7 Achsen; die Firmware interpoliert dazwischen linear und synchron.
+  - Für «Greifer steht, Schiene fährt» genügt die vorhandene 6-Achs-Rückwärtskinematik mit einem um den Schienenweg verschobenen Ziel.
+  - **Adaptive Stückelung:** Start bei 5 mm Schienenweg, halbieren, bis der Fehler in der Segmentmitte unter 0,05 mm liegt (nötig nahe Singularitäten).
+  - **Jeder Satz mit G93** (Zeitvorgabe statt Vorschub), weil der Vorschub bei gemischten Linear- und Drehachsen sonst mehrdeutig ist.
+- **Ehrliches Genauigkeitsziel für «Greifer steht»: ±0,5–1 mm.** Das verlangt Absolutgenauigkeit. Der Engpass ist nicht die Stückelung, sondern die Ausrichtung der Schiene (0,1° Richtungsfehler = 1,7 mm über 1000 mm), die Nachgiebigkeit der Antriebe und Fehler in Nullpunkten und Armlängen. Die Schienenrichtung wird deshalb vermessen und in der Software hinterlegt.
 
 ### 3.2 Antriebe
 | Gelenk | Motor | Untersetzung | Bauart |
@@ -80,7 +84,8 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 - Kabelführung ist Teil der Tragstruktur-Konstruktion (Hohlwellen-Durchmesser, Verdrehwinkel), nicht Nacharbeit.
 
 ### 3.4 Sicherheit
-- Not-Aus-Taster, der die Motorspannung trennt; Sicherung; Zugentlastungen.
+- Not-Aus-Taster, der die Motorspannung trennt **und der Firmware ein Signal gibt** (sonst rechnet sie mit einer verlorenen Position weiter); Sicherung; Zugentlastungen.
+- Schiene: Endschalter an beiden Enden als harte Grenze.
 - **Stromausfall:** Arm ist rückdrehbar → Ausgleichsfeder so auslegen, dass er langsam sinkt; definierte Parkposition.
 - Mechanische Endanschläge an jeder Achse + Soft-Limits in der Firmware; Quetschstellen in der Verkleidung vermeiden.
 
@@ -90,7 +95,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 - Erster Greifer: Servo-Parallelgreifer am ISO-Flansch (5-V-Wandler vorgesehen).
 
 ### 3.6 Software
-Python-Paket: Vorwärts-/Rückwärtskinematik (analytisch), Arbeitsraum- und Momentensimulation, G-Code-Streaming, Jog-Oberfläche, Teach-&-Playback, Kalibrierung. Später: OpenCV, Hand-Auge-Kalibrierung, KI-Aufgabenplanung.
+Python-Paket: Vorwärts-/Rückwärtskinematik (analytisch), Arbeitsraum- und Momentensimulation, Stückelung koordinierter 7-Achs-Bewegungen, G-Code-Streaming, Jog-Oberfläche, Teach-&-Playback, Kalibrierung. Später: OpenCV, Hand-Auge-Kalibrierung, KI-Aufgabenplanung.
 
 ### 3.7 Schiene J0 (ergänzt 11.10.2026, Bau als Stufe C)
 
@@ -99,7 +104,8 @@ Der ganze Roboter steht auf einem Schlitten, der ihn auf einer Schiene verfährt
 - **Verfahrweg ca. 1000 mm**, Schiene rund 1250 mm lang.
 - **Führung:** zwei parallele Linearführungen (MGN12) auf Aluprofilen, Spurweite ≥ 150 mm. Zwei Führungen sind nötig, weil der ausgestreckte Arm mit 1 kg ein Kippmoment von rund 12 Nm auf den Schlitten bringt.
 - **Antrieb:** NEMA 17 (ein vierter 40-mm-Motor, neu) mit offenem GT2-Riemen 10 mm; Kabel in einer Schleppkette.
-- **Steuerung:** der vorhandene **Arduino Uno + CNC-Shield** mit GRBL als eigene kleine Steuerung nur für die Schiene – die günstigste Lösung, weil alles vorhanden ist und `grbl-Mega-5X` nur 6 Achsen kann. Der PC koordiniert Arm und Schiene. Einschränkung: Schiene und Arm fahren keine gemeinsame, bahntreue Bewegung; die Schiene positioniert den Arm.
+- **Steuerung:** als siebte Achse (U) auf demselben Board wie der Arm, voll synchron (siehe 3.1). Der separate Uno für die Schiene entfällt.
+- **Kalibrierung:** Richtung der Schiene im Koordinatensystem des Arms messen und in der Software hinterlegen; Referenzfahrt-Reihenfolge für alle 7 Achsen festlegen.
 - **Jetzt schon vorgesehen:** Die Basis bekommt ein Lochbild für den Schlitten (4× M5 auf 120 × 120 mm), damit die Schiene später ohne Umbau darunterkommt. Bis dahin wird die Basis mit denselben Löchern auf eine Platte geschraubt.
 - **Offen für Stufe C:** Führungen und Profile mit 1250 mm Länge sind auf AliExpress teuer im Versand oder gar nicht lieferbar; evtl. Profile lokal beziehen oder die Schiene aus zwei Stücken stossen. Genauigkeit der Schiene (Ziel ≤ ±0,1 mm) und ebene Unterlage.
 
@@ -109,10 +115,10 @@ Der Arm wird in **zwei Ausbaustufen** gebaut, damit der Start unter 150 CHF blei
 
 | Stufe | Inhalt | CHF |
 |---|---|---|
-| **A – Prüfstand + J1–J3** | Board, 3× TMC2209 + Kühlung, Lager, Riemen/Ritzel, Seil, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~150** |
+| **A – Prüfstand + J1–J3** | Board (BTT Octopus), 3× TMC2209 + Kühlung, Lager, Riemen/Ritzel, Seil, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~175** |
 | **B – Hand J4–J6 + Greifer** | 3 Motoren, 3× TMC2209, Lager, Riemen, Servo, 5-V-Wandler, Kabel | **~60–80** |
 | Reserve 15 %, evtl. 24-V-Netzteil (~15), evtl. stärkerer J2-Motor (~12) | | ~25–50 |
-| **Arm gesamt realistisch** | | **~175–250** |
+| **Arm gesamt realistisch** | | **~235–280** |
 | **C – Schiene 1000 mm** (später) | 2 Linearführungen, Aluprofile, Motor, Riemen, Schleppkette, Endschalter | **~100–120** |
 
 Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtlich (ohne neues Netzteil und ohne Zusatzmotor am unteren Ende der Spanne). Filament: ca. 2–2,5 kg PLA + ca. 0,5 kg PETG.
@@ -123,13 +129,13 @@ Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtli
 1. **Detailkonzept** (abgeschlossen, Gutachten 8/10) – Python-Kinematik mit Arbeitsraum- und Momentensimulation (bestätigt Armlängen und Untersetzungen **vor** dem CAD); Board-Pinmapping prüfen; definitive BOM Stufe A mit AliExpress-Suchbegriffen. *Gate: Agent-Review.*
 2. **Getriebe-Prüfstand (Risiko zuerst)** – erster Schritt: Haltemoment der vorhandenen Motoren mit gedrucktem Hebel und Waage messen (`docs/motorvermessung.md`) und die Lastrechnung damit bestätigen. Dann das J2-Modul in Variante (a) in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben; (b)/(c) nur bei Nichtbestehen. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die beste Variante wird Standardmodul.
 3. **CAD Stufe A:** Kaufteil-Dummys → Basis/J1 → Schulter/J2 → Oberarm/J3, inkl. Kabelführung, Endanschlägen, Sensoren. Pro Baugruppe Interferenz-/Druckbarkeitsprüfung + Agent-Review.
-4. **Bau Stufe A** – drucken, montieren, Board + Firmware für 3 Achsen in Betrieb nehmen (inkl. Not-Aus, Referenzfahrt), mit Testgewicht anstelle der Hand prüfen (Genauigkeit, Haltetest).
+4. **Bau Stufe A** – drucken, montieren, Board + Firmware in Betrieb nehmen (inkl. Not-Aus, Referenzfahrt); **Machbarkeitstest: 7 Achsen mit leer laufenden Motoren, Streaming mit G93 aus Python, Servo-Weg**, mit Testgewicht anstelle der Hand prüfen (Genauigkeit, Haltetest).
 5. **CAD + Bau Stufe B:** Unterarm/J4 → Handgelenk J5/J6 → Flansch → Greifer.
 6. **Verkleidung und Elektronikgehäuse.**
-7. **Elektronik & Firmware komplett** – Verdrahtungsplan, grbl-Mega-5X, Referenzfahrt, Soft-Limits, Not-Aus.
+7. **Elektronik & Firmware komplett** – Verdrahtungsplan, grblHAL mit 7 Achsen, Referenzfahrt, Soft-Limits, Not-Aus.
 8. **Software & Kalibrierung** – Jog-UI, Wiederholgenauigkeit messen, Abgleich mit Abschnitt 2.
 9. **Dokumentation finalisieren** – Bauanleitung mit Renderings/Explosionsbildern, BOM, Verdrahtung, Inbetriebnahme, Fehlersuche.
-10. **Stufe C: Schiene J0** – Schlitten, Führungen, Riemenantrieb, Steuerung über Uno + CNC-Shield, Einbindung in die Python-Software (Schienenposition als siebte Koordinate).
+10. **Stufe C: Schiene J0** – Schlitten, Führungen, Riemenantrieb, siebte Achse am Board, Kalibrierung der Schienenrichtung, koordinierte Bewegungen in der Python-Software.
 11. **Später:** Kamera-KI, Greiferwechsler, evtl. Closed-Loop-Motoren.
 
 Die Dokumentation wächst in jeder Phase mit.
@@ -150,7 +156,7 @@ README.md
 docs/        anforderungen.md, konzept.md, lastrechnung.md, bom.md, sicherheit.md,
              bauanleitung/ (Schritte + Bilder), verdrahtung.md, reviews/
 cad/         export/stl, export/step, renders/
-firmware/    grbl-Mega-5X-Konfiguration
+firmware/    grblHAL-Konfiguration
 software/    Python-Paket (Kinematik, Simulation, Steuerung, UI), tests/
 ```
 

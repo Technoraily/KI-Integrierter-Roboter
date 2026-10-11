@@ -36,7 +36,7 @@ Varianten (b) Zykloid und (c) HTD-Riemen werden nur bestellt, falls (a) das Gate
 
 | Teil | Menge | AliExpress-Suchbegriff | ca. CHF |
 |---|---|---|---|
-| MKS Gen L V2.1 | 1 | `MKS Gen L V2.1` | 20 |
+| BTT Octopus mit STM32F446 (v1.1 oder Pro) | 1 | `BTT Octopus V1.1 F446` | 45 |
 | TMC2209 + Kühlkörper | 2 weitere | wie oben | 6 |
 | Lüfter 4010, 24 V | 1 | `4010 fan 24V` | 2 |
 | Dünnringlager 6810-2RS (50 × 65 × 7) für J1 | 2 | `6810 2RS bearing` | 8 |
@@ -45,9 +45,9 @@ Varianten (b) Zykloid und (c) HTD-Riemen werden nur bestellt, falls (a) das Gate
 | Endschalter (Mikroschalter mit Rolle) | 6 | `micro limit switch roller 10pcs` | 2 |
 | Not-Aus-Taster, rastend | 1 | `emergency stop button 22mm` | 3 |
 | Litze 0,5 mm², Stecker JST-XH, Geflechtschlauch | – | `JST XH connector kit`, `braided cable sleeve 8mm` | 10 |
-| **Summe Rest Stufe A** | | | **~65** |
+| **Summe Rest Stufe A** | | | **~90** |
 
-Prüfstand und Rest zusammen: knapp 150 CHF.
+Prüfstand und Rest zusammen: rund 175 CHF. Das Board ist teurer als zuvor geplant, weil es 7 synchrone Achsen können muss.
 
 ## Ausbaustufe B – Hand J4–J6 und Greifer (vorläufig)
 
@@ -55,7 +55,7 @@ Prüfstand und Rest zusammen: knapp 150 CHF.
 |---|---|---|
 | NEMA 17, 34 mm (J5) | 1 | 9 |
 | NEMA 14 (J6) | 1 | 9 |
-| TMC2209 + Treiberträger für Achse 6 | 3 + 1 | 10 |
+| TMC2209 | 3 | 9 |
 | Lager, Riemen, Ritzel für die Hand | – | 15 |
 | Servo für Greifer (MG996R oder DS3218) + 5-V-Wandler | 1 + 1 | 10 |
 | Kabel, Stecker | – | 8 |
@@ -73,7 +73,7 @@ Prüfstand und Rest zusammen: knapp 150 CHF.
 | Endschalter, Winkel, Nutensteine, Schrauben | – | 10 |
 | **Summe Stufe C** | | **~115** |
 
-Steuerung über den vorhandenen Uno + CNC-Shield, daher keine weiteren Elektronikkosten. Lange Führungen und Profile sind auf AliExpress teuer im Versand; das wird vor Stufe C geklärt.
+Die Schiene läuft als siebte Achse auf dem Octopus; dazu kommt ein TMC2209 (~3 CHF). Lange Führungen und Profile sind auf AliExpress teuer im Versand; das wird vor Stufe C geklärt.
 
 ## Filament
 
