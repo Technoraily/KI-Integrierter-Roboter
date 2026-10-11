@@ -63,12 +63,13 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 - **Capstan-Auslegung J2 (Stand nach Gutachten Phase 1):**
   - Vorstufe: GT2-Riemen **10 mm breit**, 16 Z → 96 Z (6:1), Riemenlänge 280 mm (Achsabstand ~80 mm).
   - Endstufe: Trommel Ø 14 mm, Segmentradius 84 mm → 12:1. Gesamt 72:1.
-  - **Trommel und 96-Z-Rad sind ein einziges Druckteil (PETG)**, das auf zwei 608-Lagern um eine feststehende 8-mm-Stahlachse läuft. Das Drehmoment bleibt im Druckteil, es braucht keine Nabe auf der Welle; die Achse trägt nur die Seilquerkraft. Die Seilenden werden im Druckteil verankert (Querloch + Klemmschraube), nicht auf Stahl.
+  - **Trommel und 96-Z-Rad sind ein einziges Druckteil (PETG)**, aufgepresst/aufgeklebt auf eine **mitdrehende 8-mm-Stahlachse**, die beidseitig in 608-Lagern im Gehäuse läuft (Lagersitz ≥ 10 mm lang). Das Drehmoment bleibt im Druckteil, es braucht keine drehmomentfeste Nabe; der Stahl trägt die Biegung aus der Seilvorspannung (ein frei tragendes PETG-Rohr mit 2 mm Wand würde kriechen). Die Seilenden werden im Druckteil verankert (Querloch + Klemmschraube), nicht auf Stahl.
+  - Riemen wird über Langlöcher am Motor gespannt, ohne Spannrolle.
   - Seil: Dyneema 1,5 mm, **doppelt geführt** (zwei Seile nebeneinander), je mit Nachspannschraube am Segment. Biegeverhältnis 14 : 1,5 ≈ 9.
   - Segment J2 überdeckt **≥ 200°**, damit bei ±90° Platz für Verankerung und Endanschlag bleibt.
   - J3 gleich aufgebaut, kleiner (Zielwerte im CAD der Stufe A; Riemen durch den Oberarm).
 - **Lastrechnung:** siehe `docs/lastrechnung.md` (1 kg ausgestreckt: Schulter 11,8 Nm, Sicherheit 1,8 bei vorsichtigem Wirkungsgrad 0,65). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (ca. 70 % des Haltemoments, gültig bis ca. 300–500 U/min), nicht mit dem Haltemoment. An J2 ergibt das rund 33°/s; die Schrittrate (30 kHz) ist nicht der Engpass.
-- Die drei vorhandenen Motoren werden in Phase 1 **vermessen** (Länge, Wicklungswiderstand, Haltemoment mit Hebel + Waage, Drehzahltest an 24 V); danach wird die Tabelle fixiert.
+- Die Motoren werden als erster Schritt von Phase 2 **vermessen** (`docs/motorvermessung.md`: Länge, Wicklungswiderstand, Haltemoment mit Hebel + Waage, Drehzahltest an 24 V); danach wird die Tabelle fixiert.
 
 ### 3.3 Lagerung und Struktur
 - **J1: zwei gekaufte Dünnringlager (6810/6813, je ~3–5 CHF)** mit ≥ 40 mm Abstand, vorgespannt, Hohlwelle für Kabel. (Gedrucktes Kugellager nur als Experiment auf dem Prüfstand – Kippspiel an J1 wirkt mit vollem Hebel.)
@@ -97,7 +98,7 @@ Der Arm wird in **zwei Ausbaustufen** gebaut, damit der Start unter 150 CHF blei
 
 | Stufe | Inhalt | CHF |
 |---|---|---|
-| **A – Prüfstand + J1–J3** | Board, 3× TMC2209 + Kühlung, Lager, Riemen/Ritzel, Seil/Stifte, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel | **~90–120** |
+| **A – Prüfstand + J1–J3** | Board, 3× TMC2209 + Kühlung, Lager, Riemen/Ritzel, Seil, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~150** |
 | **B – Hand J4–J6 + Greifer** | 3 Motoren, 3× TMC2209, Lager, Riemen, Servo, 5-V-Wandler, Kabel | **~60–80** |
 | Reserve 15 %, evtl. 24-V-Netzteil (~15), evtl. stärkerer J2-Motor (~12) | | ~25–50 |
 | **Gesamt realistisch** | | **~175–250** |
@@ -107,7 +108,7 @@ Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtli
 ## 5. Vorgehen in Phasen (jede endet mit einem Gate)
 
 0. **Projektgerüst** – Ordner, lokales Git-Repo, `README.md`, Anforderungen, Parameterliste. Das Projekt läuft vollständig lokal (Entscheid vom 11.10.2026: keine Cloud-Sitzung, kein GitHub-Repo).
-1. **Detailkonzept** – vorhandene Motoren + Netzteil vermessen; Python-Kinematik mit Arbeitsraum- und Momentensimulation (bestätigt Armlängen und Untersetzungen **vor** dem CAD); Board-Pinmapping prüfen; definitive BOM Stufe A mit AliExpress-Suchbegriffen. *Gate: Agent-Review.*
+1. **Detailkonzept** (abgeschlossen, Gutachten 8/10) – Python-Kinematik mit Arbeitsraum- und Momentensimulation (bestätigt Armlängen und Untersetzungen **vor** dem CAD); Board-Pinmapping prüfen; definitive BOM Stufe A mit AliExpress-Suchbegriffen. *Gate: Agent-Review.*
 2. **Getriebe-Prüfstand (Risiko zuerst)** – erster Schritt: Haltemoment der vorhandenen Motoren mit gedrucktem Hebel und Waage messen (`docs/motorvermessung.md`) und die Lastrechnung damit bestätigen. Dann das J2-Modul in Variante (a) in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben; (b)/(c) nur bei Nichtbestehen. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die beste Variante wird Standardmodul.
 3. **CAD Stufe A:** Kaufteil-Dummys → Basis/J1 → Schulter/J2 → Oberarm/J3, inkl. Kabelführung, Endanschlägen, Sensoren. Pro Baugruppe Interferenz-/Druckbarkeitsprüfung + Agent-Review.
 4. **Bau Stufe A** – drucken, montieren, Board + Firmware für 3 Achsen in Betrieb nehmen (inkl. Not-Aus, Referenzfahrt), mit Testgewicht anstelle der Hand prüfen (Genauigkeit, Haltetest).
@@ -150,7 +151,7 @@ software/    Python-Paket (Kinematik, Simulation, Steuerung, UI), tests/
 ## 10. Hauptrisiken
 - Getriebespiel/-verschleiss → Prüfstand mit Gate in Phase 2, bevor der Arm konstruiert wird.
 - PLA-Kriechen, Motorwärme → PETG-Motorplatten, Federausgleich, Lüftung.
-- Schrittverlust (offener Regelkreis) → Sicherheit > 2 an J2, Referenzfahrt, späterer Closed-Loop-Pfad.
+- Schrittverlust (offener Regelkreis) → Sicherheit ≥ 1,8 an allen Gelenken (vorsichtig gerechnet), Referenzfahrt, späterer Closed-Loop-Pfad.
 - Budget: Gesamtarm voraussichtlich 175–250 CHF statt 150 → Ausbaustufen.
 - Capstan: Seilkriechen und lastabhängige Nachgiebigkeit (~0,16° bzw. gut 1 mm am Flansch bei Lastwechsel 0→1 kg, dazu Strukturbiegung; Eigenfrequenz nur ~10 Hz) → Seil doppelt geführt, Haltetest im Prüfstand, Nachspannung, ggf. Variante (b)/(c).
 - Motormomente der vorhandenen Motoren sind noch Annahmen → Messung als erster Schritt von Phase 2; J3 ist am empfindlichsten.

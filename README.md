@@ -15,7 +15,7 @@ Selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, BambuLab 
 
 ## Stand
 
-Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) läuft: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen; offen sind die Drehmomentmessung der Motoren am Prüfstand und das Gutachten zum Detailkonzept. Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).
+Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) abgeschlossen: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen, Gutachten 8/10. Als Nächstes: Phase 2, Getriebe-Prüfstand (J2-Modul) und [Motorvermessung](docs/motorvermessung.md). Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).
 
 ## Aufbau des Repos
 

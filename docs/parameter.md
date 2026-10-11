@@ -38,7 +38,7 @@ Status: **Startwert** = aus dem Konzept, noch nicht geprüft · **gerechnet** = 
 | `r_segment` | 84 mm | Wickelradius des Segments | Startwert |
 | `w_segment` | ≥ 200° | überdeckter Winkel des Segments | Startwert |
 | `d_seil` | 1,5 mm | Dyneema, doppelt geführt | Startwert |
-| `d_achse` | 8 mm | feststehende Stahlachse der Trommel | Startwert |
+| `d_achse` | 8 mm | mitdrehende Stahlachse als Kern von Rad + Trommel, in 608-Lagern | Startwert |
 
 ## Drucktoleranzen
 

@@ -2,7 +2,7 @@
 
 Statische Schwerkraftmomente aller Gelenke über den ganzen Arbeitsraum, gerechnet mit `software/roboterarm/lastrechnung.py`. Stand 11.10.2026, vor dem CAD, nach Gutachten Phase 1.
 
-Nachrechnen (dauert rund 15 Sekunden):
+Nachrechnen (dauert rund eine halbe Minute):
 
 ```
 cd software

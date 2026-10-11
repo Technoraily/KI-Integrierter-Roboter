@@ -20,14 +20,15 @@ Der Prüfstand ist das spätere Schultergelenk im Massstab 1:1. Alle Teile ausse
 | Dyneema-Schnur 2 mm, 10 m (Vergleich Steifigkeit) | 1 | `UHMWPE braided cord 2mm` | 3 |
 | Präzisionswelle 8 mm × 100 mm | 2 | `linear shaft 8mm 100mm` | 4 |
 | Rillenkugellager 608-2RS | 10 | `608 2RS bearing 10pcs` | 4 |
-| Flanschlager F623ZZ (Riemenspanner) | 10 | `F623ZZ bearing 10pcs` | 4 |
 | Einschmelzgewinde M3 × 5 × 4, 100 Stk. | 1 | `M3 heat set insert brass 100pcs` | 4 |
 | Schrauben-Sortiment M3 Innensechskant (falls nicht vorhanden) | 1 | `M3 hex socket screw assortment DIN912` | 6 |
 | Messuhr 0,01 mm mit Magnetstativ | 1 | `dial indicator 0.01mm magnetic base` | 12 |
 | Infrarot-Thermometer (Erwärmung Motor/Druckteile) | 1 | `infrared thermometer gun` | 7 |
-| **Summe Prüfstand** | | | **~87** |
+| **Summe Prüfstand** | | | **~83** |
 
-Zum Riemen: Für 16 Z → 96 Z ergibt 280 mm einen Achsabstand von rund 80 mm. Kürzere Riemen (158/200 mm) gehen geometrisch nicht. 10 mm Breite, weil die Trumkraft bei vollem Motormoment bis ca. 130 N erreicht.
+Zum Riemen: Für 16 Z → 96 Z ergibt 280 mm einen Achsabstand von rund 80 mm. Kürzere Riemen (158/200 mm) gehen geometrisch nicht. 10 mm Breite, weil die Trumkraft bei vollem Motormoment bis ca. 130 N erreicht. Gespannt wird über Langlöcher am Motor, eine Spannrolle braucht es nicht.
+
+Vor dem Bestellen: Wicklungswiderstand der vorhandenen Motoren messen (`docs/motorvermessung.md`). Zeigt er einen Motor für kleinen Strom, lohnt es sich, Ersatzmotoren gleich mitzubestellen.
 
 Varianten (b) Zykloid und (c) HTD-Riemen werden nur bestellt, falls (a) das Gate nicht besteht. Dann kämen dazu: für (b) Exzenterlager, Rollen und Stifte, für (c) HTD-3M-Riemen 15 mm mit Scheiben.
 
@@ -46,7 +47,7 @@ Varianten (b) Zykloid und (c) HTD-Riemen werden nur bestellt, falls (a) das Gate
 | Litze 0,5 mm², Stecker JST-XH, Geflechtschlauch | – | `JST XH connector kit`, `braided cable sleeve 8mm` | 10 |
 | **Summe Rest Stufe A** | | | **~65** |
 
-Prüfstand und Rest zusammen: rund 150 CHF.
+Prüfstand und Rest zusammen: knapp 150 CHF.
 
 ## Ausbaustufe B – Hand J4–J6 und Greifer (vorläufig)
 

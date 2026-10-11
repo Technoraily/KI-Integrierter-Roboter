@@ -23,12 +23,17 @@ Aufbau: Motor liegend festgeschraubt, Messhebel auf die Welle geklemmt, das Hebe
 
 Auswertung: Moment (Nm) = Anzeige (g) × 0,000981. Beispiel: 400 g am 100-mm-Hebel = 0,39 Nm.
 
+Der neue 60-mm-Motor für J2 wird nach der Lieferung genauso gemessen.
+
+**Wichtig für die Auswertung:** Den am Treiber eingestellten Spitzenstrom notieren. Im Mikroschrittbetrieb mit dem Nennstrom als Spitzenwert liegt der gemessene Wert schon bei etwa 70 % des Datenblatt-Haltemoments. Ein so gemessener Wert wird in der Lastrechnung **direkt** als nutzbares Moment eingesetzt, ohne noch einmal 70 % abzuziehen.
+
 ## Protokoll
 
-| Motor | Länge (mm) | Widerstand (Ω) | Strom (A) | Anzeige (g) | Haltemoment (Nm) |
+| Motor | Länge (mm) | Widerstand (Ω) | Spitzenstrom (A) | Anzeige (g) | gemessenes Moment (Nm) |
 |---|---|---|---|---|---|
 | 1 | | | | | |
 | 2 | | | | | |
 | 3 | | | | | |
+| J2 (60 mm) | | | | | |
 
-Die Lastrechnung rechnet mit 70 % des Haltemoments als nutzbarem Moment. Ab 0,30 Nm Haltemoment hält J3 die Sicherheit 1,5 mit 60:1; darunter wird J3 auf 70:1 erhöht (siehe `docs/lastrechnung.md`).
+Die Lastrechnung braucht für die vorhandenen Motoren 0,21 Nm nutzbares Moment, damit J3 mit 60:1 die Sicherheit 1,5 hält (angenommen sind 0,28 Nm). Liegt der Messwert darunter, wird J3 auf 70:1 erhöht (siehe `docs/lastrechnung.md`).
