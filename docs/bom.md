@@ -4,7 +4,7 @@ Stand 11.10.2026. **Noch nichts bestellen:** Mengen und Typen der Mechanik häng
 
 Vorhanden und eingeplant: 3× NEMA 17 (17CS04A-170E, für J1, J3, J4), Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A (reicht für den Prüfstand, nicht für den Arm), Küchenwaage, Kleinteile.
 
-## Prüfstand (zuerst bestellen, sobald Motoren und Netzteil vermessen sind)
+## Prüfstand (zuerst bestellen, nach dem Gutachten zum Detailkonzept)
 
 | Teil | Menge | AliExpress-Suchbegriff | ca. CHF |
 |---|---|---|---|
@@ -18,11 +18,8 @@ Vorhanden und eingeplant: 3× NEMA 17 (17CS04A-170E, für J1, J3, J4), Arduino U
 | Schrauben-Sortiment M3 Innensechskant (falls nicht vorhanden) | 1 | `M3 hex socket screw assortment DIN912` | 6 |
 | Zylinderstifte 3 × 16 mm, 50 Stk. (für Zykloid-Variante) | 1 | `dowel pin 3x16 steel 50pcs` | 3 |
 | TMC2209-Treiber | 1 | `TMC2209 V1.3 stepper driver` | 3 |
-| **Summe Prüfstand** | | | **~40** |
-
 | Messuhr 0,01 mm mit Magnetstativ (für Spiel- und Genauigkeitsmessung) | 1 | `dial indicator 0.01mm magnetic base` | 12 |
-
-Mit Messuhr: ~52 CHF.
+| **Summe Prüfstand** | | | **~52** |
 
 ## Ausbaustufe A – Achsen J1–J3 (vorläufig)
 
