@@ -16,8 +16,8 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 |---|---|
 | Freiheitsgrade | 6 (Knickarm mit Zentralhand → geschlossene inverse Kinematik) |
 | Reichweite Schulter → Flansch | 450 mm (Oberarm 200, Unterarm 190, Hand 60) – in Phase 1 per Simulation bestätigt |
-| Nutzlast | 0,5 kg im ganzen Arbeitsraum; 1 kg bei ≤ 300 mm Ausladung. Enthält 150 g Reserve am Flansch für Werkzeugwechsler + Kamera |
-| Wiederholgenauigkeit | ≤ ±0,5 mm, **unidirektional nach Referenzfahrt**; Wunsch ±0,3 mm |
+| Nutzlast | **1 kg im ganzen Arbeitsraum** (Entscheid 11.10.2026, durch Lastrechnung bestätigt). Zusätzlich 150 g Reserve am Flansch für Werkzeugwechsler + Kamera |
+| Wiederholgenauigkeit | ≤ ±0,5 mm, **unidirektional nach Referenzfahrt, bei gleichbleibender Last**; Wunsch ±0,3 mm |
 | Gelenkgeschwindigkeit | J2/J3 ≥ 25°/s, Handachsen ≥ 90°/s (Grenze ist die Momentenkurve der Motoren, nicht die Schrittrate) |
 | Grösstes Druckteil | ≤ 240 × 240 × 240 mm |
 
@@ -48,9 +48,9 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 | Gelenk | Motor | Untersetzung | Bauart |
 |---|---|---|---|
 | J1 Basis | NEMA 17 (vorhanden) | ~20:1 | 2-stufig Riemen, spielfrei gespannt |
-| J2 Schulter | stärkster vorhandener oder NEMA 17 60 mm (0,65 Nm, ~12 CHF) | **80–100:1** | Riemen-Vorstufe + Endstufe laut Prüfstand; Ausgleichsfeder |
+| J2 Schulter | NEMA 17 60 mm (0,65 Nm, neu, ~12 CHF) | **90:1** | Riemen-Vorstufe + Endstufe laut Prüfstand; Ausgleichsfeder |
 | J3 Ellbogen | NEMA 17 (vorhanden), Motor nahe Schulter | ~50:1 | wie J2, kleiner |
-| J4 Unterarm-Rolle | NEMA 17 34 mm (neu) | ~20:1 | 2-stufig GT2 |
+| J4 Unterarm-Rolle | NEMA 17 (vorhanden) | ~20:1 | 2-stufig GT2 |
 | J5 Hand-Nicken | NEMA 17 34 mm (neu), im Unterarm | ~20:1 | GT2 2-stufig |
 | J6 Flansch-Rolle | NEMA 14 (neu) | ~8:1 | GT2 |
 
@@ -59,7 +59,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
   - (b) gedrucktes Zykloidgetriebe mit zwei versetzten Scheiben und einstellbarem Spiel (Messung aus der Literatur: ~0,76° unbelastet → nur mit Nachweis)
   - (c) Mehrstufen-Riemen mit breiter HTD-3M/5M-Endstufe (GT2 6 mm ist für ~290 N Trumkraft an J2 zu schwach)
 - **Capstan-Auslegung (Favorit):** Riemen-Vorstufe 5–6:1 (GT2 16 Z → 80–96 Z) × Capstan 14–16:1 (Segmentradius 70–80 mm, Trommel ~10 mm). Dyneema 1,5 mm oder doppelt geführt, mit Nachspannschraube. Trommel als 8-mm-Stahlwelle, beidseitig gelagert (kein gedruckter Zapfen). Segment J2 ≈ 180° (Halbscheibe), J3 ≈ 270° (Vollscheibe am Ellbogen, Riemen durch den Oberarm). Massen und Bauraum fliessen in die Simulation von Phase 1 ein.
-- **Lastrechnung:** Schulter statisch ≈ 7,4 Nm (0,5 kg ausgestreckt). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (~0,28 Nm statt 0,4 Nm Haltemoment, gültig bis ca. 300–500 U/min) und η ≈ 0,65: bei 90:1 ≈ 16 Nm → Sicherheit ≈ 2,2. Daraus folgen an J2 realistisch 20–33°/s; die Schrittrate (30 kHz) ist nicht der Engpass.
+- **Lastrechnung:** aktuelle Zahlen in `docs/lastrechnung.md` (1 kg ausgestreckt: Schulter 10,9 Nm, Sicherheit 2,4). Ursprüngliche Abschätzung: Schulter statisch ≈ 7,4 Nm (0,5 kg ausgestreckt). Gerechnet wird mit dem **nutzbaren Moment bei Betriebsdrehzahl** (~0,28 Nm statt 0,4 Nm Haltemoment, gültig bis ca. 300–500 U/min) und η ≈ 0,65: bei 90:1 ≈ 16 Nm → Sicherheit ≈ 2,2. Daraus folgen an J2 realistisch 20–33°/s; die Schrittrate (30 kHz) ist nicht der Engpass.
 - Die drei vorhandenen Motoren werden in Phase 1 **vermessen** (Länge, Wicklungswiderstand, Haltemoment mit Hebel + Waage, Drehzahltest an 24 V); danach wird die Tabelle fixiert.
 
 ### 3.3 Lagerung und Struktur
@@ -100,7 +100,7 @@ Stufe A liegt im Startbudget; der Gesamtarm überschreitet 150 CHF voraussichtli
 
 0. **Projektgerüst** – Ordner, lokales Git-Repo, `README.md`, Anforderungen, Parameterliste. Das Projekt läuft vollständig lokal (Entscheid vom 11.10.2026: keine Cloud-Sitzung, kein GitHub-Repo).
 1. **Detailkonzept** – vorhandene Motoren + Netzteil vermessen; Python-Kinematik mit Arbeitsraum- und Momentensimulation (bestätigt Armlängen und Untersetzungen **vor** dem CAD); Board-Pinmapping prüfen; definitive BOM Stufe A mit AliExpress-Suchbegriffen. *Gate: Agent-Review.*
-2. **Getriebe-Prüfstand (Risiko zuerst)** – Varianten (a)/(b)/(c) als Module in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 7 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die beste Variante wird Standardmodul.
+2. **Getriebe-Prüfstand (Risiko zuerst)** – Varianten (a)/(b)/(c) als Module in Fusion konstruieren, drucken, mit Uno + CNC-Shield antreiben. *Gate mit Grenzwerten:* Umkehrspiel gemäss Fehlerbudget (unbelastet und unter ±2 Nm Wechsellast); Steifigkeit J2 ≥ 30 Nm/°; 24-h-Haltetest unter 11 Nm mit Winkeldrift ≤ 0,1° (Kriechen/Seilvorspannung); Spiel nach 10 000 Zyklen; Erwärmung. Die beste Variante wird Standardmodul.
 3. **CAD Stufe A:** Kaufteil-Dummys → Basis/J1 → Schulter/J2 → Oberarm/J3, inkl. Kabelführung, Endanschlägen, Sensoren. Pro Baugruppe Interferenz-/Druckbarkeitsprüfung + Agent-Review.
 4. **Bau Stufe A** – drucken, montieren, Board + Firmware für 3 Achsen in Betrieb nehmen (inkl. Not-Aus, Referenzfahrt), mit Testgewicht anstelle der Hand prüfen (Genauigkeit, Haltetest).
 5. **CAD + Bau Stufe B:** Unterarm/J4 → Handgelenk J5/J6 → Flansch → Greifer.

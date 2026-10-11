@@ -8,14 +8,14 @@ Selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, BambuLab 
 |---|---|
 | Achsen | 6 (Knickarm mit Zentralhand) |
 | Reichweite | 450 mm (Schulter → Flansch) |
-| Nutzlast | 0,5 kg im ganzen Arbeitsraum, 1 kg bis 300 mm |
-| Wiederholgenauigkeit | ≤ ±0,5 mm (unidirektional, nach Referenzfahrt) |
+| Nutzlast | 1 kg im ganzen Arbeitsraum |
+| Wiederholgenauigkeit | ≤ ±0,5 mm (unidirektional, nach Referenzfahrt, bei gleichbleibender Last) |
 | Steuerung | Mega-2560-Board + `grbl-Mega-5X`, TMC2209, 24 V |
 | Software | Python auf dem PC (Kinematik, Bahnplanung, später Kamera/KI) |
 
 ## Stand
 
-Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) läuft: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen; offen sind die Vermessung der vorhandenen Motoren und des Netzteils. Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).
+Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) läuft: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen; offen sind die Drehmomentmessung der Motoren am Prüfstand und das Gutachten zum Detailkonzept. Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).
 
 ## Aufbau des Repos
 

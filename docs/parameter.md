@@ -18,7 +18,7 @@ Zentrale Masse des Arms. Dieselben Namen werden als Benutzerparameter in Fusion 
 | Name | Wert | Status |
 |---|---|---|
 | `i_J1` | 20 | Startwert (Statik unkritisch) |
-| `i_J2` | 90 (Bereich 80–100) | durch Lastrechnung bestätigt |
+| `i_J2` | 90 | durch Lastrechnung bestätigt |
 | `i_J3` | 50 | durch Lastrechnung bestätigt |
 | `i_J4` | 20 | durch Lastrechnung bestätigt |
 | `i_J5` | 20 | durch Lastrechnung bestätigt |

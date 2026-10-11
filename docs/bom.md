@@ -2,7 +2,7 @@
 
 Stand 11.10.2026. **Noch nichts bestellen:** Mengen und Typen der Mechanik hängen vom Prüfstand (Phase 2) ab, und die Preise sind Schätzungen, keine geprüften Angebote. Verbindlich ist vorerst nur die Liste «Prüfstand».
 
-Vorhanden und eingeplant: 3× NEMA 17, Arduino Uno + CNC-Shield + A4988, Netzteil, Kleinteile.
+Vorhanden und eingeplant: 3× NEMA 17 (17CS04A-170E, für J1, J3, J4), Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A (reicht für den Prüfstand, nicht für den Arm), Küchenwaage, Kleinteile.
 
 ## Prüfstand (zuerst bestellen, sobald Motoren und Netzteil vermessen sind)
 
@@ -20,7 +20,9 @@ Vorhanden und eingeplant: 3× NEMA 17, Arduino Uno + CNC-Shield + A4988, Netztei
 | TMC2209-Treiber | 1 | `TMC2209 V1.3 stepper driver` | 3 |
 | **Summe Prüfstand** | | | **~40** |
 
-Messmittel für das Gate von Phase 2: Messuhr 0,01 mm mit Magnetstativ (~12 CHF, `dial indicator 0.01mm magnetic base`), falls nicht vorhanden, und eine Küchen- oder Kofferwaage.
+| Messuhr 0,01 mm mit Magnetstativ (für Spiel- und Genauigkeitsmessung) | 1 | `dial indicator 0.01mm magnetic base` | 12 |
+
+Mit Messuhr: ~52 CHF.
 
 ## Ausbaustufe A – Achsen J1–J3 (vorläufig)
 
@@ -35,21 +37,21 @@ Messmittel für das Gate von Phase 2: Messuhr 0,01 mm mit Magnetstativ (~12 CHF,
 | Endschalter (Mikroschalter mit Rolle) | 6 | `micro limit switch roller 10pcs` | 2 |
 | Not-Aus-Taster, rastend | 1 | `emergency stop button 22mm` | 3 |
 | Litze 0,5 mm², Stecker JST-XH, Geflechtschlauch | – | `JST XH connector kit`, `braided cable sleeve 8mm` | 10 |
-| **Summe Stufe A (mit Prüfstand)** | | | **~105** |
-
-Je nach Ergebnis der Motorvermessung zusätzlich: NEMA 17 mit 60 mm Länge für J2 (~12 CHF), 24-V-Netzteil ≥ 6 A (~15 CHF).
+| NEMA 17, 60 mm, ≥ 0,65 Nm (J2) | 1 | `Nema 17 stepper 60mm 65Ncm` | 12 |
+| Netzteil 24 V, ≥ 6 A | 1 | `24V 6A power supply` | 15 |
+| **Summe Stufe A (mit Prüfstand und Messuhr)** | | | **~145** |
 
 ## Ausbaustufe B – Hand J4–J6 und Greifer (vorläufig)
 
 | Teil | Menge | ca. CHF |
 |---|---|---|
-| NEMA 17, 34 mm (J4, J5) | 2 | 18 |
+| NEMA 17, 34 mm (J5) | 1 | 9 |
 | NEMA 14 (J6) | 1 | 9 |
 | TMC2209 + Treiberträger für Achse 6 | 3 + 1 | 10 |
 | Lager, Riemen, Ritzel für die Hand | – | 15 |
 | Servo für Greifer (MG996R oder DS3218) + 5-V-Wandler | 1 + 1 | 10 |
 | Kabel, Stecker | – | 8 |
-| **Summe Stufe B** | | **~70** |
+| **Summe Stufe B** | | **~60** |
 
 ## Filament
 

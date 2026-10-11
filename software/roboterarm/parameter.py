@@ -40,13 +40,14 @@ class Antrieb:
         return self.motordrehzahl * 6.0 / self.untersetzung
 
 
-# Startwerte aus dem Konzept. Motormomente sind Annahmen, bis die
-# vorhandenen Motoren vermessen sind (Phase 1).
+# Motormomente sind Annahmen (ca. 70 % des Haltemoments), bis sie am
+# Prüfstand gemessen sind. J1, J3, J4: vorhandene 17CS04A-170E (40 mm);
+# J2: NEMA 17 60 mm; J5: NEMA 17 34 mm; J6: NEMA 14.
 ANTRIEBE = (
     Antrieb("J1", 20, 0.28, 0.85),
-    Antrieb("J2", 90, 0.28, 0.65),
+    Antrieb("J2", 90, 0.45, 0.65),
     Antrieb("J3", 50, 0.28, 0.65),
-    Antrieb("J4", 20, 0.18, 0.85),
+    Antrieb("J4", 20, 0.28, 0.85),
     Antrieb("J5", 20, 0.18, 0.85),
     Antrieb("J6", 8, 0.08, 0.90),
 )
@@ -69,7 +70,7 @@ MASSEN = (
     Masse("Vorstufe + Riemen J3", 2, (0, 0, 0.100), 0.10),
     Masse("Ellbogen Scheibe + Lager", 2, (0, 0, 0.200), 0.20),
     Masse("Unterarm Struktur", 3, (0, 0, 0.080), 0.20),
-    Masse("Motor J4 + Stufe", 3, (0, 0, 0.030), 0.30),
+    Masse("Motor J4 + Stufe", 3, (0, 0, 0.030), 0.38),
     Masse("Motor J5", 4, (0, 0, 0.060), 0.22),
     Masse("Stufe J5", 4, (0, 0, 0.150), 0.08),
     Masse("Handgelenk Gehäuse", 5, (0, 0, 0.000), 0.12),

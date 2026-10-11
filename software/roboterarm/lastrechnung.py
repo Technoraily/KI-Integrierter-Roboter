@@ -61,8 +61,8 @@ def maximalmomente(nutzlast: float, max_ausladung: float | None = None):
 
 def bericht() -> bool:
     faelle = (
+        ("1,0 kg im ganzen Arbeitsraum", 1.0, None),
         ("0,5 kg im ganzen Arbeitsraum", 0.5, None),
-        ("1,0 kg bis 300 mm Ausladung", 1.0, 0.300),
     )
     alles_ok = True
     for titel, nutzlast, grenze in faelle:
