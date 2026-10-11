@@ -1,0 +1,33 @@
+# KI-integrierter Roboterarm
+
+Selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, BambuLab A1), NEMA-17-Schrittmotoren, Standardteile von AliExpress. Später mit Kamera-KI und automatischem Greiferwechsel.
+
+## Eckdaten (Ziel)
+
+| | |
+|---|---|
+| Achsen | 6 (Knickarm mit Zentralhand) |
+| Reichweite | 450 mm (Schulter → Flansch) |
+| Nutzlast | 0,5 kg im ganzen Arbeitsraum, 1 kg bis 300 mm |
+| Wiederholgenauigkeit | ≤ ±0,5 mm (unidirektional, nach Referenzfahrt) |
+| Steuerung | Mega-2560-Board + `grbl-Mega-5X`, TMC2209, 24 V |
+| Software | Python auf dem PC (Kinematik, Bahnplanung, später Kamera/KI) |
+
+## Stand
+
+Phase 0 (Projektgerüst) abgeschlossen. Phase 1 (Detailkonzept) läuft: Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen; offen sind die Vermessung der vorhandenen Motoren und des Netzteils. Der vollständige Plan mit allen Phasen steht in [docs/konzept.md](docs/konzept.md).
+
+## Aufbau des Repos
+
+| Ordner | Inhalt |
+|---|---|
+| `docs/` | Anforderungen, Konzept, Parameter, Lastrechnung, Stückliste, Bauanleitung, Prüfprotokolle |
+| `cad/` | Exporte aus Fusion 360 (STL, STEP) und Renderings für die Anleitung |
+| `firmware/` | Konfiguration für `grbl-Mega-5X` |
+| `software/` | Python-Paket für Kinematik, Simulation und Steuerung |
+
+## Arbeitsweise
+
+- Konstruiert wird in Fusion 360 auf dem lokalen PC; ins Repo kommen nur Exporte und Renderings.
+- Jede Idee und jede Baugruppe wird von einem unabhängigen Gutachter mit 1–10 bewertet (höchstens 3 Runden). Die Protokolle liegen in `docs/reviews/`.
+- Die Dokumentation wächst in jeder Phase mit.
