@@ -45,7 +45,7 @@ class Antrieb:
 # J2: NEMA 17 60 mm; J5: NEMA 17 34 mm; J6: NEMA 14.
 ANTRIEBE = (
     Antrieb("J1", 20, 0.28, 0.85),
-    Antrieb("J2", 72, 0.45, 0.65),  # Riemen 16:96 x Capstan 12:1
+    Antrieb("J2", 72, 0.45, 0.65),  # S: Riemen 20:120 x Capstan 12:1; R: drei Riemenstufen
     Antrieb("J3", 60, 0.28, 0.65),
     Antrieb("J4", 20, 0.28, 0.85),
     Antrieb("J5", 25, 0.18, 0.85),
