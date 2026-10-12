@@ -2,6 +2,8 @@
 
 Stand 12.10.2026. Die Preise sind Schätzungen, keine geprüften Angebote. **Die Prüfstand-Liste ist verbindlich:** Das CAD des Schultergelenks ist begutachtet (8/10, `docs/reviews/2026-10-12-pruefstand-j2.md`); Zähnezahlen, Riemenlängen, Bohrungen und Stückzahlen stehen fest. Die vollständige Teileliste mit allen Schraubenlängen steht in `docs/pruefstand-j2.md`.
 
+Zu jeder Baugruppe gibt es eine vollständige Stückliste in `docs/stuecklisten/` (alle Teile, nicht nur Kaufteile). Dieses Dokument ist die Kostenübersicht über das ganze Projekt.
+
 Vorhanden und eingeplant: 3× NEMA 17 (17CS04A-170E, für J1, J3, J4), Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A (für erste Versuche), Küchenwaage, Kleinteile.
 
 ## Was jetzt bestellt werden kann und was nicht
@@ -50,6 +52,8 @@ Massgebend für «jetzt»: Das Teil hängt nicht vom CAD ab und wird für den Sc
 
 Der Prüfstand ist das spätere Schultergelenk in Originalgrösse; alle Teile ausser Messuhr und Thermometer werden im Arm weiterverwendet.
 
+**Die vollständige Stückliste mit jedem Druckteil, jeder Schraube, Elektrik, Messmitteln, Werkzeug und Verbrauchsmaterial steht in [stuecklisten/pruefstand-j2.md](stuecklisten/pruefstand-j2.md).** Die Tabellen hier zeigen nur die Kaufteile mit Preisen.
+
 ### Motor, Elektrik, Lager, Messmittel
 
 | Teil | Menge | AliExpress-Suchbegriff | ca. CHF |
@@ -62,7 +66,7 @@ Der Prüfstand ist das spätere Schultergelenk in Originalgrösse; alle Teile au
 | Sechskantschraube M8 × 90 mit Schaft, selbstsichernde Mutter, 2 Scheiben (Baumarkt) | 2 | – | 3 |
 | Schrauben M4 × 16 Innensechskant (Gewinde am 5M-Ritzel prüfen: M4 oder M5) | 2 | – | 1 |
 | Schrauben M3 × 30 Innensechskant, falls nicht im Sortiment | 2 | – | 1 |
-| Koffer- oder Federwaage bis 5 kg (Wechsellast) | 1 | `luggage scale` | 4 |
+| Koffer- oder Federwaage bis mindestens 10 kg (Wechsellast, Gewichte abwiegen) | 1 | `luggage scale` | 4 |
 | Brett 220 × 200 × 12 mm (Sperrholz oder MDF), 2 Schraubzwingen | 1 | – | vorhanden / Baumarkt |
 | Rillenkugellager 608-2RS (10 gebraucht: 6 Wellenlager, 4 in den Spannrollen) | 10 | `608 2RS bearing 10pcs` | 4 |
 | Einschmelzgewinde M3 × 5 × 4, 100 Stk. (41 gebraucht) | 1 | `M3 heat set insert brass 100pcs` | 4 |
@@ -103,7 +107,7 @@ Vor dem Bestellen: Wicklungswiderstand der vorhandenen Motoren messen (`docs/mot
 | Litze 0,5 mm², Stecker JST-XH, Geflechtschlauch | – | `JST XH connector kit`, `braided cable sleeve 8mm` | 10 |
 | **Summe Rest Stufe A** | | | **~112** |
 
-Prüfstand und Rest zusammen: rund 205 CHF. Board und Treiber können früh bestellt werden, weil der Machbarkeitstest der Steuerung keine Mechanik braucht.
+Prüfstand und Rest zusammen: rund 215 CHF. Board und Treiber können früh bestellt werden, weil der Machbarkeitstest der Steuerung keine Mechanik braucht.
 
 ## Ausbaustufe B – Hand J4–J6 und Greifer (vorläufig)
 
@@ -134,13 +138,13 @@ Die Schiene läuft als siebte Achse auf dem Octopus; der Treiber dafür ist in S
 
 | | ca. CHF |
 |---|---|
-| Prüfstand | 95 |
+| Prüfstand | 105 |
 | Rest Stufe A | 112 |
 | Stufe B | 65 |
 | Reserve 15 % | 40 |
-| **Arm** | **~310** |
+| **Arm** | **~320** |
 | Stufe C, Schiene | 115 |
-| **Arm mit Schiene** | **~425** |
+| **Arm mit Schiene** | **~435** |
 
 ## Filament
 

@@ -57,7 +57,7 @@ Mehr dazu: [Beschreibung des Prüfstands](docs/pruefstand-j2.md) mit Teileliste,
 - [Anforderungen](docs/anforderungen.md) und [Parameterliste](docs/parameter.md)
 - [Lastrechnung](docs/lastrechnung.md)
 - [Stückliste der Kaufteile](docs/bom.md)
-- [Prüfstand Schultergelenk J2](docs/pruefstand-j2.md)
+- [Prüfstand Schultergelenk J2](docs/pruefstand-j2.md) mit [vollständiger Stückliste](docs/stuecklisten/pruefstand-j2.md)
 - [Motorvermessung](docs/motorvermessung.md)
 - [Verdrahtung](docs/verdrahtung.md)
 

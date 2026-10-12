@@ -81,6 +81,8 @@ Länge 190 mm von der Achse bis zur Lastbohrung (Ø 8 mm), 20 mm dick, von 60 mm
 
 ## Teile
 
+Die vollständige Stückliste mit Positionsnummern, Elektrik, Messmitteln, Werkzeug und Verbrauchsmaterial steht in [stuecklisten/pruefstand-j2.md](stuecklisten/pruefstand-j2.md).
+
 **Gedruckt** (Volumen als Vollkörper):
 
 | Teil | Menge | Material | cm³ | Drucklage |
@@ -120,7 +122,7 @@ Die linke Wange und die Hülsen sind aus PETG, weil der Motor im Haltetest dauer
 | Schrauben M3 × 30 | 2 |
 | Schrauben M4 × 16 (Gewinde am Ritzel prüfen: M4 oder M5) | 2 |
 | Brett 220 × 200 × 12 mm, 2 Schraubzwingen | 1 |
-| Koffer- oder Federwaage bis 5 kg (für die Wechsellast) | 1 |
+| Koffer- oder Federwaage bis mindestens 10 kg (Wechsellast, Gewichte abwiegen) | 1 |
 
 Wofür welche M3-Schraube: × 8 Hebelnabe · × 10 Gewindestifte der 72er-Scheibe · × 12 Motor (4) · × 16 Querträger (16), Hebel (6), Messzeiger (2), Messuhrhalter (2) · × 20 Grundbrett · × 25 Blockierstift (1), Stellschrauben der 3M-Rolle (2), Klemmung der Messuhr (1) · × 30 Stellschrauben der 5M-Rolle.
 

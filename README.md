@@ -31,7 +31,7 @@ Stand vom 12.10.2026. Der vollständige Plan steht in [docs/konzept.md](docs/kon
 ![Prüfstand J2](cad/renders/J2_Pruefstand_Riementrieb.png)
 
 **Nächster Schritt**
-1. Ritzel, Riemen und Kleinteile des Prüfstands bestellen (`docs/bom.md`).
+1. Ritzel, Riemen und Kleinteile des Prüfstands bestellen ([vollständige Stückliste](docs/stuecklisten/pruefstand-j2.md)); dort die Positionen mit Status «klären» durchgehen.
 2. Motoren vermessen (`docs/motorvermessung.md`) – geht schon mit den vorhandenen Teilen.
 3. Toleranz-Testdruck: Lagersitz, Einschmelzgewinde, Nabenbohrungen, je ein Zahnsegment der drei Riemenprofile.
 4. Gelieferte Ritzel nachmessen, Masse im Skript anpassen, dann die Scheiben und den Rest drucken und den Prüfstand aufbauen.
@@ -46,7 +46,7 @@ Stand vom 12.10.2026. Der vollständige Plan steht in [docs/konzept.md](docs/kon
 
 | Ordner | Inhalt |
 |---|---|
-| `docs/` | Anforderungen, Konzept, Parameter, Lastrechnung, Stückliste, Bauanleitung, Prüfprotokolle |
+| `docs/` | Anforderungen, Konzept, Parameter, Lastrechnung, Kostenübersicht, Stücklisten je Baugruppe, Bauanleitung, Prüfprotokolle |
 | `cad/` | Exporte aus Fusion 360 (STL, STEP), Renderings für die Anleitung, Skripte, die Baugruppen in Fusion aufbauen |
 | `firmware/` | Konfiguration für grblHAL |
 | `software/` | Python-Paket für Kinematik, Simulation und Steuerung |
@@ -55,4 +55,5 @@ Stand vom 12.10.2026. Der vollständige Plan steht in [docs/konzept.md](docs/kon
 
 - Konstruiert wird in Fusion 360 auf dem lokalen PC; ins Repo kommen nur Exporte und Renderings.
 - Jede Idee und jede Baugruppe wird von einem unabhängigen Gutachter mit 1–10 bewertet (höchstens 3 Runden). Die Protokolle liegen in `docs/reviews/`.
+- Zu jeder Baugruppe gehört eine vollständige Stückliste in `docs/stuecklisten/`: Druckteile, Kaufteile, jede Schraube, Elektrik, Messmittel, Werkzeug und Verbrauchsmaterial, jeweils mit Status (da / offen / klären).
 - Die Dokumentation wächst in jeder Phase mit.
