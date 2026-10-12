@@ -92,8 +92,8 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 | 4.1 | Schrittmotor NEMA 17, 60 mm lang, ca. 0,7 Nm, 5-mm-Welle | 1 | 12 | da |
 | 4.2 | Treiber TMC2209 mit Kühlkörper (1 gebraucht, 1 Reserve) | 2 | 6 | offen |
 | 4.3 | Arduino Uno mit CNC-Shield | 1 | – | da |
-| 4.4 | Netzteil 24 V / 100 W mit Hohlstecker 5,5 × 2,5 mm | 1 | – | da |
-| 4.5 | Adapter Hohlstecker auf Schraubklemmen (Delock) | 1 | – | da |
+| 4.4 | Netzteil 24 V, mindestens 5 A (120 W), geschlossenes Tischnetzteil mit Hohlstecker 5,5 × 2,5 mm. Für die Messungen im Stillstand (Spiel, Steifigkeit, Haltetest) genügt auch das vorhandene Netzteil 12 V / 4 A | 1 | 30–35 | offen (laut Nutzer am 12.10.2026 nicht vorhanden) |
+| 4.5 | Adapter Hohlstecker 5,5 × 2,5 mm auf Schraubklemmen | 1 | 2 | klären |
 | 4.6 | Motorkabel, 4-polig, passend zum Stecker am Motor und zur Stiftleiste am Shield | 1 | 2 | klären |
 | 4.7 | USB-Kabel zum Uno (USB-A auf USB-B) | 1 | 2 | klären |
 | 4.8 | Litze 0,75 mm², rot und schwarz, je 0,5 m (Netzteil → Shield) | 1 | 1 | klären |

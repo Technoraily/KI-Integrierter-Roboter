@@ -37,7 +37,7 @@ Stand vom 12.10.2026. Der vollständige Plan steht in [docs/konzept.md](docs/kon
 4. Gelieferte Ritzel nachmessen, Masse im Skript anpassen, dann die Scheiben und den Rest drucken und den Prüfstand aufbauen.
 
 **Beschaffung für den Schulter-Test**
-- Vorhanden bzw. bestellt: NEMA 17 mit 60 mm (ca. 0,7 Nm), Netzteil 24 V / 100 W mit Hohlstecker 5,5 × 2,5 mm, Delock-Adapter auf Schraubklemmen, M3-Schrauben; ausgewählt: Kugellager 608ZZ, Einschmelzgewinde M3 × 4 × 5.
+- Laut früherem Stand vorhanden bzw. bestellt (**mit dem Nutzer neu abzugleichen**): NEMA 17 mit 60 mm (ca. 0,7 Nm), Delock-Adapter auf Schraubklemmen, M3-Schrauben; ausgewählt: Kugellager 608ZZ, Einschmelzgewinde M3 × 4 × 5. **Ein 24-V-Netzteil ist nicht vorhanden** (Korrektur vom 12.10.2026); vorhanden ist das Netzteil 12 V / 4 A.
 - Noch offen: 2× TMC2209, Messuhr (Thermometer ist verzichtbar), Motorkabel prüfen; dazu jetzt Riemen, Ritzel, 8-mm-Wellen, 2× M8 × 90, Kofferwaage.
 - Offene Rückfragen an den Nutzer: Wicklungswiderstand der drei vorhandenen Motoren (17CS04A-170E); Schultermotor mit Doppelwelle (-SZ) oder normal; Multimeter und Lötkolben vorhanden? Sind Schrauben M3 × 16, × 25 und × 30 im Sortiment?
 - In Fusion sind der verworfene Seiltrieb-Rahmen (`ALT_Rahmen_Seiltrieb`) und der Messhebel nur ausgeblendet.
