@@ -1,6 +1,6 @@
 # Stückliste Kaufteile
 
-Stand 11.10.2026, nach den Gutachten zu Antrieb und Steuerung und dem Entscheid «nur Zahnriemen». Die Preise sind Schätzungen, keine geprüften Angebote. **Noch nicht bestellen:** Die Prüfstand-Liste wird erst mit dem fertigen CAD verbindlich (Riemenlängen und Lagerzahl können sich dabei noch ändern).
+Stand 12.10.2026. Die Preise sind Schätzungen, keine geprüften Angebote. **Die Prüfstand-Liste ist verbindlich:** Das CAD des Schultergelenks ist begutachtet (8/10, `docs/reviews/2026-10-12-pruefstand-j2.md`); Zähnezahlen, Riemenlängen, Bohrungen und Stückzahlen stehen fest. Die vollständige Teileliste mit allen Schraubenlängen steht in `docs/pruefstand-j2.md`.
 
 Vorhanden und eingeplant: 3× NEMA 17 (17CS04A-170E, für J1, J3, J4), Arduino Uno + CNC-Shield + A4988, Netzteil 12 V / 4 A (für erste Versuche), Küchenwaage, Kleinteile.
 
@@ -33,12 +33,13 @@ Massgebend für «jetzt»: Das Teil hängt nicht vom CAD ab und wird für den Sc
 | Endschalter mit Rolle | 10 | 2 |
 | Sicherungshalter mit 10-A-Sicherung | 1 | 2 |
 
+**Jetzt bestellen – Riemen, Scheiben und Kleinteile des Prüfstands (ca. 35 CHF, Tabellen unten):** Die Ritzel kommen zuerst an die Reihe: Sie werden nach der Lieferung nachgemessen, erst dann werden die gedruckten Scheiben gedruckt.
+
 **Warten:**
 
 | Teil | Warum warten |
 |---|---|
-| Alle Riemen und Riemenscheiben | Zähnezahlen, Längen und Bohrungen legt erst das CAD des Schultergelenks fest |
-| 8-mm-Wellen | Längen aus dem CAD |
+| Riemen, Scheiben und Wellen für J1 und J3 | erst nach dem Prüfstand-Ergebnis und dem CAD dieser Baugruppen |
 | Dünnringlager 6810, Zugfeder | Basis und Gewichtsausgleich sind noch nicht konstruiert |
 | Motoren für J5 und J6 | erst Stufe B; die Hand kann sich nach dem Schulter-Test noch ändern |
 | Greifer-Servo, 5-V-Wandler | Stufe B |
@@ -56,29 +57,34 @@ Der Prüfstand ist das spätere Schultergelenk in Originalgrösse; alle Teile au
 | NEMA 17, 60 mm, ≥ 0,65 Nm, 5-mm-Welle (J2) | 1 | `Nema 17 stepper 60mm 65Ncm` | 12 |
 | Netzteil 24 V, ≥ 6 A | 1 | `24V 6A power supply` | 15 |
 | TMC2209-Treiber mit Kühlkörper | 1 | `TMC2209 V1.3 stepper driver` | 3 |
-| GT2-Zahnriemenscheibe 20 Z, Bohrung 5 mm, für 10-mm-Riemen | 2 | `GT2 pulley 20 teeth bore 5mm width 10mm` | 3 |
-| Präzisionswelle 8 mm × 100 mm | 4 | `linear shaft 8mm 100mm` | 8 |
-| Rillenkugellager 608-2RS | 10 | `608 2RS bearing 10pcs` | 4 |
-| Einschmelzgewinde M3 × 5 × 4, 100 Stk. | 1 | `M3 heat set insert brass 100pcs` | 4 |
+| GT2-Zahnriemenscheibe 20 Z, Bohrung 5 mm, für 10-mm-Riemen (1 gebraucht, 1 Reserve) | 2 | `GT2 pulley 20 teeth bore 5mm width 10mm` | 3 |
+| Präzisionswelle 8 mm × 100 mm (3 gebraucht, auf 70 mm ablängen und anfeilen; 1 Reserve) | 4 | `linear shaft 8mm 100mm` | 8 |
+| Sechskantschraube M8 × 90 mit Schaft, selbstsichernde Mutter, 2 Scheiben (Baumarkt) | 2 | – | 3 |
+| Schrauben M4 × 16 Innensechskant (Gewinde am 5M-Ritzel prüfen: M4 oder M5) | 2 | – | 1 |
+| Schrauben M3 × 30 Innensechskant, falls nicht im Sortiment | 2 | – | 1 |
+| Koffer- oder Federwaage bis 5 kg (Wechsellast) | 1 | `luggage scale` | 4 |
+| Brett 220 × 200 × 12 mm (Sperrholz oder MDF), 2 Schraubzwingen | 1 | – | vorhanden / Baumarkt |
+| Rillenkugellager 608-2RS (10 gebraucht: 6 Wellenlager, 4 in den Spannrollen) | 10 | `608 2RS bearing 10pcs` | 4 |
+| Einschmelzgewinde M3 × 5 × 4, 100 Stk. (41 gebraucht) | 1 | `M3 heat set insert brass 100pcs` | 4 |
 | Schrauben-Sortiment M3 Innensechskant (falls nicht vorhanden) | 1 | `M3 hex socket screw assortment DIN912` | 6 |
 | Messuhr 0,01 mm mit Magnetstativ | 1 | `dial indicator 0.01mm magnetic base` | 12 |
 | Infrarot-Thermometer (Erwärmung Motor/Druckteile) | 1 | `infrared thermometer gun` | 7 |
-| **Zwischensumme** | | | **~74** |
+| **Zwischensumme** | | | **~83** |
 
 ### Riemen und Scheiben
 
 | Teil | Menge | AliExpress-Suchbegriff | ca. CHF |
 |---|---|---|---|
-| GT2-Riemen geschlossen, 10 mm breit, 200 mm | 2 | `GT2 closed loop belt 10mm 200mm` | 3 |
-| HTD-3M-Scheibe 16 Z, Bohrung 8 mm, für 15-mm-Riemen | 1 | `HTD 3M pulley 16 teeth bore 8mm width 15mm` | 4 |
+| GT2-Riemen geschlossen, 10 mm breit, 200 mm (1 gebraucht, 1 Reserve) | 2 | `GT2 closed loop belt 10mm 200mm` | 3 |
+| HTD-3M-Scheibe 16 Z, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben | 1 | `HTD 3M pulley 16 teeth bore 8mm width 15mm` | 4 |
 | HTD-3M-Riemen geschlossen, 15 mm breit, 252 mm | 1 | `HTD 3M 252 belt 15mm` | 3 |
-| HTD-5M-Scheibe 18 Z, Bohrung 8 mm, für 15-mm-Riemen | 1 | `HTD 5M pulley 18 teeth bore 8mm width 15mm` | 5 |
+| HTD-5M-Scheibe 18 Z, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben und Nabe (2 Gewindestifte) | 1 | `HTD 5M pulley 18 teeth bore 8mm width 15mm` | 5 |
 | HTD-5M-Riemen geschlossen, 15 mm breit, 525 mm | 1 | `HTD 5M 525 belt 15mm` | 5 |
 | **Zwischensumme** | | | **~20** |
 
 Die grossen Scheiben (72 Z, 64 Z, 90 Z) werden gedruckt.
 
-**Prüfstand insgesamt: rund 95 CHF.**
+**Prüfstand insgesamt: rund 105 CHF.** Filament für die 22 Druckteile: rund 1,1 Liter Vollvolumen, mit üblicher Füllung grob 0,5–0,7 kg.
 
 Vor dem Bestellen: Wicklungswiderstand der vorhandenen Motoren messen (`docs/motorvermessung.md`). Zeigt er einen Motor für kleinen Strom, lohnt es sich, Ersatzmotoren gleich mitzubestellen.
 

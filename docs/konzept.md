@@ -1,6 +1,6 @@
 # Projektplan: 6-Achs-Roboterarm «von Grund auf» (PLA, BambuLab A1, AliExpress-Teile)
 
-*Stand 11.10.2026: Gesamtkonzept 8/10, Detailkonzept 8/10, Steuerung für 7 Achsen 8/10; Antrieb: alle Achsen über Zahnriemen (GT2 und HTD), Schultergelenk wird als Prüfstand gebaut. Protokolle in `docs/reviews/`.*
+*Stand 12.10.2026: Gesamtkonzept 8/10, Detailkonzept 8/10, Steuerung für 7 Achsen 8/10, CAD des J2-Prüfstands 8/10; Antrieb: alle Achsen über Zahnriemen (GT2 und HTD), Schultergelenk wird als Prüfstand gebaut (`docs/pruefstand-j2.md`). Protokolle in `docs/reviews/`.*
 
 ## 1. Kontext
 
@@ -143,7 +143,7 @@ Die Dokumentation wächst in jeder Phase mit.
 Jede zu prüfende Idee/Baugruppe geht an einen **unabhängigen Agenten**: Note 1–10 (0–4 unbrauchbar · 5–7 gut mit Verbesserungspotenzial · 8–10 nahezu perfekt). **Maximal 3 Runden pro Aufgabe**, danach bleibt der Stand. Protokoll in `docs/reviews/`.
 
 ## 7. Fusion-360-Arbeitsweise
-- Alle Masse als Benutzerparameter (`create_parameter`), ein Bauteil = eine Komponente, klare Namen (`J2_Gehaeuse_A`).
+- Ein Bauteil = eine Komponente, klare Namen (`J2_Gehaeuse_A`). Masse als Benutzerparameter (`create_parameter`) oder – wie beim J2-Prüfstand – als Konstanten in einem Skript unter `cad/skripte/`, das die Baugruppe in Fusion neu aufbaut.
 - MCP-Einheit: **cm**. Eine Operation pro Aufruf, Ergebnis prüfen.
 - Kontrolle: `check_interference`, `create_section_analysis`, `get_physical_properties` (Massen → Lastrechnung nachführen), `add_joint` für Bewegungsprüfung.
 - Ausgabe: `export_stl`/`export_step` je Teil, `render_view`/`export_view_sheet` für Anleitungsbilder.

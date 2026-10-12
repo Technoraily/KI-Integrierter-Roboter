@@ -32,7 +32,7 @@ Zähnezahlen als Ritzel : Rad. GT2 = 2-mm-Teilung, 10 mm breit; 3M/5M = HTD mit 
 | J5 | ±110° | 18,75 | NEMA 17, 34 mm (neu) | GT2 16 : 80 | 3M 16 : 60 | – | Startwert |
 | J6 | ±180° | 8 | NEMA 14 (neu) | GT2 16 : 40 | GT2 16 : 50 | – | Startwert |
 
-Riemenlängen J2: GT2 200 mm, 3M 252 mm, 5M 525 mm. Die übrigen Längen legt das CAD fest.
+Riemenlängen J2: GT2 200 mm, 3M 252 mm, 5M 525 mm; Achsabstände im Prüfstand 51,3 / 61,3 / 111,5 mm (Stufen 2 und 3 mit Spannrolle). Massgebend für alle Masse des Prüfstands sind die Konstanten in `cad/skripte/j2_pruefstand.py`; Beschreibung in `docs/pruefstand-j2.md`. Die übrigen Längen legt das CAD fest.
 
 ## Gemeinsam
 
@@ -46,7 +46,7 @@ Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2).
 
 | Name | Wert | Bedeutung |
 |---|---|---|
-| `tol_lagersitz` | offen | Übermass Bohrung für Kugellager-Aussenring |
+| `tol_lagersitz` | 0,15 mm (Startwert) | Übermass Bohrung für Kugellager-Aussenring |
 | `tol_passung` | offen | Spiel zwischen zwei gedruckten Passflächen |
-| `d_einschmelz_M3` | offen | Bohrung für M3-Einschmelzgewinde |
+| `d_einschmelz_M3` | 4,0 mm (Startwert) | Bohrung für M3-Einschmelzgewinde |
 | `d_einschmelz_M4` | offen | Bohrung für M4-Einschmelzgewinde |
