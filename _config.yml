@@ -1,0 +1,9 @@
+# Einstellungen für die Projektseite (GitHub Pages, Jekyll)
+title: KI-integrierter Roboterarm
+description: Selbst konstruierter 6-Achs-Desktop-Roboterarm – 3D-gedruckt, mit Zahnriemen und NEMA-17-Motoren
+theme: jekyll-theme-cayman
+lang: de
+show_downloads: false
+exclude:
+  - software/
+  - firmware/
