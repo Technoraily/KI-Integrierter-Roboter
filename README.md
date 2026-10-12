@@ -30,17 +30,24 @@ Stand vom 12.10.2026. Der vollständige Plan steht in [docs/konzept.md](docs/kon
 
 ![Prüfstand J2](cad/renders/J2_Pruefstand_Riementrieb.png)
 
-**Nächster Schritt**
-1. Ritzel, Riemen und Kleinteile des Prüfstands bestellen ([vollständige Stückliste](docs/stuecklisten/pruefstand-j2.md)); dort die Positionen mit Status «klären» durchgehen.
-2. Motoren vermessen (`docs/motorvermessung.md`) – geht schon mit den vorhandenen Teilen.
-3. Toleranz-Testdruck: Lagersitz, Einschmelzgewinde, Nabenbohrungen, je ein Zahnsegment der drei Riemenprofile.
-4. Gelieferte Ritzel nachmessen, Masse im Skript anpassen, dann die Scheiben und den Rest drucken und den Prüfstand aufbauen.
+**Nächster Schritt** (Stand Ende des zweiten Arbeitstags, 12.10.2026)
+1. **Netzteil entscheiden** (siehe unten) – offen.
+2. Ritzel, Riemen und Kleinteile des Prüfstands bestellen ([vollständige Stückliste](docs/stuecklisten/pruefstand-j2.md)); dort die Positionen mit Status «klären» mit dem Nutzer durchgehen. Sicher offen sind rund 57 CHF, dazu das Netzteil.
+3. Motoren vermessen (`docs/motorvermessung.md`) – geht schon mit den vorhandenen Teilen.
+4. Toleranz-Testteil konstruieren und drucken: Lagersitz, Einschmelzgewinde (auch in der 8-mm-Kante), Nabenbohrungen, je ein Zahnsegment der drei Riemenprofile. **Das Testteil gibt es noch nicht; vom Nutzer noch nicht freigegeben.**
+5. Gelieferte Ritzel nachmessen, Masse im Skript anpassen, dann die Scheiben und den Rest drucken und den Prüfstand aufbauen.
+
+**Offen: Netzteil 24 V**
+- Der Nutzer hat **kein 24-V-Netzteil** (frühere Angabe im README war falsch). Ob das im Konzept genannte Netzteil 12 V / 4 A vorhanden ist, ist nicht bestätigt; damit gingen die Messungen im Stillstand (Spiel, Steifigkeit, Haltetest).
+- Das Budget ist knapp: Das Markengerät Mean Well GST280A24 (rund 80 CHF) ist dem Nutzer zu teuer.
+- Empfohlene Daten: 24 V Konstantspannung, 10 A Dauerstrom (240 W), geschlossenes Tischnetzteil mit Schutzleiter, Ausgang mit offenen Kabelenden (1,5 mm²), CE mit Prüfbericht; 10-A-Sicherung in der Plusleitung. 15 A sind unnötig. Der Bedarf (4–6 A dauernd, Spitzen bis 10 A) ist geschätzt, nicht gemessen.
+- Stand der Abklärung: (a) Der Nutzer will bei einem Hersteller ein Muster kaufen; dieser hat bisher weder Modellnummer noch Datenblatt noch Preis genannt – vor dem Bezahlen Bestätigung und Typenschild prüfen. (b) Bastelgarage S-360-24 (24 V / 15 A, CHF 43.90, ausverkauft): vermutlich Einbaunetzteil im Blechkäfig mit Schraubklemmen, die 230-V-Seite muss selbst verdrahtet werden; angeboten ist ein gedrucktes Gehäuse mit Kaltgerätebuchse. Offene Frage an den Nutzer: Kann jemand die Netzseite anschliessen oder prüfen? (c) Markengerät 24 V / 5 A (Leicke, 32,99 EUR) als sichere, kleinere Lösung.
 
 **Beschaffung für den Schulter-Test**
-- Laut früherem Stand vorhanden bzw. bestellt (**mit dem Nutzer neu abzugleichen**): NEMA 17 mit 60 mm (ca. 0,7 Nm), Delock-Adapter auf Schraubklemmen, M3-Schrauben; ausgewählt: Kugellager 608ZZ, Einschmelzgewinde M3 × 4 × 5. **Ein 24-V-Netzteil ist nicht vorhanden** (Korrektur vom 12.10.2026); vorhanden ist das Netzteil 12 V / 4 A.
-- Noch offen: 2× TMC2209, Messuhr (Thermometer ist verzichtbar), Motorkabel prüfen; dazu jetzt Riemen, Ritzel, 8-mm-Wellen, 2× M8 × 90, Kofferwaage.
-- Offene Rückfragen an den Nutzer: Wicklungswiderstand der drei vorhandenen Motoren (17CS04A-170E); Schultermotor mit Doppelwelle (-SZ) oder normal; Multimeter und Lötkolben vorhanden? Sind Schrauben M3 × 16, × 25 und × 30 im Sortiment?
-- In Fusion sind der verworfene Seiltrieb-Rahmen (`ALT_Rahmen_Seiltrieb`) und der Messhebel nur ausgeblendet.
+- Laut früherem Stand vorhanden bzw. bestellt (**mit dem Nutzer neu abzugleichen**): NEMA 17 mit 60 mm (ca. 0,7 Nm), Delock-Adapter auf Schraubklemmen, M3-Schrauben; ausgewählt: Kugellager 608ZZ, Einschmelzgewinde M3 × 4 × 5.
+- Offene Rückfragen an den Nutzer: Wicklungswiderstand der drei vorhandenen Motoren (17CS04A-170E); Schultermotor mit Doppelwelle (-SZ) oder normal; Multimeter und Lötkolben vorhanden? Sind Schrauben M3 × 16, × 20, × 25 und × 30 im Sortiment? Netzteil 12 V / 4 A vorhanden?
+- In Fusion (Dokument «Claude Roboterarm v1», gespeichert) sind der verworfene Seiltrieb-Rahmen (`ALT_Rahmen_Seiltrieb`) und der Messhebel nur ausgeblendet.
+- Das Repo ist öffentlich: <https://github.com/Technoraily/KI-Integrierter-Roboter>, Projektseite <https://technoraily.github.io/KI-Integrierter-Roboter/> (`index.md`); sie wird bei jedem neuen Stand nachgeführt.
 
 ## Aufbau des Repos
 
