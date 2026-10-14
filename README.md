@@ -25,7 +25,7 @@ Stand vom 12.10.2026. Der vollständige Plan steht in [docs/konzept.md](docs/kon
 - Phase 0 (Projektgerüst) und Phase 1 (Detailkonzept): Kinematik und [Lastrechnung](docs/lastrechnung.md) stehen, 13 Tests grün.
 - Gutachten: Gesamtkonzept 8/10, Detailkonzept 8/10, Steuerung für 7 Achsen 8/10 (Protokolle in `docs/reviews/`).
 - Entscheide: 1 kg Nutzlast im ganzen Arbeitsraum; Schiene als 7. Achse, koordiniert mit dem Arm; alle Achsen nur über Zahnriemen (GT2 und HTD), kein Seiltrieb; Steuerung BTT Octopus + grblHAL.
-- Motorprüfstand ohne Kaufteile: [Bauanleitung mit Bildern](docs/bauanleitung/motorpruefstand.md), Messungen in [Motorvermessung](docs/motorvermessung.md); Skript `cad/skripte/motorpruefstand.py`, STL in `cad/export/stl/Motorpruefstand/`, [Stückliste](docs/stuecklisten/motorpruefstand.md). Ersetzt den alten Messhebel.
+- Motorprüfstand ohne Kaufteile: [Bauanleitung (PDF)](docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf), Messungen in [Motorvermessung](docs/motorvermessung.md); Skript `cad/skripte/motorpruefstand.py`, STL und Druckeinstellungen in `cad/export/stl/Motorpruefstand/`, [Stückliste](docs/stuecklisten/motorpruefstand.md). Ersetzt den alten Messhebel.
 - Rohbau des ganzen Roboters nur zur Anschauung (kein Konzept): `cad/skripte/rohbau_gesamt.py`, Bild `cad/renders/Rohbau_Gesamt_iso.png`.
 - **CAD des Prüfstands für das Schultergelenk J2** ([Beschreibung](docs/pruefstand-j2.md)): drei Riemenstufen in zwei Ebenen, Spannrollen, Lasthebel, Messzeiger und Messuhrhalter. Gutachten nach drei Runden 8/10 (`docs/reviews/2026-10-12-pruefstand-j2.md`). Exporte in `cad/export/`, die Geometrie entsteht aus `cad/skripte/j2_pruefstand.py`.
 

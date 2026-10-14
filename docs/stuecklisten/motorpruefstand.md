@@ -15,6 +15,15 @@ Dateien in `cad/export/stl/Motorpruefstand/`. Zusammen rund 190 cm³ als Vollkö
 | 1.3 | `Waagebalken` (Löcher bei ±100 mm) | 1 | PLA | 18 | flach, Nabe oben |
 | 1.4 | `Seiltrommel` (gestuft, Wickelradius 20 und 10 mm) | 1 | PLA | 22 | Aussenflansch unten |
 
+**Druckeinstellungen** (BambuLab A1, Düse 0,4 mm, Profil «0.20mm Standard @BBL A1»; ebenso in `cad/export/stl/Motorpruefstand/Druckeinstellungen.md`):
+
+| Teil | Wände | Infill (Gyroid) | Obere / untere Schichten | Schichthöhe | Stützen |
+|---|---|---|---|---|---|
+| Motorhalter | 3 | 30 % | 5 / 4 | 0,20 mm | aus |
+| Niederhalter | 3 | 100 % | 5 / 4 | 0,20 mm | aus |
+| Waagebalken | 4 | 40 % | 5 / 4 | 0,20 mm | aus |
+| Seiltrommel | 4 | 40 % | 5 / 4 | 0,20 mm | aus |
+
 ## 2 Schrauben
 
 | Pos. | Teil | Menge | Wofür | Status |

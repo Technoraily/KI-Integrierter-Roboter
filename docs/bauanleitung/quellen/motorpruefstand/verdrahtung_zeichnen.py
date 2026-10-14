@@ -1,7 +1,7 @@
 """Zeichnet das Verdrahtungsbild für den Motorprüfstand (Schema, nicht massstäblich).
 
-Aufruf:  python docs/bauanleitung/bilder/verdrahtung_motorpruefstand_zeichnen.py
-Ergebnis: 08_verdrahtung.png im selben Ordner.
+Aufruf:  python docs/bauanleitung/quellen/motorpruefstand/verdrahtung_zeichnen.py
+Ergebnis: bilder/08_verdrahtung.png neben diesem Skript.
 """
 
 from pathlib import Path
@@ -76,6 +76,6 @@ hinweise = [
 for i, t in enumerate(hinweise):
     z.text((40, 710 + i * 58), t, font=schrift(21), fill=TEXT)
 
-ziel = Path(__file__).with_name("08_verdrahtung.png")
+ziel = Path(__file__).parent / "bilder" / "08_verdrahtung.png"
 bild.save(ziel)
 print(ziel)

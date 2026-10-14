@@ -16,7 +16,7 @@ Liegt der Widerstand deutlich höher (z. B. 30 Ω), ist es ein Motor für kleine
 
 ## Der Prüfstand
 
-**Bauanleitung mit Bildern: [bauanleitung/motorpruefstand.md](bauanleitung/motorpruefstand.md).** Skript: `cad/skripte/motorpruefstand.py` (Fusion-Dokument «Nema 17 Prüfstand 40mm»). Teile und Material: [Stückliste](stuecklisten/motorpruefstand.md). Gutachten: `docs/reviews/2026-10-14-motorpruefstand.md`.
+**Bauanleitung (PDF, mit Bildern und Druckeinstellungen): [Bauanleitung_Motorpruefstand.pdf](bauanleitung/Bauanleitung_Motorpruefstand.pdf).** Skript: `cad/skripte/motorpruefstand.py` (Fusion-Dokument «Nema 17 Prüfstand 40mm»). Teile und Material: [Stückliste](stuecklisten/motorpruefstand.md). Gutachten: `docs/reviews/2026-10-14-motorpruefstand.md`.
 
 - **Motorhalter:** Grundplatte 200 × 110 mm mit Wiege. Der Motor wird von oben eingelegt, sein Bund steckt im Schlitz der Stirnwand. Die Wiege hält das Gegenmoment über die Kanten des Motors, es braucht keine Schrauben. Hast du vier M3 × 8–10, kannst du den Motor zusätzlich durch die Stirnwand anschrauben.
 - **Niederhalter:** Er wird mit zwei Zapfen oben in die Wände gesteckt, damit der Motor nicht herausspringt.
@@ -32,7 +32,7 @@ Liegt der Widerstand deutlich höher (z. B. 30 Ω), ist es ein Motor für kleine
 
 ## Zusammenbau
 
-Schritt für Schritt mit Bildern: **[Bauanleitung Motorprüfstand](bauanleitung/motorpruefstand.md)**.
+Schritt für Schritt mit Bildern: **[Bauanleitung Motorprüfstand (PDF)](bauanleitung/Bauanleitung_Motorpruefstand.pdf)**.
 
 ## Test A: Haltemoment
 
@@ -97,6 +97,6 @@ Die Lastrechnung braucht für die vorhandenen Motoren 0,21 Nm nutzbares Moment, 
 
 ## Drucken
 
-Druckeinstellungen und Lage auf dem Druckbett: [Bauanleitung, Schritt 1](bauanleitung/motorpruefstand.md#schritt-1-teile-drucken).
+Druckeinstellungen und Lage auf dem Druckbett: Bauanleitung (PDF), Schritt 1, oder `cad/export/stl/Motorpruefstand/Druckeinstellungen.md`.
 
 Der frühere Messhebel (`Messhebel.stl`, drückte auf die Waage) ist durch den Waagebalken ersetzt. Beim Drücken auf die Waage hebt die Gegenkraft den Halter an.

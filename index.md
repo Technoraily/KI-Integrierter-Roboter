@@ -37,10 +37,10 @@ Ein gedruckter Halter für einen NEMA 17. Gemessen wird mit einer Wasserflasche 
 
 | | |
 |---|---|
-| ![Motorprüfstand](cad/renders/Motorpruefstand_iso.png) | ![Aufstellung an der Tischkante](docs/bauanleitung/bilder/06_test_a.png) |
+| ![Motorprüfstand](cad/renders/Motorpruefstand_iso.png) | ![Aufstellung an der Tischkante](docs/bauanleitung/quellen/motorpruefstand/bilder/06_test_a.png) |
 | Halter, Motor und Waagebalken | Aufstellung an der Tischkante, Test A |
 
-[Bauanleitung mit Bildern](docs/bauanleitung/motorpruefstand.md) · [Messungen](docs/motorvermessung.md) · [Stückliste](docs/stuecklisten/motorpruefstand.md)
+[Bauanleitung (PDF)](docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf) · [Messungen](docs/motorvermessung.md) · [Stückliste](docs/stuecklisten/motorpruefstand.md)
 
 ## Prüfstand Schultergelenk J2
 
@@ -70,7 +70,7 @@ Mehr dazu: [Beschreibung des Prüfstands](docs/pruefstand-j2.md) mit Teileliste,
 - [Lastrechnung](docs/lastrechnung.md)
 - [Stückliste der Kaufteile](docs/bom.md)
 - [Prüfstand Schultergelenk J2](docs/pruefstand-j2.md) mit [vollständiger Stückliste](docs/stuecklisten/pruefstand-j2.md)
-- [Motorvermessung](docs/motorvermessung.md) mit [Bauanleitung des Motorprüfstands](docs/bauanleitung/motorpruefstand.md) und [Stückliste](docs/stuecklisten/motorpruefstand.md)
+- [Motorvermessung](docs/motorvermessung.md) mit [Bauanleitung des Motorprüfstands (PDF)](docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf) und [Stückliste](docs/stuecklisten/motorpruefstand.md)
 - [Verdrahtung](docs/verdrahtung.md)
 
 **Gutachten.** Jede Idee und jede Baugruppe wird von einem unabhängigen Gutachter mit 1–10 bewertet, höchstens drei Runden:

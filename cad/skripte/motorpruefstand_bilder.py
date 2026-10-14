@@ -4,7 +4,7 @@ Voraussetzung: motorpruefstand.py ist im aktiven Dokument gelaufen.
 Ausführen im Fusion-Python:  exec(open(pfad, encoding="utf-8").read())
 Legt vorübergehend Tisch, Flasche und Schnur als Dummy-Komponenten an,
 verschiebt Teile für Explosionsansichten, speichert die Bilder nach
-docs/bauanleitung/bilder/ und stellt danach alles wieder her.
+docs/bauanleitung/quellen/motorpruefstand/bilder/ und stellt danach alles wieder her.
 """
 import os
 
@@ -12,7 +12,7 @@ import adsk.core
 import adsk.fusion
 
 MM = 0.1
-ZIEL = r"C:\Claude\KI-Integrierter Roboter\docs\bauanleitung\bilder"
+ZIEL = r"C:\Claude\KI-Integrierter Roboter\docs\bauanleitung\quellen\motorpruefstand\bilder"
 Z_ACHSE = 5.0 + 42.3 / 2
 
 app = adsk.core.Application.get()
