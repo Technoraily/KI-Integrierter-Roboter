@@ -9,14 +9,14 @@ Stand 12.10.2026, passend zum CAD `cad/skripte/j2_pruefstand.py` (Gutachten 8/10
 | Gruppe | Positionen | Stück | noch offen, ca. CHF |
 |---|---|---|---|
 | 1 Druckteile | 22 | 22 | Filament |
-| 2 Riemen, Scheiben, Lager, Wellen | 9 | 21 | 33 |
+| 2 Riemen, Scheiben, Lager, Wellen | 9 | 21 | 22 |
 | 3 Schrauben, Muttern, Gewindeeinsätze | 13 | 92 | 2 |
 | 4 Antrieb und Elektrik | 9 | 9 | 6 |
 | 5 Messmittel und Lasten | 9 | – | 16 |
 | 6 Aufstellung | 4 | – | 0–10 |
 | 7 Werkzeug | 13 | – | je nach Bestand |
 | 8 Verbrauchsmaterial | 4 | – | Filament |
-| **Summe noch offen** | | | **rund 57 CHF**, dazu was unter *klären* fehlt, Filament und Werkzeug |
+| **Summe noch offen** | | | **rund 46 CHF**, dazu was unter *klären* fehlt, Filament und Werkzeug |
 
 ## 1 Druckteile
 
@@ -53,12 +53,12 @@ Die Scheiben 1.7 bis 1.9 erst drucken, wenn die gekauften Ritzel nachgemessen si
 
 | Pos. | Teil | Gebraucht | Bestellen | Suchbegriff AliExpress | ca. CHF | Status |
 |---|---|---|---|---|---|---|
-| 2.1 | Ritzel GT2, 20 Zähne, Bohrung 5 mm, für 10-mm-Riemen | 1 | 2 | `GT2 pulley 20 teeth bore 5mm width 10mm` | 3 | offen |
-| 2.2 | Ritzel HTD-3M, 16 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben | 1 | 1 | `HTD 3M pulley 16 teeth bore 8mm width 15mm` | 4 | offen |
-| 2.3 | Ritzel HTD-5M, 18 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben und Nabe (2 Gewindestifte) | 1 | 1 | `HTD 5M pulley 18 teeth bore 8mm width 15mm` | 5 | offen |
-| 2.4 | Riemen GT2 geschlossen, 10 mm breit, 200 mm (100 Zähne) | 1 | 2 | `GT2 closed loop belt 10mm 200mm` | 3 | offen |
-| 2.5 | Riemen HTD-3M geschlossen, 15 mm breit, 252 mm (84 Zähne) | 1 | 1 | `HTD 3M 252 belt 15mm` | 3 | offen |
-| 2.6 | Riemen HTD-5M geschlossen, 15 mm breit, 525 mm (105 Zähne) | 1 | 1 | `HTD 5M 525 belt 15mm` | 5 | offen |
+| 2.1 | Ritzel GT2, 20 Zähne, Bohrung 5 mm, für 10-mm-Riemen, **mit Nabe** (2 Gewindestifte), mit Bordscheiben | 1 | 2 | `GT2 pulley 20 teeth bore 5mm width 10mm` | 3 | offen |
+| 2.2 | Ritzel HTD-3M, 16 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben, **mit Nabe** (ca. 6 mm; ohne Nabe ginge auch, nur der Distanzring wird angepasst) | 1 | 1 | `HTD 3M pulley 16 teeth bore 8mm width 15mm` | 4 | offen |
+| 2.3 | Ritzel HTD-5M, 18 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben und **Nabe zwingend** (ca. Ø 20 × 8 mm, 2 Gewindestifte; die Hülse der 64er-Scheibe greift darüber) | 1 | 1 | `HTD 5M pulley 18 teeth bore 8mm width 15mm` | 5 | offen |
+| 2.4 | Riemen GT2 geschlossen, 10 mm breit, 200 mm (100 Zähne) | 1 | – | – | – | da |
+| 2.5 | Riemen HTD-3M geschlossen, 15 mm breit, 252 mm (84 Zähne) | 1 | – | – | – | da |
+| 2.6 | Riemen HTD-5M geschlossen, 15 mm breit, 525 mm (105 Zähne) | 1 | – | – | – | da |
 | 2.7 | Rillenkugellager 608 (8 × 22 × 7 mm): 6 in den Wangen, 2 in der 5M-Spannrolle, 2 als 3M-Spannrolle | 10 | 10–20 | `608 2RS bearing 10pcs` | 4–8 | da (ausgewählt: 608ZZ) |
 | 2.8 | Präzisionswelle 8 mm, auf 70 mm abgelängt, mit angefeilten Flächen | 3 | 4 × 100 mm | `linear shaft 8mm 100mm` | 8 | offen |
 | 2.9 | Sechskantschraube M8 × 90 mit Schaft (Teilgewinde) – Achse der Spannrollen | 2 | 2 | Baumarkt | 2 | offen |
@@ -161,14 +161,13 @@ Aus den Gruppen 2 bis 5, alles mit Status *offen*:
 
 | Teil | Menge | ca. CHF |
 |---|---|---|
-| Ritzel GT2 20 Z / HTD-3M 16 Z / HTD-5M 18 Z | 2 / 1 / 1 | 12 |
-| Riemen GT2 200 mm / HTD-3M 252 mm / HTD-5M 525 mm | 2 / 1 / 1 | 11 |
+| Ritzel GT2 20 Z / HTD-3M 16 Z / HTD-5M 18 Z (alle mit Nabe und Bordscheiben) | 2 / 1 / 1 | 12 |
 | Präzisionswelle 8 mm × 100 mm | 4 | 8 |
 | M8 × 90 mit Schaft, selbstsichernde Mutter M8, Scheiben M8 | 2 / 2 / 4 | 3 |
 | M4 × 16 | 2 | 1 |
 | TMC2209 mit Kühlkörper | 2 | 6 |
 | Messuhr 0,01 mm mit Stativ | 1 | 12 |
 | Kofferwaage | 1 | 4 |
-| **Summe** | | **rund 57** |
+| **Summe** | | **rund 46** |
 
 Dazu kommt, was sich beim Nachsehen als fehlend herausstellt (Status *klären*): M3-Schrauben in 16, 20, 25 und 30 mm, Motorkabel, USB-Kabel, Multimeter, Schieblehre, Zwingen, Werkzeug, Filament.

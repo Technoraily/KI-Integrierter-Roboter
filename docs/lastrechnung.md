@@ -62,5 +62,5 @@ Die Motoren schaffen es; die Grenze ist die Steifigkeit, nicht die Kraft.
 - Wirkungsgrad: 0,65 für J2/J3 (drei Stufen, vorsichtig), 0,85–0,9 für ein- und zweistufige Riemenantriebe.
 - Massenmodell geschätzt (Tabelle `MASSEN` in `parameter.py`); wird mit den Massen aus Fusion nachgeführt.
 - Nutzlastschwerpunkt 80 mm vor dem Flansch und 30 mm seitlich versetzt.
-- Die Ausgleichsfeder an J2 ist nicht eingerechnet; sie erhöht die Reserve zusätzlich.
+- Gerechnet ist **ohne** Ausgleichsfeder; das ist auch der geplante Bau. Die Feder ist eine Reserve, falls Motorvermessung oder Prüfstand es verlangen (Kriterien in `docs/konzept.md`, 3.8). Mit Teilausgleich von 4 Nm sänke das grösste J2-Moment von 11,8 auf 7,8 Nm.
 - J1 trägt bei senkrechter Achse keine Schwerkraft. Sein Moment bestimmt die Beschleunigung, nicht die Statik.

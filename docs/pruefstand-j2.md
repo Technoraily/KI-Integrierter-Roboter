@@ -62,6 +62,8 @@ Das **Umkehrspiel** (einschliesslich Reibung) ist der Unterschied zwischen Wert 
 
 **Steifigkeit und Haltetest unter voller Last:** Gewicht anhängen, Ausschlag am Tastklotz ablesen. Die Messuhr sieht dabei auch, wenn sich die Abtriebswelle im Lagersitz setzt. Trennen lässt sich das nur mit einer zweiten Messung direkt auf dem Nabenbund des Hebels (Ø 22 mm, neben der rechten Wange); dafür reicht der Messuhrhalter nicht, es braucht ein Stativ auf dem Grundbrett. Ohne Stativ bleibt dieser Anteil als Unsicherheit im Ergebnis (0,05 mm Setzen wären 0,045°).
 
+**Rücklauftest (ohne Strom):** Hebel waagrecht, Gewicht 1,07 kg (2 Nm), Fangschnur gesetzt, Messuhr abgenommen. Motor stromlos schalten und beobachten: Bleibt der Hebel stehen, sinkt er langsam (Zeit bis zum Anschlag stoppen) oder fällt er? Dann mit 5,9 kg (11 Nm) wiederholen. Das Ergebnis entscheidet mit, ob der Arm eine Ausgleichsfeder braucht (`docs/konzept.md`, 3.8).
+
 ## Lasthebel und Sicherheit
 
 Länge 190 mm von der Achse bis zur Lastbohrung (Ø 8 mm), 20 mm dick, von 60 mm an der Nabe auf 30 mm verjüngt.

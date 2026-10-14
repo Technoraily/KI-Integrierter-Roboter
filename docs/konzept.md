@@ -25,7 +25,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 
 **Fehlerbudget (aus dem Flanschziel rückwärts gerechnet; 0,1° an 450 mm = 0,8 mm):**
 - J1 (keine Schwerkraft-Vorspannung): Umkehrspiel ≤ 0,05° → spielfreie Bauart zwingend.
-- J2/J3: durch Schwerkraft + Ausgleichsfeder einseitig anliegend; Umkehrspiel ≤ 0,3° zulässig, dafür Steifigkeit als Messgrösse (Nm/°).
+- J2/J3: durch die Schwerkraft einseitig anliegend (Ausgleichsfeder nur bei Bedarf, siehe 3.8); Umkehrspiel ≤ 0,3° zulässig, dafür Steifigkeit als Messgrösse (Nm/°).
 - J4/J5: ≤ 0,15° (wirkt bis zur Greiferspitze, ~140 mm Hebel); J6: ≤ 0,3°.
 - Wiederholbarkeit der Referenzsensoren wird separat gemessen – sie begrenzt die Genauigkeit direkt.
 
@@ -84,7 +84,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 ### 3.4 Sicherheit
 - Not-Aus-Taster, der die Motorspannung trennt **und der Firmware ein Signal gibt** (sonst rechnet sie mit einer verlorenen Position weiter); Sicherung; Zugentlastungen.
 - Schiene: Endschalter an beiden Enden als harte Grenze.
-- **Stromausfall:** Arm ist rückdrehbar → Ausgleichsfeder so auslegen, dass er langsam sinkt; definierte Parkposition.
+- **Stromausfall:** Arm ist rückdrehbar. Wie schnell er ohne Strom sinkt, misst der Prüfstand J2 (Rücklauftest). Fällt er unkontrolliert, kommt die Ausgleichsfeder (3.8); sonst genügen eine definierte Parkposition und das Abschalten nur in Parkposition.
 - Mechanische Endanschläge an jeder Achse + Soft-Limits in der Firmware; Quetschstellen in der Verkleidung vermeiden.
 
 ### 3.5 Vorbereitung für später (nur vorsehen)
@@ -107,13 +107,36 @@ Der ganze Roboter steht auf einem Schlitten, der ihn auf einer Schiene verfährt
 - **Jetzt schon vorgesehen:** Die Basis bekommt ein Lochbild für den Schlitten (4× M5 auf 120 × 120 mm), damit die Schiene später ohne Umbau darunterkommt. Bis dahin wird die Basis mit denselben Löchern auf eine Platte geschraubt.
 - **Offen für Stufe C:** Führungen und Profile mit 1250 mm Länge sind auf AliExpress teuer im Versand oder gar nicht lieferbar; evtl. Profile lokal beziehen oder die Schiene aus zwei Stücken stossen. Genauigkeit der Schiene (Ziel ≤ ±0,1 mm) und ebene Unterlage.
 
+### 3.8 Ausgleichsfeder J2 – nur bei Bedarf (Entscheid 14.10.2026)
+
+**Grundsatz:** Der Arm wird **ohne Feder** gebaut. Die Feder kommt nur, wenn Messungen zeigen, dass es ohne sie knapp wird. Sie macht die Schulter grösser und komplexer (lange Zugfeder, 70–110 N zusätzlich auf die Schulterlager, gespannte Feder bei der Montage).
+
+**Die Feder wird eingebaut, wenn mindestens einer dieser Punkte eintritt:**
+
+| Kriterium | gemessen in | Grenze |
+|---|---|---|
+| Sicherheit J2 mit gemessenem Motormoment | Motorvermessung (`docs/motorvermessung.md`) + Lastrechnung | < 1,5 |
+| Winkeldrift im 24-h-Haltetest unter 11 Nm (Kriechen) | Prüfstand J2 | > 0,1° |
+| Motor J2 wird beim Dauerhalten zu warm | Prüfstand J2 | Gehäuse > 70 °C |
+| Riemenstufe 3 springt über oder rutscht | Prüfstand J2 | einmal |
+| Arm fällt ohne Strom unkontrolliert | Prüfstand J2, Rücklauftest | Hebel fällt aus der Waagrechten bis zum Anschlag |
+
+**Falls nötig, so ausgelegt** (Zahlen aus dem Massenmodell, Stand 14.10.2026):
+
+- **Teilausgleich, rund 4 Nm × sin(J2).** Ein voller Ausgleich (6,6 Nm) würde den gebeugten Arm nach oben drücken. Das Moment wechselte dann das Vorzeichen, und das Getriebespiel wirkte voll.
+- **Wirkung:** gestreckt mit 1 kg 11,8 → 7,8 Nm; gestreckt leer 6,6 → 2,6 Nm; Ellbogen 90° leer 4,4 → 0,4 Nm (bleibt positiv).
+- **Grobe Federdaten:** Anlenkpunkte je 50–80 mm von der Achse, Federrate 0,6–1,6 N/mm, Kraft bis 70–110 N, Federweg 70–110 mm.
+- Die Feder greift an der Basis und am Oberarm an. Die Z90 und der Riemen werden dabei entlastet, die Schulterlager zusätzlich belastet.
+
+**Vorsorge ohne Mehraufwand:** Beim CAD der Schulter wird ein Bauraum für die Feder freigehalten, **wenn das nichts kostet**. Es wird nicht konstruiert und nichts bestellt, bevor ein Kriterium eintritt.
+
 ## 4. Kosten Kaufteile (AliExpress, ehrlich gerechnet)
 
 Der Arm wird in Ausbaustufen gebaut. Das ursprüngliche Startbudget von 150 CHF reicht nach den Erweiterungen (1 kg aussen, 7 synchrone Achsen) nur noch für die erste Bestellung (Prüfstand, ca. 95 CHF):
 
 | Stufe | Inhalt | CHF |
 |---|---|---|
-| **A – Prüfstand + J1–J3** | Board (BTT Octopus), 3× TMC2209 + Kühlung, Lager, Riemen/Scheiben, Feder, Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~200** |
+| **A – Prüfstand + J1–J3** | Board (BTT Octopus), 3× TMC2209 + Kühlung, Lager, Riemen/Scheiben, Feder (nur bei Bedarf, 3.8), Schrauben/Einsätze, Endschalter, Not-Aus, Kabel, dazu J2-Motor, 24-V-Netzteil, Messuhr, Thermometer (Details: `docs/bom.md`) | **~200** |
 | **B – Hand J4–J6 + Greifer** | 2 Motoren, Lager, Riemen/Scheiben, Servo, 5-V-Wandler, Kabel | **~65** |
 | Reserve 15 % | | ~40 |
 | **Arm gesamt realistisch** | | **~310** |
@@ -168,7 +191,7 @@ software/    Python-Paket (Kinematik, Simulation, Steuerung, UI), tests/
 
 ## 10. Hauptrisiken
 - Getriebespiel/-verschleiss → Prüfstand mit Gate in Phase 2, bevor der Arm konstruiert wird.
-- PLA-Kriechen, Motorwärme → PETG-Motorplatten, Federausgleich, Lüftung.
+- PLA-Kriechen, Motorwärme → PETG-Motorplatten, Lüftung, 24-h-Haltetest; Federausgleich als Reserve (3.8).
 - Schrittverlust (offener Regelkreis) → Sicherheit ≥ 1,8 an allen Gelenken (vorsichtig gerechnet), Referenzfahrt, späterer Closed-Loop-Pfad.
 - Budget: Arm rund 310 CHF, mit Schiene rund 425 CHF statt der anfangs gewünschten 150 → Ausbaustufen, erste Bestellung ca. 95 CHF.
 - Riemenantrieb an J2/J3: Umkehrspiel und Nachgiebigkeit der HTD-Endstufe sind nur geschätzt; drei Stufen brauchen Platz (ca. 60–70 mm Breite) → Prüfstand misst beides, bevor der Arm konstruiert wird.

@@ -101,7 +101,7 @@ Vor dem Bestellen: Wicklungswiderstand der vorhandenen Motoren messen (`docs/mot
 | Lüfter 4010, 24 V | 1 | `4010 fan 24V` | 2 |
 | Dünnringlager 6810-2RS (50 × 65 × 7) für J1 | 2 | `6810 2RS bearing` | 8 |
 | Riemen (GT2, HTD-3M, HTD-5M), Aluscheiben, Wellen für J1 und J3 | – | – | 20 |
-| Zugfeder für Gewichtsausgleich J2 | 1 Satz | `extension spring assortment` | 4 |
+| Zugfeder für Gewichtsausgleich J2 – **nur bei Bedarf** (Konzept 3.8), erst nach dem Prüfstand bestellen | 1 Satz | `extension spring assortment` | 4 |
 | Endschalter (Mikroschalter mit Rolle) | 10 | `micro limit switch roller 10pcs` | 2 |
 | Not-Aus-Taster, rastend, mit zwei Kontakten | 1 | `emergency stop button 22mm` | 3 |
 | Litze 0,5 mm², Stecker JST-XH, Geflechtschlauch | – | `JST XH connector kit`, `braided cable sleeve 8mm` | 10 |
