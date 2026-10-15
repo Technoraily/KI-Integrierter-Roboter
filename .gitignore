@@ -11,3 +11,11 @@ __pycache__/
 # OS
 Thumbs.db
 desktop.ini
+
+# Vorerst nur lokal (nicht veroeffentlichen, bis entschieden)
+cad/Bambu Studio Saves/
+docs/stuecklisten/pruefstand-j2.docx
+docs/stuecklisten/pruefstand-j2_aktuell.docx
+
+# Lokale Claude-Einstellungen
+.claude/settings.local.json
