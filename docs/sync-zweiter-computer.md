@@ -2,9 +2,9 @@
 
 Der Abgleich läuft über das GitHub-Repo. Beim Start einer Claude-Sitzung wird automatisch `git pull` ausgeführt, beim Beenden werden alle Änderungen committet und gepusht.
 
-## 1. Einmalig: Hook-Konfiguration anlegen (auf jedem Computer, solange die Datei nicht im Repo liegt)
+## 1. Hook-Konfiguration
 
-Datei `.claude/settings.json` im Projektordner mit diesem Inhalt:
+Liegt im Repo als `.claude/settings.json` und kommt mit `git clone` mit – nichts zu tun. Inhalt zur Kontrolle:
 
 ```json
 {
@@ -19,8 +19,6 @@ Datei `.claude/settings.json` im Projektordner mit diesem Inhalt:
   }
 }
 ```
-
-Sobald diese Datei committet ist, bringt `git clone` sie auf jeden weiteren Computer mit.
 
 ## 2. Zweiter Computer einrichten
 

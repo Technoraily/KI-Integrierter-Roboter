@@ -7,7 +7,7 @@
 - Phase 0/1 fertig; CAD Prüfstand J2 fertig (8/10), cad/skripte/j2_pruefstand.py; neu Rücklauftest in docs/pruefstand-j2.md.
 - Motorprüfstand ohne Kaufteile (Gutachten 6 → 8/10): cad/skripte/motorpruefstand.py (+ _bilder.py), STL cad/export/stl/Motorpruefstand/, Bauanleitung als PDF docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf (Quellen + Erzeuger in docs/bauanleitung/quellen/motorpruefstand/), Messungen docs/motorvermessung.md, Stückliste docs/stuecklisten/motorpruefstand.md.
 - Rohbau ganzer Roboter nur zur Anschauung: cad/skripte/rohbau_gesamt.py (Pose Q1–Q6).
-- Sync zwischen Computern über GitHub: Skripte .claude/hooks/sync-*.sh, Anleitung docs/sync-zweiter-computer.md; CLAUDE.md (mit Arbeitsregeln) + HANDOFF.md jetzt im Repo. .claude/settings.json muss der Nutzer selbst anlegen (für Claude gesperrt). Lokal per .gitignore: Bambu Studio Saves, pruefstand-j2*.docx (Rückfrage: veröffentlichen?).
+- Sync zwischen Computern über GitHub: Skripte .claude/hooks/sync-*.sh, Anleitung docs/sync-zweiter-computer.md; CLAUDE.md (mit Arbeitsregeln) + HANDOFF.md jetzt im Repo. .claude/settings.json im Repo, getestet; globaler HANDOFF-Hook entfernt. Lokal per .gitignore: Bambu Studio Saves, pruefstand-j2*.docx (Rückfrage: veröffentlichen?).
 
 ## Entscheidungen
 - 1 kg Nutzlast überall; Schiene als 7. Achse; nur Zahnriemen. Messhebel ersetzt durch Waagebalken.
