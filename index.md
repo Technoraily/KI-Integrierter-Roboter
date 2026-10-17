@@ -25,7 +25,7 @@ Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren
 | 1 | Detailkonzept, Kinematik, Lastrechnung | fertig, Gutachten 8/10 |
 | 2 | Motorvermessung | Motorprüfstand fertig, Gutachten 8/10 – drucken, messen |
 | 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – Teile bestellen, drucken, messen |
-| 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter) | CAD fertig, STL exportiert – drucken, Passungen messen |
+| 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter, Not-Aus-Gehäuse) | CAD fertig, STL exportiert – drucken, Passungen messen |
 | 2b | Machbarkeitstest Steuerung (7 Achsen) | offen |
 | 3–4 | CAD und Bau Basis, Schulter, Oberarm | offen |
 | 5 | Hand, Flansch, Greifer | offen |

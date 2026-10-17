@@ -6,7 +6,7 @@
 - Phase 0/1 fertig; CAD Prüfstand J2 fertig (8/10), cad/skripte/j2_pruefstand.py; neu Rücklauftest in docs/pruefstand-j2.md.
 - Motorprüfstand ohne Kaufteile (Gutachten 6 → 8/10): cad/skripte/motorpruefstand.py (+ _bilder.py), STL cad/export/stl/Motorpruefstand/, Bauanleitung als PDF docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf (Quellen + Erzeuger in docs/bauanleitung/quellen/motorpruefstand/), Messungen docs/motorvermessung.md, Stückliste docs/stuecklisten/motorpruefstand.md.
 - Rohbau ganzer Roboter nur zur Anschauung: cad/skripte/rohbau_gesamt.py (Pose Q1–Q6).
-- NEU 17.10.: Toleranztest (cad/skripte/toleranztest.py) + Standardteile Endschalter-Halter/Kabelhalter (standardteile.py); STL in cad/export/stl/Toleranztest/ und Standardteile/ mit Druckeinstellungen.md, Stückliste docs/stuecklisten/werkstattteile.md. Skripte laufen mit exec(open(pfad).read()), AUSGABE=Ordner exportiert STL (spart Tokens ggü. Einzelaufrufen). Ohne Gutachten (einfache Teile).
+- NEU 17.10.: Toleranztest (cad/skripte/toleranztest.py) + Standardteile Endschalter-Halter/Kabelhalter (standardteile.py), Not-Aus-Gehäuse (notaus.py); STL in cad/export/stl/Toleranztest/, Standardteile/, NotAus/ mit Druckeinstellungen.md, Stückliste docs/stuecklisten/werkstattteile.md. Skripte laufen mit exec(open(pfad).read()), AUSGABE=Ordner exportiert STL (spart Tokens ggü. Einzelaufrufen). Ohne Gutachten (einfache Teile).
 - Sync zwischen Computern über GitHub: Skripte .claude/hooks/sync-*.sh, Anleitung docs/sync-zweiter-computer.md; CLAUDE.md (mit Arbeitsregeln) + HANDOFF.md jetzt im Repo. .claude/settings.json im Repo, getestet; globaler HANDOFF-Hook entfernt. Lokal per .gitignore: Bambu Studio Saves, pruefstand-j2*.docx (Rückfrage: veröffentlichen?).
 
 ## Entscheidungen
@@ -16,7 +16,7 @@
 ## Offen
 - Vorhanden: Netzteil 12 V / 4 A, M3-Schrauben. Offen: 24-V-Netzteil für den Arm, Schraubzwinge, Multimeter.
 - Rückfragen: Wicklungswiderstand, Schultermotor Doppelwelle?, Schrauben M3 × 20/25/30?
-- Prüfstand-J2-Teile bestellen; Toleranz-Testteil drucken und auswerten (Ergebnis in docs/parameter.md eintragen). Schalterlochabstand SW_LOCH (9,5 mm, Startwert) am gekauften Mikroschalter prüfen. Regel «CAD immer als Skript» noch nicht in CLAUDE.md (Nutzer fragen). J2-STL haben noch KEINE Druckeinstellungen (Regel: immer dazuschreiben).
+- Prüfstand-J2-Teile bestellen; Toleranz-Testteil drucken und auswerten (Ergebnis in docs/parameter.md eintragen). Schalterlochabstand SW_LOCH (9,5 mm) am Mikroschalter und H_INNEN (58 mm) am Not-Aus-Taster prüfen. Regel «CAD immer als Skript» noch nicht in CLAUDE.md (Nutzer fragen). J2-STL haben noch KEINE Druckeinstellungen (Regel: immer dazuschreiben).
 
 ## Nächster Schritt
 Nutzer druckt Motorprüfstand und Toleranztest (ein Bett je Gruppe) und misst; danach Lastrechnung nachführen.
