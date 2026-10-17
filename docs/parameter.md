@@ -42,7 +42,7 @@ Riemenlängen J2: GT2 200 mm, 3M 252 mm, 5M 525 mm; Achsabstände im Prüfstand 
 
 ## Drucktoleranzen
 
-Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2).
+Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2). Testteil: `cad/skripte/toleranztest.py`, STL in `cad/export/stl/Toleranztest/`, Auswertung dort in `Druckeinstellungen.md`. Bis zur Messung gelten die Startwerte.
 
 | Name | Wert | Bedeutung |
 |---|---|---|
