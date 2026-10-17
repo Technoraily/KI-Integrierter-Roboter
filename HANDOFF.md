@@ -14,7 +14,7 @@
 - Ausgleichsfeder J2 nur bei Bedarf (Kriterien + Auslegung konzept.md 3.8). Z90: im Arm grösserer Lochkreis + Formschluss; PLA ok.
 
 ## Offen
-- Vorhanden: Netzteil 12 V / 4 A, M3-Schrauben. Not-Aus-Taster 22 mm (1 Öffner + 1 Schliesser) wird für Prüfstand J2 gekauft (Öffner in Plusleitung vor CNC-Shield). Offen: 24-V-Netzteil für den Arm, Schraubzwinge, Multimeter.
+- Vorhanden: Netzteil 12 V / 4 A, M3-Schrauben. Not-Aus-Taster 22 mm (1 Öffner + 1 Schliesser empfohlen, 2 Öffner auch ok) wird für Prüfstand J2 gekauft (Öffner in Plusleitung vor CNC-Shield). Offen: 24-V-Netzteil für den Arm, Schraubzwinge, Multimeter.
 - Rückfragen: Wicklungswiderstand, Schultermotor Doppelwelle?, Schrauben M3 × 20/25/30?
 - Prüfstand-J2-Teile bestellen; Toleranz-Testteil drucken und auswerten (Ergebnis in docs/parameter.md eintragen). Schalterlochabstand SW_LOCH (9,5 mm) am Mikroschalter und H_INNEN (58 mm) am Not-Aus-Taster prüfen. Regel «CAD immer als Skript» noch nicht in CLAUDE.md (Nutzer fragen). J2-STL haben noch KEINE Druckeinstellungen (Regel: immer dazuschreiben).
 
