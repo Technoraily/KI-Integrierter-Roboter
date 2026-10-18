@@ -46,7 +46,8 @@ Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2). Testteil: 
 
 | Name | Wert | Bedeutung |
 |---|---|---|
-| `tol_lagersitz` | 0,15 mm (Startwert) | Übermass Bohrung für Kugellager-Aussenring |
+| `tol_lagersitz` | 0,20 mm (gemessen 18.10., liegend) | Übermass Bohrung für Kugellager-Aussenring. Test Reihe A: 22,20 mm sitzt besser als 22,25 mm und lässt sich noch gut eindrücken; kleinere Bohrungen waren zu eng |
+| `tol_lagersitz_stehend` | > 0,30 mm (gemessen 18.10.) | waagrechte Bohrung (Druck hochkant, «Saggen» der Decke): 22,10 / 22,20 / 22,30 passten alle nicht |
 | `tol_passung` | offen | Spiel zwischen zwei gedruckten Passflächen |
 | `d_einschmelz_M3` | 4,0 mm (Startwert) | Bohrung für M3-Einschmelzgewinde |
 | `d_einschmelz_M4` | offen | Bohrung für M4-Einschmelzgewinde |
