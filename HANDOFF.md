@@ -11,8 +11,7 @@
 - Sync über GitHub: .claude/hooks/sync-*.sh, docs/sync-zweiter-computer.md. Lokal per .gitignore: Bambu Studio Saves, pruefstand-j2*.docx (Rückfrage: veröffentlichen?).
 
 ## Entscheidungen
-- 1 kg Nutzlast überall; Schiene als 7. Achse; nur Zahnriemen. Messhebel ersetzt durch Waagebalken.
-- Ausgleichsfeder J2 nur bei Bedarf (konzept.md 3.8). Z90: im Arm grösserer Lochkreis + Formschluss; PLA ok.
+- 1 kg Nutzlast überall; Schiene als 7. Achse; nur Zahnriemen; Waagebalken statt Messhebel. Ausgleichsfeder J2 nur bei Bedarf (konzept.md 3.8). Z90: grösserer Lochkreis + Formschluss; PLA ok.
 
 ## Offen
 - Nutzer fragt Opa nach Teilen (PDF); danach Rest bestellen. Prüfen im Warenkorb: GT2-Ritzel nur 6 mm breit (nötig: für 10-mm-Riemen), nur 1 Welle statt 3, M3×10 Torx wohl streichen, Sicherung 3 A Zweck?, Mean-Well 350 W viel zu gross (nötig 24 V ab 5 A), zweiter Motor 60 mm neben dem vorhandenen?
