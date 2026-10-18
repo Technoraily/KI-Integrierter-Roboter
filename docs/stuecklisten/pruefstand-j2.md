@@ -20,12 +20,12 @@ Stand 12.10.2026, passend zum CAD `cad/skripte/j2_pruefstand.py` (Gutachten 8/10
 
 ## 1 Druckteile
 
-Dateien in `cad/export/stl/J2_Pruefstand/`. Volumen als Vollkörper; die Filamentmenge steht in Gruppe 8.
+Dateien in `cad/export/stl/J2_Pruefstand/`. Teile mit Zusatz `_Lager22-20` sind mit dem gemessenen Lagersitz Ø 22,20 mm (18.10.2026) neu exportiert. Volumen als Vollkörper; die Filamentmenge steht in Gruppe 8.
 
 | Pos. | Teil (Datei `.stl`) | Menge | Material | cm³ | Drucklage |
 |---|---|---|---|---|---|
-| 1.1 | `Wange_Links` (Motorseite) | 1 | PETG | 266 | flach |
-| 1.2 | `Wange_Rechts` | 1 | PLA | 266 | flach |
+| 1.1 | `Wange_Links_Lager22-20` (Motorseite) | 1 | PETG | 266 | flach |
+| 1.2 | `Wange_Rechts_Lager22-20` | 1 | PLA | 266 | flach |
 | 1.3 | `Quertraeger_unten_links` | 1 | PLA | 18 | liegend |
 | 1.4 | `Quertraeger_unten_rechts` | 1 | PLA | 18 | liegend |
 | 1.5 | `Quertraeger_oben_links` | 1 | PLA | 18 | liegend |
@@ -36,7 +36,7 @@ Dateien in `cad/export/stl/J2_Pruefstand/`. Volumen als Vollkörper; die Filamen
 | 1.10 | `Lasthebel` | 1 | PLA | 223 | flach, Nabenbund oben |
 | 1.11 | `Messzeiger` | 1 | PLA | 15 | flach, Tastklotz oben |
 | 1.12 | `Messuhrhalter` | 1 | PLA | 34 | auf dem Rücken |
-| 1.13 | `Spannrolle_5M` | 1 | PETG | 7 | stehend |
+| 1.13 | `Spannrolle_5M_Lager22-20` | 1 | PETG | 7 | stehend |
 | 1.14 | `Distanzring_A_links` | 1 | PETG | 0,4 | stehend |
 | 1.15 | `Distanzring_A_rechts` | 1 | PETG | 0,1 | stehend |
 | 1.16 | `Distanzring_B_links` | 1 | PETG | 0,1 | stehend |
