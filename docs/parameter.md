@@ -48,6 +48,7 @@ Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2). Testteil: 
 |---|---|---|
 | `tol_lagersitz` | 0,20 mm (gemessen 18.10., liegend) | Übermass Bohrung für Kugellager-Aussenring. Test Reihe A: 22,20 mm sitzt besser als 22,25 mm und lässt sich noch gut eindrücken; kleinere Bohrungen waren zu eng |
 | `tol_lagersitz_stehend` | > 0,30 mm (gemessen 18.10.) | waagrechte Bohrung (Druck hochkant, «Saggen» der Decke): 22,10 / 22,20 / 22,30 passten alle nicht |
-| `tol_passung` | 0,20 mm (gemessen 18.10., Reihe D, Zapfen Ø 10) | Übermass Loch gegenüber gedrucktem Zapfen. 10,2 mm sass am besten mit wenig Widerstand, 10,3 mm fiel fast heraus (ganz wenig Widerstand). 10,25 mm vermutlich noch besser, nicht getestet |
+| `tol_passung` | 0,10 mm (gemessen 18.10., Reihe D, Zapfen Ø 10) | **Standard für Haltesitz** (Zentrierung, Formschluss, Zapfen bleibt von selbst): Loch Ø 10,10 mm. Zapfen nicht drehbar, von Hand nur streng wieder herauszubekommen |
+| `tol_passung_steck` | 0,20 mm (gemessen 18.10., Reihe D) | **Steckpassung** (oft lösbar, drehbar): Loch Ø 10,20 mm. Von Hand einpressbar und drehbar, aber kaum Halt (kein Grip). 10,30 mm fiel fast heraus, 10,40 mm sitzt lose |
 | `d_einschmelz_M3` | 4,0 mm (Startwert) | Bohrung für M3-Einschmelzgewinde |
 | `d_einschmelz_M4` | offen | Bohrung für M4-Einschmelzgewinde |
