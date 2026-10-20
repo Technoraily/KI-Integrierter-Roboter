@@ -79,9 +79,11 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 | 3.8 | M4 × 16 | 2 | Mitnahme an Welle B, ersetzen die Gewindestifte des 5M-Ritzels (am Ritzel prüfen: M4 oder M5) | offen, 1 CHF |
 | 3.9 | Mutter M8, selbstsichernd | 2 | Spannrollen-Schrauben | offen, Baumarkt |
 | 3.10 | Unterlegscheibe M8 (Aussen-Ø mindestens 16 mm) | 4 | unter Kopf und Mutter der M8, über den Langlöchern | offen, Baumarkt |
-| 3.11 | Einschmelzgewinde M3 (Messing, Aussen-Ø 5 mm, 4 mm lang) | 41 | siehe unten | da (ausgewählt), 100er-Pack 4 CHF |
+| 3.11 | Einschmelzgewinde M3 (Messing, Aussen-Ø 5 mm; Längen 5 / 4 / 3 mm gemischt, siehe unten) | 41 | siehe unten | da, alle 41 am 20.10.2026 gesetzt (Bohrung Ø 4,0 mm, mit Lötkolben bestätigt) |
 | 3.12 | Gewindestifte der gekauften Ritzel | – | liegen den Ritzeln bei (GT2 und 3M werden verwendet, 5M wird ersetzt) | mit 2.1–2.3 |
 | 3.13 | M3-Sortiment als Ganzes, falls Längen fehlen | 1 | – | `M3 hex socket screw assortment DIN912`, 6 CHF |
+
+**Verwendete Längen (20.10.2026; nach der Z90 blieben 9 × 5 mm, 11 × 4 mm, 26 × 3 mm):** 5 mm: obere Querträger (8) und ein Stirnloch der unteren (1); 4 mm: Z72-Nabe (2), Hebelnabe (1), Stellschrauben in den Wangenkanten (4), Grundbrett-Löcher der unteren Querträger (4); 3 mm: übrige untere Querträger (7), Blockierstift (1), Messuhrhalter an der Wange (4) und Klemmschraube (1). Z90: Hebelkreis (6) mit 5 mm, Zeiger (2) mit 4 mm. Übrig: 13 × 3 mm. Die Bohrtiefen im CAD sind für 4 mm ausgelegt; das 4-mm-Loch der Z72-Nabe ist nur 5,5 mm tief.
 
 **Wo die 41 Einschmelzgewinde sitzen:** Querträger 16 (je 2 pro Ende) · untere Querträger 4 (von unten, fürs Grundbrett) · 90er-Scheibe 8 (Hebel 6, Messzeiger 2) · 72er-Scheibe 2 · Hebelnabe 1 · linke Wange 3 (Blockierstift 1, Stellschrauben 2) · rechte Wange 6 (Stellschrauben 2, Messuhrhalter 4) · Messuhrhalter 1.
 
