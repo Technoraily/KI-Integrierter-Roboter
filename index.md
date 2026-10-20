@@ -62,7 +62,7 @@ Für die Messung wird der Prüfstand auf ein Brett geschraubt und an der Tischka
 
 ![Befestigung auf dem Grundbrett](docs/bilder/pruefstand_befestigung.png)
 
-Mehr dazu: [Beschreibung des Prüfstands](docs/pruefstand-j2.md) mit Teileliste, Montagefolge und Messablauf.
+Mehr dazu: [Bauanleitung (PDF)](docs/bauanleitung/Bauanleitung_J2_Pruefstand.pdf) · [Beschreibung des Prüfstands](docs/pruefstand-j2.md) mit Teileliste, Montagefolge und Messablauf · [Druckeinstellungen](cad/export/stl/J2_Pruefstand/Druckeinstellungen.md).
 
 ## Unterlagen
 
@@ -70,7 +70,7 @@ Mehr dazu: [Beschreibung des Prüfstands](docs/pruefstand-j2.md) mit Teileliste,
 - [Anforderungen](docs/anforderungen.md) und [Parameterliste](docs/parameter.md)
 - [Lastrechnung](docs/lastrechnung.md)
 - [Stückliste der Kaufteile](docs/bom.md)
-- [Prüfstand Schultergelenk J2](docs/pruefstand-j2.md) mit [vollständiger Stückliste](docs/stuecklisten/pruefstand-j2.md)
+- [Prüfstand Schultergelenk J2](docs/pruefstand-j2.md) mit [vollständiger Stückliste](docs/stuecklisten/pruefstand-j2.md) und [Bauanleitung (PDF)](docs/bauanleitung/Bauanleitung_J2_Pruefstand.pdf)
 - [Motorvermessung](docs/motorvermessung.md) mit [Bauanleitung des Motorprüfstands (PDF)](docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf) und [Stückliste](docs/stuecklisten/motorpruefstand.md)
 - [Verdrahtung](docs/verdrahtung.md)
 
