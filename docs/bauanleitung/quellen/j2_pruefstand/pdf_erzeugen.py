@@ -191,8 +191,8 @@ s += [Paragraph("Schritt 1: Teile drucken", H1),
 # ---------------------------------------------------------------- Schritt 2 Nachbearbeiten
 s += [Paragraph("Schritt 2: Nachbearbeiten", H1),
       Paragraph("Fäden und Reste aus Bohrungen, Langlöchern und Zahnlücken entfernen. Danach die Bohrungen nach "
-                "folgender Tabelle auf Mass bringen; die Werte sind Startwerte, weil der Toleranztest noch nicht "
-                "ganz ausgewertet ist.", TEXT),
+                "folgender Tabelle auf Mass bringen. Lagersitz und Einschmelzbohrung sind im Toleranztest gemessen; "
+                "die Wellen- und Mitnahmebohrungen sind noch Startwerte.", TEXT),
       tabelle([
           ["Stelle", "Gedruckt", "Aufreiben auf"],
           ["Lagersitze 608 (Wangen, Spannrolle 5M)", "Ø 22,20 mm (gemessen im Toleranztest 18.10.2026)",
@@ -207,7 +207,8 @@ s += [Paragraph("Schritt 2: Nachbearbeiten", H1),
           ["Hülsen (5)", "Ø 8,3 mm", "nicht aufbohren (M8-Schraube)"],
       ], (0.34, 0.31, 0.35)),
       Spacer(1, 6),
-      Paragraph("<b>41 Einschmelzgewinde M3</b> (Bohrung Ø 4,0 mm) mit dem Lötkolben setzen. Spitze auf etwa 220 °C "
+      Paragraph("<b>41 Einschmelzgewinde M3</b> (Bohrung Ø 4,0 mm, im Test mit Lötkolben am besten; 4,2 hält "
+                "schlechter, 4,4 gar nicht) mit dem Lötkolben setzen. Spitze auf etwa 220 °C "
                 "(PLA) bzw. 240 °C (PETG) heizen, Einsatz gerade und ohne Druck von Hand einschmelzen lassen, bis er "
                 "bündig sitzt; nicht tiefer. Die Temperaturen sind übliche Richtwerte.", TEXT),
       tabelle([

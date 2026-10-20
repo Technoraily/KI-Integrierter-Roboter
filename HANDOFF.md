@@ -16,10 +16,10 @@
 
 ## Offen
 - Nutzer fragt Opa nach Teilen. Prüfen im Korb: GT2-Ritzel nur 6 mm breit (nötig 10-mm-Riemen), nur 1 Welle statt 3, M3×10 Torx wohl streichen, Sicherung 3 A?, Mean Well 350 W zu gross (nötig 24 V ab 5 A), zweiter Motor 60 mm neben dem vorhandenen?
-- Toleranztest noch auszuwerten: Reihe B (Welle Ø 5/8), C (Einschmelzgewinde M3/M4), M3-Durchgang; SW_LOCH 9,5 und H_INNEN 58 prüfen. TMC2209-Vref für 60-mm-Motor offen (steht als Offen in der Anleitung). «CAD immer als Skript» noch nicht in CLAUDE.md (Nutzer fragen). Rückfragen: Wicklungswiderstand, Schultermotor Doppelwelle?, Schrauben M3 × 20/25/30?
+- Toleranztest noch auszuwerten: Reihe B (Welle Ø 5/8), C nur M4 (M3 = 4,0 mm erledigt 20.10.), M3-Durchgang; SW_LOCH 9,5 und H_INNEN 58 prüfen. TMC2209-Vref für 60-mm-Motor offen (steht als Offen in der Anleitung). «CAD immer als Skript» noch nicht in CLAUDE.md (Nutzer fragen). Rückfragen: Wicklungswiderstand, Schultermotor Doppelwelle?, Schrauben M3 × 20/25/30?
 
 ## Nächster Schritt
-Messwerte Reihe B/C/M3-Durchgang vom Nutzer holen und eintragen (Kerbe = linker Rand, kleinstes Mass links); J2-Anleitung ggf. nach Testdruck korrigieren; Opa-Liste durchgehen, Korb bereinigen; Motorprüfstand drucken und messen, danach Lastrechnung nachführen.
+Messwerte Reihe B/C-M4/M3-Durchgang vom Nutzer holen und eintragen (Kerbe = linker Rand, kleinstes Mass links); J2-Anleitung ggf. nach Testdruck korrigieren; Opa-Liste durchgehen, Korb bereinigen; Motorprüfstand drucken und messen, danach Lastrechnung nachführen.
 
 ## Dateien
 Fusion «Claude Roboterarm v1» (J2), «Roboterarm Gesamt NUR TEST v1» (Rohbau), «Nema 17 Prüfstand 40mm»; Repo github.com/Technoraily/KI-Integrierter-Roboter

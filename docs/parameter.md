@@ -50,5 +50,5 @@ Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2). Testteil: 
 | `tol_lagersitz_stehend` | > 0,30 mm (gemessen 18.10.) | waagrechte Bohrung (Druck hochkant, «Saggen» der Decke): 22,10 / 22,20 / 22,30 passten alle nicht |
 | `tol_passung` | 0,10 mm (gemessen 18.10., Reihe D, Zapfen Ø 10) | **Standard für Haltesitz** (Zentrierung, Formschluss, Zapfen bleibt von selbst): Loch Ø 10,10 mm. Zapfen nicht drehbar, von Hand nur streng wieder herauszubekommen |
 | `tol_passung_steck` | 0,20 mm (gemessen 18.10., Reihe D) | **Steckpassung** (oft lösbar, drehbar): Loch Ø 10,20 mm. Von Hand einpressbar, fällt nicht heraus, lässt sich aber drehen (kein Halt gegen Verdrehen). 10,30 mm fiel fast heraus, 10,40 mm sitzt lose |
-| `d_einschmelz_M3` | 4,0 mm (Startwert) | Bohrung für M3-Einschmelzgewinde |
+| `d_einschmelz_M3` | 4,0 mm (gemessen 20.10., Reihe C, mit Lötkolben) | Bohrung für M3-Einschmelzgewinde (Messing Ø 5 × 4 mm): 4,0 mm sitzt mit Wärme am besten. 4,2 mm liess sich kalt nicht mehr eindrücken, hält aber warm schlechter; 4,4 mm hat keinen Halt. Kaltes Eindrücken sagt also nichts über den warmen Sitz |
 | `d_einschmelz_M4` | offen | Bohrung für M4-Einschmelzgewinde |
