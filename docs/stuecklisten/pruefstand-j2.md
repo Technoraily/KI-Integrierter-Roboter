@@ -60,7 +60,7 @@ Die Scheiben 1.7 bis 1.9 erst drucken, wenn die gekauften Ritzel nachgemessen si
 | 2.5 | Riemen HTD-3M geschlossen, 15 mm breit, 252 mm (84 Zähne) | 1 | 1 | – | 6,09 | im Warenkorb (Carol Store, Variante 15 mm / 252 mm) |
 | 2.6 | Riemen HTD-5M geschlossen, 15 mm breit, 525 mm (105 Zähne) | 1 | 1 | – | 2,76 | im Warenkorb (Variante 15 mm / 5M-525 mm geprüft) |
 | 2.7 | Rillenkugellager 608 (8 × 22 × 7 mm): 6 in den Wangen, 2 in der 5M-Spannrolle, 2 als 3M-Spannrolle | 10 | 10–20 | `608 2RS bearing 10pcs` | 4–8 | da (ausgewählt: 608ZZ; 25.10.: Kugellager vorhanden) |
-| 2.8 | Präzisionswelle 8 mm, auf 70 mm abgelängt, mit angefeilten Flächen | 3 | 4 × 100 mm | `linear shaft 8mm 100mm` | 8 | offen, nicht im Warenkorb (alternativ Baumarkt, Rundstahl 8 mm) |
+| 2.8 | Präzisionswelle 8 mm, auf 70 mm abgelängt, mit angefeilten Flächen | 3 | 4 × 100 mm | `linear shaft 8mm 100mm` | 8 | da (Wellen vom Opa, Nutzer 25.10.; Länge und Durchmesser mit der Schieblehre prüfen) |
 | 2.9 | Sechskantschraube M8 × 90 mit Schaft (Teilgewinde) – Achse der Spannrollen | 2 | 2 | Baumarkt | 2 | im Warenkorb (DIN 931, Edelstahl 316, M8, 90 mm, 2 Stück, 3,83 CHF) |
 
 ## 3 Schrauben, Muttern, Gewindeeinsätze
@@ -96,7 +96,7 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 | 4.3 | Arduino Uno mit CNC-Shield | 1 | – | da |
 | 4.4 | Netzteil 24 V: **Mean Well LRS-350-24** (24 V, 14,6 A, 350 W, offenes Netzteil mit Schraubklemmen, Datenblatt `docs/LRS-350.pdf`). Ersetzt das Tischnetzteil; Umschalter 115/230 V auf 230 V, Ausgang auf 24,0 V einstellen | 1 | – | da (25.10.2026), Typenschild bestätigen |
 | 4.5 | Adapter Hohlstecker auf Schraubklemmen | – | – | entfällt (Netzteil hat Schraubklemmen) |
-| 4.6 | Motorkabel, 4-polig, passend zum Stecker am Motor und zur Stiftleiste am Shield | 1 | 2 | klären |
+| 4.6 | Motorkabel: Der Motor hat 4 fest angebrachte Kabel, an deren Enden kommen Dupont-Buchsenkontakte in ein 4-poliges Dupont-Gehäuse, das auf die Stiftleiste am Shield passt | 1 | – | Dupont-Set und Zange SN-58B im Warenkorb |
 | 4.7 | USB-Kabel zum Uno (USB-A auf USB-B) | 1 | 2 | da |
 | 4.8 | Litze 1,00 mm² (Aufdruck: Huber+Suhner Radox 155), rot und schwarz, je 0,5 m (Netzteil → Shield) | 1 | – | da |
 | 4.9 | PC mit GRBL-Sender oder Arduino-IDE | 1 | – | da |
@@ -115,13 +115,13 @@ Der Treiber läuft auf dem CNC-Shield an 24 V. Wie der Strom eingestellt wird, w
 | Pos. | Teil | Wofür | ca. CHF | Status |
 |---|---|---|---|---|
 | 5.1 | Messuhr 0,01 mm, Schaft Ø 8 mm, Messweg 10 mm | Umkehrspiel, Steifigkeit, Haltetest | 12 mit Stativ | da (Messuhr, 25.10.) |
-| 5.2 | Magnet- oder Tischstativ zur Messuhr | zweite Messstelle am Nabenbund (ohne Stativ bleibt eine Unsicherheit) | in 5.1 | klären |
+| 5.2 | Magnet- oder Tischstativ zur Messuhr | zweite Messstelle am Nabenbund (ohne Stativ bleibt eine Unsicherheit) | in 5.1 | da (gedruckter Messuhrhalter, Messuhr steht darauf; Nutzer 25.10.) |
 | 5.3 | Koffer- oder Federwaage bis mindestens 10 kg | Wechsellast ±2 Nm; Gewichte abwiegen | 4 | da (Kofferwaage, 25.10.) |
 | 5.4 | Küchenwaage | kleine Gewichte, Motorvermessung | – | da |
 | 5.5 | Gewichte: 1,07 kg · 5,9 kg · 6,3 kg | Wechsellast, Haltetest, volles Moment – z. B. Wasserflaschen in einer Tragtasche, mit der Kofferwaage abgewogen | – | Haushalt |
 | 5.6 | Schnur oder Schlaufe (trägt 10 kg) und ein Haken oder eine Schraube M8 für die Lastbohrung | Gewicht anhängen, Fangschnur | – | Haushalt |
-| 5.7 | Multimeter | Treiberstrom einstellen, Wicklungswiderstand | 10–15 | klären |
-| 5.8 | Schieblehre | Ritzel nachmessen, Testdruck prüfen | 8–10 | klären |
+| 5.7 | Multimeter | Treiberstrom einstellen, Wicklungswiderstand | 10–15 | da (Nutzer 25.10.) |
+| 5.8 | Schieblehre | Ritzel nachmessen, Testdruck prüfen | 8–10 | da (Nutzer 25.10.) |
 | 5.9 | Infrarot-Thermometer | Erwärmung von Motor und Wange im Haltetest (verzichtbar: Handprobe und Zeit notieren) | 7 | verzichtbar |
 
 ## 6 Aufstellung
@@ -177,8 +177,8 @@ Stand 25.10.2026, nach Abgleich mit dem AliExpress-Warenkorb (Produktseiten gele
 | Ritzel GT2 20 Z, Bohrung 5 mm, 10 mm breit, mit Nabe | 1 | im Warenkorb |
 | **Ritzel HTD-5M 18 Z, Bohrung 8 mm glatt, 15 mm breit, mit Nabe** | 1 | im Warenkorb |
 | Riemen GT2 10 × 200 / HTD-3M 15 × 252 / HTD-5M 15 × 525 | je 1 | im Warenkorb |
-| **Präzisionswelle 8 mm × 100 mm** (oder Rundstahl 8 mm vom Baumarkt) | 4 | **offen**, nicht im Warenkorb |
+| Präzisionswelle 8 mm, 3 × 70 mm | 3 | da (vom Opa) |
 
 Im Warenkorb, aber nicht in der Stückliste: Dupont-Set 310 Stück (2,90 CHF), Zange SN-58B (5,68 CHF; Produktbild: Backen für 0,25–1,5 mm² / AWG 24–16, crimpt offene Kontakte wie Dupont, Kfz-Stecker, Flachsteckhülsen und Ringschuhe; für Aderendhülsen vermutlich ungeeignet, dafür gibt es Zangen mit eckigen Backen), Wärme-Einsatzmuttern M3 × 4 × 5 (100 Stück, 3,54 CHF; alle 41 Einsätze des Prüfstands sind schon gesetzt, also Reserve für spätere Teile), iPhone-Hülle und AirPods-Hülle (nicht fürs Projekt).
 
-Dazu kommt, was sich beim Nachsehen als fehlend herausstellt (Status *klären*): Motorkabel (Dupont-Set und SN-58B im Warenkorb), Aderendhülsen mit passender Zange, Kaltgerätekabel C13, Multimeter, Schieblehre, Zwingen, Werkzeug, Filament.
+Dazu kommt, was sich beim Nachsehen als fehlend herausstellt (Status *klären*): Motorkabel (Dupont-Set und SN-58B im Warenkorb), Aderendhülsen mit passender Zange (Opa fragen), Kaltgerätekabel C13, Zwingen, Werkzeug, Filament.
