@@ -55,10 +55,10 @@ Die Scheiben 1.7 bis 1.9 erst drucken, wenn die gekauften Ritzel nachgemessen si
 |---|---|---|---|---|---|---|
 | 2.1 | Ritzel GT2, 20 Zähne, Bohrung 5 mm, für 10-mm-Riemen, **mit Nabe** (2 Gewindestifte), mit Bordscheiben | 1 | 2 | `GT2 pulley 20 teeth bore 5mm width 10mm` | 3 | **im Warenkorb, aber falsch**: Variante «20T Bore 5mm 2PCS» ist 6 mm breit (Titel «6 mm Breite»), für den 10-mm-Riemen wird 10 mm Breite gebraucht. Umbestellen (Stand 25.10.2026). |
 | 2.2 | Ritzel HTD-3M, 16 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben, **mit Nabe** (ca. 6 mm; ohne Nabe ginge auch, nur der Distanzring wird angepasst) | 1 | 1 | `HTD 3M pulley 16 teeth bore 8mm width 15mm` | 4 | im Warenkorb (Wanco Motor, «K-Typ» mit Nabe, Variante 8 mm / 16 mm / 16 Z auf Produktseite lieferbar). Zeichnung: Nabe Ø 18 mm, Gesamtlänge 29 mm bei 15-mm-Riemen, 2 Gewindestifte M4. Die Nabe ist also etwa 13 mm lang, nicht «ca. 6 mm»: Distanzring und Bauraum im CAD prüfen. |
-| 2.3 | Ritzel HTD-5M, 18 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben und **Nabe zwingend** (ca. Ø 20 × 8 mm, 2 Gewindestifte; die Hülse der 64er-Scheibe greift darüber) | 1 | 1 | `HTD 5M pulley 18 teeth bore 8mm width 15mm` | 5 | **klären**: in der Liste der 10 Warenkorb-Positionen (25.10.) nicht gefunden; Nutzer sagt, es sei vorhanden → Angebot nennen und Bohrung (8 mm glatt), Breite (15 mm) und Nabe prüfen. Zum Vergleich: «HTD 5M AF Typ 16T/18Teeth» (9,79 CHF) hat glatte Bohrung bis 15 mm; die Variante «AF-Typ mit Keilnut» (3,28 CHF) hat eine Passfedernut und passt nicht. |
-| 2.4 | Riemen GT2 geschlossen, 10 mm breit, 200 mm (100 Zähne) | 1 | – | – | – | da |
-| 2.5 | Riemen HTD-3M geschlossen, 15 mm breit, 252 mm (84 Zähne) | 1 | – | – | – | da |
-| 2.6 | Riemen HTD-5M geschlossen, 15 mm breit, 525 mm (105 Zähne) | 1 | – | – | – | da |
+| 2.3 | Ritzel HTD-5M, 18 Zähne, Bohrung 8 mm, für 15-mm-Riemen, mit Bordscheiben und **Nabe zwingend** (ca. Ø 20 × 8 mm, 2 Gewindestifte; die Hülse der 64er-Scheibe greift darüber) | 1 | 1 | `HTD 5M pulley 18 teeth bore 8mm width 15mm` | 5 | im Warenkorb (JHong Transmission Store, 7,12 CHF; Variante 8 mm glatte Bohrung / Riemenbreite 15 mm / 18 Zähne auf der Produktseite vorhanden). Bilder zeigen Nabe mit 2 Gewindestiften und Bordscheibe; **Masse der Nabe nennt der Händler nicht** → beim Eintreffen mit der Schieblehre messen (verlangt: ca. Ø 20 × 8 mm). |
+| 2.4 | Riemen GT2 geschlossen, 10 mm breit, 200 mm (100 Zähne) | 1 | 1 | – | 2,32 | im Warenkorb (XIAOXI 3D, Variante 10 mm / 200 mm geprüft) |
+| 2.5 | Riemen HTD-3M geschlossen, 15 mm breit, 252 mm (84 Zähne) | 1 | 1 | – | 6,09 | im Warenkorb (Carol Store, Variante 15 mm / 252 mm) |
+| 2.6 | Riemen HTD-5M geschlossen, 15 mm breit, 525 mm (105 Zähne) | 1 | 1 | – | 2,76 | im Warenkorb (Variante 15 mm / 5M-525 mm geprüft) |
 | 2.7 | Rillenkugellager 608 (8 × 22 × 7 mm): 6 in den Wangen, 2 in der 5M-Spannrolle, 2 als 3M-Spannrolle | 10 | 10–20 | `608 2RS bearing 10pcs` | 4–8 | da (ausgewählt: 608ZZ; 25.10.: Kugellager vorhanden) |
 | 2.8 | Präzisionswelle 8 mm, auf 70 mm abgelängt, mit angefeilten Flächen | 3 | 4 × 100 mm | `linear shaft 8mm 100mm` | 8 | offen, nicht im Warenkorb (alternativ Baumarkt, Rundstahl 8 mm) |
 | 2.9 | Sechskantschraube M8 × 90 mit Schaft (Teilgewinde) – Achse der Spannrollen | 2 | 2 | Baumarkt | 2 | im Warenkorb (DIN 931, Edelstahl 316, M8, 90 mm, 2 Stück, 3,83 CHF) |
@@ -175,9 +175,10 @@ Stand 25.10.2026, nach Abgleich mit dem AliExpress-Warenkorb (Produktseiten gele
 | Mutter M8 selbstsichernd (Flansch-Nylock) | 2 (5 im Paket) | im Warenkorb |
 | TMC2209 mit Kühlkörper | 2 | im Warenkorb |
 | **Ritzel GT2 20 Z, Bohrung 5 mm, 10 mm breit, mit Nabe** | 1 (+1 Reserve) | **offen** (Warenkorb-Variante ist 6 mm breit, falsch) |
-| **Ritzel HTD-5M 18 Z, Bohrung 8 mm glatt, 15 mm breit, mit Nabe** | 1 | **klären**: in der Warenkorb-Liste nicht gefunden, laut Nutzer vorhanden |
+| **Ritzel HTD-5M 18 Z, Bohrung 8 mm glatt, 15 mm breit, mit Nabe** | 1 | im Warenkorb |
+| Riemen GT2 10 × 200 / HTD-3M 15 × 252 / HTD-5M 15 × 525 | je 1 | im Warenkorb |
 | **Präzisionswelle 8 mm × 100 mm** (oder Rundstahl 8 mm vom Baumarkt) | 4 | **offen**, nicht im Warenkorb |
 
-Im Warenkorb, aber nicht in der Stückliste: Dupont-Set 310 Stück (2,90 CHF), Zange SN-58B (5,68 CHF; Produktbild: Backen für 0,25–1,5 mm² / AWG 24–16, crimpt offene Kontakte wie Dupont, Kfz-Stecker, Flachsteckhülsen und Ringschuhe; für Aderendhülsen vermutlich ungeeignet, dafür gibt es Zangen mit eckigen Backen), HTD-3M-Riemen 15 mm / 252 mm (6,09 CHF; Riemen steht als «da», eventuell doppelt), iPhone-Hülle und AirPods-Hülle (nicht fürs Projekt).
+Im Warenkorb, aber nicht in der Stückliste: Dupont-Set 310 Stück (2,90 CHF), Zange SN-58B (5,68 CHF; Produktbild: Backen für 0,25–1,5 mm² / AWG 24–16, crimpt offene Kontakte wie Dupont, Kfz-Stecker, Flachsteckhülsen und Ringschuhe; für Aderendhülsen vermutlich ungeeignet, dafür gibt es Zangen mit eckigen Backen), Wärme-Einsatzmuttern M3 × 4 × 5 (100 Stück, 3,54 CHF; alle 41 Einsätze des Prüfstands sind schon gesetzt, also Reserve für spätere Teile), iPhone-Hülle und AirPods-Hülle (nicht fürs Projekt).
 
 Dazu kommt, was sich beim Nachsehen als fehlend herausstellt (Status *klären*): Motorkabel (Dupont-Set und SN-58B im Warenkorb), Aderendhülsen mit passender Zange, Kaltgerätekabel C13, Multimeter, Schieblehre, Zwingen, Werkzeug, Filament.
