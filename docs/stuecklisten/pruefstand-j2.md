@@ -139,18 +139,18 @@ Bohrbild und Befestigung: [Skizze](../bilder/pruefstand_befestigung.png).
 
 | Pos. | Werkzeug | Wofür | Status |
 |---|---|---|---|
-| 7.1 | Lötkolben (am besten mit Einschmelzspitze M3) | 41 Einschmelzgewinde setzen | klären |
-| 7.2 | Innensechskant 2,5 mm, lang, mit Kugelkopf | alle M3-Schrauben; Motorschrauben und Blockierstift durch die rechte Wange | klären |
-| 7.3 | Innensechskant 3 mm | M4 × 16 | klären |
-| 7.4 | Innensechskant 1,5 und 2 mm | Gewindestifte der gekauften Ritzel | klären |
-| 7.5 | Gabel- oder Ringschlüssel 13 mm, 2 Stück | M8-Schrauben der Spannrollen | klären |
-| 7.6 | Metallsäge | Wellen auf 70 mm ablängen | klären |
-| 7.7 | Feile (flach) | Wellenenden entgraten, Flächen für die Gewindestifte anfeilen | klären |
-| 7.8 | Schraubstock oder Zwinge zum Einspannen der Wellen | Sägen und Feilen | klären |
-| 7.9 | Bohrmaschine oder Akkuschrauber | Brett bohren, Bohrungen aufreiben | klären |
-| 7.10 | Bohrer 3,0 · 3,5 · 4,0 · 6,5 · 8,0 · 10 mm | 3,0 Blockierbohrungen · 3,5 Brett · 4,0 Mitnahmebohrungen · 6,5 Senkung im Brett · 8,0 Naben und Messuhrhalter · 10 Löcher für die Stellschrauben | klären |
-| 7.11 | Kreuzschlitz- oder Schlitzschraubendreher, klein | Klemmen am CNC-Shield und am Adapter | klären |
-| 7.12 | Seitenschneider, Abisolierzange | Verkabelung | klären |
+| 7.1 | Lötkolben (am besten mit Einschmelzspitze M3) | 41 Einschmelzgewinde setzen | da (Nutzer 25.10.) |
+| 7.2 | Innensechskant 2,5 mm, lang, mit Kugelkopf | alle M3-Schrauben; Motorschrauben und Blockierstift durch die rechte Wange | da (Nutzer 25.10.) |
+| 7.3 | Innensechskant 3 mm | M4 × 16 | da (Nutzer 25.10.) |
+| 7.4 | Innensechskant 1,5 und 2 mm | Gewindestifte der gekauften Ritzel | da (Nutzer 25.10.) |
+| 7.5 | Gabel- oder Ringschlüssel 13 mm, 2 Stück | M8-Schrauben der Spannrollen | da (Nutzer 25.10.) |
+| 7.6 | Metallsäge | Wellen auf 70 mm ablängen | da (Nutzer 25.10.) |
+| 7.7 | Feile (flach) | Wellenenden entgraten, Flächen für die Gewindestifte anfeilen | da (Nutzer 25.10.) |
+| 7.8 | Schraubstock oder Zwinge zum Einspannen der Wellen | Sägen und Feilen | da (Nutzer 25.10.) |
+| 7.9 | Bohrmaschine oder Akkuschrauber | Brett bohren, Bohrungen aufreiben | da (Nutzer 25.10.) |
+| 7.10 | Bohrer 3,0 · 3,5 · 4,0 · 6,5 · 8,0 · 10 mm | 3,0 Blockierbohrungen · 3,5 Brett · 4,0 Mitnahmebohrungen · 6,5 Senkung im Brett · 8,0 Naben und Messuhrhalter · 10 Löcher für die Stellschrauben | da (Nutzer 25.10.) |
+| 7.11 | Kreuzschlitz- oder Schlitzschraubendreher, klein | Klemmen am CNC-Shield und am Adapter | da (Nutzer 25.10.) |
+| 7.12 | Seitenschneider, Abisolierzange | Verkabelung | da (Nutzer 25.10.) |
 | 7.13 | 3D-Drucker BambuLab A1 | Druckteile | da |
 
 ## 8 Verbrauchsmaterial
