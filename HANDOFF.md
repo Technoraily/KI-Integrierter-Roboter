@@ -10,7 +10,7 @@
 ## Entscheidungen
 - 1 kg Nutzlast überall; Schiene als 7. Achse; nur Zahnriemen; Waagebalken; Open Loop. 24 V: rot +, schwarz 0; Kfz-Sicherung 3 A in +24 V; 230-V-Seite nur Entwurf, Elektriker (Opa) prüft/gibt frei.
 ## Offen
-- AliExpress-Warenkorb 25.10. geprüft (Produktseiten, Stückliste nachgeführt): GT2-Ritzel im Warenkorb ist 6 mm breit, nötig 10 mm (umbestellen). Warenkorb hat 14 Artikel in 2 Gruppen (Gruppe «globale Verkäufer» lädt erst nach Scrollen): dort HTD-5M-Ritzel (8 mm/15 mm/18 Z, Nabenmasse unbekannt → messen), alle 3 Riemen, M3-Einsätze 100 Stück. Fehlen: 4 Wellen 8 × 100. HTD-3M-Ritzel (Nabe Ø 18, ca. 13 mm lang) gegen CAD prüfen. SN-58B crimpt Dupont, Flachstecker, Ringschuhe (0,25–1,5 mm²), vermutlich keine Aderendhülsen.
+- AliExpress-Warenkorb 25.10. geprüft (Produktseiten, Stückliste nachgeführt): GT2-Ritzel (XIAOXI, 5 mm / 10 mm) ersetzt, jetzt richtig. Warenkorb hat 14 Artikel in 2 Gruppen (Gruppe «globale Verkäufer» lädt erst nach Scrollen): dort HTD-5M-Ritzel (8 mm/15 mm/18 Z, Nabenmasse unbekannt → messen), alle 3 Riemen, M3-Einsätze 100 Stück. Fehlen: 4 Wellen 8 × 100. HTD-3M-Ritzel (Nabe Ø 18, ca. 13 mm lang) gegen CAD prüfen. SN-58B crimpt Dupont, Flachstecker, Ringschuhe (0,25–1,5 mm²), vermutlich keine Aderendhülsen.
 - Typenschild LRS-350-24 bestätigen (230-V-Umschalter!). Halter F2: Standard/Mini. Aderendhülsen, Kaltgerätekabel C13, Schalter/Gehäuse 230 V mit Opa klären. Vref/Jumper TMC2209 eintragen. docs/LRS-350.pdf bleibt lokal (nicht im Repo), Rückfrage Urheberrecht offen. QET-Menü französisch (Konfiguration → Sprache).
 - Aufreiben: Z90-/Hebelbohrung 8,0, Z72 3,0, Z64 3,9. Brett bohren, Spannrollen/Hülsen/Z64 (gedruckt?) klären.
 ## Nächster Schritt
