@@ -1,19 +1,19 @@
-# HANDOFF – KI-Integrierter Roboterarm (Stand 20.10.2026 abends; Details: README.md, docs/konzept.md, index.md)
+# HANDOFF – KI-Integrierter Roboterarm (Stand 25.10.2026; Details: README.md, docs/konzept.md, index.md)
 ## Ziel
 6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17, BTT Octopus + grblHAL) auf 1000-mm-Schiene, später Kamera-KI und Greiferwechsel. Aktuell: Prüfstand J2 aufbauen, dann Motoren vermessen.
 ## Stand
-- J2-Prüfstand (CAD 8/10, cad/skripte/j2_pruefstand.py) wird gebaut. Bauanleitung docs/bauanleitung/Bauanleitung_J2_Pruefstand.pdf + Druckeinstellungen.md im J2-STL-Ordner (Startwerte; Montagereihenfolge nur aus CAD, nicht real getestet). Skizze der Einsatzlöcher docs/bilder/einschmelz_positionen.png.
-- 20.10. am Teil: alle 41 M3-Einschmelzgewinde gesetzt (Bohrung 4,0 mm bestätigt mit Lötkolben). Längen: 5 mm obere Querträger + Z90-Hebelkreis; 4 mm Z72-Nabe, Hebelnabe, Wangen-Stellschrauben, Grundbrett; 3 mm Rest. Rahmen (2 Wangen + 4 Querträger) verschraubt; Lager in Wangen, Z90+Lasthebel+Messzeiger, Messuhrhalter an rechter Wange montiert; Stellschrauben- und Passprobe gemacht. Spalt von ca. 4 mm Tiefe (Papier) an einem Hebelloch der Z90: akzeptiert.
-- Toleranztest 18.10.: Lagersitz 608 liegend Ø 22,20; Zapfen Ø 10 Haltesitz 10,10 / Steckpassung 10,20 (docs/parameter.md, CLAUDE.md).
-- Motorprüfstand (8/10): STL cad/export/stl/Motorpruefstand/, Anleitung-PDF docs/bauanleitung/, Messungen docs/motorvermessung.md. Rohbau: cad/skripte/rohbau_gesamt.py.
-- docs/opa-liste-j2-pruefstand.pdf: Teileliste «Opa hat» (AliExpress-Korb 49.74 CHF, StepperOnline-Korb). Nichts bestellt.
-- Sync über GitHub: .claude/hooks/sync-*.sh. Lokal per .gitignore: Bambu Studio Saves, pruefstand-j2*.docx (Rückfrage: veröffentlichen?).
+- J2-Prüfstand (CAD 8/10, cad/skripte/j2_pruefstand.py): Rahmen, Z90 mit Hebel/Zeiger und Messuhrhalter montiert, alle 41 M3-Einsätze gesetzt. Bauanleitung docs/bauanleitung/Bauanleitung_J2_Pruefstand.pdf, Druckeinstellungen im J2-STL-Ordner.
+- Toleranzen (CLAUDE.md, docs/parameter.md): Lagersitz 608 liegend Ø 22,20; Zapfen Ø 10 Haltesitz 10,10; M3-Einsatz Bohrung 4,0.
+- Motorprüfstand (8/10): STL cad/export/stl/Motorpruefstand/, Messungen docs/motorvermessung.md.
+- 25.10. Elektrik-Schema J2: Verdrahtungsliste docs/schema/verdrahtung-j2.md (Grundlage). KiCad 10: cad/skripte/kicad_j2_schema.py → cad/kicad/j2-pruefstand/, PDF docs/schema/j2-pruefstand-kicad.pdf (ERC ohne Fehler, Netzliste geprüft). QElectroTech 0.100: cad/skripte/qet_j2_schema.py → cad/qet/j2-pruefstand.qet, Vorschau docs/schema/j2-pruefstand-qet-vorschau.png (in QET geladen, Verbindungen stimmen). Beide installiert (winget). Kein MCP nötig, beide per Skript erzeugt.
+- Elektrik-Bestand (Nutzer): Mean Well LRS-350-24 (docs/LRS-350.pdf), Einbaukaltstecker C14, 1 Sicherung T 3,15 A 250 V + Halter, Kfz-Sicherung 3 A + Halter, Litze Radox 155 1,00 mm² rot/schwarz, Ringschuhe, Arduino Uno + USB-Kabel, Schrauben, Lager, Holzplatte, Messuhr, Kofferwaage.
 ## Entscheidungen
-- 1 kg Nutzlast überall; Schiene als 7. Achse; nur Zahnriemen; Waagebalken statt Messhebel; Closed Loop vorerst nein (Open Loop mit Reserve). Ausgleichsfeder J2 nur bei Bedarf.
+- 1 kg Nutzlast überall; Schiene als 7. Achse; nur Zahnriemen; Waagebalken; Open Loop. 24 V: rot +, schwarz 0; Kfz-Sicherung 3 A in +24 V; 230-V-Seite nur Entwurf, Elektriker (Opa) prüft/gibt frei.
 ## Offen
-- Fehlt zum Zusammenbau: 3 Wellen (zuschneiden, anfeilen), 3 Ritzel (GT2 20 Z, 3M 16 Z, 5M 18 Z mit Nabe), 3 Riemen, M8 × 90 mit Muttern/Scheiben (2), M4 × 16 (2), M3 × 12 (4, Motor), Brett bohren, Spannrollen/Hülsen/Distanzringe/Z64 (gedruckt? klären), TMC2209, Netzteil 24 V, Messuhr, Kofferwaage. Aufreiben: Z90-/Hebelbohrung 8,0, Z72 Blockierlöcher 3,0, Z64 Mitnahme 3,9. Opa-Korb prüfen (GT2-Ritzel nur 6 mm breit, nur 1 Welle, Mean Well zu gross).
-- Toleranztest: Reihe B (Welle 5/8), C nur M4, M3-Durchgang; SW_LOCH 9,5, H_INNEN 58. TMC2209-Vref offen. «CAD immer als Skript» in CLAUDE.md? (Nutzer fragen).
+- AliExpress-Warenkorb 25.10. geprüft (Produktseiten, Stückliste nachgeführt): GT2-Ritzel im Warenkorb ist 6 mm breit, nötig 10 mm (umbestellen). Fehlt: HTD-5M-Ritzel 18 Z (8 mm glatt, 15 mm, Nabe), 4 Wellen 8 × 100. HTD-3M-Ritzel (Nabe Ø 18, ca. 13 mm lang) gegen CAD prüfen. Riemen stehen als «da», 3M-Riemen im Warenkorb evtl. doppelt. SN-58B ist Kfz-Zange, keine Dupont-Zange.
+- Typenschild LRS-350-24 bestätigen (230-V-Umschalter!). Halter F2: Standard/Mini. Aderendhülsen, Kaltgerätekabel C13, Schalter/Gehäuse 230 V mit Opa klären. Vref/Jumper TMC2209 eintragen. docs/LRS-350.pdf bleibt lokal (nicht im Repo), Rückfrage Urheberrecht offen. QET-Menü französisch (Konfiguration → Sprache).
+- Aufreiben: Z90-/Hebelbohrung 8,0, Z72 3,0, Z64 3,9. Brett bohren, Spannrollen/Hülsen/Z64 (gedruckt?) klären.
 ## Nächster Schritt
-Fehlende Kaufteile besorgen (Ritzel zuerst nachmessen), Wellen vorbereiten, dann Zusammenbau nach Anleitung; Messwerte Reihe B/C-M4/M3-Durchgang eintragen; Motorprüfstand drucken und messen.
+Opa zeigt QET-Plan/PDF, Rückmeldung einarbeiten; Typenschild bestätigen; Schema und Stückliste committen (nach Rückfrage); dann Zusammenbau J2 und Motor anschliessen (Vref messen).
 ## Dateien
-Fusion «Claude Roboterarm v1» (J2), «Roboterarm Gesamt NUR TEST v1» (Rohbau); Repo github.com/Technoraily/KI-Integrierter-Roboter
+Fusion «Claude Roboterarm v1» (J2); Repo github.com/Technoraily/KI-Integrierter-Roboter

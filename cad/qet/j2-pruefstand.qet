@@ -1,0 +1,263 @@
+<project title="J2-Pruefstand Stromlaufplan" version="0.100.0">
+<properties/>
+<newdiagrams>
+  <border rowsize="80" rows="8" displaycols="true" cols="17" colsize="60" displayrows="true"/>
+  <inset displayAt="bottom" folio="%id/%total" indexrev="" plant="" date="null" filename="" author="" locmach="" title="" version="" auto_page_num=""/>
+</newdiagrams>
+<diagram freezeNewElement="false" cols="17" folio="%id/%total" version="0.100.0" indexrev="" date="null" author="" height="640" freezeNewConductor="false" title="J2-Pruefstand: Stromlaufplan (Entwurf)" auto_page_num="" displaycols="true" filename="" colsize="60" order="1" displayrows="true" locmach="" rows="8" plant="" rowsize="80" displayAt="bottom">
+<defaultconductor condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" bus="" dash-size="1" numsize="9" horizontal-alignment="AlignBottom" function="" conductor_color="" conductor_section="" text_color="#000000" color2="#000000" tension_protocol="" displaytext="0" formula="" vertirotatetext="0" num="" type="multi"/>
+<elements>
+<element freezeLabel="false" z="10" y="90" x="200" prefix="" type="embed://import/j2/netzeingang.elmt" orientation="0" uuid="{a44bdc52-baad-518b-9e54-26bbedb54492}">
+  <terminals><terminal y="16" x="-30" name="" orientation="2" id="0" number="" nameHidden="0"/><terminal y="16" x="0" name="" orientation="2" id="1" number="" nameHidden="0"/><terminal y="16" x="30" name="" orientation="2" id="2" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">X1</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="200" x="170" prefix="" type="embed://import/j2/sicherung_230.elmt" orientation="0" uuid="{07cdf283-9435-5808-9542-8b0526ef5224}">
+  <terminals><terminal y="-16" x="0" name="" orientation="0" id="3" number="" nameHidden="0"/><terminal y="16" x="0" name="" orientation="2" id="4" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">F1</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="360" x="200" prefix="" type="embed://import/j2/netzteil.elmt" orientation="0" uuid="{77655e62-638c-56ef-9793-9681b0187bec}">
+  <terminals><terminal y="-46" x="-30" name="" orientation="0" id="5" number="" nameHidden="0"/><terminal y="-46" x="0" name="" orientation="0" id="6" number="" nameHidden="0"/><terminal y="-46" x="30" name="" orientation="0" id="7" number="" nameHidden="0"/><terminal y="-20" x="66" name="" orientation="1" id="8" number="" nameHidden="0"/><terminal y="20" x="66" name="" orientation="1" id="9" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">T1</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="340" x="360" prefix="" type="embed://import/j2/sicherung_24.elmt" orientation="0" uuid="{043db167-471b-57dd-a3cd-9d22b2321d3f}">
+  <terminals><terminal y="0" x="-16" name="" orientation="3" id="10" number="" nameHidden="0"/><terminal y="0" x="16" name="" orientation="1" id="11" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">F2</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="360" x="580" prefix="" type="embed://import/j2/shield.elmt" orientation="0" uuid="{35845243-f384-57bf-a154-be292ec75b67}">
+  <terminals><terminal y="-20" x="-86" name="" orientation="3" id="12" number="" nameHidden="0"/><terminal y="20" x="-86" name="" orientation="3" id="13" number="" nameHidden="0"/><terminal y="-30" x="86" name="" orientation="1" id="14" number="" nameHidden="0"/><terminal y="-10" x="86" name="" orientation="1" id="15" number="" nameHidden="0"/><terminal y="10" x="86" name="" orientation="1" id="16" number="" nameHidden="0"/><terminal y="30" x="86" name="" orientation="1" id="17" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">A2</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="360" x="800" prefix="" type="embed://import/j2/motor.elmt" orientation="0" uuid="{622d6ff7-61ad-579a-a675-a71a3a58e0bc}">
+  <terminals><terminal y="-30" x="-26" name="" orientation="3" id="18" number="" nameHidden="0"/><terminal y="-10" x="-26" name="" orientation="3" id="19" number="" nameHidden="0"/><terminal y="10" x="-26" name="" orientation="3" id="20" number="" nameHidden="0"/><terminal y="30" x="-26" name="" orientation="3" id="21" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">M1</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="500" x="400" prefix="" type="embed://import/j2/pc.elmt" orientation="0" uuid="{617b7757-3b80-55c3-9801-95b03efa5232}">
+  <terminals><terminal y="0" x="36" name="" orientation="1" id="22" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">PC1</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+<element freezeLabel="false" z="10" y="500" x="580" prefix="" type="embed://import/j2/arduino.elmt" orientation="0" uuid="{3ab20727-eda9-5f51-bd27-a3f9c1f3f6ec}">
+  <terminals><terminal y="0" x="-46" name="" orientation="3" id="23" number="" nameHidden="0"/></terminals>
+  <inputs/>
+  <elementInformations><elementInformation show="1" name="label">A1</elementInformation></elementInformations>
+  <dynamic_texts/>
+  <texts_groups/>
+</element>
+</elements>
+<conductors>
+<conductor x="0" y="0" terminal1="0" terminal2="3" type="multi" num="W10" displaytext="1" conductor_color="BN" conductor_section="" color="#823c00" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="4" terminal2="5" type="multi" num="W11" displaytext="1" conductor_color="BN" conductor_section="" color="#823c00" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="203" y="150" terminal1="1" terminal2="6" type="multi" num="W12" displaytext="1" conductor_color="BU" conductor_section="" color="#0046c8" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="233" y="175" terminal1="2" terminal2="7" type="multi" num="W13" displaytext="1" conductor_color="GNYE" conductor_section="" color="#008c00" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="8" terminal2="10" type="multi" num="W1" displaytext="1" conductor_color="RD" conductor_section="1 mm²" color="#c80000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="11" terminal2="12" type="multi" num="W2" displaytext="1" conductor_color="RD" conductor_section="1 mm²" color="#c80000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="9" terminal2="13" type="multi" num="W3" displaytext="1" conductor_color="BK" conductor_section="1 mm²" color="#000000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="14" terminal2="18" type="multi" num="W4a" displaytext="1" conductor_color="" conductor_section="" color="#000000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="15" terminal2="19" type="multi" num="W4b" displaytext="1" conductor_color="" conductor_section="" color="#000000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="16" terminal2="20" type="multi" num="W4c" displaytext="1" conductor_color="" conductor_section="" color="#000000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="17" terminal2="21" type="multi" num="W4d" displaytext="1" conductor_color="" conductor_section="" color="#000000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+<conductor x="0" y="0" terminal1="22" terminal2="23" type="multi" num="W5" displaytext="1" conductor_color="" conductor_section="" color="#000000" color2="#000000" text_color="#000000" bicolor="false" condsize="2" cable="" bus="" function="" formula="" tension_protocol="" onetextperfolio="0" vertical-alignment="AlignRight" horizontal-alignment="AlignBottom" horizrotatetext="0" vertirotatetext="0" numsize="9" dash-size="1" freezeLabel="false">
+  <sequentialNumbers/>
+</conductor>
+</conductors>
+<inputs>
+<input x="60" y="24" rotation="0" font="Liberation Sans,10,-1,5,50,0,0,0,0,0,Regular" text="230-V-SEITE (Entwurf, Elektriker prüft und gibt frei)"/>
+<input x="310" y="255" rotation="0" font="Liberation Sans,10,-1,5,50,0,0,0,0,0,Regular" text="24-V-SEITE (rot = +24 V, schwarz = 0 V, Litze 1,0 mm²)"/>
+<input x="310" y="440" rotation="0" font="Liberation Sans,10,-1,5,50,0,0,0,0,0,Regular" text="PC-ANSCHLUSS (Logik). Motorstrom nur über die 24-V-Klemme."/>
+<input x="60" y="570" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" text="Quelle: docs/schema/verdrahtung-j2.md, Stand 25.10.2026, Entwurf."/>
+<input x="60" y="585" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" text="Netzteil vor dem Anschluss des Shields auf 24,0 V einstellen. Motor nie unter Spannung ein- oder ausstecken."/>
+</inputs>
+</diagram>
+<collection>
+<category name="import">
+<names><name lang="en">Imported elements</name></names>
+<category name="j2">
+<names><name lang="de">J2-Pruefstand</name></names>
+<element name="netzeingang.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="160" height="100" hotspot_x="80" hotspot_y="50">
+    <uuid uuid="{6d24bca3-4f17-56f7-a12f-42194427c1da}"/>
+    <names><name lang="de">Einbaukaltstecker C14</name><name lang="en">Einbaukaltstecker C14</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-60" y="-20" width="120" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="X1 Einbaukaltstecker C14" x="-60" y="-38" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="230 V AC" x="-56" y="-16" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="L" x="-33" y="4" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="N" x="-3" y="4" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="PE" x="27" y="4" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{e27c02a0-27b8-5917-9a40-b45a43a41316}" name="L" x="-30" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{30f44b53-7bdb-5f17-b651-0ca1228b4eef}" name="N" x="0" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{91d8cdd7-f245-5e43-945c-bf1aebd790be}" name="PE" x="30" y="20" orientation="s" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="sicherung_230.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="100" height="80" hotspot_x="50" hotspot_y="40">
+    <uuid uuid="{796c4f53-1e83-5ed4-85b7-e6a70d0c2a43}"/>
+    <names><name lang="de">Feinsicherung T 3,15 A</name><name lang="en">Feinsicherung T 3,15 A</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-6" y="-15" width="12" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="0" y1="-15" x2="0" y2="15" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="F1" x="-76" y="-14" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="T 3,15 A 250 V" x="-76" y="-3" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="5 x 20 mm, träge" x="-76" y="8" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{2a2d6e54-00d1-5420-8377-79c00db88861}" name="1" x="0" y="-20" orientation="n" type="Generic"/>
+        <terminal uuid="{a09c140e-f511-58ab-b160-ffe02efe5cb3}" name="2" x="0" y="20" orientation="s" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="netzteil.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="200" height="160" hotspot_x="100" hotspot_y="80">
+    <uuid uuid="{c1c03840-c8b3-5a10-b74c-d903499f5ec2}"/>
+    <names><name lang="de">Netzteil Mean Well LRS-350-24</name><name lang="en">Netzteil Mean Well LRS-350-24</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-70" y="-50" width="140" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="70" y1="-50" x2="-70" y2="50" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="~" x="-62" y="-42" rotation="0" font="Liberation Sans,14,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="=" x="44" y="18" rotation="0" font="Liberation Sans,14,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="L" x="-35" y="-46" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="N" x="-5" y="-46" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="FG" x="25" y="-46" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="+V" x="46" y="-26" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="-V" x="46" y="14" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="T1 Mean Well LRS-350-24" x="-70" y="56" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="24 V / 14,6 A, Umschalter auf 230 V!" x="-70" y="68" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{e12ce6f6-fa92-5945-8505-17948087899f}" name="L" x="-30" y="-50" orientation="n" type="Generic"/>
+        <terminal uuid="{50bdc1a4-66ed-5ea3-8578-889a5985d6d8}" name="N" x="0" y="-50" orientation="n" type="Generic"/>
+        <terminal uuid="{6126697d-b4ae-5fb7-8b0c-92591397d595}" name="FG" x="30" y="-50" orientation="n" type="Generic"/>
+        <terminal uuid="{f25bf11d-1b9f-5dae-92f4-f91e774afaa3}" name="+V" x="70" y="-20" orientation="e" type="Generic"/>
+        <terminal uuid="{0bb6a3f6-e2e4-50df-bccb-2dec517275bf}" name="-V" x="70" y="20" orientation="e" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="sicherung_24.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="100" height="80" hotspot_x="50" hotspot_y="40">
+    <uuid uuid="{aef07852-ad17-5d83-ac54-9c3b5f930b37}"/>
+    <names><name lang="de">Kfz-Flachsicherung 3 A</name><name lang="en">Kfz-Flachsicherung 3 A</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-15" y="-6" width="30" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-15" y1="0" x2="15" y2="0" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="F2" x="-6" y="-24" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="Kfz-Sicherung 3 A" x="-38" y="18" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{68e377db-5472-5c56-8e91-de0cc874ed85}" name="1" x="-20" y="0" orientation="w" type="Generic"/>
+        <terminal uuid="{aeaaf307-90a3-5bab-8615-378e62cea5ae}" name="2" x="20" y="0" orientation="e" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="shield.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="220" height="160" hotspot_x="110" hotspot_y="80">
+    <uuid uuid="{c0ab8f0e-80fb-5b41-b1be-7ad5fd683ab2}"/>
+    <names><name lang="de">CNC-Shield mit TMC2209</name><name lang="en">CNC-Shield mit TMC2209</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-90" y="-50" width="180" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="A2 CNC-Shield V3 + U1 TMC2209 (X)" x="-90" y="-68" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="VIN" x="-84" y="-25" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="GND" x="-84" y="15" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="1B" x="66" y="-35" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="1A" x="66" y="-15" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="2A" x="66" y="5" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="2B" x="66" y="25" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{ba4587ce-c3d0-5ec9-8387-26aa2dbee71b}" name="VIN" x="-90" y="-20" orientation="w" type="Generic"/>
+        <terminal uuid="{e5e35457-0b77-5ce4-84e4-904d35cb2b29}" name="GND" x="-90" y="20" orientation="w" type="Generic"/>
+        <terminal uuid="{00ff37b1-ae72-5e90-8b04-dd864908b6cf}" name="1B" x="90" y="-30" orientation="e" type="Generic"/>
+        <terminal uuid="{1d7c82d7-1da2-5154-b046-606e9c48b391}" name="1A" x="90" y="-10" orientation="e" type="Generic"/>
+        <terminal uuid="{f3215092-1e01-5e93-a1eb-1223aab3946f}" name="2A" x="90" y="10" orientation="e" type="Generic"/>
+        <terminal uuid="{3dddab0c-97c5-524b-94c3-022af538caac}" name="2B" x="90" y="30" orientation="e" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="motor.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="120" height="160" hotspot_x="60" hotspot_y="80">
+    <uuid uuid="{d867a162-7a45-5cb3-a7e4-b2db35569988}"/>
+    <names><name lang="de">Schrittmotor NEMA 17</name><name lang="en">Schrittmotor NEMA 17</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-30" y="-45" width="90" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <ellipse x="18" y="-14" width="28" height="28" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <text text="M" x="28" y="-9" rotation="0" font="Liberation Sans,10,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="M1 NEMA 17, 60 mm" x="-30" y="-62" rotation="0" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="Sp.1 a" x="-27" y="-35" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="Sp.1 b" x="-27" y="-15" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="Sp.2 a" x="-27" y="5" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <text text="Sp.2 b" x="-27" y="25" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{b334778b-5894-55f5-9507-615544cc037d}" name="Sp.1 a" x="-30" y="-30" orientation="w" type="Generic"/>
+        <terminal uuid="{2200fd78-45d0-5ccf-8aad-c67bcab605c5}" name="Sp.1 b" x="-30" y="-10" orientation="w" type="Generic"/>
+        <terminal uuid="{6ad89c7d-e566-5ae4-8b00-e6e7f3e39bbd}" name="Sp.2 a" x="-30" y="10" orientation="w" type="Generic"/>
+        <terminal uuid="{c6247eb0-0116-565f-a0e8-57d60764711d}" name="Sp.2 b" x="-30" y="30" orientation="w" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="pc.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="120" height="80" hotspot_x="60" hotspot_y="40">
+    <uuid uuid="{9112ee72-1511-52c7-ae7f-13a7dec659f3}"/>
+    <names><name lang="de">PC</name><name lang="en">PC</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-40" y="-20" width="80" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="PC1  PC" x="-34" y="-6" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{47c5631b-decb-559e-b222-ba519902675c}" name="USB" x="40" y="0" orientation="e" type="Generic"/>
+    </description>
+</definition>
+</element>
+<element name="arduino.elmt">
+<definition version="0.100.0" type="element" link_type="simple" width="140" height="80" hotspot_x="70" hotspot_y="40">
+    <uuid uuid="{b1e3f5aa-07ac-5575-a6ab-12d5d8d47778}"/>
+    <names><name lang="de">Arduino Uno</name><name lang="en">Arduino Uno</name></names>
+    <informations>J2-Prüfstand, erzeugt aus cad/skripte/qet_j2_schema.py</informations>
+    <description>
+        <rect x="-50" y="-25" width="100" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="A1 Arduino Uno" x="-44" y="-6" rotation="0" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular" color="#000000"/>
+        <terminal uuid="{8cef9812-1d80-5057-842b-1697a5474da6}" name="USB" x="-50" y="0" orientation="w" type="Generic"/>
+    </description>
+</definition>
+</element>
+</category>
+</category>
+</collection>
+</project>

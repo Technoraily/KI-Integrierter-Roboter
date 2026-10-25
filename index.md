@@ -15,7 +15,7 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
 
-## Stand: 14. Oktober 2026
+## Stand: 25. Oktober 2026
 
 Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren vermessen, denn die Lastrechnung hängt von ihrem Moment ab. Dafür gibt es einen Motorprüfstand, der ganz ohne Kaufteile auskommt (Gutachten 8/10). Danach wird das Schultergelenk J2 als Prüfstand gebaut, weil dort das grösste Risiko liegt: Drei Riemenstufen (72:1) müssen 11,8 Nm übertragen, ohne zu viel Spiel und Nachgiebigkeit. Dessen CAD ist fertig und begutachtet (8/10).
 
@@ -24,7 +24,7 @@ Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren
 | 0 | Projektgerüst | fertig |
 | 1 | Detailkonzept, Kinematik, Lastrechnung | fertig, Gutachten 8/10 |
 | 2 | Motorvermessung | Motorprüfstand fertig, Gutachten 8/10 – drucken, messen |
-| 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – Teile bestellen, drucken, messen |
+| 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – Rahmen und Antriebsteile montiert, Elektrik-Schema als Entwurf, restliche Kaufteile bestellen, messen |
 | 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter, Not-Aus-Gehäuse) | CAD fertig, STL exportiert – drucken, Passungen messen |
 | 2b | Machbarkeitstest Steuerung (7 Achsen) | offen |
 | 3–4 | CAD und Bau Basis, Schulter, Oberarm | offen |
@@ -63,6 +63,12 @@ Für die Messung wird der Prüfstand auf ein Brett geschraubt und an der Tischka
 ![Befestigung auf dem Grundbrett](docs/bilder/pruefstand_befestigung.png)
 
 Mehr dazu: [Bauanleitung (PDF)](docs/bauanleitung/Bauanleitung_J2_Pruefstand.pdf) · [Beschreibung des Prüfstands](docs/pruefstand-j2.md) mit Teileliste, Montagefolge und Messablauf · [Druckeinstellungen](cad/export/stl/J2_Pruefstand/Druckeinstellungen.md).
+
+### Elektrik des Prüfstands (Entwurf)
+
+Netzteil (Mean Well LRS-350-24) → Kfz-Sicherung 3 A → CNC-Shield mit TMC2209 → NEMA-17-Motor. Die 230-V-Seite ist ein Entwurf und wird von einem Elektriker geprüft, bevor etwas an Netzspannung angeschlossen wird. Das Schema gibt es zweimal aus derselben [Verdrahtungsliste](docs/schema/verdrahtung-j2.md): in KiCad (zum Lernen, [PDF](docs/schema/j2-pruefstand-kicad.pdf)) und in QElectroTech als Stromlaufplan (Datei `cad/qet/j2-pruefstand.qet`). Beide werden per Skript erzeugt.
+
+![Stromlaufplan in QElectroTech](docs/schema/j2-pruefstand-qet-vorschau.png)
 
 ## Unterlagen
 
