@@ -47,7 +47,9 @@ Dateien in `cad/export/stl/J2_Pruefstand/`. Teile mit Zusatz `_Lager22-20` sind 
 | 1.21 | `Huelse_3M_links` | 1 | PETG | 1,9 | stehend |
 | 1.22 | `Huelse_3M_rechts` | 1 | PETG | 1,5 | stehend |
 
-Die Scheiben 1.7 bis 1.9 erst drucken, wenn die gekauften Ritzel nachgemessen sind. Vor allem anderen kommt der Toleranz-Testdruck (noch zu konstruieren).
+**Stand 25.10.2026 (Nutzer): alle 22 Druckteile sind gedruckt, teils schon montiert.** Die Scheiben 1.7 bis 1.9 und die Distanzringe/Hülsen wurden also nach den CAD-Annahmen für die Ritzel gedruckt (Nabenmasse siehe `j2_pruefstand.py`, Zeilen 520–543). Ritzel nach Lieferung nachmessen und gegen diese Annahmen prüfen.
+
+**Achtung HTD-3M-Ritzel (Pos. 2.2):** Das CAD nimmt Bordscheibe 18 mm, Nabe Ø 14 × 6 mm an (Ritzel von z = 29 bis 53,5 mm; lichte Weite zwischen den Wangen 56 mm, dazwischen `Distanzring_A_rechts` 53,6–55,8 mm). Die Zeichnung des Händlers nennt Nabe Ø 18 mm und Gesamtlänge 29 mm, also etwa z = 29 bis 58 mm. Das wäre etwa 2 mm zu lang und würde an die Wange stossen. Entscheid nach dem Nachmessen: Nabe kürzen (Säge/Feile, Gewindestifte nicht verletzen), Distanzring weglassen oder die Wange ausnehmen.
 
 ## 2 Riemen, Scheiben, Lager, Wellen
 
@@ -105,7 +107,7 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 | 4.12 | Gabelkabelschuhe an Litze 1,00 mm² für die Netzteilklemmen (Schraubengrösse nachmessen) | 3 | – | da |
 | 4.13 | Kfz-Flachsicherung 3 A (F2) mit Halter (mind. 32 V DC; Standard oder Mini klären) | 1 | – | da, Halter klären |
 | 4.14 | Aderendhülsen 1,0 mm² für die Schraubklemmen am CNC-Shield (+24 V, GND) und passende Zange | 2 | 2–5 | klären (Opa fragen) |
-| 4.15 | Kaltgerätekabel C13 (Netzkabel zum C14) | 1 | – | klären (Opa fragen) |
+| 4.15 | Kaltgerätekabel C13 (Netzkabel zum C14) | 1 | – | da (Nutzer 25.10.) |
 | 4.16 | Gehäuse und Schalter für die 230-V-Seite | 1 | – | klären (mit Opa; Schema nur Entwurf) |
 
 Der Treiber läuft auf dem CNC-Shield an 24 V. Wie der Strom eingestellt wird, wird beim Aufbau dokumentiert; dafür braucht es das Multimeter (5.7).
@@ -129,7 +131,7 @@ Der Treiber läuft auf dem CNC-Shield an 24 V. Wie der Strom eingestellt wird, w
 | Pos. | Teil | Menge | Status |
 |---|---|---|---|
 | 6.1 | Brett 220 × 200 × 12 mm, Sperrholz oder MDF | 1 | Baumarkt oder Rest |
-| 6.2 | Schraubzwinge, Spannweite mindestens 60 mm (Brett + Tischplatte) | 2 | klären |
+| 6.2 | Schraubzwinge, Spannweite mindestens 60 mm (Brett + Tischplatte) | 2 | da (Nutzer 25.10.) |
 | 6.3 | Weiche Unterlage unter dem Gewicht (Kiste, Hocker, Kissen) | 1 | Haushalt |
 | 6.4 | Papierstreifen | – | zum Prüfen, dass der Hebel nicht auf dem Anschlag liegt |
 
@@ -157,8 +159,8 @@ Bohrbild und Befestigung: [Skizze](../bilder/pruefstand_befestigung.png).
 
 | Pos. | Material | Menge | Status |
 |---|---|---|---|
-| 8.1 | PETG-Filament | rund 560 cm³ Vollvolumen, mit üblicher Füllung geschätzt 0,35–0,45 kg | klären |
-| 8.2 | PLA-Filament | rund 610 cm³ Vollvolumen, geschätzt 0,35–0,45 kg | klären |
+| 8.1 | PETG-Filament | rund 560 cm³ Vollvolumen, mit üblicher Füllung geschätzt 0,35–0,45 kg | da (Nutzer 25.10.) |
+| 8.2 | PLA-Filament | rund 610 cm³ Vollvolumen, geschätzt 0,35–0,45 kg | da (Nutzer 25.10.) |
 | 8.3 | Filament für Toleranz-Testdruck und Fehldrucke | Reserve 0,2 kg | – |
 | 8.4 | Schraubensicherung mittelfest (verzichtbar) | 1 Tropfen je Gewindestift der Ritzel | verzichtbar |
 
