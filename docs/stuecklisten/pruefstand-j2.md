@@ -91,12 +91,12 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 
 | Pos. | Teil | Menge | ca. CHF | Status |
 |---|---|---|---|---|
-| 4.1 | Schrittmotor NEMA 17, 60 mm lang, ca. 0,7 Nm, 5-mm-Welle | 1 | 12 | da |
+| 4.1 | Schrittmotor NEMA 17, 60 mm lang, ca. 0,7 Nm, 5-mm-Welle. Laut Link des Nutzers (25.10.) StepperOnline 17HS24-2104S: 76 Ncm, 2,1 A je Phase, 1,6 Ω, 3 mH, Welle Ø 5 mm mit D-Fläche, 4 fest angebrachte Leiter UL1007 AWG24 (ca. 0,2 mm²), 500 mm lang; Farben A+ schwarz, A− grün, B+ rot, B− blau (Motor-Typ am Aufdruck prüfen) | 1 | 12 | da |
 | 4.2 | Treiber TMC2209 mit Kühlkörper (1 gebraucht, 1 Reserve) | 2 | 6 | im Warenkorb (2 Stück, Variante «TMC2209», blauer Kühlkörper laut Bildern, 2,23 CHF/Stück; Händler verkauft auch TMC2208/ATD5833, richtige Variante beim Eintreffen prüfen) |
 | 4.3 | Arduino Uno mit CNC-Shield | 1 | – | da |
 | 4.4 | Netzteil 24 V: **Mean Well LRS-350-24** (24 V, 14,6 A, 350 W, offenes Netzteil mit Schraubklemmen, Datenblatt `docs/LRS-350.pdf`). Ersetzt das Tischnetzteil; Umschalter 115/230 V auf 230 V, Ausgang auf 24,0 V einstellen | 1 | – | da (25.10.2026), Typenschild bestätigen |
 | 4.5 | Adapter Hohlstecker auf Schraubklemmen | – | – | entfällt (Netzteil hat Schraubklemmen) |
-| 4.6 | Motorkabel: Der Motor hat 4 fest angebrachte Kabel, an deren Enden kommen Dupont-Buchsenkontakte in ein 4-poliges Dupont-Gehäuse, das auf die Stiftleiste am Shield passt | 1 | – | Dupont-Set und Zange SN-58B im Warenkorb |
+| 4.6 | Motorkabel: Der Motor hat 4 fest angebrachte Kabel, an deren Enden kommen Dupont-Buchsenkontakte in ein 4-poliges Dupont-Gehäuse, das auf die Stiftleiste am Shield passt. Leiter AWG24 (ca. 0,2 mm²) passt in die Backe 24 AWG / 0,25 mm² der SN-58B und in die Dupont-Backe SN-2549 (0,08–1,0 mm²) | 1 | – | Dupont-Set und Zange SN-58B im Warenkorb |
 | 4.7 | USB-Kabel zum Uno (USB-A auf USB-B) | 1 | 2 | da |
 | 4.8 | Litze 1,00 mm² (Aufdruck: Huber+Suhner Radox 155), rot und schwarz, je 0,5 m (Netzteil → Shield) | 1 | – | da |
 | 4.9 | PC mit GRBL-Sender oder Arduino-IDE | 1 | – | da |

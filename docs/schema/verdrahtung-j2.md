@@ -25,7 +25,7 @@ Grundlage für das KiCad-Schema (Lernen) und den QElectroTech-Plan (Opa). Beide 
 | W1 | T1 Klemme +V | F2 Eingang | rot 1,00 mm² | möglichst kurz |
 | W2 | F2 Ausgang | A2 Klemme +24 V (VIN) | rot 1,00 mm² | |
 | W3 | T1 Klemme −V | A2 Klemme GND | schwarz 1,00 mm² | nicht gesichert |
-| W4 | A2 X-Stiftleiste (1B, 1A, 2A, 2B) | M1 (Spule A / Spule B) | Motorkabel 4-polig | Spulenpaare per Multimeter bestimmen. Nie unter Spannung ein- oder ausstecken |
+| W4 | A2 X-Stiftleiste (1B, 1A, 2A, 2B) | M1 (Spule A / Spule B) | Motorkabel 4-polig | Spulen laut Hersteller: A = schwarz (A+) + grün (A−), B = rot (B+) + blau (B−); mit Multimeter prüfen (je Spule ca. 1,6 Ω, zwischen den Spulen unendlich). Reihenfolge an der Stiftleiste 1B, 1A, 2A, 2B: Spule A auf 1B/1A, Spule B auf 2A/2B. Vertauschen innerhalb einer Spule kehrt nur die Drehrichtung um. Nie unter Spannung ein- oder ausstecken |
 | W5 | X2 | A1 USB-B-Buchse | USB-Kabel | Logik und PC-Verbindung |
 
 ## Leitungen 230-V-Seite (nur Entwurf, Opa prüft und gibt frei)
