@@ -87,8 +87,8 @@ Die Klemmleiste (Klemmen 1 bis 3 = L, N, Schutzleiter; 4 bis 9 = −V, +V) liegt
 | Teil | Zu messen | Startwert im Skript |
 |---|---|---|
 | Netzteil | Lochabstand unten (150 × 50 mm laut Datenblatt), Gewindetiefe, ob das Gerät seitliche Laschen hat (die Zeichnung zeigt strichliert Laschen und 135 mm Gesamtbreite), Höhe der Schraubenköpfe der Klemmen über dem Gehäuse, Länge und Breite der Klemmleiste, Lage von Poti und LED, Lage des Umschalters 115/230 V | Klemmleiste x 2,5 bis 16,7, y 3,8 bis 90,8 mm (Runde 1) bzw. bis etwa 92 mm (Runde 3), aus dem Bild nicht eindeutig; Haube innen 30 × 91,5 × 44 mm, Rückwand 1,2 mm; Poti x 5,5, y 96,6 mm; Lüfter 47,45 mm vom rechten und 78,3 mm vom vorderen Rand |
-| C14 | Ausschnitt Breite × Höhe, Lochabstand der Flanschschrauben, Länge der mitgelieferten Schrauben, Tiefe hinter dem Flansch samt Flachsteckhülsen (Platz im Gehäuse: 27 mm bis zum Netzteil) | 28 × 20 mm, 40 mm Lochabstand (36 mm innen/innen gemessen 28.10.) |
-| F1 (Bajonett, M12) | Gewindedurchmesser, Abflachung, Gewindelänge (Blendendicke 5 mm), Mutter | Bohrung Ø 12,8 mm |
+| C14 | Ausschnitt Breite × Höhe, Lochabstand der Flanschschrauben, Länge der mitgelieferten Schrauben, Tiefe hinter dem Flansch samt Flachsteckhülsen (Platz im Gehäuse: 27 mm bis zum Netzteil) | **Passprobe 28.10. gedruckt: 27,4 × 19,4 mm, 39,6 mm Lochabstand** (Stufe 1 passt am besten; ob noch kleiner geht, ist nicht getestet). Länge der Schrauben und Tiefe hinter dem Flansch noch offen |
+| F1 (Bajonett, M12) | Gewindedurchmesser, Abflachung, Gewindelänge (Blendendicke 5 mm), Mutter | **Passprobe 28.10. gedruckt: Bohrung Ø 12,8 mm** (Stufe 3 passt am besten). Gewindelänge und Abflachung noch offen |
 | Arduino + Shield | Mitte der USB-Buchse ab Unterkante der Platine (nach Erinnerung des Gutachters eher 30 bis 40 mm, ungeprüft), Gesamthöhe mit Treiber und Kühlkörper, Seite des X-Motoranschlusses, Lage der Schraubklemme 24 V | USB Mitte 32 mm bei 30 mm Öffnungsbreite, Stapel 45 mm, Motoranschluss hinten |
 | F2 und Lüsterklemmen | Bauart und Masse | nur Kabelbinderschlitze vorgesehen |
 

@@ -70,11 +70,11 @@ MOTOR_Z0, MOTOR_Z1 = 12.0, 24.0                        # Startwert
 FENSTER_X0, FENSTER_X1, FENSTER_Z0 = 40.0, 150.0, 10.0   # Ausschnitt Frontwand, nach oben offen (Aussenkoordinaten)
 BLENDE_X0, BLENDE_X1, BLENDE_Z0, BLENDE_Z1, T_BLENDE = 28.0, 162.0, 3.0, H_AUSSEN, 5.0   # reicht bis unter den Deckel
 BLENDE_SCHRAUBEN = [(34.0, 7.0), (156.0, 7.0), (34.0, 53.0), (156.0, 53.0)]
-C14_X, C14_Z, C14_B, C14_H, C14_LOCH = 62.0, 30.0, 28.0, 20.0, 40.0    # Startwert; Lochabstand 36 mm innen/innen gemessen
-F1_X, F1_Z, D_F1 = 120.0, 30.0, 12.8                                    # Gewinde etwas über 12 mm, Startwert
+C14_X, C14_Z, C14_B, C14_H, C14_LOCH = 62.0, 30.0, 27.4, 19.4, 39.6    # Passprobe 28.10.: Stufe 1 (1 Grübchen) passt am besten
+F1_X, F1_Z, D_F1 = 120.0, 30.0, 12.8                                    # Passprobe 28.10.: Stufe 3 (3 Grübchen) passt am besten
 MUTTER_SW, MUTTER_T = 5.8, 2.6                                         # Sechskant M3 (5,5 + 0,3), Tiefe
 # Passproben: eigenständige Testplatten mit abgestuften Massen (Stufen links nach rechts bzw. oben nach unten aufsteigend)
-PASS_C14 = [(-0.6, -0.4), (0.0, 0.0), (0.6, 0.4)]                       # je Stufe: Zugabe Ausschnitt (b und h), Zugabe Lochabstand
+PASS_C14 = [(0.0, 0.0), (0.6, 0.4), (1.2, 0.8)]                       # je Stufe: Zugabe Ausschnitt (b und h), Zugabe Lochabstand
 PASS_F1 = [-0.4, -0.2, 0.0, 0.2, 0.4]                                    # Zugabe zum Bohrungsdurchmesser D_F1
 
 # ---------------------------------------------------------------- Klemmenabdeckung
