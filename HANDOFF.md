@@ -12,6 +12,6 @@
 - RISIKO HTD-3M-Ritzel: Nabe evtl. 2–3 mm zu lang (CAD Nabe Ø 14 × 6); nach Lieferung messen. Danach Ritzel aufreiben, Motorkabel crimpen, TMC2209 Vref (R110? Faktor 1,41; max 1,77 A), GRBL aufspielen.
 - Opa: Typenschild, 230-V-Schema, Zugentlastung C14, Schalter.
 ## Nächster Schritt
-Testplatten gedruckt (28.10.): C14 Stufe 1 = 27,4 × 19,4 mm / 39,6 Lochabstand, F1 Stufe 3 = Ø 12,8; im Skript nachgeführt, STL neu. Jetzt EG_Netzblende + EG_Klemmenabdeckung als Passproben drucken und mit C14, F1, Netzteil probieren; danach Wanne/Deckel. Noch offen aus der Liste: Ritzel-Nabe parametrisieren (Punkt 4), Abdeckung 24-V-Seite (Punkt 5, teils im Gehäuse erledigt).
+Testplatten gedruckt (28.10.): C14 Stufe 1 = 27,4 × 19,4 mm / 39,6 Lochabstand, F1 Stufe 3 = Ø 12,8; im Skript nachgeführt, STL neu. Jetzt EG_Netzblende + EG_Klemmenabdeckung als Passproben drucken und mit C14, F1, Netzteil probieren; danach Wanne/Deckel. Ritzel-Nabe ist parametrisiert (j2_pruefstand.py: BORD_/NABE_*; Abbruch bei < 1 mm Luft zur Wange; jetzt 2,5 mm). Weitere Ideen: docs/offene-ideen.md.
 ## Dateien
 Fusion «Claude Roboterarm v1» (J2); Repo github.com/Technoraily/KI-Integrierter-Roboter

@@ -69,6 +69,10 @@ Z_GT2 = (7.5, 19.5)               # Zahnbreite Z72
 Z_3M = (30.0, 46.5)               # Zahnbreite Z64 / Ritzel Z16
 Z_HEBEL = (20.0, 40.0)
 
+# Gekaufte Ritzel: Bord und Nabe sind Annahmen, nach Lieferung mit Schieblehre nachmessen und hier eintragen
+BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 6.0, 14.0     # Z16: Bord, Nabenlaenge, Nabendurchmesser (Nabe Richtung rechte Wange)
+BORD_5M, NABE_5M_L, NABE_5M_D = 1.5, 8.0, 20.0     # Z18: Bord, Nabenlaenge, Nabendurchmesser (Nabe in die Z64-Scheibe)
+
 # Rahmen
 X_STELL_5M = -80.0               # Grund der Nische fuer die Stellschraube der 5M-Rolle
 UMRISS = [(-95, 0), (100, 0), (100, 145), (45, 196), (-45, 196), (-95, 150),
@@ -529,17 +533,21 @@ farbe(b, *ALU)
 k = teil("Kaufteil_Ritzel_3M_Z16_B8")
 b = zylinder(k, A, 18.0, 29.0, 30.0, name="Ritzel_3M_Z16")
 zylinder(k, A, PD16 - 0.76, Z_3M[0], Z_3M[1], body=b)
-zylinder(k, A, 18.0, 46.5, 47.5, body=b)
-zylinder(k, A, 14.0, 47.5, 53.5, body=b)                           # Nabe
-bohrung(k, b, [A], D_WELLE, 29.0, 53.5)
+Z_NABE_3M_ENDE = Z_3M[1] + BORD_3M + NABE_3M_L                      # Ende der Nabe, ab hier ist Platz bis zur rechten Wange
+zylinder(k, A, 18.0, Z_3M[1], Z_3M[1] + BORD_3M, body=b)
+zylinder(k, A, NABE_3M_D, Z_3M[1] + BORD_3M, Z_NABE_3M_ENDE, body=b)   # Nabe
+bohrung(k, b, [A], D_WELLE, 29.0, Z_NABE_3M_ENDE)
+print("Ritzel Z16: Nabe endet bei z = %.1f, Luft zur rechten Wange %.1f mm" % (Z_NABE_3M_ENDE, W - Z_NABE_3M_ENDE))
+assert W - Z_NABE_3M_ENDE >= 1.0, "Nabe des 3M-Ritzels zu lang: weniger als 1 mm Luft zur rechten Wange (kuerzen, aufreiben oder umdrehen)"
 farbe(b, *ALU)
 
 k = teil("Kaufteil_Ritzel_5M_Z18_B8")
 b = zylinder(k, B, 32.0, 2.0, 3.5, name="Ritzel_5M_Z18")
 zylinder(k, B, PD18 - 1.14, Z_5M[0], Z_5M[1], body=b)
-zylinder(k, B, 32.0, 20.0, 21.5, body=b)
-zylinder(k, B, 20.0, 21.5, 29.5, body=b)                           # Nabe, greift in die Z64-Scheibe
-bohrung(k, b, [B], D_WELLE, 2.0, 29.5)
+Z_NABE_5M_ENDE = Z_5M[1] + BORD_5M + NABE_5M_L
+zylinder(k, B, 32.0, Z_5M[1], Z_5M[1] + BORD_5M, body=b)
+zylinder(k, B, NABE_5M_D, Z_5M[1] + BORD_5M, Z_NABE_5M_ENDE, body=b)   # Nabe, greift in die Z64-Scheibe
+bohrung(k, b, [B], D_WELLE, 2.0, Z_NABE_5M_ENDE)
 farbe(b, *ALU)
 
 # --- Gedruckte Scheibe Z72 (GT2) auf Welle A: Distanzbund, Zahnkranz, Nabe mit 2 Gewindestiften
@@ -560,14 +568,14 @@ def distanzring(name, c, z0, z1, d=D_ANLAGE):
 
 
 distanzring("Distanzring_A_links", A, 0.2, Z_GT2[0] - 0.1)
-distanzring("Distanzring_A_rechts", A, 53.6, W - 0.2)
+distanzring("Distanzring_A_rechts", A, Z_NABE_3M_ENDE + 0.1, W - 0.2)
 
 # --- Gedruckte Scheibe Z64 (3M) auf Welle B: Huelse ueber der Ritzelnabe, Schrauben durch Huelse in die Nabe
 k = teil("Scheibe_3M_Z64")
 b = zahnscheibe(k, B, 64, 3, "3M", Z_3M[0], Z_3M[1], "Scheibe_3M_Z64")
 zylinder(k, B, 34.0, 22.0, Z_3M[0], body=b)
 bohrung(k, b, [B], D_BOHRUNG_WELLE, 22.0, Z_3M[1])
-bohrung(k, b, [B], 20.3, 22.0, 29.6, "Aufnahme_Ritzelnabe")
+bohrung(k, b, [B], NABE_5M_D + 0.3, 22.0, Z_NABE_5M_ENDE + 0.1, "Aufnahme_Ritzelnabe")
 for ri in ("x", "y"):
     radialbohrung(k, b, B, ri, 17.0, 25.75, [(D_MITNAHME_M4, 8.0)], "Mitnahmeschraube_" + ri)
 farbe(b, *DRUCK)
