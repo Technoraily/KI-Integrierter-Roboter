@@ -40,7 +40,7 @@ Grundlage für das KiCad-Schema (Lernen) und den QElectroTech-Plan (Opa). Beide 
 Klemmen T1 laut Datenblatt (Case 207A): 1 = AC/L, 2 = AC/N, 3 = FG (Schutzleiter), 4–6 = −V, 7–9 = +V (je drei Klemmen parallel).
 Hinweise: Der Lüfter läuft erst ab ca. 50 °C Gehäusetemperatur. Bei Überlast schaltet das Netzteil im «Hiccup»-Modus und erholt sich selbst. Vor dem Anschluss des Shields die Ausgangsspannung mit dem Multimeter auf 24,0 V einstellen (Poti «V ADJ», Bereich bis 28,8 V). Der TMC2209 verträgt höchstens ca. 28 V, nicht höher drehen.
 
-Offen: Schalter vor F1 (ja/nein), Umschalter 115/230 V am Netzteil auf 230 V, Klemmenbeschriftung nach Typenschild, Einbau in Gehäuse (berührungssicher).
+Offen: Schalter vor F1 (ja/nein), Umschalter 115/230 V am Netzteil auf 230 V, Klemmenbeschriftung nach Typenschild, Einbau in Gehäuse (berührungssicher): Entwurf in `docs/elektronikgehaeuse.md`, noch nicht von Opa geprüft.
 
 ## Offene Fragen
 1. Typenschild T1 bestätigt LRS-350-24? (PDF gilt für die ganze Serie.) F1 T 3,15 A genügt für den Prüfstand (Last ca. 30 W); bei Volllast zieht das Netzteil 3,4 A, für den ganzen Roboterarm wäre F1 zu klein. Einschaltstrom 60 A: Opa beurteilt, ob T 3,15 A dafür passt.

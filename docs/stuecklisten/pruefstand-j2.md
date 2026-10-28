@@ -108,7 +108,7 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 | 4.13 | Kfz-Flachsicherung 3 A (F2) mit Halter (mind. 32 V DC; Standard oder Mini klären) | 1 | – | da, Halter klären |
 | 4.14 | Aderendhülsen 1,0 mm² für die Schraubklemmen am CNC-Shield (+24 V, GND) und passende Zange | 2 | 2–5 | klären (Opa fragen) |
 | 4.15 | Kaltgerätekabel C13 (Netzkabel zum C14) | 1 | – | da (Nutzer 25.10.) |
-| 4.16 | Gehäuse und Schalter für die 230-V-Seite | 1 | – | klären (mit Opa; Schema nur Entwurf) |
+| 4.16 | Gehäuse und Schalter für die 230-V-Seite | 1 | – | Gehäuse als Entwurf: `docs/elektronikgehaeuse.md` und `docs/stuecklisten/elektronikgehaeuse.md`; Schalter und Freigabe klären (mit Opa; Schema nur Entwurf) |
 
 Der Treiber läuft auf dem CNC-Shield an 24 V. Wie der Strom eingestellt wird, wird beim Aufbau dokumentiert; dafür braucht es das Multimeter (5.7).
 

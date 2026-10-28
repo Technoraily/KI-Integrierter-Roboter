@@ -1,17 +1,17 @@
-# HANDOFF – KI-Integrierter Roboterarm (Stand 25.10.2026 abends; Details: README.md, docs/konzept.md, index.md)
+# HANDOFF – KI-Integrierter Roboterarm (Stand 28.10.2026; Details: README.md, docs/konzept.md, index.md)
 ## Ziel
-6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17, BTT Octopus + grblHAL) auf 1000-mm-Schiene, später Kamera-KI und Greiferwechsel. Aktuell: Prüfstand J2 aufbauen, dann Motoren vermessen.
+6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17, BTT Octopus + grblHAL) auf 1000-mm-Schiene, später Kamera-KI und Greiferwechsel. Aktuell: Prüfstand J2 aufbauen, Motor vermessen.
 ## Stand
-- J2-Prüfstand (CAD 8/10, cad/skripte/j2_pruefstand.py): alle 22 Druckteile gedruckt, Rahmen/Z90/Hebel/Messuhrhalter montiert, 41 M3-Einsätze gesetzt. Werkzeug, Zwingen, Filament, Kaltgerätekabel C13, Schrauben, Lager, Wellen (Opa), Multimeter, Schieblehre: da.
-- Elektrik-Schema J2 (Entwurf): Verdrahtungsliste docs/schema/verdrahtung-j2.md = Grundlage. KiCad: cad/kicad/j2-pruefstand/ + PDF; QElectroTech: cad/qet/j2-pruefstand.qet + Vorschau-PNG; beide per Skript (cad/skripte/*_j2_schema.py). Motor 17HS24-2104S: AWG24, A schwarz/grün, B rot/blau, 2,1 A.
-- AliExpress-Warenkorb (14 Positionen, 68,03 CHF, in 2 Gruppen, zweite lädt erst nach Scrollen) am 25.10. auf Produktseiten geprüft, vollständig; Nutzer bestellt selbst. Enthält u. a. GT2-Ritzel 5/10, HTD-3M 16 Z, HTD-5M 18 Z, 3 Riemen, 6-Backen-Crimpzange, Aderendhülsen E1008, Kfz-Halter 3 A, 2 × TMC2209.
+- J2-Prüfstand (CAD 8/10): alle Teile gedruckt, Rahmen montiert. Bestellung läuft, Lieferung ca. 1.–9.11. Elektrik-Schema: docs/schema/verdrahtung-j2.md.
+- NEU 28.10. (lokal committed, NICHT gepusht): docs/grbl-j2.md + docs/gcode/*.nc (GRBL-Werte, 5 Testprogramme, $100=640), software/j2_testprogramme.py und j2_auswertung.py, docs/messprotokoll-j2.md.
+- NEU 28.10.: Elektronikgehäuse (cad/skripte/elektronikgehaeuse.py, STL in cad/export/stl/Elektronikgehaeuse/, docs/elektronikgehaeuse.md, Stückliste, Gutachten docs/reviews/2026-10-28-...): Wanne, Deckel, Netzblende (C14 + F1), Klemmenabdeckung. Gutachten 6/6/7 – Ziel 8 nicht erreicht; Korrekturen nach Runde 3 nicht mehr begutachtet. Fusion-Dokument «Untitled» ungespeichert, Skript erzeugt es neu.
 ## Entscheidungen
-- 24 V: rot +, schwarz 0; Kfz-Sicherung 3 A in +24 V (Lüsterklemmen nur 24-V-Seite); 230-V-Seite nur Entwurf, Opa prüft/gibt frei. LRS-350.pdf bleibt lokal (Urheberrecht offen).
+- 24 V: Kfz-Sicherung 3 A in +24 V; 230-V-Seite nur Entwurf, Opa prüft/gibt frei. LRS-350.pdf lokal (in .gitignore). Kein Netzschalter im Gehäuse eingeplant. Deckelrand: Steg vorne + Lippe seitlich/hinten.
 ## Offen
-- RISIKO HTD-3M-Ritzel: Händlerzeichnung Nabe Ø 18, Länge 29 mm; CAD Nabe Ø 14 × 6 (Ritzel z 29–53,5, Wangenabstand 56) → ca. 2–3 mm zu lang: nach Lieferung messen, Nabe kürzen (nur wenn Gewindestiftloch ≥ 4 mm vom Ende bleibt). HTD-5M-Nabe unbekannt (CAD Ø 20 × 8).
-- Nach Lieferung (ca. 1.–9.11.): Ritzel messen, aufreiben (Z90/Hebel 8,0, Z72 3,0, Z64 3,9), Motorkabel Dupont crimpen, Steckbrücken fürs Shield (liegen evtl. bei), TMC2209 Vref < 2,1 A, GRBL auf Arduino, Netzteil auf 24,0 V.
-- Opa: Typenschild LRS-350-24 + Umschalter 230 V, Schalter (zweipolig?) und Gehäuse 230 V, Schema prüfen/freigeben.
+- Messen an den Teilen: Netzteil-Klemmleiste (Länge/Breite, Ohren, Poti), C14 (Ausschnitt, Lochabstand, Tiefe), F1-Gewinde, USB-Lage Uno, Shield-Stapelhöhe.
+- RISIKO HTD-3M-Ritzel: Nabe evtl. 2–3 mm zu lang (CAD Nabe Ø 14 × 6); nach Lieferung messen. Danach Ritzel aufreiben, Motorkabel crimpen, TMC2209 Vref (R110? Faktor 1,41; max 1,77 A), GRBL aufspielen.
+- Opa: Typenschild, 230-V-Schema, Zugentlastung C14, Schalter.
 ## Nächster Schritt
-Nutzer bestellt, Opa zeigt Schema; nach Lieferung Ritzel nachmessen und gegen CAD prüfen, dann Zusammenbau J2 und Motorlauf.
+Passproben EG_Netzblende + EG_Klemmenabdeckung drucken und an C14/F1/Netzteil probieren; danach Startwerte im Skript anpassen, dann Wanne/Deckel. Noch offen aus der Liste: Ritzel-Nabe parametrisieren (Punkt 4), Abdeckung 24-V-Seite (Punkt 5, teils im Gehäuse erledigt).
 ## Dateien
 Fusion «Claude Roboterarm v1» (J2); Repo github.com/Technoraily/KI-Integrierter-Roboter
