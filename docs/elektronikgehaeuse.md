@@ -8,6 +8,19 @@ Ein Gehäuse für die gesamte Elektronik des J2-Prüfstands: Netzteil Mean Well 
 
 CAD: `cad/skripte/elektronikgehaeuse.py` (alle Masse stehen oben als Konstanten; Ausführen in Fusion wie bei den anderen Skripten). STL: `cad/export/stl/Elektronikgehaeuse/` mit `Druckeinstellungen.md`. Stückliste: `docs/stuecklisten/elektronikgehaeuse.md`.
 
+## Passproben (zuerst drucken, je unter einer Stunde)
+
+Zwei eigenständige Testplatten, 5 mm dick wie die Netzblende, ohne Wanne. Sie zeigen mit einem einzigen Druck, welches Mass an den gekauften Teilen passt.
+
+![Passproben](../cad/renders/Elektronikgehaeuse_Passproben.png)
+
+| Datei | Inhalt | So wird geprüft |
+|---|---|---|
+| `EG_Passprobe_C14` (56 × 100 × 5) | Drei Stufen für den C14: Ausschnitt 27,4 × 19,4 / 28,0 × 20,0 / 28,6 × 20,6 mm, Lochabstand der Schrauben 39,6 / 40,0 / 40,4 mm, mit Sechskanttaschen für M3. Die Stufe steht als Zahl der Grübchen an der rechten Kante: **1 Grübchen = kleinste, 3 = grösste Stufe** (unten bis oben im Bild) | C14 von der **glatten Unterseite** (die beim Drucken auf dem Bett lag) in den Ausschnitt stecken, wie später von aussen in die Frontwand. Er soll ohne Gewalt hineingehen, aber nicht wackeln. Dann die beiden Schrauben durch Flansch und Platte in die Muttern drehen (Muttern in die Taschen auf der Oberseite einlegen). Die Stufe notieren, bei der beides passt |
+| `EG_Passprobe_F1` (114 × 26 × 5) | Fünf Bohrungen Ø 12,4 / 12,6 / 12,8 / 13,0 / 13,2 mm, von links nach rechts aufsteigend: **1 bis 5 Grübchen über der Bohrung** | Sicherungshalter von der Unterseite durchstecken und mit seiner Mutter von oben festschrauben. Die kleinste Bohrung wählen, durch die das Gewinde ohne Gewalt geht. Prüfen, ob die Mutter mindestens zwei Gewindegänge fasst (Blende 5 mm dick) und ob der Halter eine Abflachung hat (dann Rückmeldung, die Bohrung wird D-förmig) |
+
+Danach die Zahlen im Skript `cad/skripte/elektronikgehaeuse.py` nachführen (`C14_B`, `C14_H`, `C14_LOCH`, `D_F1`) und nur die Netzblende neu drucken. Fällt keine Stufe passend aus (alle zu eng oder zu lose), die gemessenen Werte (Ausschnitt, Lochabstand, Gewindedurchmesser) angeben; die Stufen werden dann neu verteilt.
+
 ## Teile
 
 | Teil | Aussenmass (mm) | Aufgabe |
@@ -50,7 +63,7 @@ Die Klemmleiste (Klemmen 1 bis 3 = L, N, Schutzleiter; 4 bis 9 = −V, +V) liegt
 
 ## Montage (Reihenfolge)
 
-1. Passproben drucken: `EG_Netzblende` und `EG_Klemmenabdeckung` (zusammen etwa 3 h). Mit C14, Sicherungshalter und Netzteil probieren; bei Abweichungen Konstanten im Skript ändern und nur diese Teile neu drucken. Erst danach Wanne und Deckel.
+1. Passproben drucken: `EG_Passprobe_C14` und `EG_Passprobe_F1` (siehe oben, je unter einer Stunde) und die Konstanten im Skript nachführen. Danach `EG_Netzblende` und `EG_Klemmenabdeckung` (zusammen etwa 3 h) drucken und mit C14, Sicherungshalter und Netzteil probieren; bei Abweichungen nur diese Teile neu drucken. Erst danach Wanne und Deckel.
 2. **Vor dem Einbau am Netzteil:** Umschalter 115/230 V auf 230 V stellen (liegt an der Vorderfläche, danach nicht mehr erreichbar) und mit Klebeband sichern; Typenschild prüfen. Poti V ADJ noch nicht verstellen.
 3. Einschmelzgewinde M3 (18 Stück) mit dem Lötkolben setzen: 4 Arduino-Dome, 10 Deckeldome, 4 Netzblenden-Dome (Einsatz von der freien Domenseite).
 4. C14 mit zwei Schrauben von aussen durch die Blende in die Muttern (Mutterntaschen innen) schrauben; Sicherungshalter F1 mit seiner Mutter. Netzblende von aussen an die Wanne schrauben (M3 × 16).

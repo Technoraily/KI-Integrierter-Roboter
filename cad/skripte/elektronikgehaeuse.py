@@ -12,6 +12,9 @@
   EG_Netzblende       Platte 5 mm in der Frontwand bis unter den Deckel: Ausschnitt C14 (zwei Schraubenlöcher mit
                       Mutterntaschen) und Bohrung für den Bajonett-Sicherungshalter. Getrennt gedruckt, damit nur sie
                       nachgedruckt werden muss, falls die Masse der gekauften Teile abweichen.
+  EG_Passprobe_C14    Testplatte 56 x 100 x 5 mm mit drei Stufen des C14-Ausschnitts und des Lochabstands (je 1 bis 3 Grübchen).
+  EG_Passprobe_F1     Testplatte 114 x 26 x 5 mm mit fünf Bohrungen für den Sicherungshalter (je 1 bis 5 Grübchen).
+                      Beide Passproben sind eigenständig (ohne Wanne) und drucken in unter einer Stunde.
   EG_Klemmenabdeckung Haube über der Klemmleiste des Netzteils (Berührschutz): Die Ringschuh-Kabel laufen in einem
                       10 mm breiten Gang links vom Netzteil (unter der Haube) nach vorne bzw. hinten und treten
                       durch unten offene Schlitze in den Stirnwänden aus; so lässt sich die Haube nach dem
@@ -70,6 +73,9 @@ BLENDE_SCHRAUBEN = [(34.0, 7.0), (156.0, 7.0), (34.0, 53.0), (156.0, 53.0)]
 C14_X, C14_Z, C14_B, C14_H, C14_LOCH = 62.0, 30.0, 28.0, 20.0, 40.0    # Startwert; Lochabstand 36 mm innen/innen gemessen
 F1_X, F1_Z, D_F1 = 120.0, 30.0, 12.8                                    # Gewinde etwas über 12 mm, Startwert
 MUTTER_SW, MUTTER_T = 5.8, 2.6                                         # Sechskant M3 (5,5 + 0,3), Tiefe
+# Passproben: eigenständige Testplatten mit abgestuften Massen (Stufen links nach rechts bzw. oben nach unten aufsteigend)
+PASS_C14 = [(-0.6, -0.4), (0.0, 0.0), (0.6, 0.4)]                       # je Stufe: Zugabe Ausschnitt (b und h), Zugabe Lochabstand
+PASS_F1 = [-0.4, -0.2, 0.0, 0.2, 0.4]                                    # Zugabe zum Bohrungsdurchmesser D_F1
 
 # ---------------------------------------------------------------- Klemmenabdeckung
 KL_X0, KL_X1 = 5.0, 35.0                 # innen, lichte Weite (lokal -10 .. +20 zum Netzteil; Klemmleiste laut Zeichnung bis 16,7)
@@ -342,6 +348,37 @@ dh = drucklage(h, [[1, 0, 0, 0], [0, -1, 0, W_AUSSEN], [0, 0, -1, T_B + kz1]])
 c = komponente("Druck_Klemmenabdeckung", (0, 3 * (W_AUSSEN + 20), 0))
 k4 = einsetzen(c, "EG_Klemmenabdeckung", dh)
 exportieren(k4, "EG_Klemmenabdeckung")
+
+# ================================================================ Passprobe C14 (liegt in Druckorientierung: Aussenseite unten)
+PC_RAND, PC_RASTER = 8.0, 32.0
+pc_b = C14_LOCH + 0.4 + 2 * PC_RAND
+pc_h = PC_RASTER * len(PASS_C14) + 4.0
+pc = quader(0, pc_b, 0, pc_h, 0, T_BLENDE)
+for i, (dm, dl) in enumerate(PASS_C14):
+    yc = 2.0 + PC_RASTER * (i + 0.5)
+    minus(pc, quader(pc_b / 2 - (C14_B + dm) / 2, pc_b / 2 + (C14_B + dm) / 2, yc - (C14_H + dm) / 2, yc + (C14_H + dm) / 2, -1, T_BLENDE + 1))
+    for sx in (-1, 1):
+        x = pc_b / 2 + sx * (C14_LOCH + dl) / 2
+        minus(pc, zylinder((x, yc, -1), (x, yc, T_BLENDE + 1), D_M3 / 2))
+        minus(pc, sechskant_z(x, yc, T_BLENDE - MUTTER_T, T_BLENDE + 1, MUTTER_SW))
+    for k in range(i + 1):                                         # Stufe i + 1 = i + 1 Grübchen an der rechten Kante
+        minus(pc, zylinder((pc_b - 3.0, yc + (k - i / 2.0) * 3.0, T_BLENDE - 0.6), (pc_b - 3.0, yc + (k - i / 2.0) * 3.0, T_BLENDE + 1), 0.8))
+c = komponente("Druck_Passprobe_C14", (L_AUSSEN + 40, 0, 0))
+k5 = einsetzen(c, "EG_Passprobe_C14", pc)
+exportieren(k5, "EG_Passprobe_C14")
+
+# ================================================================ Passprobe Sicherungshalter F1
+PF_RASTER, PF_B = 22.0, 26.0
+pf_l = PF_RASTER * len(PASS_F1) + 4.0
+pf = quader(0, pf_l, 0, PF_B, 0, T_BLENDE)
+for i, dd in enumerate(PASS_F1):
+    xc = 2.0 + PF_RASTER * (i + 0.5)
+    minus(pf, zylinder((xc, 12.0, -1), (xc, 12.0, T_BLENDE + 1), (D_F1 + dd) / 2))
+    for k in range(i + 1):                                         # Stufe i + 1 = i + 1 Grübchen oberhalb der Bohrung
+        minus(pf, zylinder((xc + (k - i / 2.0) * 3.0, PF_B - 2.5, T_BLENDE - 0.6), (xc + (k - i / 2.0) * 3.0, PF_B - 2.5, T_BLENDE + 1), 0.8))
+c = komponente("Druck_Passprobe_F1", (L_AUSSEN + 40, 130, 0))
+k6 = einsetzen(c, "EG_Passprobe_F1", pf)
+exportieren(k6, "EG_Passprobe_F1")
 
 # ================================================================ Referenzkörper (nicht gedruckt)
 ref = komponente("Ref_Netzteil")

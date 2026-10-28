@@ -59,4 +59,4 @@ Nach den Änderungen: Fusion-Kollisionsprüfung erneut ausgeführt, keine Durchd
 
 ## Empfehlung
 
-Als Nächstes nur die **Passproben** `EG_Netzblende` und `EG_Klemmenabdeckung` drucken (zusammen etwa 3 h) und mit C14, F1 und dem Netzteil probieren. Wanne und Deckel erst danach drucken, nach Anpassung der Startwerte im Skript.
+Als Nächstes die zwei Testplatten `EG_Passprobe_C14` und `EG_Passprobe_F1` drucken (nach der Begutachtung ergänzt, nicht begutachtet), dann die **Passproben** `EG_Netzblende` und `EG_Klemmenabdeckung` (zusammen etwa 3 h) und mit C14, F1 und dem Netzteil probieren. Wanne und Deckel erst danach drucken, nach Anpassung der Startwerte im Skript.

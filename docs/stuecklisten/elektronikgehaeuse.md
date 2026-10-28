@@ -14,6 +14,8 @@ Dateien in `cad/export/stl/Elektronikgehaeuse/`; Druckeinstellungen dort in `Dru
 | 1.2 | `EG_Deckel` (240 × 238 × 10, Platte 4 mm + Lippe 6 mm) | 1 | PETG | 230 | flach, Oberseite unten, Lippe nach oben |
 | 1.3 | `EG_Netzblende` (134 × 57 × 5) | 1 | PETG | 34 | Aussenseite unten, Mutterntaschen oben |
 | 1.4 | `EG_Klemmenabdeckung` (35 × 107 × 46) | 1 | PETG | 26 | Dach unten (auf dem Kopf), Stützen nur unter den zwei Laschen |
+| 1.5 | `EG_Passprobe_C14` (56 × 100 × 5), Testteil | 1 | PETG | 19 | flach, Aussenseite unten, Mutterntaschen oben |
+| 1.6 | `EG_Passprobe_F1` (114 × 26 × 5), Testteil | 1 | PETG | 12 | flach, wie exportiert |
 
 ## 2 Kaufteile am Gehäuse
 
@@ -56,11 +58,11 @@ Kabelschuhe (Ring oder Gabel), Flachsteckhülsen und Aderendhülsen stehen in `p
 
 | Pos. | Material | Menge | Status |
 |---|---|---|---|
-| 5.1 | PETG-Filament | rund 740 cm³ Vollvolumen (448 + 230 + 34 + 26), mit üblicher Füllung geschätzt etwa 0,6 kg (Überschlag des Gutachters, Runde 3) | da (Nutzer 25.10.), Reichweite prüfen |
+| 5.1 | PETG-Filament | rund 770 cm³ Vollvolumen (448 + 230 + 34 + 26 + 19 + 12), mit üblicher Füllung geschätzt etwa 0,6 kg (Überschlag des Gutachters, Runde 3) | da (Nutzer 25.10.), Reichweite prüfen |
 | 5.2 | Klebestift für die Druckplatte | nach Bedarf | klären |
 
 ## Was noch zu bestellen ist
 
 Nur Kleinteile: Schrauben M4 × 6 (4 Stück), je nach Bestand Einschmelzgewinde M3 (18 Stück), Schrauben M3 × 6, × 10 (12 Stück) und × 16, Zugentlastung für das C14-Kabel. Alles zusammen unter 10 CHF. Das Gehäuse selbst kostet Filament (rund 10 CHF).
 
-**Zu klären:** Bestand Einschmelzgewinde, Schrauben M3 × 6 / × 10 / × 16, Kabelbinder, isolierter Schraubendreher. **Kein Kauf nötig, bevor die Passproben (Netzblende, Klemmenabdeckung) gedruckt und probiert sind.**
+**Zu klären:** Bestand Einschmelzgewinde, Schrauben M3 × 6 / × 10 / × 16, Kabelbinder, isolierter Schraubendreher. **Kein Kauf nötig, bevor die Passproben (`EG_Passprobe_C14`, `EG_Passprobe_F1`, dann Netzblende und Klemmenabdeckung) gedruckt und probiert sind.**
