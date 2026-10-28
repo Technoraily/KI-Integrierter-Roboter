@@ -93,6 +93,7 @@ Netzteil (Mean Well LRS-350-24) → Kfz-Sicherung 3 A → CNC-Shield mit TMC2209
 - [Motorvermessung](docs/motorvermessung.md) mit [Bauanleitung des Motorprüfstands (PDF)](docs/bauanleitung/Bauanleitung_Motorpruefstand.pdf) und [Stückliste](docs/stuecklisten/motorpruefstand.md)
 - [Verdrahtung](docs/verdrahtung.md)
 - [Elektronikgehäuse J2](docs/elektronikgehaeuse.md) mit [Stückliste](docs/stuecklisten/elektronikgehaeuse.md)
+- [Aufbauanleitung J2 (Lieferung bis erster Test)](docs/aufbauanleitung-j2.md)
 - [GRBL-Einstellungen J2](docs/grbl-j2.md) und [Messprotokoll J2](docs/messprotokoll-j2.md)
 
 **Gutachten.** Jede Idee und jede Baugruppe wird von einem unabhängigen Gutachter mit 1–10 bewertet, höchstens drei Runden:

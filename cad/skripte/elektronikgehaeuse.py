@@ -380,6 +380,33 @@ c = komponente("Druck_Passprobe_F1", (L_AUSSEN + 40, 130, 0))
 k6 = einsetzen(c, "EG_Passprobe_F1", pf)
 exportieren(k6, "EG_Passprobe_F1")
 
+# ================================================================ Netzteil-Schablone (liegt flach auf dem Netzteil, vor dem Druck der Haube)
+# Koordinaten bezogen auf die vordere linke Ecke des Netzteils (x entlang 215, y entlang 115). Das Fenster ist der Innenraum der Haube,
+# der Streifen dahinter die Rückwand der Haube, der Schlitz der Zugang zu Poti und LED. Passt alles ins Fenster, passt die Haube.
+SCH_X0, SCH_X1, SCH_Y0, SCH_Y1, T_SCH = -14.0, 48.0, -6.0, 115.0, 2.5
+sch = quader(0, SCH_X1 - SCH_X0, 0, SCH_Y1 - SCH_Y0, 0, T_SCH)
+lx, ly = -SCH_X0, -SCH_Y0                                           # Netzteil-Ecke in Schablonenkoordinaten
+minus(sch, quader(lx + KL_X0 - PSU_X0, lx + KL_X1 - PSU_X0, ly + KL_Y0 - PSU_Y0, ly + KL_Y1 - PSU_Y0, -1, T_SCH + 1))   # Haubenfenster
+minus(sch, quader(lx + POTI_X - POTI_B / 2, lx + POTI_X + POTI_B / 2, ly + 93.2, ly + POTI_Y1, -1, T_SCH + 1))         # Poti und LED
+for (hx, hy) in PSU_LOCH[::2]:                                       # die zwei Befestigungsgewinde M4 am Klemmenende
+    minus(sch, zylinder((lx + hx, ly + hy, -1), (lx + hx, ly + hy, T_SCH + 1), D_M4 / 2))
+c = komponente("Druck_Netzteil_Schablone", (L_AUSSEN + 40, 190, 0))
+k7 = einsetzen(c, "EG_Netzteil_Schablone", sch)
+exportieren(k7, "EG_Netzteil_Schablone")
+
+# ================================================================ Halter 24 V (Schale für F2 und Lüsterklemmen, mit zwei Kabelbindern am Boden)
+H24_L, H24_B, H24_T, H24_RAND_H, H24_RAND_T = 80.0, 26.0, 3.0, 9.0, 2.0
+h24 = quader(0, H24_L, 0, H24_B, 0, H24_T + H24_RAND_H)
+minus(h24, quader(H24_RAND_T, H24_L - H24_RAND_T, H24_RAND_T, H24_B - H24_RAND_T, H24_T, H24_T + H24_RAND_H + 1))   # Mulde
+for x0, x1 in ((-1.0, H24_RAND_T + 1), (H24_L - H24_RAND_T - 1, H24_L + 1)):   # Kabelaustritt in den Schmalseiten, 12 mm breit, bis zur Platte
+    minus(h24, quader(x0, x1, H24_B / 2 - 6, H24_B / 2 + 6, H24_T, H24_T + H24_RAND_H + 1))
+for sx in (20.0, 60.0):                                              # gleiche Lage wie die Bodenschlitze (Abstand 8 mm in y), 0,4 mm Zugabe
+    for dy in (-4.0, 4.0):
+        minus(h24, quader(sx - 2.1, sx + 2.1, H24_B / 2 + dy - 1.3, H24_B / 2 + dy + 1.3, -1, H24_T + 1))
+c = komponente("Druck_Halter_24V", (L_AUSSEN + 40, 170, 0))
+k8 = einsetzen(c, "EG_Halter_24V", h24)
+exportieren(k8, "EG_Halter_24V")
+
 # ================================================================ Referenzkörper (nicht gedruckt)
 ref = komponente("Ref_Netzteil")
 einsetzen(ref, "LRS-350", qi(PSU_X0, PSU_X0 + PSU_L, PSU_Y0, PSU_Y0 + PSU_B, PAD_H, PAD_H + PSU_H), ref=True)

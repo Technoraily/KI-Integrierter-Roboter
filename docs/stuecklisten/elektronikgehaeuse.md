@@ -16,6 +16,8 @@ Dateien in `cad/export/stl/Elektronikgehaeuse/`; Druckeinstellungen dort in `Dru
 | 1.4 | `EG_Klemmenabdeckung` (35 × 107 × 46) | 1 | PETG | 26 | Dach unten (auf dem Kopf), Stützen nur unter den zwei Laschen |
 | 1.5 | `EG_Passprobe_C14` (56 × 100 × 5), Testteil | 1 | PETG | 19 | flach, Aussenseite unten, Mutterntaschen oben |
 | 1.6 | `EG_Passprobe_F1` (114 × 26 × 5), Testteil | 1 | PETG | 12 | flach, wie exportiert |
+| 1.7 | `EG_Netzteil_Schablone` (62 × 121 × 2,5), Testteil | 1 | PETG | 11 | flach, wie exportiert |
+| 1.8 | `EG_Halter_24V` (80 × 26 × 12), Schale für F2 und Lüsterklemmen | 1 | PETG | 9 | flach, wie exportiert, Rand nach oben |
 
 ## 2 Kaufteile am Gehäuse
 
@@ -39,7 +41,7 @@ Dateien in `cad/export/stl/Elektronikgehaeuse/`; Druckeinstellungen dort in `Dru
 | 3.6 | Mutter M3 | 4 | C14 (2), Klemmenabdeckung (2) | da (Sortiment) |
 | 3.7 | Zylinder- oder Linsenkopfschraube M4 × 6 | 4 | Netzteil von unten (Eindringtiefe im Netzteil höchstens 3 mm, nie länger) | offen (ca. 1 CHF) |
 | 3.8 | Schraube M4 (Senkkopf, 16 bis 25 mm) oder Holzschraube 4 mm | 4 | Gehäuse auf ein Brett (nur falls gewünscht) | klären |
-| 3.9 | Kabelbinder 2,5 bis 3,6 mm breit | 8 | F2, Lüsterklemmen (2), Netzkabel vorne (3), Reserve | klären |
+| 3.9 | Kabelbinder 2,5 bis 3,6 mm breit | 12 | F2 und Lüsterklemmen in der Schale (4), Schale am Boden (4), Netzkabel vorne (3), Reserve | klären |
 | 3.10 | Schrumpfschlauch für Lötfahnen von F1 und die Hülsen am C14 (Isolation und Fixierung) | 1 Set | Netzseite | klären (Opa fragen) |
 | 3.11 | **Zugentlastung / Knickschutz für das Netzkabel am C14** (Pflicht, Art mit Opa klären) | 1 | Netzseite | klären |
 
@@ -58,7 +60,7 @@ Kabelschuhe (Ring oder Gabel), Flachsteckhülsen und Aderendhülsen stehen in `p
 
 | Pos. | Material | Menge | Status |
 |---|---|---|---|
-| 5.1 | PETG-Filament | rund 770 cm³ Vollvolumen (448 + 230 + 34 + 26 + 19 + 12), mit üblicher Füllung geschätzt etwa 0,6 kg (Überschlag des Gutachters, Runde 3) | da (Nutzer 25.10.), Reichweite prüfen |
+| 5.1 | PETG-Filament | rund 790 cm³ Vollvolumen (448 + 230 + 34 + 26 + 19 + 12 + 11 + 9), mit üblicher Füllung geschätzt etwa 0,6 kg (Überschlag des Gutachters, Runde 3) | da (Nutzer 25.10.), Reichweite prüfen |
 | 5.2 | Klebestift für die Druckplatte | nach Bedarf | klären |
 
 ## Was noch zu bestellen ist

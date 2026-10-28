@@ -24,6 +24,8 @@ Drucker BambuLab A1, Düse 0,4 mm, Bambu Studio. Grundlage ist das Profil **«0.
 | `EG_Deckel.stl` | wie exportiert: Oberseite unten auf dem Bett, Lippe nach oben | 5 | 20 % | aussen 5 mm | gleiche Hinweise wie die Wanne; Lippe 2 mm = 5 Linien; Lüftungsschlitze 3 mm und Zugangsschlitz brücken nicht |
 | `EG_Passprobe_C14.stl` | wie exportiert, Aussenseite unten, Mutterntaschen oben | 5 | 50 % | aus | Testteil; gleiches Material wie die endgültigen Teile (PETG), damit das Spiel stimmt; Stufe = Anzahl Grübchen |
 | `EG_Passprobe_F1.stl` | flach, wie exportiert | 5 | 50 % | aus | Testteil; Bohrungen 12,4 bis 13,2 mm aufsteigend, Grübchen = Nummer |
+| `EG_Netzteil_Schablone.stl` | flach, wie exportiert | 5 | 50 % | aus | Testteil, Brim nicht nötig; PETG, glatte Seite unten; 2,5 mm dick: 6 Böden/Decken |
+| `EG_Halter_24V.stl` | flach, wie exportiert, Rand nach oben | 4 | 20 % | aus | Wand 2 mm = 5 Linien, Boden 3 mm = 15 Schichten; Kabelbinderschlitze 4,2 × 2,6 mm |
 | `EG_Netzblende.stl` | Aussenseite unten, Mutterntaschen nach oben | 5 | 50 % | aus | Passprobe: Ausschnitt C14 und Bohrung F1 mit den Teilen probieren |
 | `EG_Klemmenabdeckung.stl` | wie exportiert: Dach unten, Haube nach oben offen | 6 | 30 % | aus | **Stützen nur unter den zwei Laschen** (Baumstützen, sonst keine); Gang und Kabelschlitze sind nach oben offen. Seiten- und Rückwand enden frei in der Luft, das ist gewollt (Kante, kein Überhang) |
 
