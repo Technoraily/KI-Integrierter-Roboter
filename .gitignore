@@ -19,3 +19,6 @@ docs/stuecklisten/pruefstand-j2_aktuell.docx
 
 # Lokale Claude-Einstellungen
 .claude/settings.local.json
+
+# Herstellerdatenblatt, Urheberrecht offen: nur lokal
+docs/LRS-350.pdf
