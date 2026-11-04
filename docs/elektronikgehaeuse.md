@@ -83,6 +83,16 @@ Die Klemmleiste (Klemmen 1 bis 3 = L, N, Schutzleiter; 4 bis 9 = −V, +V) liegt
 - Die Lüftungsschlitze sind 3 mm breit: ein Finger passt nicht hinein, ein dünner Draht schon. Hinter den Schlitzen liegt das Netzteil mit eigenem Gitter. Nach dem Aufstellen der Teile ist zu prüfen, dass hinter den Schlitzen kein blanker Netzanschluss in Reichweite liegt (nicht geprüft, keine Norm angewendet).
 - Alles auf der 230-V-Seite (Schalter vor F1, Schutzleiterschuh, Netzkabeleinführung, Zugentlastung am C14-Kabel) ist Sache von Opa. **Ein Netzschalter ist nicht eingeplant:** Soll einer vor F1, braucht die Netzblende einen weiteren Ausschnitt (Neudruck dieses Teils).
 
+## Sicherung F1 ohne Löten: Stand der Suche (04.11.2026)
+
+Der eingebaute Bajonett-Halter hat Lötfahnen von 4 mm Breite; ein Lötkolben und passende Flachsteckhülsen fehlen. Geprüft wurde, ob sich das mit einem anderen Halter lösen lässt, ohne die Wanne neu zu drucken (Händlerangaben aus dem Netz, nicht an einem Teil geprüft):
+
+- **Hutschienen-Reihenklemme mit Sicherung 5 × 20** (z. B. WAGO 2002-1611, 6,2 mm breit, **66,1 mm hoch und 57,2 mm tief** ab Schiene): Schraubanschluss, aber zu gross. Zwischen Frontwand und Netzteil sind nur 46 mm frei (innen), die Wanne ist innen 55 mm hoch. **Passt nicht.**
+- **Einbau-Sicherungshalter mit Schraubanschluss:** im Netz keiner gefunden. Mit Flachsteckanschluss gibt es sie: z. B. ein Schurter-Halter 1331.0045 (5 × 20, 250 V, 10 A, «quick connect») und Typen von Bulgin und RS PRO mit Flachsteck- und Lötfahnen. Welche Fahnenbreite (4,8 oder 6,3 mm) und welcher Gewinde- bzw. Lochdurchmesser gilt, ist nicht bestätigt; **die Passprobe `EG_Passprobe_F1` bleibt der Prüfstein**, und nur die Netzblende wäre neu zu drucken.
+- Offen bleibt: Opa lötet, oder ein Lötkolben (Preis geschätzt, nicht geprüft) wird beschafft oder geliehen; er wird ohnehin für die Einschmelzgewinde gebraucht.
+
+Es wurde deshalb **kein neuer Halter entworfen**. Die Entscheidung über den Kauf (Halter mit 6,3-mm-Flachsteckfahnen und isolierte Hülsen, oder Löten) liegt bei dir und bei Opa.
+
 ## Zu messen (Startwerte im Skript, vor dem Druck am gekauften Teil prüfen)
 
 | Teil | Zu messen | Startwert im Skript |

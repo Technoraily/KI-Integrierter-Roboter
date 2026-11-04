@@ -15,7 +15,7 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
 
-## Stand: 28. Oktober 2026
+## Stand: 4. November 2026
 
 Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren vermessen, denn die Lastrechnung hängt von ihrem Moment ab. Dafür gibt es einen Motorprüfstand, der ganz ohne Kaufteile auskommt (Gutachten 8/10). Danach wird das Schultergelenk J2 als Prüfstand gebaut, weil dort das grösste Risiko liegt: Drei Riemenstufen (72:1) müssen 11,8 Nm übertragen, ohne zu viel Spiel und Nachgiebigkeit. Dessen CAD ist fertig und begutachtet (8/10).
 
@@ -28,11 +28,12 @@ Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren
 | 2 | Elektronikgehäuse J2 (Netzteil, Arduino, C14, Sicherung, Klemmenabdeckung) | Entwurf, Gutachten 7/10 – Passproben drucken, Masse an den Teilen prüfen, Freigabe 230-V-Seite durch Elektriker |
 | 2 | Steuerung J2: GRBL-Einstellungen, Testprogramme, Messprotokoll mit Auswertung | fertig, noch nicht am Gerät ausgeführt |
 | 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter, Not-Aus-Gehäuse) | CAD fertig, STL exportiert – drucken, Passungen messen |
+| 2 | Zubehör J2 (Referenzschalter im Querträger mit Probe, Motorkabelklemme) | Entwurf, Gutachten 7,5/10 – Schalter kaufen, Probe drucken und messen |
 | 2b | Machbarkeitstest Steuerung (7 Achsen) | offen |
 | 3–4 | CAD und Bau Basis, Schulter, Oberarm | offen |
-| 5 | Hand, Flansch, Greifer | offen |
+| 5 | Hand, Flansch, Greifer (Vorbereitung: Greiferwechsler und Kamerahalter am Werkzeugflansch) | Entwurf, Gutachten 7/10 – Magnetprobe zuerst; Hand selbst offen |
 | 6–9 | Verkleidung, Elektronik, Software, Dokumentation | offen |
-| 10 | Schiene (7. Achse) | offen |
+| 10 | Schiene (7. Achse); Vorbereitung: Kettenklemme für die Schleppkette | Entwurf, Gutachten 6/10 – Bau erst in Stufe C |
 
 ## Motorprüfstand
 
@@ -77,6 +78,16 @@ Ein Gehäuse für Netzteil, Arduino mit CNC-Shield, Netzeingang und Sicherung, m
 
 Mehr dazu: [Beschreibung](docs/elektronikgehaeuse.md) · [Stückliste](docs/stuecklisten/elektronikgehaeuse.md) · [Gutachten](docs/reviews/2026-10-28-elektronikgehaeuse.md) · [GRBL-Einstellungen und Testprogramme](docs/grbl-j2.md) · [Messprotokoll](docs/messprotokoll-j2.md).
 
+### Zubehör und Vorbereitung für später (Entwürfe, nichts gedruckt)
+
+Sie wurden am 4. November von unabhängigen Gutachtern geprüft (zwei Runden). Alle Masse zu Kaufteilen (Schalter, ISO-Flansch, Magnete, Pogo-Pins, Kamera, Kettenglied) sind Startwerte; jedes Teil mit solchen Annahmen hat eine Probe oder eine Messvorschrift vor dem Druck.
+
+- **Referenzschalter J2** ([Beschreibung](docs/zubehoer-j2.md)): Querträger mit Tasche für einen Mikroschalter KW12-3, der 0,4° vor dem mechanischen Anschlag auslöst (gerechnet, abhängig vom gekauften Schalter); dazu die Schalterprobe und eine Klemme für das Motorkabel. Der Querträger mit Schalter gilt nur für Messungen ohne grosse Last.
+- **Greiferwechsler und Kamerahalter** ([Beschreibung](docs/werkzeugwechsler.md)): kinematische Kupplung (drei Kugeln in V-Nuten), Magnete, Pogo-Pins, Codierstift. Im CAD geprüft: Platten überschneiden sich nicht, Kugeln liegen in allen Nuten an, der Stift sperrt falsche Drehlagen. Die Haltekraft der Magnete reicht voraussichtlich nicht für 1 kg bei waagrechtem Werkzeug; die Magnetprobe liefert die Zahl.
+- **Schiene: Kettenklemme** ([Beschreibung](docs/schiene-kabelfuehrung.md)): Notbehelf für eine Schleppkette ohne Anschlussstücke; besser ist die Kette mit Anschlussstücken zu kaufen. Die Rechnung zeigt zudem, dass 10 × 15 mm für alle Leitungen eines 6-Achs-Arms knapp ist.
+
+Nicht gebaut und warum: ein Sicherungshalter für F1 ohne Löten (Reihenklemmen sind 57 mm tief, im Gehäuse sind 46 mm frei; [Befund](docs/elektronikgehaeuse.md)) und eine Drehmoment-Messvorrichtung (der Motorprüfstand und der Lasthebel messen es schon). Weitere offene Ideen: [Liste](docs/offene-ideen.md).
+
 ### Elektrik des Prüfstands (Entwurf)
 
 Netzteil (Mean Well LRS-350-24) → Kfz-Sicherung 3 A → CNC-Shield mit TMC2209 → NEMA-17-Motor. Die 230-V-Seite ist ein Entwurf und wird von einem Elektriker geprüft, bevor etwas an Netzspannung angeschlossen wird. Das Schema gibt es zweimal aus derselben [Verdrahtungsliste](docs/schema/verdrahtung-j2.md): in KiCad (zum Lernen, [PDF](docs/schema/j2-pruefstand-kicad.pdf)) und in QElectroTech als Stromlaufplan (Datei `cad/qet/j2-pruefstand.qet`). Beide werden per Skript erzeugt.
@@ -95,11 +106,13 @@ Netzteil (Mean Well LRS-350-24) → Kfz-Sicherung 3 A → CNC-Shield mit TMC2209
 - [Elektronikgehäuse J2](docs/elektronikgehaeuse.md) mit [Stückliste](docs/stuecklisten/elektronikgehaeuse.md)
 - [Aufbauanleitung J2 (Lieferung bis erster Test)](docs/aufbauanleitung-j2.md)
 - [GRBL-Einstellungen J2](docs/grbl-j2.md) und [Messprotokoll J2](docs/messprotokoll-j2.md)
+- [Zubehör J2](docs/zubehoer-j2.md) mit [Stückliste](docs/stuecklisten/j2-zubehoer.md) · [Schiene: Kabelführung](docs/schiene-kabelfuehrung.md) mit [Stückliste](docs/stuecklisten/schiene-kette.md) · [Werkzeugwechsler und Kamerahalter](docs/werkzeugwechsler.md) mit [Stückliste](docs/stuecklisten/werkzeugwechsler.md) · [Offene Ideen](docs/offene-ideen.md)
 
 **Gutachten.** Jede Idee und jede Baugruppe wird von einem unabhängigen Gutachter mit 1–10 bewertet, höchstens drei Runden:
 
 - [Gesamtkonzept](docs/reviews/2026-10-11-konzept.md) · [Detailkonzept](docs/reviews/2026-10-11-detailkonzept.md)
 - [Antrieb von Schulter und Ellbogen](docs/reviews/2026-10-11-antrieb-j2-j3.md) · [Steuerung für 7 Achsen](docs/reviews/2026-10-11-steuerung-7-achsen.md)
 - [CAD des J2-Prüfstands](docs/reviews/2026-10-12-pruefstand-j2.md) · [Motorprüfstand](docs/reviews/2026-10-14-motorpruefstand.md) · [Elektronikgehäuse](docs/reviews/2026-10-28-elektronikgehaeuse.md)
+- [Zubehör J2](docs/reviews/2026-11-04-j2-zubehoer.md) · [Werkzeugwechsler und Kamerahalter](docs/reviews/2026-11-04-werkzeugwechsler.md) · [Kettenklemme](docs/reviews/2026-11-04-schiene-kette.md)
 
 **Dateien zum Nachbauen.** Die Druckteile des Prüfstands liegen als STL unter `cad/export/stl/J2_Pruefstand/`, die Baugruppe als STEP unter `cad/export/step/`. Die Geometrie entsteht aus dem Skript `cad/skripte/j2_pruefstand.py`, das die Baugruppe in Fusion 360 aufbaut. Die Teile des Motorprüfstands liegen unter `cad/export/stl/Motorpruefstand/`, erzeugt von `cad/skripte/motorpruefstand.py`.

@@ -1,6 +1,6 @@
 # Offene Ideen (noch nicht gemacht, ohne Teile möglich)
 
-Stand 28.10.2026. Reihenfolge nach Nutzen.
+Stand 04.11.2026. Reihenfolge nach Nutzen.
 
 | Nr. | Idee | Nutzen | Aufwand |
 |---|---|---|---|
@@ -10,3 +10,23 @@ Stand 28.10.2026. Reihenfolge nach Nutzen.
 | 4 | Prüfplatte Uno-USB (Lage der Buchse); vom Nutzer abgelehnt, nur falls das Gehäuse hier Probleme macht | – | klein |
 
 Erledigt: Punkt 4 der ersten Liste (Ritzel-Nabe parametrisiert, 28.10.).
+
+## 04.11.2026: neue Liste und was daraus wurde
+
+| Idee | Ergebnis |
+|---|---|
+| F1-Halter ohne Löten | **nicht gebaut**: Reihenklemme zu gross (57 mm tief), Schraub-Einbauhalter nicht gefunden. Befund und Optionen in `docs/elektronikgehaeuse.md` (Abschnitt «Sicherung F1 ohne Löten») |
+| Drehmoment-Messvorrichtung J2 | **nicht gebaut**: Motorprüfstand (bis 60 mm Motorlänge) und Lasthebel am J2-Prüfstand decken es ab, siehe `docs/zubehoer-j2.md` |
+| Endschalter J2 | gebaut: Querträger mit Schaltertasche und Probe, `docs/zubehoer-j2.md` |
+| Motorkabel-Zugentlastung | gebaut (Klemme am Motor); die Zugentlastung an der Gehäuserückwand bleibt offen |
+| Ritzel-Test | als Nabenlehre gebaut, im Gutachten gestrichen (die Schieblehre reicht); stattdessen Sollwerte-Tabelle in `docs/zubehoer-j2.md` |
+| Schiene: Kabelführung | Entwurf der Kettenklemme für Stufe C, `docs/schiene-kabelfuehrung.md` |
+| Kamerahalter, Greiferwechsler | Entwurf, `docs/werkzeugwechsler.md` |
+
+Neu offen aus dieser Runde:
+
+| Nr. | Idee | Nutzen | Aufwand |
+|---|---|---|---|
+| 5 | Zugentlastung für die drei Motorkabel an der Rückwand des Elektronikgehäuses (Wanne ist gedruckt: Klemme zum Aufstecken oder Kabelbinder-Brücke aussen) | Kabelzug geht nicht in den Stecker des Shields | klein |
+| 6 | Mechanische Verriegelung (Riegel mit Servo) für den Greiferwechsler, falls die Magnetprobe zu wenig Kraft zeigt | 1 kg bei waagrechtem Werkzeug | mittel |
+| 7 | Handgelenk konstruieren (ISO-Flansch, Kabelkanal, Kamera-Schraubpunkte), dann Wechsler und Kamerahalter daran anpassen | Voraussetzung für die Passung dieser Entwürfe | gross |

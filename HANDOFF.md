@@ -1,17 +1,19 @@
-# HANDOFF – KI-Integrierter Roboterarm (Stand 03.11.2026 Feierabend; Details: README.md, docs/konzept.md, index.md)
+# HANDOFF – KI-Integrierter Roboterarm (Stand 04.11.2026; Details: README.md, docs/konzept.md, index.md)
 ## Ziel
 6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17, BTT Octopus + grblHAL) auf 1000-mm-Schiene, später Kamera-KI und Greiferwechsel. Aktuell: Prüfstand J2 aufbauen, Motor vermessen, Elektronikgehäuse in Betrieb nehmen.
 ## Stand
-- J2-Prüfstand (CAD 8/10): alle Teile gedruckt, Rahmen montiert. Netzteil LRS-350-24 und NEMA 17 sind da; Elektronikgehäuse (alle Teile) gedruckt, Netzteil passt. Lage: Klemmleiste links (Klemme 1 = L vorne), Klemmenhaube links, Lüftungsschlitze rechts.
-- 230-V-Seite verdrahtet (C14, N, PE am Netzteil), L noch mit Brücke statt F1. Stromlos gemessen (Multimeter HC-303TN, kein Summer): PE 0,2 Ω, N 0,2 Ω, L 0,3 Ω; L–N 0,86 MΩ (Netzteil allein, gleich ohne Adern); L/N–PE «1». Noch NIE eingeschaltet.
-- Haus-FI: zwei Kopp RCD 25-0,03 (30 mA). Gruppe 1 = Küche/WC/Wohnen/Gang, Gruppe 2 = Zimmer/Bad/Keller/Waschmaschine; Automaten Wohnen/Zimmer C13. Steckdose noch nicht am FI getestet (T-Taste legt die ganze Gruppe lahm; Alternative PRCD-Adapter).
+- J2-Prüfstand (CAD 8/10): alle Teile gedruckt, Rahmen montiert. Netzteil LRS-350-24, NEMA 17 da; Elektronikgehäuse gedruckt, Netzteil passt. 230-V-Seite verdrahtet (C14, N, PE), L noch mit Brücke statt F1. Noch NIE eingeschaltet. Haus-FI: zwei Kopp RCD 25-0,03; Steckdose noch nicht am FI getestet.
+- 04.11. neu (nur CAD, nichts gedruckt, Kaufteilmasse ungeprüft): Zubehör J2 (Referenzschalter-Querträger + Probe, Motorkabelklemme; Gutachten 7,5/10), Werkzeugwechsler + Kamerahalter (7/10), Kettenklemme Schiene (6/10). Skripte: j2_zubehoer.py, werkzeugflansch.py, schiene_kette.py; Doku docs/zubehoer-j2.md, werkzeugwechsler.md, schiene-kabelfuehrung.md; Gutachten docs/reviews/2026-11-04-*.
 ## Entscheidungen
-- Kein Einschalten ohne Sicherung F1 (5 × 20 mm, T 3,15 A träge), ohne Klemmenabdeckung, ohne FI-Kontrolle und ohne Opa. Verzwirbelte Litze mit Isolierband und Zusammendrücken von 4,8-mm-Hülsen sind abgelehnt.
-- 24 V: Kfz-Sicherung 3 A nur für J2 (für ganzen Arm zu klein). 230-V-Seite nur Entwurf, Opa prüft/gibt frei. Einschaltstrom 60 A typ. (Datenblatt S. 2, docs/LRS-350.pdf lokal).
+- Kein Einschalten ohne F1 (5 × 20, T 3,15 A), ohne Klemmenabdeckung, ohne FI-Kontrolle, ohne Opa. 230-V-Seite nur Entwurf, Opa prüft/gibt frei. 24 V: Kfz-Sicherung 3 A nur für J2.
+- F1 ohne Löten: Reihenklemme passt nicht (57 mm tief, 46 mm frei). Kein neuer Halter entworfen (Befund in docs/elektronikgehaeuse.md).
+- Drehmoment-Vorrichtung J2 nicht gebaut (Motorprüfstand + Lasthebel decken es ab). Nabenlehre gestrichen (Schieblehre reicht).
+- Querträger mit Schalter nur für Messungen ohne grosse Last; Haltetest/Rücklauftest mit Original-Querträger.
 ## Offen
-- F1-Halter: Fahnen 4 mm breit, kein Lötkolben, keine passenden Hülsen. Optionen: Opa lötet / Kolben leihen oder kaufen / Halter mit Norm-Fahnen (Neudruck Netzblende). Belegung Stirn-/Seitenkontakt, Schrumpfschlauch, Zugentlastung C14, Schalter, T 3,15 A gegen 60 A: alles Opa.
-- Messen: C14-Ausschnitt/Tiefe, F1-Gewinde, USB-Lage Uno, Shield-Höhe. RISIKO HTD-3M-Ritzel: Nabe evtl. 2–3 mm zu lang (CAD Nabe Ø 14 × 6). Danach Motorkabel crimpen, TMC2209 Vref (max 1,77 A), GRBL aufspielen.
+- F1: Opa lötet, Lötkolben besorgen/leihen oder Halter mit 6,3-mm-Flachsteckfahnen (Passprobe EG_Passprobe_F1 bleibt Prüfstein, nur Netzblende neu drucken). Belegung, Schrumpfschlauch, Zugentlastung C14, Schalter, T 3,15 A gegen 60 A: Opa.
+- Messen: C14-Tiefe, F1-Gewinde, USB-Lage Uno, Shield-Höhe; RISIKO HTD-3M-Ritzel (Gesamtlänge ≤ 26,0 mm, Sollwerte in docs/zubehoer-j2.md). Danach Motorkabel crimpen, Vref (max 1,77 A), GRBL aufspielen.
+- Neu: Schalter KW12-3 messen (Schalterprobe drucken), Magnetprobe (Haltekraft, Bedarf 26 N je Paar), Kette nur mit Anschlussstücken kaufen, Kette 10 × 15 evtl. zu klein (70 % Füllung). Offene Ideen: docs/offene-ideen.md.
 ## Nächster Schritt
-F1-Halter anschliessen (Löten mit Schrumpfschlauch durch Opa), Brücke entfernen, mit Sicherung nachmessen (C14-L bis Klemme L 0,2–0,5 Ω, ohne Sicherung «1»), Haube montieren, FI-Zuordnung prüfen, dann erster Einschalttest mit Opa (24 V auf DC V 200, Poti V ADJ auf 24,0 V, ohne Last).
+F1 klären (Opa lötet / Kolben / anderer Halter), Brücke entfernen, nachmessen (C14-L bis Klemme L 0,2–0,5 Ω), Haube montieren, FI prüfen, erster Einschalttest mit Opa (24 V auf DC V 200, Poti V ADJ 24,0 V, ohne Last).
 ## Dateien
-docs/schema/verdrahtung-j2.md, docs/elektronikgehaeuse.md, docs/stuecklisten/elektronikgehaeuse.md, cad/skripte/elektronikgehaeuse.py; Fusion «Claude Roboterarm v1» (J2); Repo github.com/Technoraily/KI-Integrierter-Roboter
+docs/schema/verdrahtung-j2.md, docs/elektronikgehaeuse.md, docs/stuecklisten/*.md, cad/skripte/elektronikgehaeuse.py; Fusion «Claude Roboterarm v1» (J2); Repo github.com/Technoraily/KI-Integrierter-Roboter
