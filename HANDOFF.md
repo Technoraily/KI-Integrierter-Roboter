@@ -1,4 +1,4 @@
-# HANDOFF – KI-Integrierter Roboterarm (Stand 04.11.2026; Details: README.md, docs/konzept.md, index.md)
+# HANDOFF – KI-Integrierter Roboterarm (Stand 04.11.2026 Feierabend; Details: README.md, docs/konzept.md, index.md)
 ## Ziel
 6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17, BTT Octopus + grblHAL) auf 1000-mm-Schiene, später Kamera-KI und Greiferwechsel. Aktuell: Prüfstand J2 aufbauen, Motor vermessen, Elektronikgehäuse in Betrieb nehmen.
 ## Stand
@@ -13,6 +13,7 @@
 - F1: Opa lötet, Lötkolben besorgen/leihen oder Halter mit 6,3-mm-Flachsteckfahnen (Passprobe EG_Passprobe_F1 bleibt Prüfstein, nur Netzblende neu drucken). Belegung, Schrumpfschlauch, Zugentlastung C14, Schalter, T 3,15 A gegen 60 A: Opa.
 - Messen: C14-Tiefe, F1-Gewinde, USB-Lage Uno, Shield-Höhe; RISIKO HTD-3M-Ritzel (Gesamtlänge ≤ 26,0 mm, Sollwerte in docs/zubehoer-j2.md). Danach Motorkabel crimpen, Vref (max 1,77 A), GRBL aufspielen.
 - Neu: Schalter KW12-3 messen (Schalterprobe drucken), Magnetprobe (Haltekraft, Bedarf 26 N je Paar), Kette nur mit Anschlussstücken kaufen, Kette 10 × 15 evtl. zu klein (70 % Füllung). Offene Ideen: docs/offene-ideen.md.
+- Magnete Ø 6 × 3 mm: Stückzahl/Sorte nennen (mind. 8; bei mehr zwei je Stelle möglich). Dann in Fusion `werkzeugflansch.py` ausführen und STL neu exportieren, bevor gedruckt wird.
 ## Nächster Schritt
 F1 klären (Opa lötet / Kolben / anderer Halter), Brücke entfernen, nachmessen (C14-L bis Klemme L 0,2–0,5 Ω), Haube montieren, FI prüfen, erster Einschalttest mit Opa (24 V auf DC V 200, Poti V ADJ 24,0 V, ohne Last).
 ## Dateien
