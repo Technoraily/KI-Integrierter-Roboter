@@ -4,7 +4,7 @@ Vorbereitung nach docs/konzept.md 3.5 («nur vorsehen»); Reserve am Flansch ins
 
   WF_Master        Roboterseite, Ø 70 x 8 mm. Rückseite auf dem Flansch ISO 9409-1-31,5-4-M5 (4 x Ø 5,5 auf Lochkreis 31,5 mm,
                    Senkung für niedrigen M5-Zylinderkopf mit Scheibe von der Kupplungsseite), 3 Stahlkugeln Ø 6 mm in Taschen, 3 Magnete
-                   Ø 10 x 3 mm in Taschen, 6 Bohrungen für Pogo-Pins, Aufnahme für einen Codierstift Ø 3 x 6 mm bei 60°/r = 11 mm, Mittelbohrung Ø 10 mm für das Kabel, zwei
+                   Ø 6 x 3 mm in Taschen, 6 Bohrungen für Pogo-Pins, Aufnahme für einen Codierstift Ø 3 x 6 mm bei 60°/r = 11 mm, Mittelbohrung Ø 10 mm für das Kabel, zwei
                    Einschmelzgewinde M3 auf der Rückseite (r = 31 mm) für den Kamerahalter.
   WF_Werkzeug      Werkzeugseite, Ø 70 x 8 mm: 3 V-Nuten (90 Grad) für die Kugeln, 3 Magnettaschen (andere Polung),
                    6 Löcher Ø 2,2 für Schrauben M2 als Kontaktflächen, Mittelbohrung, 4 Einschmelzgewinde M3 auf Ø 28 mm
@@ -35,7 +35,7 @@ ISO_WINKEL = (0.0, 90.0, 180.0, 270.0)
 K_M5, T_SCHEIBE_M5, KOPF_RESERVE = 3.5, 1.0, 0.5                       # niedriger Zylinderkopf M5 (DIN 7984, k = 3,5) + Scheibe Ø 9 x 1; Kopf bleibt 0,5 mm unter der Fläche
 KUGEL_D, KUGEL_SPIEL = 6.0, 0.15          # Stahlkugel (Lagerkugel) in Tasche, Kugelmitte liegt in der Fläche (halb eingesenkt)
 KUGEL_WINKEL = (90.0, 210.0, 330.0)
-MAGNET_D, MAGNET_T, MAGNET_SPIEL = 10.0, 3.0, 0.2                      # Scheibenmagnet Ø 10 x 3 (Startwert); Tasche zum Einkleben
+MAGNET_D, MAGNET_T, MAGNET_SPIEL = 6.0, 3.0, 0.2                       # Scheibenmagnet Ø 6 x 3 (vorhanden, Nutzer 04.11.); Tasche Ø 6,2 zum Einkleben
 MAGNET_WINKEL = (30.0, 150.0, 270.0)
 SPALT = 0.4                               # Abstand der Platten im gekuppelten Zustand (Kugelmitte steht SPALT über der Nutfläche)
 POGO_R, POGO_N, D_POGO = 9.0, 6, 1.7                                    # Pogo-Pins (Startwert Ø 1,7)

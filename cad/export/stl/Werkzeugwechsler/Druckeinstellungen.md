@@ -1,6 +1,6 @@
 # Druckeinstellungen Werkzeugwechsler und Kamerahalter
 
-Drucker BambuLab A1, Düse 0,4 mm, Bambu Studio. Grundlage ist das Profil **«0.20mm Standard @BBL A1»**; geändert wird nur, was unten steht. Beschreibung: `docs/werkzeugwechsler.md`, Stückliste: `docs/stuecklisten/werkzeugwechsler.md`. **Noch nichts gedruckt. Zuerst die Magnetprobe drucken und die Haltekraft messen, dann den Master allein für die Kugeltasche (Ø 6,15 mm) prüfen.**
+Drucker BambuLab A1, Düse 0,4 mm, Bambu Studio. Grundlage ist das Profil **«0.20mm Standard @BBL A1»**; geändert wird nur, was unten steht. Beschreibung: `docs/werkzeugwechsler.md`, Stückliste: `docs/stuecklisten/werkzeugwechsler.md`. **Achtung: Die vorliegenden STL (`WF_Master`, `WF_Werkzeug`, `WF_Magnetprobe_*`) haben noch Magnettaschen für Ø 10 mm. Das Skript ist auf Magnete Ø 6 × 3 mm umgestellt; die STL müssen vor dem Druck neu exportiert werden (Skript in Fusion ausführen).** Noch nichts gedruckt. Zuerst die Magnetprobe drucken und die Haltekraft messen, dann den Master allein für die Kugeltasche (Ø 6,15 mm) prüfen.**
 
 ## Für alle Teile gleich
 
@@ -18,7 +18,7 @@ Drucker BambuLab A1, Düse 0,4 mm, Bambu Studio. Grundlage ist das Profil **«0.
 
 | Datei | Lage auf dem Bett | Wände | Infill | Nachbearbeitung |
 |---|---|---|---|---|
-| `WF_Magnetprobe_A.stl`, `_B.stl` (je 34 × 30 × 12 mm) | flach, Magnettasche oben | 3 | 40 % | Magnet Ø 10 × 3 mm einkleben (bündig), Ringschraube M4 selbstschneidend in das Kernloch Ø 3,3 mm von hinten, Karton 0,4 mm dazwischen, Haltekraft mit Federwaage in der Magnetachse messen |
+| `WF_Magnetprobe_A.stl`, `_B.stl` (je 34 × 30 × 12 mm) | flach, Magnettasche oben | 3 | 40 % | Magnet Ø 6 × 3 mm einkleben (Tasche Ø 6,2 mm) (bündig), Ringschraube M4 selbstschneidend in das Kernloch Ø 3,3 mm von hinten, Karton 0,4 mm dazwischen, Haltekraft mit Federwaage in der Magnetachse messen |
 | `WF_Master.stl` (Ø 70 × 8 mm) | flach, Kupplungsseite oben (Taschen offen nach oben) | 4 | 50 % | Kugeln Ø 6 mm mit Sekundenkleber in die Taschen (halb eingesenkt), Magnete einkleben (bündig, alle drei mit dem Nordpol nach aussen), Stahlstift Ø 3 × 6 mm in die Aufnahme (Haltesitz), zwei Einschmelzgewinde M3 von der Rückseite, Pogo-Löcher nicht aufbohren (erst Pin probieren) |
 | `WF_Werkzeug.stl` (Ø 70 × 8 mm) | flach, Kupplungsseite oben (Nuten offen nach oben) | 4 | 50 % | Magnete einkleben (alle drei mit dem Südpol nach aussen), sechs Schlitz-Zylinderschrauben M2 × 6 (DIN 84) von vorn mit Mutter in der Sechskanttasche hinten (mit einem Tropfen Kleber sichern), vier Einschmelzgewinde M3 auf der Rückseite (Ø 32 mm, Startwert); die V-Nuten mit einer Kugel prüfen |
 | `WF_Kamerahalter.stl` (46 × 56 × 28 mm) | auf der Seite liegend (wie exportiert, der Z-Querschnitt liegt auf dem Bett) | 4 | 100 % | Löcher für M2 nicht aufbohren (die Löcher liegen im Druck waagrecht und werden leicht oval); Platine zuerst anlegen |

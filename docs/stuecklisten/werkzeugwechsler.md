@@ -24,7 +24,7 @@ Druckeinstellungen vollständig in `cad/export/stl/Werkzeugwechsler/Druckeinstel
 
 | Pos. | Teil | Menge | Suchbegriff | ca. CHF | Status |
 |---|---|---|---|---|---|
-| 2.1 | Scheibenmagnet Ø 10 × 3 mm, N35 (Masse Startwert) | 10 (2 Probe, 6 Wechsler, 2 Reserve) | `neodymium disc magnet 10x3 N35` | 3 | offen |
+| 2.1 | Scheibenmagnet Ø 6 × 3 mm (**vorhanden**, Sorte und Stückzahl klären) | mindestens 8 (2 Probe, 3 Master, 3 Werkzeug; mehr, falls je Stelle zwei) | `neodymium disc magnet 6x3` | 0 | da |
 | 2.2 | Stahlkugel Ø 6 mm (Lagerkugel, G10 oder besser) | 5 (3 + Reserve) | `steel ball 6mm bearing G10` | 2 | offen |
 | 2.3 | Pogo-Pin (Federkontaktstift), Körper Ø ≤ 1,6 mm, Hub grösser als 0,4 mm; Haltesitz in der Bohrung Ø 1,7 mm (Typ und Durchmesser offen, `P75-E2` ist ungeprüft) | 6 + Reserve | `pogo pin spring loaded contact` | 3 | nicht gewählt |
 | 2.3a | Stahlstift (Passstift oder Spannstift) Ø 3 × 6 mm als Codierstift | 1 | `dowel pin 3x6` | 1 | klären |
@@ -69,5 +69,5 @@ PLA etwa 75 bis 85 g (Master und Werkzeug je etwa 25 g, Kamerahalter etwa 13 g, 
 
 ## Was noch zu bestellen ist
 
-- **Jetzt (nur für die Probe):** zwei Magnete Ø 10 × 3 mm, falls kein Magnet da ist, für unter CHF 2; und eine Kugel Ø 6 mm für den Test der Kugeltasche.
+- **Jetzt (nur für die Probe):** Magnete sind da (Ø 6 × 3 mm); es fehlen eine Kugel Ø 6 mm für den Test der Kugeltasche und zwei Ringschrauben M4.
 - **Nach der Magnetprobe:** Magnete (Grösse nach der gemessenen Kraft), Kugeln, Pogo-Pins. Kamera erst, wenn Modell und Lochbild gewählt sind.
