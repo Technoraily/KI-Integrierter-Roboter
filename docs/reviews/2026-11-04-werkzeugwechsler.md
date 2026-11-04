@@ -35,4 +35,11 @@ Bestätigt behoben: Kippmoment (0,0405 m × F_M, 26 / 52 N), Codierstift (60° /
 | N5 | niedrig/mittel | Codierloch zu nah am Greifer-Einschmelzgewinde 315° | Greiferlochbild auf Ø 32 mm, 0/90/180/270°; Asserts gegen Codierloch und Mutterntaschen |
 | N6 | niedrig | Kontaktreibung, Pogo-Hub | in der Doku ergänzt |
 
-Nach den Korrekturen im CAD erneut gebaut (alle Asserts bestanden, Platten ohne Überschneidung, Kugel Ø 3,0 tangential, ab 3,2 mm Überschneidung). Eine dritte Runde wurde nicht beauftragt; die Note 7 gilt für den Stand vor diesen Korrekturen.
+Nach den Korrekturen im CAD erneut gebaut (alle Asserts bestanden, Platten ohne Überschneidung, Kugel Ø 3,0 tangential, ab 3,2 mm Überschneidung). 
+## Runde 3: 8 von 10
+
+Bewertet für das, was ohne Kaufteile prüfbar ist. N1–N6 behoben (Asserts nachgerechnet: M5-Kopf 5,0 ≤ 5,5 mm, Kontaktschraube Spitze 0,7 mm und Eingriff 1,1 mm, Greifer-Gewinde gegen Codierloch ≥ 4,7 mm und gegen Mutterntaschen ≥ 2,5 mm).
+
+Restmängel: Lötwärme und Kleber an der Kontaktmutter (Stückliste: Messingmutter, Öse klemmen oder vorher an die Schraube löten); Eingriff 1,1 mm in der Mutter knapp (mit Kleber gesichert); Gewindelänge der Ringschraube prüfen; Skriptkommentare teils veraltet; Kamerahalter bleibt Entwurf ohne gewähltes Modul.
+
+Nur an gelieferten Teilen klärbar: Magnetkraft bei 0,4 mm Spalt (Bedarf 26 / 52 N je Paar, Erwartung «reicht nicht»), Kugeltasche und V-Nut im gedruckten Zustand, Pogo-Typ, ISO-Flansch, Kameramodul, Greifer-Lochbild. Für 9–10 fehlen: Magnetprobe, Kippprobe an gekuppelten Platten, gedruckter Sitz von Kugel und Nut, tragfähige Kontaktseite, Verriegelung für 1 kg waagrecht.

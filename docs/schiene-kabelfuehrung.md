@@ -1,6 +1,6 @@
 # Schiene J0: Kabelführung (Schleppkette)
 
-Stand 04.11.2026 (nach Gutachten, Runde 2), **Entwurf für Stufe C** (Schiene wird erst nach dem Prüfstand gebaut). CAD: `cad/skripte/schiene_kette.py`, STL: `cad/export/stl/Schiene_Kette/`, Stückliste: [stuecklisten/schiene-kette.md](stuecklisten/schiene-kette.md). Nichts davon ist gedruckt oder erprobt. Gutachten: [reviews/2026-11-04-schiene-kette.md](reviews/2026-11-04-schiene-kette.md).
+Stand 04.11.2026 (nach Gutachten, Runde 3), **Entwurf für Stufe C** (Schiene wird erst nach dem Prüfstand gebaut). CAD: `cad/skripte/schiene_kette.py`, STL: `cad/export/stl/Schiene_Kette/`, Stückliste: [stuecklisten/schiene-kette.md](stuecklisten/schiene-kette.md). Nichts davon ist gedruckt oder erprobt. Gutachten: [reviews/2026-11-04-schiene-kette.md](reviews/2026-11-04-schiene-kette.md).
 
 ## Empfehlung zuerst
 

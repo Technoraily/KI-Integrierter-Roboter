@@ -35,4 +35,9 @@ Bestätigt behoben: Schraubenlänge, Wand um die Einsätze, Fuss ohne Senkung, K
 | 6 | niedrig | PRESS beim Nachmessen mitsetzen | Skript-Kommentar und Druckeinstellungen |
 | 7 | niedrig | Quelle der Kettenmasse ungesichert | nicht lösbar ohne Kette |
 
-Für ≥ 8 fehlt laut Gutachter: Formschluss-Lösung oder Zugtest, Lage zur Nut. Die Lage ist behoben; der Rest hängt an der gelieferten Kette (bei Anschlussstücken entfällt das ganze Teil). Runde 3 wird dafür nicht verbraucht.
+Für ≥ 8 fehlt laut Gutachter: Formschluss-Lösung oder Zugtest, Lage zur Nut. Die Lage ist behoben; der Rest hängt an der gelieferten Kette (bei Anschlussstücken entfällt das ganze Teil). 
+## Runde 3: 7 von 10
+
+Restmängel 1–6 behoben, 7 (Quelle der Kettenmasse) nur mit der Kette lösbar. Der Gutachter empfiehlt, **keinen Formschluss ohne die Kette zu konstruieren** (Bolzenlöcher und Laschenabstand des Endglieds sind unbekannt); optional wäre ein Schalter im Skript für Kabelbinderschlitze. Mit der gelieferten Kette wäre ≥ 8 erreichbar; hat sie Anschlussstücke, entfällt das Teil.
+
+Nur an der Kette klärbar: Aussenmass, Anschlussstücke und Lochbild, Haltekraft der Reibklemme, Biegeradius, Leitungsdurchmesser (Füllgrad), Platz für den Überstand von 14,7 mm. Nur mit dem Schlitten klärbar: bewegliches Ende, M4-Länge, Gleitkanal.

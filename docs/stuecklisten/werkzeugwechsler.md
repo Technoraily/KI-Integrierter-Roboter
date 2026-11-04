@@ -40,9 +40,9 @@ Druckeinstellungen vollständig in `cad/export/stl/Werkzeugwechsler/Druckeinstel
 | 3.1a | Scheibe M5, klein (Ø 9 × 1, DIN 433), Stahl | 4 | unter dem Kopf in der Senkung (Kopf 3,5 + Scheibe 1 = 4,5 mm in 5,5 mm tiefer Senkung; 2,5 mm PLA unter der Scheibe) | klären |
 | 3.2 | Schraube M3 × 6 (Fuss 4 mm, Senkung 2,2 mm, Bohrung im Master 6 mm tief) | 2 | Kamerahalter auf Master | klären |
 | 3.3 | Schlitz-Zylinderschraube M2 × 6, DIN 84 / ISO 1207 (Kopf Ø 3,8 × 1,3; **nicht** Inbus, dessen Kopf 2,0 mm hoch ist und vorsteht) | 6 | Kontaktflächen der Werkzeugplatte (Kopf bündig in der Senkung) | klären |
-| 3.3a | Mutter M2 | 6 | in der Sechskanttasche hinten, daran wird die Ader gelötet | klären |
+| 3.3a | Mutter M2, **Messing** (Edelstahl lässt sich kaum löten) | 6 | in der Sechskanttasche hinten. Löten nicht in der Tasche (Lötwärme erweicht PLA, Glasübergang rund 55–60 °C, und Kleber im Gewinde kann den Kontakt isolieren): Ader mit Kabelöse unter der Mutter klemmen oder vor dem Einbau an die Schraube löten | klären |
 | 3.4 | Schraube M2 × 8 | 4 | Kameramodul auf Halter | klären |
-| 3.4b | Ringschraube M4 (DIN 580 oder Schraube mit Öse), Länge etwa 12 mm | 2 | Magnetprobe, Zugöse | offen (Suchbegriff `eye bolt M4`, ca. CHF 1) |
+| 3.4b | Ringschraube M4 (DIN 580 oder Schraube mit Öse), Länge etwa 12 mm; Gewindelänge am gelieferten Teil prüfen (Kernloch 8 mm tief) | 2 | Magnetprobe, Zugöse | offen (Suchbegriff `eye bolt M4`, ca. CHF 1) |
 | 3.4a | Mutter M2 | 4 | dazu | klären |
 | 3.5 | Schrauben M3 für den Greifer | 4 | Länge hängt vom Greifer ab | nicht gewählt |
 

@@ -28,12 +28,12 @@ Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren
 | 2 | Elektronikgehäuse J2 (Netzteil, Arduino, C14, Sicherung, Klemmenabdeckung) | Entwurf, Gutachten 7/10 – Passproben drucken, Masse an den Teilen prüfen, Freigabe 230-V-Seite durch Elektriker |
 | 2 | Steuerung J2: GRBL-Einstellungen, Testprogramme, Messprotokoll mit Auswertung | fertig, noch nicht am Gerät ausgeführt |
 | 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter, Not-Aus-Gehäuse) | CAD fertig, STL exportiert – drucken, Passungen messen |
-| 2 | Zubehör J2 (Referenzschalter im Querträger mit Probe, Motorkabelklemme) | Entwurf, Gutachten 7,5/10 – Schalter kaufen, Probe drucken und messen |
+| 2 | Zubehör J2 (Referenzschalter im Querträger mit Probe, Motorkabelklemme) | Entwurf, Gutachten 8/10 (Runde 3) – Schalter kaufen, Probe drucken und messen |
 | 2b | Machbarkeitstest Steuerung (7 Achsen) | offen |
 | 3–4 | CAD und Bau Basis, Schulter, Oberarm | offen |
-| 5 | Hand, Flansch, Greifer (Vorbereitung: Greiferwechsler und Kamerahalter am Werkzeugflansch) | Entwurf, Gutachten 7/10 – Magnetprobe zuerst; Hand selbst offen |
+| 5 | Hand, Flansch, Greifer (Vorbereitung: Greiferwechsler und Kamerahalter am Werkzeugflansch) | Entwurf, Gutachten 8/10 (Runde 3) – Magnetprobe zuerst; Hand selbst offen |
 | 6–9 | Verkleidung, Elektronik, Software, Dokumentation | offen |
-| 10 | Schiene (7. Achse); Vorbereitung: Kettenklemme für die Schleppkette | Entwurf, Gutachten 6/10 – Bau erst in Stufe C |
+| 10 | Schiene (7. Achse); Vorbereitung: Kettenklemme für die Schleppkette | Entwurf, Gutachten 7/10 (Runde 3) – Bau erst in Stufe C |
 
 ## Motorprüfstand
 
@@ -80,7 +80,7 @@ Mehr dazu: [Beschreibung](docs/elektronikgehaeuse.md) · [Stückliste](docs/stue
 
 ### Zubehör und Vorbereitung für später (Entwürfe, nichts gedruckt)
 
-Sie wurden am 4. November von unabhängigen Gutachtern geprüft (zwei Runden). Alle Masse zu Kaufteilen (Schalter, ISO-Flansch, Magnete, Pogo-Pins, Kamera, Kettenglied) sind Startwerte; jedes Teil mit solchen Annahmen hat eine Probe oder eine Messvorschrift vor dem Druck.
+Sie wurden am 4. November von unabhängigen Gutachtern geprüft (drei Runden; die Noten gelten für das, was ohne die Kaufteile prüfbar ist). Alle Masse zu Kaufteilen (Schalter, ISO-Flansch, Magnete, Pogo-Pins, Kamera, Kettenglied) sind Startwerte; jedes Teil mit solchen Annahmen hat eine Probe oder eine Messvorschrift vor dem Druck.
 
 - **Referenzschalter J2** ([Beschreibung](docs/zubehoer-j2.md)): Querträger mit Tasche für einen Mikroschalter KW12-3, der 0,4° vor dem mechanischen Anschlag auslöst (gerechnet, abhängig vom gekauften Schalter); dazu die Schalterprobe und eine Klemme für das Motorkabel. Der Querträger mit Schalter gilt nur für Messungen ohne grosse Last.
 - **Greiferwechsler und Kamerahalter** ([Beschreibung](docs/werkzeugwechsler.md)): kinematische Kupplung (drei Kugeln in V-Nuten), Magnete, Pogo-Pins, Codierstift. Im CAD geprüft: Platten überschneiden sich nicht, Kugeln liegen in allen Nuten an, der Stift sperrt falsche Drehlagen. Die Haltekraft der Magnete reicht voraussichtlich nicht für 1 kg bei waagrechtem Werkzeug; die Magnetprobe liefert die Zahl.
