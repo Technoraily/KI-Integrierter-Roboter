@@ -36,7 +36,7 @@ Nachbearbeitung: Fäden und Reste aus Bohrungen, Langlöchern und Zahnlücken en
 
 Filament gesamt (Schätzung mit üblicher Füllung): PETG 0,35–0,45 kg, PLA 0,35–0,45 kg, dazu 0,2 kg Reserve (siehe `docs/stuecklisten/pruefstand-j2.md`, Gruppe 8).
 
-Neudruck 10.11.2026 (Ritzelnaben länger als angenommen, STL neu exportiert, Einstellungen wie oben): `Scheibe_3M_Z64`, `Scheibe_GT2_Z72`, `Distanzring_A_rechts` (nur 0,7 mm dick: 3 Schichten à 0,2 mm, auf Brim verzichten), `Distanzring_B_rechts`, `Huelse_3M_links`, `Huelse_3M_rechts`. Siehe `docs/stuecklisten/pruefstand-j2.md`.
+Neudruck 10.11.2026 (Ritzelnaben länger als angenommen, STL neu exportiert, Einstellungen wie oben): `Scheibe_3M_Z64`, `Scheibe_GT2_Z72`, `Distanzring_A_rechts` (nur 1,1 mm dick: 5 Schichten à 0,2 mm, auf Brim verzichten), `Distanzring_B_rechts`, `Huelse_3M_links`, `Huelse_3M_rechts`. Siehe `docs/stuecklisten/pruefstand-j2.md`.
 
 Zusatzteil 10.11.2026: `Abstandsring_Ritzel_5M.stl` (1,6 mm; Ersatz `_1.4mm` und `_1.8mm`), PETG, stehend, 3 Wände, 100 %, kein Brim, Bohrung Ø 8,4 nicht aufbohren. Liegt auf dem Nabenende des 5M-Ritzels in der Bucht der Z64.
 

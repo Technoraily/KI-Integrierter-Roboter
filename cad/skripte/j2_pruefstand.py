@@ -71,7 +71,9 @@ Z_HUELSE_Z72_ENDE = 25.4          # Ende der Huelse der Z72-Scheibe; das Z16-Rit
 Z_HEBEL = (20.0, 40.0)
 
 # Gekaufte Ritzel: Bord und Nabe sind Annahmen, nach Lieferung mit Schieblehre nachmessen und hier eintragen
-BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 11.0, 18.0    # Z16: Bord, Nabenlaenge (11 mm gemessen 10.11.2026, Gesamt 29 mm), Nabendurchmesser 18 mm (nachgemessen 10.11.2026); Bord unten/oben und Zahnbreite noch messen (Nabe Richtung rechte Wange)
+# Z16 (3M), gemessen 10.11.2026: Gesamt 29,0 = unterer Bord 1,5 + Zaehne 15,6 + 1,0 (Uebergang, unbekannt) + Nabe 10,9 (Ø 18); KEIN oberer Bord.
+# Das Ritzel sitzt direkt auf der Huelse der Z72 (Z_HUELSE_Z72_ENDE) und endet bei +29,0 mm, die Zaehne liegen bei +1,5 bis +17,1 mm
+BORD_3M, ZAHN_3M, GESAMT_3M, NABE_3M_D = 1.5, 15.6, 29.0, 18.0
 # Z18 (5M), gemessen 10.11.2026: Gesamt 32,3 mm = unterer Bord 2,8 + Zaehne 16,5 + Nabe 13,0 (Ø 18); KEIN oberer Bord.
 # Das Ritzel liegt ohne Distanzring direkt auf dem Lager (Nabenende bei z = 33,0 laut Messung: Welle ragt 30 mm heraus)
 Z_RITZEL_5M_UNTEN, NABE_5M_L, NABE_5M_D = 0.7, 13.0, 18.0
@@ -538,12 +540,12 @@ bohrung(k, b, [M], 5.0, 1.0, 20.0)
 farbe(b, *ALU)
 
 k = teil("Kaufteil_Ritzel_3M_Z16_B8")
-b = zylinder(k, A, 18.0, Z_3M[0] - BORD_3M, Z_3M[0], name="Ritzel_3M_Z16")
-zylinder(k, A, PD16 - 0.76, Z_3M[0], Z_3M[1], body=b)
-Z_NABE_3M_ENDE = Z_3M[1] + BORD_3M + NABE_3M_L                      # Ende der Nabe, ab hier ist Platz bis zur rechten Wange
-zylinder(k, A, 18.0, Z_3M[1], Z_3M[1] + BORD_3M, body=b)
-zylinder(k, A, NABE_3M_D, Z_3M[1] + BORD_3M, Z_NABE_3M_ENDE, body=b)   # Nabe
-bohrung(k, b, [A], D_WELLE, Z_3M[0] - BORD_3M, Z_NABE_3M_ENDE)
+Z_RITZEL_3M_UNTEN = Z_HUELSE_Z72_ENDE                                # Ritzel liegt auf der Z72-Huelse
+Z_NABE_3M_ENDE = Z_RITZEL_3M_UNTEN + GESAMT_3M                       # 54,4: Ende der Nabe, ab hier ist Platz bis zur rechten Wange
+b = zylinder(k, A, 18.0, Z_RITZEL_3M_UNTEN, Z_RITZEL_3M_UNTEN + BORD_3M, name="Ritzel_3M_Z16")   # unterer Bord
+zylinder(k, A, PD16 - 0.76, Z_RITZEL_3M_UNTEN + BORD_3M, Z_RITZEL_3M_UNTEN + BORD_3M + ZAHN_3M, body=b)   # Zaehne
+zylinder(k, A, NABE_3M_D, Z_RITZEL_3M_UNTEN + BORD_3M + ZAHN_3M, Z_NABE_3M_ENDE, body=b)   # Uebergang und Nabe
+bohrung(k, b, [A], D_WELLE, Z_RITZEL_3M_UNTEN, Z_NABE_3M_ENDE)
 print("Ritzel Z16: Nabe endet bei z = %.1f, Luft zur rechten Wange %.1f mm" % (Z_NABE_3M_ENDE, W - Z_NABE_3M_ENDE))
 assert W - Z_NABE_3M_ENDE >= 1.0, "Nabe des 3M-Ritzels zu lang: weniger als 1 mm Luft zur rechten Wange (kuerzen, aufreiben oder umdrehen)"
 farbe(b, *ALU)
@@ -579,7 +581,7 @@ def distanzring(name, c, z0, z1, d=D_ANLAGE):
 
 
 distanzring("Distanzring_A_links", A, 0.2, Z_GT2[0] - 0.1)
-distanzring("Distanzring_A_rechts", A, Z_NABE_3M_ENDE + 0.1, W - 0.2)
+distanzring("Distanzring_A_rechts", A, Z_NABE_3M_ENDE + 0.1, W - 0.4)   # 54,5 bis 55,6 = 1,1 mm (Nabenende +-0,2 mm)
 
 # --- Gedruckte Scheibe Z64 (3M) auf Welle B: Huelse ueber der Ritzelnabe, Schrauben durch Huelse in die Nabe
 k = teil("Scheibe_3M_Z64")
