@@ -1,4 +1,4 @@
-exec(open(r'cad/skripte/anleitung_helfer.py').read())
+exec(open(r'C:/Claude/KI-Integrierter Roboter/cad/skripte/anleitung_helfer.py', encoding='utf-8').read())
 import math
 ZIEL = r'C:/Claude/KI-Integrierter Roboter/docs/bauanleitung/schritte/'
 HELL = ['Wange_Links','Wange_Rechts','Quertraeger_unten_links','Quertraeger_unten_rechts','Quertraeger_oben_links','Quertraeger_oben_rechts','Motor']
@@ -15,10 +15,10 @@ s('03c_A_ritzel_3m', ['Ritzel_3M_Z16'])
 s('03d_A_distanzring_rechts', ['Distanzring_A_rechts'])
 s('03e_A_welle', ['Welle_A'])
 s('04a_B_distanzring_links', ['Distanzring_B_links'])
+s('04e_B_welle', ['Welle_B'])
 s('04b_B_ritzel_5m', ['Ritzel_5M_Z18'])
 s('04c_B_scheibe_z64', ['Scheibe_3M_Z64'])
 s('04d_B_distanzring_rechts', ['Distanzring_B_rechts'])
-s('04e_B_welle', ['Welle_B'])
 s('05a_O_scheibe_z90', ['Scheibe_5M_Z90'])
 s('05b_O_welle', ['Welle_O'])
 s('06_rolle_3m', ['Schraube_Rolle_3M','Huelse_3M_links','Lager_Rolle3M_1','Lager_Rolle3M_2','Huelse_3M_rechts'])

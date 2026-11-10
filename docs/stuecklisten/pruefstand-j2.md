@@ -49,7 +49,14 @@ Dateien in `cad/export/stl/J2_Pruefstand/`. Teile mit Zusatz `_Lager22-20` sind 
 
 **Stand 25.10.2026 (Nutzer): alle 22 Druckteile sind gedruckt, teils schon montiert.** Die Scheiben 1.7 bis 1.9 und die Distanzringe/Hülsen wurden also nach den CAD-Annahmen für die Ritzel gedruckt (Nabenmasse siehe `j2_pruefstand.py`, Zeilen 520–543). Ritzel nach Lieferung nachmessen und gegen diese Annahmen prüfen.
 
-**Achtung HTD-3M-Ritzel (Pos. 2.2):** Das CAD nimmt Bordscheibe 18 mm, Nabe Ø 14 × 6 mm an (Ritzel von z = 29 bis 53,5 mm; lichte Weite zwischen den Wangen 56 mm, dazwischen `Distanzring_A_rechts` 53,6–55,8 mm). Die Zeichnung des Händlers nennt Nabe Ø 18 mm und Gesamtlänge 29 mm, also etwa z = 29 bis 58 mm. Das wäre etwa 2 mm zu lang und würde an die Wange stossen. Entscheid nach dem Nachmessen: Nabe kürzen (Säge/Feile, Gewindestifte nicht verletzen), Distanzring weglassen oder die Wange ausnehmen.
+**Stand 10.11.2026 – Neudruck wegen langer Ritzelnaben (Nutzer hat gemessen: 3M Gesamt 29 mm, Nabe 11 mm; 5M Gesamt 32,3 mm, Ritzelteil 19,3 mm, also Nabe 13,0 mm; Kürzen nicht möglich, Gewindestifte sässen im Weg).** Gelöst nur mit Druckteilen, CAD geprüft (0 Kollisionen, Nabenende 3M bei z = 55,0 mm, 1,0 mm Luft zur Wange). Neu zu drucken, STL sind neu exportiert, Druckeinstellungen wie in der Tabelle oben unverändert:
+- `Scheibe_3M_Z64` (1.8): Zahnkranz 26,5–43,0 statt 30–46,5, Aufnahme für die 5M-Nabe Ø 18,3 mm (Nabe Ø 18 gemessen) und 5 mm tiefer (bis z = 34,6), Hülse nur noch 22,0–26,5 mm. Statt der M4-Mitnahmeschrauben jetzt **zwei Mitnehmernuten** (Ø 12 mm, axial, 90° versetzt), in die die Köpfe der M5 × 8 aus dem Ritzel greifen. Reihenfolge am Bau: Welle B, Ritzel, Schrauben festziehen, erst dann die Z64 aufschieben.
+- `Scheibe_GT2_Z72` (1.7): Hülse nur noch bis z = 25,4 statt 28,8, Gewindestifte bei z = 22,5.
+- `Distanzring_A_rechts` (1.15): 55,1–55,8 mm (0,7 mm dick; Z-Mass jetzt kurz), `Distanzring_B_rechts` (1.17): 43,1–55,8 mm (12,7 mm lang).
+- `Huelse_3M_links` (1.21): 0–28,0 mm, `Huelse_3M_rechts` (1.22): 42,0–56,0 mm (Rolle 3M liegt jetzt bei z = 28–42, Riemen 3M 27,25–42,25).
+Nicht neu: Z90, 5M-Hülsen, Distanzringe A links und B links. Das 3M-Ritzel beginnt dadurch bei z = 25,5 mm, der Riemen sitzt 3,5 mm weiter links als zuvor. Nabendurchmesser 3M (Händler: 18 mm) und 5M (Annahme 20,0 mm, Aufnahme Ø 20,3 mm) noch selbst nachmessen.
+
+**Achtung HTD-3M-Ritzel (Pos. 2.2) – überholt, siehe oben:** Das CAD nimmt Bordscheibe 18 mm, Nabe Ø 14 × 6 mm an (Ritzel von z = 29 bis 53,5 mm; lichte Weite zwischen den Wangen 56 mm, dazwischen `Distanzring_A_rechts` 53,6–55,8 mm). Die Zeichnung des Händlers nennt Nabe Ø 18 mm und Gesamtlänge 29 mm, also etwa z = 29 bis 58 mm. Das wäre etwa 2 mm zu lang und würde an die Wange stossen. Entscheid nach dem Nachmessen: Nabe kürzen (Säge/Feile, Gewindestifte nicht verletzen), Distanzring weglassen oder die Wange ausnehmen.
 
 ## 2 Riemen, Scheiben, Lager, Wellen
 
@@ -78,7 +85,7 @@ Alle M3- und M4-Schrauben sind Zylinderschrauben mit Innensechskant (DIN 912).
 | 3.5 | M3 × 20 | 4 | Prüfstand aufs Grundbrett | da (wie 3.4) |
 | 3.6 | M3 × 25 | 4 | Stellschrauben der 3M-Rolle (2), Blockierstift (1), Klemmung der Messuhr (1) | da (wie 3.4) |
 | 3.7 | M3 × 30 | 2 | Stellschrauben der 5M-Rolle | da (wie 3.4) |
-| 3.8 | M4 × 16 | 2 | Mitnahme an Welle B, ersetzen die Gewindestifte des 5M-Ritzels (am Ritzel prüfen: M4 oder M5) | da (wie 3.4) |
+| 3.8 | M5 × 8 Linsenkopf (Kopf Ø 9–9,5 mm) | 2 | Mitnehmer an Welle B: ersetzen die zwei Madenschrauben M5 × 4 des 5M-Ritzels (Gewindelöcher 90° versetzt, Mitte 6,5 mm vom Nabenende), Spitze drückt auf die Welle, Kopf greift in die Nuten der Z64 | da (Nutzer 10.11.: M5 mit 8, 12, 16, 20 mm vorhanden) |
 | 3.9 | Mutter M8, selbstsichernd | 2 | Spannrollen-Schrauben | Nutzer hat normale M8-Muttern (nicht selbstsichernd); im Warenkorb: DIN 6926 Flansch-Nylock M8, 5 Stück, 0,91 CHF |
 | 3.10 | Unterlegscheibe M8 (Aussen-Ø mindestens 16 mm) | 4 | unter Kopf und Mutter der M8, über den Langlöchern | da (Aussen-Ø nachmessen, mind. 16 mm) |
 | 3.11 | Einschmelzgewinde M3 (Messing, Aussen-Ø 5 mm; Längen 5 / 4 / 3 mm gemischt, siehe unten) | 41 | siehe unten | da, alle 41 am 20.10.2026 gesetzt (Bohrung Ø 4,0 mm, mit Lötkolben bestätigt) |

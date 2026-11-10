@@ -66,12 +66,15 @@ HUB_ROLLE = 8.0                   # Langloch +-
 # Axiale Lage (z)
 Z_5M = (3.5, 20.0)                # Zahnbreite Z90 / Ritzel Z18
 Z_GT2 = (7.5, 19.5)               # Zahnbreite Z72
-Z_3M = (30.0, 46.5)               # Zahnbreite Z64 / Ritzel Z16
+Z_3M = (26.5, 43.0)               # Zahnbreite Z64 / Ritzel Z16 (10.11.2026 um 3,5 mm nach links geschoben: gekauftes Z16 hat Nabe 11 mm statt 6 mm)
+Z_HUELSE_Z72_ENDE = 25.4          # Ende der Huelse der Z72-Scheibe; das Z16-Ritzel beginnt bei Z_3M[0] - BORD_3M = 25.5
 Z_HEBEL = (20.0, 40.0)
 
 # Gekaufte Ritzel: Bord und Nabe sind Annahmen, nach Lieferung mit Schieblehre nachmessen und hier eintragen
-BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 6.0, 14.0     # Z16: Bord, Nabenlaenge, Nabendurchmesser (Nabe Richtung rechte Wange)
-BORD_5M, NABE_5M_L, NABE_5M_D = 1.5, 8.0, 20.0     # Z18: Bord, Nabenlaenge, Nabendurchmesser (Nabe in die Z64-Scheibe)
+BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 11.0, 18.0    # Z16: Bord, Nabenlaenge (11 mm gemessen 10.11.2026, Gesamt 29 mm), Nabendurchmesser (18 mm laut Haendlerzeichnung, selbst noch messen) (Nabe Richtung rechte Wange)
+BORD_5M, NABE_5M_L, NABE_5M_D = 1.5, 13.0, 18.0    # Z18: Bord, Nabenlaenge, Nabendurchmesser (Nabe in die Z64-Scheibe); Nabe 13,0 mm und Ø 18 mm gemessen 10.11.2026 (Gesamt 32,3, Ritzelteil 19,3)
+MITNEHMER_ABST_ENDE = 6.5         # Mitte der zwei M5-Gewindelocher (90 Grad versetzt) vom Nabenende (Nutzer: Lochrand 4 mm, Loch Ø 5 mm)
+R_MITNEHMER, D_NUT = 14.5, 12.0   # M5x8 Linsenkopf (Ø 9 bis 9,5 mm, ca. 2,75 mm hoch): Kopf liegt bei r = 12 bis 14,8 mm; Nut Ø 12 mm mit Mitte bei r = 14,5 mm
 
 # Rahmen
 X_STELL_5M = -80.0               # Grund der Nische fuer die Stellschraube der 5M-Rolle
@@ -531,12 +534,12 @@ bohrung(k, b, [M], 5.0, 1.0, 20.0)
 farbe(b, *ALU)
 
 k = teil("Kaufteil_Ritzel_3M_Z16_B8")
-b = zylinder(k, A, 18.0, 29.0, 30.0, name="Ritzel_3M_Z16")
+b = zylinder(k, A, 18.0, Z_3M[0] - BORD_3M, Z_3M[0], name="Ritzel_3M_Z16")
 zylinder(k, A, PD16 - 0.76, Z_3M[0], Z_3M[1], body=b)
 Z_NABE_3M_ENDE = Z_3M[1] + BORD_3M + NABE_3M_L                      # Ende der Nabe, ab hier ist Platz bis zur rechten Wange
 zylinder(k, A, 18.0, Z_3M[1], Z_3M[1] + BORD_3M, body=b)
 zylinder(k, A, NABE_3M_D, Z_3M[1] + BORD_3M, Z_NABE_3M_ENDE, body=b)   # Nabe
-bohrung(k, b, [A], D_WELLE, 29.0, Z_NABE_3M_ENDE)
+bohrung(k, b, [A], D_WELLE, Z_3M[0] - BORD_3M, Z_NABE_3M_ENDE)
 print("Ritzel Z16: Nabe endet bei z = %.1f, Luft zur rechten Wange %.1f mm" % (Z_NABE_3M_ENDE, W - Z_NABE_3M_ENDE))
 assert W - Z_NABE_3M_ENDE >= 1.0, "Nabe des 3M-Ritzels zu lang: weniger als 1 mm Luft zur rechten Wange (kuerzen, aufreiben oder umdrehen)"
 farbe(b, *ALU)
@@ -553,10 +556,10 @@ farbe(b, *ALU)
 # --- Gedruckte Scheibe Z72 (GT2) auf Welle A: Distanzbund, Zahnkranz, Nabe mit 2 Gewindestiften
 k = teil("Scheibe_GT2_Z72")
 b = zahnscheibe(k, A, 72, 2, "GT2", Z_GT2[0], Z_GT2[1], "Scheibe_GT2_Z72")
-zylinder(k, A, 24.0, Z_GT2[1], 28.8, body=b)
-bohrung(k, b, [A], D_BOHRUNG_WELLE, Z_GT2[0], 28.8)
+zylinder(k, A, 24.0, Z_GT2[1], Z_HUELSE_Z72_ENDE, body=b)
+bohrung(k, b, [A], D_BOHRUNG_WELLE, Z_GT2[0], Z_HUELSE_Z72_ENDE)
 for ri in ("x", "y"):
-    radialbohrung(k, b, A, ri, 12.0, 24.3, [(D_EINSCHMELZ_M3, 5.5), (3.2, 12.0)], "Gewindestift_" + ri)
+    radialbohrung(k, b, A, ri, 12.0, (Z_GT2[1] + Z_HUELSE_Z72_ENDE) / 2 + 0.05, [(D_EINSCHMELZ_M3, 5.5), (3.2, 12.0)], "Gewindestift_" + ri)
 bohrung(k, b, BLOCKIER, 3.0, Z_GT2[0], Z_GT2[1], "Blockierbohrungen")   # saugend, mit 3-mm-Bohrer aufreiben
 farbe(b, *DRUCK)
 
@@ -576,8 +579,11 @@ b = zahnscheibe(k, B, 64, 3, "3M", Z_3M[0], Z_3M[1], "Scheibe_3M_Z64")
 zylinder(k, B, 34.0, 22.0, Z_3M[0], body=b)
 bohrung(k, b, [B], D_BOHRUNG_WELLE, 22.0, Z_3M[1])
 bohrung(k, b, [B], NABE_5M_D + 0.3, 22.0, Z_NABE_5M_ENDE + 0.1, "Aufnahme_Ritzelnabe")
-for ri in ("x", "y"):
-    radialbohrung(k, b, B, ri, 17.0, 25.75, [(D_MITNAHME_M4, 8.0)], "Mitnahmeschraube_" + ri)
+# Zwei Mitnehmernuten (axial, offen zur Huelsenseite): die M5x8-Schrauben in den Gewindelochern der Ritzelnabe
+# sind der Mitnehmer, die Scheibe wird nach dem Festziehen der Schrauben aufgeschoben
+Z_MITNEHMER = Z_NABE_5M_ENDE - MITNEHMER_ABST_ENDE
+bohrung(k, b, [(B[0] + R_MITNEHMER, B[1]), (B[0], B[1] + R_MITNEHMER)], D_NUT, 22.0, Z_MITNEHMER + 5.0, "Mitnehmernut")
+bohrung(k, b, [(B[0] + 11.5, B[1]), (B[0], B[1] + 11.5)], 7.0, 22.0, Z_MITNEHMER + 5.0, "Mitnehmernut_Schaft")   # Platz fuer den Schraubenschaft Ø 5 am Uebergang Bucht/Nut
 farbe(b, *DRUCK)
 
 distanzring("Distanzring_B_links", B, 0.2, 2.0)
@@ -659,16 +665,16 @@ farbe(b, *DRUCK)
 kl = teil("Kaufteile_Lager_608_Spannrollen")
 lager(kl, I3, Z_5M[0] + 0.6, "Lager_Rolle5M_1")
 lager(kl, I3, Z_5M[1] - B_LAGER, "Lager_Rolle5M_2")
-lager(kl, I2, 31.5, "Lager_Rolle3M_1")
-lager(kl, I2, 38.5, "Lager_Rolle3M_2")
+lager(kl, I2, Z_3M[0] + 1.5, "Lager_Rolle3M_1")
+lager(kl, I2, Z_3M[0] + 8.5, "Lager_Rolle3M_2")
 
 k = teil("Distanzhuelsen_Spannrollen")
 # (Name, Mitte, z0, z1, z ab dem die Huelse 16 mm dick ist oder None)
 for name, c, z0, z1, z_dick in (("Huelse_5M_links", I3, 0.0, Z_5M[0] + 0.6, None),
                                 ("Huelse_5M_mitte", I3, Z_5M[0] + 0.6 + B_LAGER, Z_5M[1] - B_LAGER, None),
                                 ("Huelse_5M_rechts", I3, Z_5M[1], W, Z_5M[1] + 1.0),
-                                ("Huelse_3M_links", I2, 0.0, 31.5, None),      # bleibt 12 mm: laeuft am GT2-Riemen vorbei
-                                ("Huelse_3M_rechts", I2, 45.5, W, 46.5)):
+                                ("Huelse_3M_links", I2, 0.0, Z_3M[0] + 1.5, None),      # bleibt 12 mm: laeuft am GT2-Riemen vorbei
+                                ("Huelse_3M_rechts", I2, Z_3M[1] - 1.0, W, Z_3M[1])):
     b = zylinder(k, c, D_ANLAGE, z0, z1, name=name)
     if z_dick is not None:
         zylinder(k, c, 16.0, z_dick, z1, body=b)
@@ -687,7 +693,7 @@ for name, c in (("Schraube_Rolle_5M", I3), ("Schraube_Rolle_3M", I2)):
 # --- Riemen (Darstellung)
 k = teil("Kaufteile_Riemen")
 farbe(riemen(k, [(M, PD20 / 2, 1), (A, PD72 / 2, 1)], "GT2", 8.5, 18.5, "Riemen_GT2_200"), *GUMMI)
-farbe(riemen(k, [(A, PD16 / 2, 1), (B, PD64 / 2, 1), (I2, R_ROLLE_3M + PROFIL["3M"]["t_out"], -1)], "3M", 30.75, 45.75, "Riemen_3M_252"), *GUMMI)
+farbe(riemen(k, [(A, PD16 / 2, 1), (B, PD64 / 2, 1), (I2, R_ROLLE_3M + PROFIL["3M"]["t_out"], -1)], "3M", Z_3M[0] + 0.75, Z_3M[1] - 0.75, "Riemen_3M_252"), *GUMMI)
 farbe(riemen(k, [(B, PD18 / 2, 1), (O, PD90 / 2, 1), (I3, R_ROLLE_5M + PROFIL["5M"]["t_out"], -1)], "5M", 4.25, 19.25, "Riemen_5M_525"), *GUMMI)
 
 ergebnis = {

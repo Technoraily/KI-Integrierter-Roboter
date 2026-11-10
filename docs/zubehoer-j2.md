@@ -60,9 +60,9 @@ Eine gedruckte Lehre prüft Nabenlänge und -durchmesser nicht besser als die Sc
 
 | Ritzel | Messen | Soll |
 |---|---|---|
-| 3M Z16 auf Welle A | Gesamtlänge vom linken Bordrand bis zum Nabenende | höchstens 26,0 mm (Skript-Annahme 24,5 mm); sonst weniger als 1 mm Luft zur rechten Wange (56 mm). Der Distanzring A rechts ist dafür parametriert; bei Nabe 7,5 statt 6 mm schrumpft er auf etwa 0,7 mm, also Dicke prüfen |
-| 3M Z16 | Nabendurchmesser | Annahme 14 mm; kleiner als die Bordscheibe Ø 18 mm |
-| 5M Z18 auf Welle B | Nabenlänge ab Rückseite der Bordscheibe | höchstens 8,1 mm (Skript-Annahme 8,0 mm, Bohrung der Z64-Scheibe reicht bis 29,6 mm) |
+| 3M Z16 auf Welle A | Gesamtlänge vom linken Bordrand bis zum Nabenende | **gemessen 29,0 mm (Nabe 11 mm)**; seit 10.11.2026 ist das CAD darauf gerechnet (Ritzel z = 25,5–55,0, Zahnlage 26,5–43,0). Höchstens 29,5 mm zulässig |
+| 3M Z16 | Nabendurchmesser | Händler: 18 mm (CAD rechnet damit); selbst messen |
+| 5M Z18 auf Welle B | Nabenlänge ab Rückseite der Bordscheibe | **gemessen 13,0 mm**; CAD seit 10.11.2026 darauf gerechnet (Bohrung der Z64-Scheibe reicht bis z = 34,6 mm), höchstens 13,1 mm |
 | 5M Z18 | Nabendurchmesser | höchstens 20,3 mm (Bohrung der Scheibe); Annahme 20 mm |
 
-Ist die Nabe zu lang, hilft kein Druckteil: Nabe an der Drehbank kürzen (Opa) oder anderes Ritzel bestellen.
+Stand 10.11.2026: Die Naben waren zu lang (3M 11 mm statt 6 mm, 5M 13 mm statt 8 mm). Gelöst durch Neudruck von Z64, Z72, zwei Distanzringen und zwei Hülsen, siehe `docs/stuecklisten/pruefstand-j2.md`, Abschnitt «Neudruck».
