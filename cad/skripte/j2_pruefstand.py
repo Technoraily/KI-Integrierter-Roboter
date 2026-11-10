@@ -72,7 +72,11 @@ Z_HEBEL = (20.0, 40.0)
 
 # Gekaufte Ritzel: Bord und Nabe sind Annahmen, nach Lieferung mit Schieblehre nachmessen und hier eintragen
 BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 11.0, 18.0    # Z16: Bord, Nabenlaenge (11 mm gemessen 10.11.2026, Gesamt 29 mm), Nabendurchmesser (18 mm laut Haendlerzeichnung, selbst noch messen) (Nabe Richtung rechte Wange)
-BORD_5M, NABE_5M_L, NABE_5M_D = 1.5, 13.0, 18.0    # Z18: Bord, Nabenlaenge, Nabendurchmesser (Nabe in die Z64-Scheibe); Nabe 13,0 mm und Ø 18 mm gemessen 10.11.2026 (Gesamt 32,3, Ritzelteil 19,3)
+# Z18 (5M), gemessen 10.11.2026: Gesamt 32,3 mm = unterer Bord 2,8 + Zaehne 16,5 + Nabe 13,0 (Ø 18); KEIN oberer Bord.
+# Das Ritzel liegt ohne Distanzring direkt auf dem Lager (Nabenende bei z = 33,0 laut Messung: Welle ragt 30 mm heraus)
+Z_RITZEL_5M_UNTEN, NABE_5M_L, NABE_5M_D = 0.7, 13.0, 18.0
+Z_BUCHT_5M_ENDE, Z_NUT_ENDE = 34.6, 33.0   # Z64 wie gedruckt (STL vom 10.11.): Buchtgrund und Nutende
+D_SCHEIBE_M8, T_SCHEIBE_M8 = 16.0, 1.2     # M8-Unterlegscheibe des Nutzers (1,2 mm) auf dem Nabenende, traegt die Z64
 MITNEHMER_ABST_ENDE = 6.5         # Mitte der zwei M5-Gewindelocher (90 Grad versetzt) vom Nabenende (Nutzer: Lochrand 4 mm, Loch Ø 5 mm)
 R_MITNEHMER, D_NUT = 14.5, 12.0   # M5x8 Linsenkopf (Ø 9 bis 9,5 mm, ca. 2,75 mm hoch): Kopf liegt bei r = 12 bis 14,8 mm; Nut Ø 12 mm mit Mitte bei r = 14,5 mm
 
@@ -545,13 +549,17 @@ assert W - Z_NABE_3M_ENDE >= 1.0, "Nabe des 3M-Ritzels zu lang: weniger als 1 mm
 farbe(b, *ALU)
 
 k = teil("Kaufteil_Ritzel_5M_Z18_B8")
-b = zylinder(k, B, 32.0, 2.0, 3.5, name="Ritzel_5M_Z18")
+b = zylinder(k, B, 32.0, Z_RITZEL_5M_UNTEN, Z_5M[0], name="Ritzel_5M_Z18")   # unterer Bord 2,8 mm
 zylinder(k, B, PD18 - 1.14, Z_5M[0], Z_5M[1], body=b)
-Z_NABE_5M_ENDE = Z_5M[1] + BORD_5M + NABE_5M_L
-zylinder(k, B, 32.0, Z_5M[1], Z_5M[1] + BORD_5M, body=b)
-zylinder(k, B, NABE_5M_D, Z_5M[1] + BORD_5M, Z_NABE_5M_ENDE, body=b)   # Nabe, greift in die Z64-Scheibe
-bohrung(k, b, [B], D_WELLE, 2.0, Z_NABE_5M_ENDE)
+Z_NABE_5M_ENDE = Z_5M[1] + NABE_5M_L                                          # 33,0
+zylinder(k, B, NABE_5M_D, Z_5M[1], Z_NABE_5M_ENDE, body=b)   # Nabe, greift in die Z64-Scheibe
+bohrung(k, b, [B], D_WELLE, Z_RITZEL_5M_UNTEN, Z_NABE_5M_ENDE)
 farbe(b, *ALU)
+
+k = teil("Kaufteil_Unterlegscheibe_M8_Ritzel")
+b = zylinder(k, B, D_SCHEIBE_M8, Z_NABE_5M_ENDE, Z_NABE_5M_ENDE + T_SCHEIBE_M8, name="Scheibe_M8_Ritzel")
+bohrung(k, b, [B], 8.4, Z_NABE_5M_ENDE, Z_NABE_5M_ENDE + T_SCHEIBE_M8)
+farbe(b, *KAUF)
 
 # --- Gedruckte Scheibe Z72 (GT2) auf Welle A: Distanzbund, Zahnkranz, Nabe mit 2 Gewindestiften
 k = teil("Scheibe_GT2_Z72")
@@ -578,15 +586,15 @@ k = teil("Scheibe_3M_Z64")
 b = zahnscheibe(k, B, 64, 3, "3M", Z_3M[0], Z_3M[1], "Scheibe_3M_Z64")
 zylinder(k, B, 34.0, 22.0, Z_3M[0], body=b)
 bohrung(k, b, [B], D_BOHRUNG_WELLE, 22.0, Z_3M[1])
-bohrung(k, b, [B], NABE_5M_D + 0.3, 22.0, Z_NABE_5M_ENDE + 0.1, "Aufnahme_Ritzelnabe")
+bohrung(k, b, [B], NABE_5M_D + 0.3, 22.0, Z_BUCHT_5M_ENDE, "Aufnahme_Ritzelnabe")
 # Zwei Mitnehmernuten (axial, offen zur Huelsenseite): die M5x8-Schrauben in den Gewindelochern der Ritzelnabe
 # sind der Mitnehmer, die Scheibe wird nach dem Festziehen der Schrauben aufgeschoben
-Z_MITNEHMER = Z_NABE_5M_ENDE - MITNEHMER_ABST_ENDE
-bohrung(k, b, [(B[0] + R_MITNEHMER, B[1]), (B[0], B[1] + R_MITNEHMER)], D_NUT, 22.0, Z_MITNEHMER + 5.0, "Mitnehmernut")
-bohrung(k, b, [(B[0] + 11.5, B[1]), (B[0], B[1] + 11.5)], 7.0, 22.0, Z_MITNEHMER + 5.0, "Mitnehmernut_Schaft")   # Platz fuer den Schraubenschaft Ø 5 am Uebergang Bucht/Nut
+Z_MITNEHMER = Z_NABE_5M_ENDE - MITNEHMER_ABST_ENDE   # 26,5: Schraubenkoepfe bei 23,8 bis 29,3, Nut reicht bis Z_NUT_ENDE
+bohrung(k, b, [(B[0] + R_MITNEHMER, B[1]), (B[0], B[1] + R_MITNEHMER)], D_NUT, 22.0, Z_NUT_ENDE, "Mitnehmernut")
+bohrung(k, b, [(B[0] + 11.5, B[1]), (B[0], B[1] + 11.5)], 7.0, 22.0, Z_NUT_ENDE, "Mitnehmernut_Schaft")   # Platz fuer den Schraubenschaft Ø 5 am Uebergang Bucht/Nut
 farbe(b, *DRUCK)
 
-distanzring("Distanzring_B_links", B, 0.2, 2.0)
+# Distanzring B links entfaellt (10.11.2026): das 5M-Ritzel liegt direkt auf dem Lager
 distanzring("Distanzring_B_rechts", B, Z_3M[1] + 0.1, W - 0.2)
 
 # --- Gedruckte Scheibe Z90 (5M) auf der Abtriebswelle, mit 6 Einschmelzgewinden fuer den Hebel

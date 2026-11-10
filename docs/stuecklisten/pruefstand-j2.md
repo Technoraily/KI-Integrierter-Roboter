@@ -39,7 +39,7 @@ Dateien in `cad/export/stl/J2_Pruefstand/`. Teile mit Zusatz `_Lager22-20` sind 
 | 1.13 | `Spannrolle_5M_Lager22-20` | 1 | PETG | 7 | stehend |
 | 1.14 | `Distanzring_A_links` | 1 | PETG | 0,4 | stehend |
 | 1.15 | `Distanzring_A_rechts` | 1 | PETG | 0,1 | stehend |
-| 1.16 | `Distanzring_B_links` | 1 | PETG | 0,1 | stehend |
+| 1.16 | `Distanzring_B_links` | – | – | – | **entfällt seit 10.11.2026** (5M-Ritzel liegt direkt auf dem Lager) |
 | 1.17 | `Distanzring_B_rechts` | 1 | PETG | 0,5 | stehend |
 | 1.18 | `Huelse_5M_links` | 1 | PETG | 0,2 | stehend |
 | 1.19 | `Huelse_5M_mitte` | 1 | PETG | 0,1 | stehend |
@@ -54,7 +54,7 @@ Dateien in `cad/export/stl/J2_Pruefstand/`. Teile mit Zusatz `_Lager22-20` sind 
 - `Scheibe_GT2_Z72` (1.7): Hülse nur noch bis z = 25,4 statt 28,8, Gewindestifte bei z = 22,5.
 - `Distanzring_A_rechts` (1.15): 55,1–55,8 mm (0,7 mm dick; Z-Mass jetzt kurz), `Distanzring_B_rechts` (1.17): 43,1–55,8 mm (12,7 mm lang).
 - `Huelse_3M_links` (1.21): 0–28,0 mm, `Huelse_3M_rechts` (1.22): 42,0–56,0 mm (Rolle 3M liegt jetzt bei z = 28–42, Riemen 3M 27,25–42,25).
-Nicht neu: Z90, 5M-Hülsen, Distanzringe A links und B links. Das 3M-Ritzel beginnt dadurch bei z = 25,5 mm, der Riemen sitzt 3,5 mm weiter links als zuvor. Nabendurchmesser 3M (Händler: 18 mm) und 5M (Annahme 20,0 mm, Aufnahme Ø 20,3 mm) noch selbst nachmessen.
+Nicht neu: Z90, 5M-Hülsen, Distanzring A links. **Distanzring B links entfällt:** Das 5M-Ritzel hat unten einen Bord von 2,8 mm und oben keinen (Gesamt 32,3 = 2,8 + Zähne 16,5 + Nabe 13,0); ohne Ring liegen seine Zähne auf Höhe der Z90 (mit Ring lief der Riemen ab). Nabenende bei z = 33,0 (Welle ragt 30 mm heraus). Dafür liegt eine **M8-Unterlegscheibe (Ø 16, 1,2 mm, vorhanden)** auf dem Nabenende und trägt den Buchtgrund der Z64 (Soll 1,6 mm, mit 1,2 mm sitzt die Z64 0,4 mm tiefer, unkritisch). Das 3M-Ritzel beginnt dadurch bei z = 25,5 mm, der Riemen sitzt 3,5 mm weiter links als zuvor. Nabendurchmesser 3M (Händler: 18 mm) und 5M (Annahme 20,0 mm, Aufnahme Ø 20,3 mm) noch selbst nachmessen.
 
 **Achtung HTD-3M-Ritzel (Pos. 2.2) – überholt, siehe oben:** Das CAD nimmt Bordscheibe 18 mm, Nabe Ø 14 × 6 mm an (Ritzel von z = 29 bis 53,5 mm; lichte Weite zwischen den Wangen 56 mm, dazwischen `Distanzring_A_rechts` 53,6–55,8 mm). Die Zeichnung des Händlers nennt Nabe Ø 18 mm und Gesamtlänge 29 mm, also etwa z = 29 bis 58 mm. Das wäre etwa 2 mm zu lang und würde an die Wange stossen. Entscheid nach dem Nachmessen: Nabe kürzen (Säge/Feile, Gewindestifte nicht verletzen), Distanzring weglassen oder die Wange ausnehmen.
 
