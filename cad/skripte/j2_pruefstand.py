@@ -71,12 +71,12 @@ Z_HUELSE_Z72_ENDE = 25.4          # Ende der Huelse der Z72-Scheibe; das Z16-Rit
 Z_HEBEL = (20.0, 40.0)
 
 # Gekaufte Ritzel: Bord und Nabe sind Annahmen, nach Lieferung mit Schieblehre nachmessen und hier eintragen
-BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 11.0, 18.0    # Z16: Bord, Nabenlaenge (11 mm gemessen 10.11.2026, Gesamt 29 mm), Nabendurchmesser (18 mm laut Haendlerzeichnung, selbst noch messen) (Nabe Richtung rechte Wange)
+BORD_3M, NABE_3M_L, NABE_3M_D = 1.0, 11.0, 18.0    # Z16: Bord, Nabenlaenge (11 mm gemessen 10.11.2026, Gesamt 29 mm), Nabendurchmesser 18 mm (nachgemessen 10.11.2026); Bord unten/oben und Zahnbreite noch messen (Nabe Richtung rechte Wange)
 # Z18 (5M), gemessen 10.11.2026: Gesamt 32,3 mm = unterer Bord 2,8 + Zaehne 16,5 + Nabe 13,0 (Ø 18); KEIN oberer Bord.
 # Das Ritzel liegt ohne Distanzring direkt auf dem Lager (Nabenende bei z = 33,0 laut Messung: Welle ragt 30 mm heraus)
 Z_RITZEL_5M_UNTEN, NABE_5M_L, NABE_5M_D = 0.7, 13.0, 18.0
 Z_BUCHT_5M_ENDE, Z_NUT_ENDE = 34.6, 33.0   # Z64 wie gedruckt (STL vom 10.11.): Buchtgrund und Nutende
-D_SCHEIBE_M8, T_SCHEIBE_M8 = 16.0, 1.2     # M8-Unterlegscheibe des Nutzers (1,2 mm) auf dem Nabenende, traegt die Z64
+D_ABSTAND_5M, T_ABSTAND_5M = 17.8, 1.6      # gedruckter Abstandsring auf dem Nabenende (Nabe Ø 18, Bucht Ø 18,3): traegt den Buchtgrund der Z64 (34,6 - 33,0)
 MITNEHMER_ABST_ENDE = 6.5         # Mitte der zwei M5-Gewindelocher (90 Grad versetzt) vom Nabenende (Nutzer: Lochrand 4 mm, Loch Ø 5 mm)
 R_MITNEHMER, D_NUT = 14.5, 12.0   # M5x8 Linsenkopf (Ø 9 bis 9,5 mm, ca. 2,75 mm hoch): Kopf liegt bei r = 12 bis 14,8 mm; Nut Ø 12 mm mit Mitte bei r = 14,5 mm
 
@@ -556,10 +556,10 @@ zylinder(k, B, NABE_5M_D, Z_5M[1], Z_NABE_5M_ENDE, body=b)   # Nabe, greift in d
 bohrung(k, b, [B], D_WELLE, Z_RITZEL_5M_UNTEN, Z_NABE_5M_ENDE)
 farbe(b, *ALU)
 
-k = teil("Kaufteil_Unterlegscheibe_M8_Ritzel")
-b = zylinder(k, B, D_SCHEIBE_M8, Z_NABE_5M_ENDE, Z_NABE_5M_ENDE + T_SCHEIBE_M8, name="Scheibe_M8_Ritzel")
-bohrung(k, b, [B], 8.4, Z_NABE_5M_ENDE, Z_NABE_5M_ENDE + T_SCHEIBE_M8)
-farbe(b, *KAUF)
+k = teil("Abstandsring_Ritzel_5M")
+b = zylinder(k, B, D_ABSTAND_5M, Z_NABE_5M_ENDE, Z_NABE_5M_ENDE + T_ABSTAND_5M, name="Abstandsring_Ritzel_5M")
+bohrung(k, b, [B], 8.4, Z_NABE_5M_ENDE, Z_NABE_5M_ENDE + T_ABSTAND_5M)
+farbe(b, *DRUCK)
 
 # --- Gedruckte Scheibe Z72 (GT2) auf Welle A: Distanzbund, Zahnkranz, Nabe mit 2 Gewindestiften
 k = teil("Scheibe_GT2_Z72")

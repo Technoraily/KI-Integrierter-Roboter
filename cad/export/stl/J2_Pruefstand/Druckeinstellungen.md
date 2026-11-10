@@ -38,4 +38,6 @@ Filament gesamt (Schätzung mit üblicher Füllung): PETG 0,35–0,45 kg, PLA 0,
 
 Neudruck 10.11.2026 (Ritzelnaben länger als angenommen, STL neu exportiert, Einstellungen wie oben): `Scheibe_3M_Z64`, `Scheibe_GT2_Z72`, `Distanzring_A_rechts` (nur 0,7 mm dick: 3 Schichten à 0,2 mm, auf Brim verzichten), `Distanzring_B_rechts`, `Huelse_3M_links`, `Huelse_3M_rechts`. Siehe `docs/stuecklisten/pruefstand-j2.md`.
 
+Zusatzteil 10.11.2026: `Abstandsring_Ritzel_5M.stl` (1,6 mm; Ersatz `_1.4mm` und `_1.8mm`), PETG, stehend, 3 Wände, 100 %, kein Brim, Bohrung Ø 8,4 nicht aufbohren. Liegt auf dem Nabenende des 5M-Ritzels in der Bucht der Z64.
+
 Druckreihenfolge: zuerst die kleinen Teile (Spannrolle, Hülsen, Distanzringe) und das Zahnsegment der 90er-Scheibe zur Passprobe; die Scheiben 1.7 bis 1.9 erst drucken, wenn die gekauften Ritzel nachgemessen sind.
