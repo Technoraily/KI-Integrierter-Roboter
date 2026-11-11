@@ -1,6 +1,6 @@
 \## Übergabe (HANDOFF.md)
 
-\- Halte HANDOFF.md im Projektordner aktuell: max. 25 Zeilen, Inhalt ersetzen statt anhängen.
+\- Halte HANDOFF.md im Projektordner aktuell: max. 30 Zeilen, Inhalt ersetzen statt anhängen.
 
 \- Aktualisiere sie nach jedem abgeschlossenen größeren Arbeitsschritt und sofort, wenn ich "Feierabend", "Schluss" oder "Übergabe" sage.
 
