@@ -1,0 +1,26 @@
+# FluidNC-Konfiguration J2-Pruefstand (ESP32-WROOM-32, NodeMCU-32S) mit TMC2209 im STEP/DIR-Betrieb.
+# Einheit "mm" in FluidNC = GRAD MOTORWINKEL (wie bisher in software/j2_test.py): J2-Ausgang = Motorwinkel / 72.
+# Verdrahtung ESP32 -> CNC-Shield (ohne Uno), siehe software/fluidnc/README.md:
+#   GPIO26 -> STEP, GPIO27 -> DIR, GPIO25 -> EN (Enable, aktiv LOW am TMC2209), GND gemeinsam.
+name: "J2 Pruefstand"
+board: "ESP32 NodeMCU-32S"
+
+stepping:
+  engine: RMT
+  idle_ms: 255            # 255 = Motor bleibt im Stillstand bestromt
+  dir_delay_us: 1
+  pulse_us: 4
+  disable_delay_us: 0
+
+axes:
+  shared_stepper_disable_pin: gpio.25   # TMC2209: EN=HIGH sperrt den Treiber, EN=LOW gibt ihn frei
+  x:
+    steps_per_mm: 4.4444                # 200 Schritte * 8 (1/8 Mikroschritt, MS1/MS2 offen) / 360 Grad
+    max_rate_mm_per_min: 48000          # Grad/min (= 800 Grad/s = 133 U/min Motor); Schnelltest in j2_test.py
+    acceleration_mm_per_sec2: 1000      # Grad/s^2 (vorher 50, fuer den Schnelltest erhoeht)
+    max_travel_mm: 10800                # +-5400 Grad Motorwinkel (= +-75 Grad am Ausgang J2), Bereich der Seite j2_steuerung.html
+    soft_limits: false                  # kein Referenzschalter im ersten Test; Begrenzung macht j2_test.py
+    motor0:
+      stepstick:
+        direction_pin: gpio.27
+        step_pin: gpio.26

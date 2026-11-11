@@ -17,6 +17,9 @@ cad/Bambu Studio Saves/
 docs/stuecklisten/pruefstand-j2.docx
 docs/stuecklisten/pruefstand-j2_aktuell.docx
 
+# Testprotokolle der Software-Tests (lokal)
+software/logs/
+
 # Lokale Claude-Einstellungen
 .claude/settings.local.json
 
