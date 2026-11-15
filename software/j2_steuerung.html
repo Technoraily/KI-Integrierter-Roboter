@@ -63,7 +63,8 @@
 <body>
 <main>
   <h1>J2 Steuerung</h1>
-  <p class="sub">Prüfstand J2 über USB (ESP32 mit FluidNC). Alle Winkel gelten am <b>Ausgang</b> (Hebel).
+  <p class="sub">Prüfstand J2 über USB: <b>Arduino Uno</b> (Grbl 1.1) oder <b>ESP32</b> (FluidNC), die Seite erkennt es
+    beim Verbinden selbst. Alle Winkel gelten am <b>Ausgang</b> (Hebel).
     Der Motor dreht 72&times; schneller.</p>
 
   <div class="card warnung" id="browserwarn" hidden>
@@ -74,9 +75,15 @@
   <div class="card">
     <h2>1. Verbinden</h2>
     <div class="row">
-      <button class="primary" id="btnVerbinden">Mit ESP32 verbinden</button>
+      <button class="primary" id="btnVerbinden">Verbinden (Uno oder ESP32)</button>
       <button id="btnTrennen" disabled>Trennen</button>
       <span id="pillVerbindung" class="pill">nicht verbunden</span>
+    </div>
+    <div class="row" id="grblZeile" hidden>
+      <label for="schritte">Schritte pro Motorgrad</label>
+      <input type="number" id="schritte" min="0.1" max="100" step="0.001" value="4.444">
+      <button id="btnSchritte" disabled>$100 auf den Uno schreiben</button>
+      <span class="muted" id="schritteInfo"></span>
     </div>
     <p class="muted" style="margin:6px 0 0">Vorher das Python-Skript (<code>j2_test.py</code>) beenden: Der
       USB-Anschluss kann nur von <b>einem</b> Programm benutzt werden.</p>
@@ -183,12 +190,30 @@ function parseStatus(z) {
 function jogBefehl(origin, zielMotor, feed) {
   return `$J=G90 G21 X${(origin + zielMotor).toFixed(3)} F${feed.toFixed(1)}`;
 }
+/* Steuerungsart aus der Startmeldung: 'fluidnc' (ESP32), 'grbl' (Arduino Uno) oder null */
+function erkenneSteuerung(z) {
+  if (!z.startsWith('Grbl')) return null;
+  return z.includes('FluidNC') ? 'fluidnc' : 'grbl';
+}
+/* Grbl-Einstellungszeile "$100=4.444" */
+function parseEinstellung(z) {
+  const m = /^\$(\d+)=(-?\d+(?:\.\d+)?)$/.exec(z);
+  return m ? { nr: parseInt(m[1], 10), wert: parseFloat(m[2]) } : null;
+}
+/* Befehle fuer Hoechsttempo (Grad/min am Motor) und Beschleunigung (Grad/s2 am Motor) */
+function betriebsBefehle(typ, maxFeed, accel) {
+  return typ === 'grbl'
+    ? [['$110', maxFeed], ['$120', accel]]
+    : [['$/axes/x/max_rate_mm_per_min', maxFeed], ['$/axes/x/acceleration_mm_per_sec2', accel]];
+}
+const UNO_MAX_SCHRITTE_PRO_S = 30000;   // Grbl auf dem Uno schafft hoechstens ca. 30 kHz Schrittfrequenz
 /* ===== ENDE REINE HILFSFUNKTIONEN ===== */
 
 const $ = (id) => document.getElementById(id);
 const enc = new TextEncoder();
 let port = null, writer = null, reader = null;
-let verbunden = false, fluidnc = false;
+let verbunden = false, typ = null;          // typ: null | 'fluidnc' | 'grbl'
+let grblSet = {};                           // vom Uno gelesene Grbl-Einstellungen ($nr -> Wert)
 let origin = null, mx = null, zustand = '-', letzterStatus = 0;
 let pendelLaeuft = false, pendelAbbruch = false, bewegt = false;
 let pollTimer = null, wachTimer = null;
@@ -206,8 +231,22 @@ function zeileSenden(text) { log('> ' + text, 'tx'); return writer ? writer.writ
 
 function pill(el, text, art) { el.textContent = text; el.className = 'pill' + (art ? ' ' + art : ''); }
 
+/* Beim Uno muss $100 (Schritte je Motorgrad) stimmen, sonst faehrt er um einen falschen Faktor. */
+function schritteOk() {
+  if (typ !== 'grbl') return true;
+  const soll = parseFloat($('schritte').value);
+  return grblSet[100] !== undefined && Math.abs(grblSet[100] - soll) < 0.0006;
+}
+function schritteAnzeige() {
+  $('grblZeile').hidden = typ !== 'grbl';
+  if (typ !== 'grbl') return;
+  const ist = grblSet[100];
+  $('schritteInfo').textContent = ist === undefined ? 'Uno-Wert wird gelesen …'
+    : (schritteOk() ? `Uno stimmt ($100 = ${ist})` : `Uno hat $100 = ${ist}: Fahren gesperrt, bitte auf den Uno schreiben.`);
+  $('btnSchritte').disabled = !(verbunden && !bewegt && zustand === 'Idle');
+}
 function bereit() {
-  return verbunden && fluidnc && origin !== null && mx !== null;
+  return verbunden && typ !== null && schritteOk() && origin !== null && mx !== null;
 }
 function aktualisiereTasten() {
   const frei = bereit() && $('hand').checked && $('frei').checked && !pendelLaeuft && zustand !== 'Alarm';
@@ -220,6 +259,7 @@ function aktualisiereTasten() {
   $('btnVerbinden').disabled = verbunden;
   $('btnAlarm').hidden = zustand !== 'Alarm';
   $('btnAlarm').disabled = !verbunden;
+  schritteAnzeige();
 }
 function aktualisiereAnzeige() {
   pill($('zustand'), zustand, zustand === 'Idle' ? 'ok' : (zustand === 'Alarm' ? 'bad' : 'warn'));
@@ -236,8 +276,11 @@ function aktualisiereAnzeige() {
 function tempoAnzeige() {
   const v = parseFloat($('speed').value);
   $('speedLabel').textContent = v.toFixed(1) + ' °/s am Hebel';
+  const hz = v * UEB * (parseFloat($('schritte').value) || 0);
   $('speedInfo').textContent = `= ${(v * UEB).toFixed(0)} °/s am Motor = ${(v * UEB / 6).toFixed(0)} U/min. `
-    + 'Bei hohem Tempo kann der Motor mit 12 V Schritte verlieren (klingt dann ungleichmässig).';
+    + 'Bei hohem Tempo kann der Motor mit 12 V Schritte verlieren (klingt dann ungleichmässig).'
+    + (typ === 'grbl' && hz > UNO_MAX_SCHRITTE_PRO_S
+        ? ` ACHTUNG: ${hz.toFixed(0)} Schritte/s sind mehr, als der Uno schafft (ca. ${UNO_MAX_SCHRITTE_PRO_S}).` : '');
   const a = parseInt($('accel').value, 10);
   $('accelLabel').textContent = a + ' °/s² am Motor (' + (a / UEB).toFixed(1) + ' °/s² am Hebel)';
 }
@@ -253,22 +296,38 @@ function verarbeite(z) {
     }
     return;
   }
-  if (z.startsWith('Grbl')) {
-    fluidnc = z.includes('FluidNC');
-    log(z + (fluidnc ? '' : '  (KEIN FluidNC: nicht unterstützt)'), fluidnc ? '' : 'err');
+  const art = erkenneSteuerung(z);
+  if (art) {
+    typ = art;
+    log(z + (art === 'grbl' ? '  (Arduino Uno / Grbl)' : '  (ESP32 / FluidNC)'));
     if (origin !== null) log('Steuerung wurde neu gestartet: Startpunkt wird neu gesetzt.', 'warn');
-    origin = null; mx = null; bewegt = false; pendelAbbruch = true;
-    if (fluidnc) setzeBetriebswerte();
+    origin = null; mx = null; bewegt = false; pendelAbbruch = true; grblSet = {};
+    pill($('pillVerbindung'), 'verbunden (' + (art === 'grbl' ? 'Uno / Grbl' : 'ESP32 / FluidNC') + ')', 'ok');
+    tempoAnzeige(); aktualisiereAnzeige();
+    setzeBetriebswerte();
     return;
   }
+  const e = parseEinstellung(z);
+  if (e) { grblSet[e.nr] = e.wert; aktualisiereAnzeige(); return; }
   if (z === 'ok') return;
   log(z, /^(error|ALARM)/i.test(z) ? 'err' : '');
 }
 
 async function setzeBetriebswerte() {
   await schlafe(300);
-  await zeileSenden('$/axes/x/max_rate_mm_per_min=' + (feedMotor(V_MAX_AUS)));
-  await zeileSenden('$/axes/x/acceleration_mm_per_sec2=' + parseInt($('accel').value, 10));
+  if (typ === 'grbl') {                      // Uno: erst lesen, nur schreiben, was abweicht (schont das EEPROM)
+    await zeileSenden('$$');
+    await schlafe(900);
+  }
+  const soll = betriebsBefehle(typ, feedMotor(V_MAX_AUS), parseInt($('accel').value, 10));
+  for (const [name, wert] of soll) {
+    const nr = parseInt(name.slice(1), 10);
+    if (typ === 'grbl' && grblSet[nr] !== undefined && Math.abs(grblSet[nr] - wert) < 0.5) continue;
+    await zeileSenden(name + '=' + wert);
+    if (typ === 'grbl') grblSet[nr] = wert;
+  }
+  if (typ === 'grbl' && !schritteOk())
+    log('Der Uno hat $100 = ' + grblSet[100] + ' statt ' + $('schritte').value + '. Fahren ist gesperrt, bis "$100 auf den Uno schreiben" gedrückt wurde.', 'warn');
 }
 
 async function leseSchleife() {
@@ -297,7 +356,7 @@ async function leseSchleife() {
 
 function verbindungWeg(grund) {
   if (!verbunden && !writer) return;
-  verbunden = false; fluidnc = false; origin = null; mx = null; zustand = '-';
+  verbunden = false; typ = null; grblSet = {}; origin = null; mx = null; zustand = '-';
   bewegt = false; pendelLaeuft = false; pendelAbbruch = true;
   clearInterval(pollTimer); clearInterval(wachTimer);
   try { writer && writer.releaseLock(); } catch (e) {}
@@ -315,25 +374,24 @@ async function verbinden() {
     try { await port.setSignals({ dataTerminalReady: false, requestToSend: false }); } catch (e) {}
     writer = port.writable.getWriter();
     verbunden = true;
-    pill($('pillVerbindung'), 'verbunden, warte auf FluidNC …', 'warn');
+    pill($('pillVerbindung'), 'verbunden, warte auf Uno/ESP32 …', 'warn');
     leseSchleife();
-    await schlafe(400);
-    await roh([0x18]);                       // GRBL-Soft-Reset: FluidNC meldet sich
+    await schlafe(2200);                     // Uno startet beim Oeffnen des Anschlusses selbst neu (meldet sich von allein)
+    if (!typ && verbunden) await roh([0x18]);   // GRBL-Soft-Reset: Grbl/FluidNC melden sich
     let t = 0;
-    while (!fluidnc && t < 40 && verbunden) { await schlafe(250); t++; }
-    if (!fluidnc && verbunden) {             // ESP32 mit CP2102: Neustart ueber RTS
+    while (!typ && t < 40 && verbunden) { await schlafe(250); t++; }
+    if (!typ && verbunden) {                 // ESP32 mit CP2102: Neustart ueber RTS
       log('Keine Antwort, starte den ESP32 über RTS neu …', 'warn');
       try { await port.setSignals({ requestToSend: true }); await schlafe(150);
             await port.setSignals({ requestToSend: false }); } catch (e) {}
-      t = 0; while (!fluidnc && t < 60 && verbunden) { await schlafe(250); t++; }
+      t = 0; while (!typ && t < 60 && verbunden) { await schlafe(250); t++; }
     }
-    if (!fluidnc) { log('Keine FluidNC-Antwort. Kabel, Treiber, anderes Programm auf dem Anschluss?', 'err');
-                    await trennen(); return; }
-    pill($('pillVerbindung'), 'verbunden (FluidNC)', 'ok');
+    if (!typ) { log('Keine Antwort von Grbl (Uno) oder FluidNC (ESP32). Kabel, Treiber, anderes Programm auf dem Anschluss, Firmware auf dem Uno?', 'err');
+                await trennen(); return; }
     pollTimer = setInterval(() => { if (writer) writer.write(enc.encode('?')).catch(() => {}); }, 100);
     wachTimer = setInterval(() => {      // keine Statusmeldung mehr waehrend einer Bewegung -> stoppen
       if (verbunden && bewegt && Date.now() - letzterStatus > 1500) {
-        log('Keine Statusmeldung mehr vom ESP32: STOPP', 'err'); notAus();
+        log('Keine Statusmeldung mehr von der Steuerung: STOPP', 'err'); notAus();
       }
     }, 300);
     aktualisiereAnzeige();
@@ -412,7 +470,17 @@ $('btnPendel').onclick = pendeln;
 $('btnPendelStop').onclick = () => { pendelAbbruch = true; stoppeBewegung(); };
 $('btnNull').onclick = () => { origin = mx; log('Nullpunkt neu gesetzt.'); aktualisiereAnzeige(); };
 $('btnAlarm').onclick = () => zeileSenden('$X');
-$('btnAccel').onclick = () => zeileSenden('$/axes/x/acceleration_mm_per_sec2=' + parseInt($('accel').value, 10));
+$('btnAccel').onclick = () => {
+  const [, acc] = betriebsBefehle(typ, 0, parseInt($('accel').value, 10));
+  zeileSenden(acc[0] + '=' + acc[1]);
+};
+$('btnSchritte').onclick = async () => {
+  const s = parseFloat($('schritte').value);
+  if (!(s > 0.1 && s < 100)) { log('Schritte pro Motorgrad unplausibel.', 'err'); return; }
+  await zeileSenden('$100=' + s.toFixed(3));
+  await zeileSenden('$$');
+};
+$('schritte').oninput = () => { tempoAnzeige(); aktualisiereAnzeige(); };
 function bereichUebernehmen() {
   let b = parseFloat($('bereich').value);
   if (!(b > 0)) b = 10;
@@ -443,7 +511,7 @@ window.addEventListener('beforeunload', () => { if (writer) roh([0x85, 0x21]); }
 
 if (!('serial' in navigator)) { $('browserwarn').hidden = false; $('btnVerbinden').disabled = true; }
 tempoAnzeige(); bereichUebernehmen();
-log('Bereit. Erst "Mit ESP32 verbinden", dann Hand am Hohlstecker bestätigen.');
+log('Bereit. Erst "Verbinden" (Uno oder ESP32), dann Hand am Hohlstecker bestätigen.');
 </script>
 </body>
 </html>
