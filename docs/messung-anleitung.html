@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="de-CH"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Messanleitung J2: Umkehrspiel mit Gewicht</title>
+<style>
+:root{--bg:#fff;--fg:#1b1f24;--tisch:#eef1f4;--brett:#e8cf9f;--rand:#3b4048;--mass:#0b5cad;--rot:#c0392b;--blau:#1f6fb5;--hebel:#c9a37a;--wange:#dfe3e8;--zeiger:#aab4be;--gewicht:#2c3e50;--waage:#b03a2e;--unterlage:#8fbf8f;--hand:#f0c9a0}
+@media (prefers-color-scheme:dark){:root{--bg:#16191d;--fg:#e8eaed;--tisch:#232830;--brett:#6b5a3a;--rand:#b8bec6;--mass:#6fb1ff;--rot:#ff7b6b;--blau:#6fb1ff;--hebel:#8a6a45;--wange:#2c323b;--zeiger:#5a6572;--gewicht:#415a73;--waage:#c0554a;--unterlage:#4e7a4e;--hand:#c99a6e}}
+body{background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;padding:16px;max-width:1000px;margin-inline:auto;line-height:1.6;font-size:17px}
+svg{max-width:100%;height:auto}.bild{width:100%}.klein{width:100%;max-width:420px}
+.t{font-size:17px;fill:var(--fg);font-weight:700}.k{font-size:14px;fill:var(--fg)}
+h1{font-size:1.7rem}h2{margin-top:2em;border-top:3px solid var(--rand);padding-top:.6em}
+.schritt{background:var(--tisch);border-radius:10px;padding:2px 16px 14px;margin:1.2em 0}
+.warn{border-left:5px solid var(--rot);padding:6px 14px;background:var(--tisch);margin:1em 0}
+.ok{border-left:5px solid var(--blau);padding:6px 14px;background:var(--tisch);margin:1em 0}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--rand);padding:5px 8px;text-align:left}th{background:var(--tisch)}
+input[type=number]{width:70px;font-size:15px;padding:3px;background:var(--bg);color:var(--fg);border:1px solid var(--rand)}
+.vier{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.legende li{margin:.2em 0}
+img.render{width:100%;max-width:640px;border-radius:8px}
+code{background:var(--tisch);padding:1px 6px;border-radius:4px}
+.gross{font-size:1.15em;font-weight:700}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<marker id="mrot" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M0,0 L16,8 L0,16 z" fill="#c0392b"/></marker>
+<marker id="mblau" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M0,0 L16,8 L0,16 z" fill="#1f6fb5"/></marker>
+</defs></svg>
+
+<h1>Messanleitung: Wie «locker» ist das Gelenk? (Umkehrspiel mit Gewicht)</h1>
+<p>Das ist <b>Test 1, Variante A</b> aus dem Messprotokoll: Motor und Treiber sind <b>aus</b>, der <b>Blockierstift</b> hält die Scheibe fest, und wir messen nur Stufe 2 und 3. Dauer: etwa 1 bis 2 Stunden mit Vorbereitung. Alle Masse in mm, Kräfte in kg und Nm.</p>
+
+<div class="ok"><b>Worum geht es überhaupt?</b><br>
+Jedes Getriebe hat ein kleines «Spiel», wie bei einem Zahnrad, das ein bisschen wackelt, bevor es mitnimmt. Wir ziehen am Hebel nach oben und nach unten und lesen mit der Messuhr ab, <b>wie weit sich der Hebel bewegt, bevor die Kraft ankommt</b>. Das ist das Umkehrspiel. Zusätzlich sehen wir, wie «weich» das Gelenk unter Last ist (Steifigkeit). Ziel: Spiel <b>höchstens 0,3°</b>.</div>
+
+<h2>Schritt 0: Das brauchst du (Checkliste)</h2>
+<table><tr><th>Teil</th><th>Wofür</th><th>Da?</th></tr>
+<tr><td>Gewicht 1,07 kg (z. B. Flasche mit Wasser oder Sand, mit Schlaufe aus Schnur)</td><td>zieht den Hebel dauernd nach unten</td><td>☐</td></tr>
+<tr><td>Koffer- oder Federwaage bis 10 kg</td><td>damit ziehst du von unten am Hebel</td><td>☐</td></tr>
+<tr><td>Küchenwaage (auf 1 g genau)</td><td>um das Gewicht genau auf 1,07 kg zu bringen</td><td>☐</td></tr>
+<tr><td>Messuhr 0,01 mm mit Halter</td><td>zeigt die Bewegung des Hebels</td><td>☐</td></tr>
+<tr><td>Schraube M3 × 25 (Blockierstift) und Kugelkopf- oder magnetischer Sechskantschlüssel</td><td>hält die Scheibe fest</td><td>☐</td></tr>
+<tr><td>Fangschnur und weiche Unterlage (Karton, Kissen)</td><td>falls der Hebel nachgibt oder rutscht</td><td>☐</td></tr>
+<tr><td>Stift, Papier oder dieses Blatt mit der Tabelle unten</td><td>Werte aufschreiben</td><td>☐</td></tr></table>
+<div class="warn"><b>Sicherheit:</b> 24-V-Schalter <b>aus</b>. Hände nie unter den Hebel oder das Gewicht. Wenn sich etwas löst, fällt das Gewicht (1 kg): Schuhe an, nicht barfuss.</div>
+
+<h2>Schritt 1: Die Teile erkennen</h2>
+<p>So sieht der Aufbau von der Seite aus (Blick entlang der Achse). Der Hebel zeigt waagrecht nach rechts über die Tischkante.</p>
+<svg viewBox="0 0 1150 900" xmlns="http://www.w3.org/2000/svg" class="bild" role="img">
+<rect x="20" y="899.5999999999999" width="592.2" height="84.0" fill="var(--tisch)" stroke="var(--rand)"/>
+<rect x="-3.7999999999999545" y="866.0" width="616.0" height="33.599999999999994" fill="var(--brett)" stroke="var(--rand)"/>
+<text x="40" y="927.5999999999999" class="k">Tisch</text>
+<polygon points="34.0,866.0 580.0,866.0 580.0,460.0 426.0,317.2 174.0,317.2 34.0,446.0" fill="var(--wange)" stroke="var(--rand)" stroke-width="2"/>
+<rect x="42.400000000000034" y="798.8" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<rect x="42.400000000000034" y="485.2" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<rect x="526.8" y="798.8" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<rect x="526.8" y="485.2" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<polygon points="300.0,306.0 832.0,348.0 832.0,432.0 300.0,474.0" fill="var(--hebel)" stroke="var(--rand)" stroke-width="2"/>
+<circle cx="300" cy="390" r="98" fill="var(--hebel)" stroke="var(--rand)" stroke-width="2"/>
+<circle cx="832.0" cy="390.0" r="11" fill="var(--bg)" stroke="var(--rand)" stroke-width="2"/>
+<circle cx="300" cy="390" r="7" fill="var(--rand)"/>
+<rect x="98.4" y="370.4" width="98.0" height="39.199999999999996" fill="var(--zeiger)" stroke="var(--rand)"/>
+<rect x="112.4" y="359.2" width="16.799999999999997" height="11.2" fill="var(--zeiger)" stroke="var(--rand)"/>
+<line x1="120.80000000000001" y1="359.2" x2="120.80000000000001" y2="292.0" stroke="var(--fg)" stroke-width="3"/>
+<rect x="110.80000000000001" y="124.0" width="20" height="168" fill="var(--bg)" stroke="var(--fg)" stroke-width="2"/>
+<circle cx="120.80000000000001" cy="82.0" r="56" fill="var(--bg)" stroke="var(--fg)" stroke-width="3"/>
+<line x1="120.80000000000001" y1="82.0" x2="138.8" y2="62.0" stroke="var(--rot)" stroke-width="3"/>
+<rect x="86.80000000000001" y="152.00000000000003" width="53" height="12" fill="var(--hebel)" stroke="var(--rand)"/>
+<circle cx="566.0" cy="350.0" r="15" fill="var(--rot)"/><text x="566.0" y="356.0" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">1</text>
+<circle cx="862.0" cy="365.0" r="15" fill="var(--rot)"/><text x="862.0" y="371.0" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">2</text>
+<circle cx="306" cy="442" r="15" fill="var(--rot)"/><text x="306" y="448" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">3</text>
+<circle cx="132.0" cy="437.6" r="15" fill="var(--rot)"/><text x="132.0" y="443.6" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">4</text>
+<circle cx="175.8" cy="52.0" r="15" fill="var(--rot)"/><text x="175.8" y="58.0" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">5</text>
+<circle cx="65.80000000000001" cy="168.8" r="15" fill="var(--rot)"/><text x="65.80000000000001" y="174.8" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">6</text>
+<circle cx="574.4" cy="499.2" r="15" fill="var(--rot)"/><text x="574.4" y="505.2" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">7</text>
+<circle cx="76.0" cy="698.0" r="15" fill="var(--rot)"/><text x="76.0" y="704.0" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">8</text>
+<circle cx="30.0" cy="882.8" r="15" fill="var(--rot)"/><text x="30.0" y="888.8" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">9</text>
+<circle cx="640.2" cy="882.8" r="15" fill="var(--rot)"/><text x="640.2" y="888.8" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">10</text>
+</svg>
+<ol class="legende">
+<li><b>Hebel</b>: der lange Arm, 190 mm von der Achse bis zur Lastbohrung.</li>
+<li><b>Lastbohrung</b>: das Loch am Ende des Hebels (Ø 8 mm). Hier hängen Gewicht und Waage.</li>
+<li><b>Achse</b>: der Drehpunkt des Gelenks.</li>
+<li><b>Messzeiger mit Tastklotz</b>: ein kleiner Arm, der auf der anderen Seite der Achse weiter nach links zeigt. Er bewegt sich mit dem Hebel mit, aber ohne Last. Die Messuhr tastet seinen Klotz ab, 64 mm von der Achse.</li>
+<li><b>Messuhr</b>: zeigt die Bewegung auf 0,01 mm genau.</li>
+<li><b>Messuhrhalter</b>: wird aussen an der rechten Wange festgeschraubt und klemmt die Messuhr senkrecht über dem Tastklotz.</li>
+<li><b>Oberer Querträger</b>: der Anschlag für den Hebel. Zwischen Hebel und Querträger bleibt ein Spalt von rund 10 mm.</li>
+<li><b>Wange</b>: die Seitenplatte (hier die hintere, nur als Umriss).</li>
+<li><b>Brett</b>: das Holzbrett, auf dem alles festgeschraubt ist.</li>
+<li><b>Tischkante</b>: das Brett liegt bündig daran. Das Gewicht hängt neben dem Tisch.</li>
+</ol>
+<p>Zum Vergleich ein Bild aus dem CAD (der Hebel steht hier senkrecht; bei der Messung liegt er waagrecht):</p>
+<img class="render" src="../cad/renders/J2_Pruefstand_iso.png" alt="CAD-Ansicht des Prüfstands">
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 2: Gewicht genau auf 1,07 kg bringen</h2>
+<ol>
+<li>Küchenwaage einschalten, auf 0 stellen.</li>
+<li>Füll einen Behälter (Flasche, kleiner Eimer) mit Wasser oder Sand, bis die Waage <b>1,07 kg</b> zeigt (Schlaufe mitwiegen, wie sie später hängt).</li>
+<li>Den <b>tatsächlichen</b> Wert aufschreiben, auch wenn er z. B. 1,06 oder 1,08 kg ist.</li>
+</ol>
+<p class="ok">Warum genau? Das Gewicht erzeugt am Hebel das Moment: 1,07 kg × 9,81 × 0,190 m ≈ <b>2 Nm</b>. Der Wert im Auswerter ist 1,07 kg. Wenn du 1,10 kg hast, trägst du 1,10 ein, dann stimmt die Rechnung trotzdem.</p>
+<p><b>Waage prüfen:</b> Hänge die Koffer-/Federwaage frei auf. Sie soll <b>0,00</b> zeigen. Wenn nicht, auf 0 stellen. Hänge dann das Gewicht (1,07 kg) dran: Sie soll etwa 1,07 kg zeigen (bis ca. ±0,05 kg ok). Ohne diese Kontrolle sind die Messwerte nicht brauchbar.</p></div>
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 3: Aufbau kontrollieren</h2>
+<ol>
+<li><b>Brett</b> liegt bündig an der Tischkante, beide <b>Zwingen</b> sind fest. Drück den Hebel leicht nach unten: Nichts darf kippen oder wackeln.</li>
+<li><b>Spalt</b>: Zwischen Hebel und oberem Querträger sind etwa 10 mm Luft. Liegt der Hebel auf, ist jede Messung ungültig.</li>
+<li><b>Fangschnur</b>: Ein Ende am Gewicht, das andere an der Zwinge oder am Tisch. Die Schnur ist so lang, dass das Gewicht <b>höchstens 30 mm</b> fallen kann. Darunter liegt die weiche Unterlage.</li>
+<li><b>Schlaufe des Gewichts:</b> kurz, etwa 10 cm, damit das Gewicht ruhig hängt und nicht pendelt. Das Gewicht darf im Betrieb <b>nicht auf der Unterlage aufliegen</b>, sonst trägt die Unterlage einen Teil der Last und die Messung stimmt nicht.</li>
+</ol>
+<svg viewBox="0 0 1150 900" xmlns="http://www.w3.org/2000/svg" class="bild" role="img">
+<rect x="20" y="899.5999999999999" width="592.2" height="84.0" fill="var(--tisch)" stroke="var(--rand)"/>
+<rect x="-3.7999999999999545" y="866.0" width="616.0" height="33.599999999999994" fill="var(--brett)" stroke="var(--rand)"/>
+<text x="40" y="927.5999999999999" class="k">Tisch</text>
+<polygon points="34.0,866.0 580.0,866.0 580.0,460.0 426.0,317.2 174.0,317.2 34.0,446.0" fill="var(--wange)" stroke="var(--rand)" stroke-width="2"/>
+<rect x="42.400000000000034" y="798.8" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<rect x="42.400000000000034" y="485.2" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<rect x="526.8" y="798.8" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<rect x="526.8" y="485.2" width="39.199999999999996" height="67.19999999999999" fill="none" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<polygon points="300.0,306.0 832.0,348.0 832.0,432.0 300.0,474.0" fill="var(--hebel)" stroke="var(--rand)" stroke-width="2"/>
+<circle cx="300" cy="390" r="98" fill="var(--hebel)" stroke="var(--rand)" stroke-width="2"/>
+<circle cx="832.0" cy="390.0" r="11" fill="var(--bg)" stroke="var(--rand)" stroke-width="2"/>
+<circle cx="300" cy="390" r="7" fill="var(--rand)"/>
+<rect x="98.4" y="370.4" width="98.0" height="39.199999999999996" fill="var(--zeiger)" stroke="var(--rand)"/>
+<rect x="112.4" y="359.2" width="16.799999999999997" height="11.2" fill="var(--zeiger)" stroke="var(--rand)"/>
+<line x1="120.80000000000001" y1="359.2" x2="120.80000000000001" y2="292.0" stroke="var(--fg)" stroke-width="3"/>
+<rect x="110.80000000000001" y="124.0" width="20" height="168" fill="var(--bg)" stroke="var(--fg)" stroke-width="2"/>
+<circle cx="120.80000000000001" cy="82.0" r="56" fill="var(--bg)" stroke="var(--fg)" stroke-width="3"/>
+<line x1="120.80000000000001" y1="82.0" x2="138.8" y2="62.0" stroke="var(--rot)" stroke-width="3"/>
+<rect x="86.80000000000001" y="152.00000000000003" width="53" height="12" fill="var(--hebel)" stroke="var(--rand)"/>
+<path d="M826.0,390.0 q-8,40 6,40 q14,0 6,-40" fill="none" stroke="var(--fg)" stroke-width="3"/>
+<rect x="797.0" y="430.0" width="70" height="140" rx="8" fill="var(--gewicht)" stroke="var(--rand)" stroke-width="2"/>
+<text x="832.0" y="468.0" text-anchor="middle" class="t" fill="#fff">1,07 kg</text>
+<rect x="772.0" y="607" width="120" height="26" fill="var(--unterlage)" stroke="var(--rand)"/>
+<text x="762.0" y="627" class="k" text-anchor="end">weiche Unterlage (höchstens 30 mm unter dem Gewicht)</text>
+<line x1="832.0" y1="570" x2="609.2" y2="909.5999999999999" stroke="var(--fg)" stroke-dasharray="7 5" stroke-width="2.5"/>
+<text x="732.1" y="690.0" class="k">Fangschnur zum Tisch / Zwinge,</text><text x="732.1" y="708.0" class="k">lang genug zum Hängen, kurz genug zum Fangen</text>
+<path d="M838.0,390.0 q10,-30 -4,-70" fill="none" stroke="var(--fg)" stroke-width="3"/>
+<rect x="820.0" y="205.0" width="40" height="110" rx="6" fill="var(--waage)" stroke="var(--rand)" stroke-width="2"/>
+<text x="840.0" y="265.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" transform="rotate(-90 840.0 265.0)">WAAGE</text>
+<line x1="840.0" y1="205.0" x2="840.0" y2="155.0" stroke="var(--fg)" stroke-width="3"/>
+<rect x="808.0" y="85.0" width="64" height="70" rx="22" fill="var(--hand)" stroke="var(--rand)" stroke-width="2"/>
+<text x="840.0" y="125.0" text-anchor="middle" class="k" font-weight="700" fill="#222">HAND</text>
+<line x1="902.0" y1="370.0" x2="902.0" y2="240.0" stroke="var(--rot)" stroke-width="6" marker-end="url(#mrot)"/>
+<text x="914.0" y="310.0" class="k" fill="var(--rot)">Hand zieht</text><text x="914.0" y="328.0" class="k" fill="var(--rot)">nach oben</text>
+<line x1="752.0" y1="450.0" x2="752.0" y2="540.0" stroke="var(--blau)" stroke-width="6" marker-end="url(#mblau)"/>
+<text x="647.0" y="502.0" class="k" fill="var(--blau)">Gewicht zieht</text><text x="647.0" y="520.0" class="k" fill="var(--blau)">nach unten</text>
+<text x="356.0" y="270.0" class="t">Lastbohrung: Gewicht UND Waage</text><text x="356.0" y="292.0" class="t">hängen im selben Loch</text>
+</svg>
+<p>Auf dem Bild sind Gewicht (blau, zieht nach unten) und Waage mit deiner Hand (rot, zieht nach oben) schon eingezeichnet. Die Waage hängt zwischen deiner Hand und dem Hebel. Du hängst sie erst in den Schritten 6 bis 8 ein.</p></div>
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 4: Blockierstift setzen</h2>
+<p><b>Was er macht:</b> Der Stift hält die <b>Welle A</b> (die untere der beiden Zwischenwellen) fest. So kann der Motor die Messung nicht beeinflussen, und wir messen nur Stufe 2 und 3. Er sitzt <b>nicht</b> an der Hebelachse, sondern unten rechts bei Welle A.</p>
+<p><b>Wo genau (Blick von der rechten Seite auf die rechte Wange):</b></p>
+<svg viewBox="440 600 760 780" xmlns="http://www.w3.org/2000/svg" class="bild" role="img">
+<image href="../cad/renders/J2_Pruefstand_rechts.png" x="0" y="0" width="1600" height="1400"/>
+<circle cx="980" cy="1196" r="34" fill="none" stroke="#ff3b30" stroke-width="8"/>
+<line x1="1120" y1="1050" x2="1008" y2="1170" stroke="#ff3b30" stroke-width="8" marker-end="url(#mrot)"/>
+<rect x="1000" y="985" width="195" height="68" rx="10" fill="#ff3b30"/>
+<text x="1097" y="1012" text-anchor="middle" font-size="24" font-weight="700" fill="#fff">Blockierstift-</text>
+<text x="1097" y="1042" text-anchor="middle" font-size="24" font-weight="700" fill="#fff">Loch (Ø 6 mm)</text>
+<circle cx="926" cy="1222" r="52" fill="none" stroke="#ffd60a" stroke-width="6" stroke-dasharray="14 8"/>
+<text x="926" y="1300" text-anchor="middle" font-size="24" font-weight="700" fill="#ffd60a">Welle A</text>
+<circle cx="791" cy="762" r="46" fill="none" stroke="#32d74b" stroke-width="6" stroke-dasharray="14 8"/>
+<text x="791" y="705" text-anchor="middle" font-size="24" font-weight="700" fill="#32d74b">Achse (Hebel)</text>
+</svg>
+<ul>
+<li>Rot: das <b>Loch Ø 6 mm in der rechten Wange</b>. Dort steckst du den Schlüssel hinein. Es liegt etwa <b>54 mm rechts</b> der Hebelachse und etwa <b>46 mm über dem Brett</b> (bei der Welle A, 17 mm daneben).</li>
+<li>Gelb gestrichelt: <b>Welle A</b>. Das Loch liegt direkt daneben, nur 17 mm rechts oberhalb davon.</li>
+<li>Grün gestrichelt: die Hebelachse, zur Orientierung. Im Bild steht der Hebel senkrecht, die Löcher liegen aber fest in der Wange und bleiben dort, egal wie der Hebel steht.</li>
+</ul>
+<p><b>Dahinter</b> liegt die Scheibe GT2 72 Z auf Welle A. Sie hat <b>4 Löcher</b> (Ø 3 mm), je 90° versetzt, auf einem Kreis mit 17 mm Radius um Welle A. Ganz hinten steckt in der <b>linken Wange</b> ein Einschmelzgewinde M3 an derselben Stelle.</p>
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" class="bild" role="img">
+<rect x="80.0" y="60" width="76.0" height="200" fill="var(--wange)" stroke="var(--rand)" stroke-width="2"/>
+<rect x="688.0" y="60" width="76.0" height="200" fill="var(--wange)" stroke="var(--rand)" stroke-width="2"/>
+<rect x="227.25" y="60" width="114.0" height="200" fill="var(--hebel)" stroke="var(--rand)" stroke-width="2"/>
+<rect x="103.75" y="150" width="237.5" height="14" fill="var(--rot)"/>
+<rect x="341.25" y="140" width="38.0" height="34" fill="var(--rot)"/>
+<rect x="688.0" y="135" width="76.0" height="44" fill="var(--bg)" stroke="var(--rand)" stroke-dasharray="4 3"/>
+<text x="80.0" y="45" class="k">linke Wange (Motorseite)</text>
+<text x="213.0" y="22" class="k">Scheibe GT2 72 Z</text>
+<text x="669.0" y="45" class="k">rechte Wange</text>
+<text x="80.0" y="290" class="t" fill="var(--rot)">M3 × 25 (rot): durch das Loch der Scheibe bis in die linke Wange</text>
+<text x="536.0" y="210" class="k">Loch in der rechten Wange:</text><text x="536.0" y="228" class="k">hier kommt der Schlüssel durch</text>
+<line x1="823.0" y1="157" x2="389.25" y2="157" stroke="var(--rot)" stroke-width="4" marker-end="url(#mrot)"/>
+</svg>
+<p>Der Schnitt von oben: Du schaust durch das Loch der rechten Wange (rechts im Bild), die Schraube geht durch das Loch der Scheibe (Mitte) und dreht sich links ins Gewinde der linken Wange.</p>
+<ol>
+<li>Schau durch das rote Loch Ø 6 mm hinein. Du siehst die Scheibe. Dreh den <b>Hebel von Hand</b> ganz langsam, bis du durch das Loch hindurch ein <b>Loch der Scheibe</b> siehst (mit Taschenlampe geht es leichter). Die Scheibe passt so alle 4,5° Hebelweg an die Stelle.</li>
+<li>Schraube M3 × 25 mit dem Kugelkopf- oder magnetischen Sechskantschlüssel durch das Loch der rechten Wange einführen, durch das Scheibenloch stecken und in das Gewinde der linken Wange drehen.</li>
+<li>Nur <b>anlegen</b>, nicht festziehen: Wenn du kräftig anziehst, wird die Scheibe schief gegen das Lager gezogen und verfälscht die Messung.</li>
+<li>Hebel jetzt <b>knapp über der Waagrechten</b> lassen (ein paar Grad über der waagrechten Linie), nicht darunter.</li>
+</ol>
+<p class="ok"><b>Wenn die Welle blockiert ist, was misst man dann?</b> Die Hebelachse selbst ist <b>nicht</b> blockiert, nur Welle A (das Ende der Stufen 2 und 3 am Motor). Der Hebel kann sich deshalb noch ein <b>winziges Stück</b> bewegen: Zähne, Riemen und gedruckte Scheiben geben ein wenig nach und haben etwas Luft. Genau diese kleine Bewegung misst die Messuhr (0,01 mm genau), das ist das Spiel und die Weichheit von Stufe 2 und 3. Ohne Blockade würde der Hebel einfach nach unten kippen, weil der Motor ihn nicht hält.</p>
+<p>Die Lagen sind aus dem CAD-Skript gerechnet (Welle A bei x = 38,2 / y = 39,2 mm, Blockierstift bei x = 53,7 / y = 46,4 mm). Ob dein gedruckter Aufbau genau so aussieht, kann ich nicht sehen. Das Schnittbild ist schematisch.</p></div>
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 5: Messuhr einsetzen und auf Null stellen</h2>
+<ol>
+<li>Halter an die <b>rechte Wange</b> schrauben (Lage «links» für Hebel waagrecht nach rechts).</li>
+<li>Messuhr (Schaft 8 mm) in die geschlitzte Bohrung stecken, <b>senkrecht über den Tastklotz</b>. Klemmschraube M3 × 25 nur <b>leicht</b> anziehen.</li>
+<li>Tastspitze auf den Tastklotz absenken, bis der Zeiger sich <b>etwa 1 bis 2 mm</b> bewegt hat (das ist die Vorspannung). Es muss noch genug Messweg bleiben (insgesamt ca. 10 mm, entspricht etwa 5°).</li>
+<li>Zifferblatt an der Lünette so drehen, dass der Zeiger auf <b>0</b> steht.</li>
+</ol>
+<div class="vier"><div><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<circle cx="150" cy="150" r="134" fill="var(--tisch)" stroke="var(--rand)" stroke-width="4"/>
+<circle cx="150" cy="150" r="120" fill="var(--bg)" stroke="var(--rand)"/>
+<line x1="150.0" y1="32.0" x2="150.0" y2="44.0" stroke="var(--fg)" stroke-width="2"/>
+<text x="150.0" y="63.0" text-anchor="middle" font-size="14" fill="var(--fg)">0</text>
+<line x1="157.4" y1="32.2" x2="157.1" y2="37.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="164.8" y1="32.9" x2="164.2" y2="37.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="172.1" y1="34.1" x2="171.2" y2="39.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="179.3" y1="35.7" x2="178.1" y2="40.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="186.5" y1="37.8" x2="184.0" y2="45.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="193.4" y1="40.3" x2="191.6" y2="44.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="200.2" y1="43.2" x2="198.1" y2="47.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="206.8" y1="46.6" x2="204.4" y2="51.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="213.2" y1="50.4" x2="210.5" y2="54.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="219.4" y1="54.5" x2="212.3" y2="64.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="204.1" y="80.6" text-anchor="middle" font-size="14" fill="var(--fg)">10</text>
+<line x1="225.2" y1="59.1" x2="222.0" y2="62.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="230.8" y1="64.0" x2="227.4" y2="67.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="236.0" y1="69.2" x2="232.4" y2="72.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="240.9" y1="74.8" x2="237.1" y2="78.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="245.5" y1="80.6" x2="239.0" y2="85.3" stroke="var(--fg)" stroke-width="1"/>
+<line x1="249.6" y1="86.8" x2="245.4" y2="89.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="253.4" y1="93.2" x2="249.0" y2="95.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="256.8" y1="99.8" x2="252.2" y2="101.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="259.7" y1="106.6" x2="255.1" y2="108.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="262.2" y1="113.5" x2="250.8" y2="117.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="237.5" y="126.6" text-anchor="middle" font-size="14" fill="var(--fg)">20</text>
+<line x1="264.3" y1="120.7" x2="259.4" y2="121.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="265.9" y1="127.9" x2="261.0" y2="128.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.1" y1="135.2" x2="262.1" y2="135.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.8" y1="142.6" x2="262.8" y2="142.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="268.0" y1="150.0" x2="260.0" y2="150.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.8" y1="157.4" x2="262.8" y2="157.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.1" y1="164.8" x2="262.1" y2="164.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="265.9" y1="172.1" x2="261.0" y2="171.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="264.3" y1="179.3" x2="259.4" y2="178.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="262.2" y1="186.5" x2="250.8" y2="182.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="237.5" y="183.4" text-anchor="middle" font-size="14" fill="var(--fg)">30</text>
+<line x1="259.7" y1="193.4" x2="255.1" y2="191.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="256.8" y1="200.2" x2="252.2" y2="198.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="253.4" y1="206.8" x2="249.0" y2="204.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="249.6" y1="213.2" x2="245.4" y2="210.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="245.5" y1="219.4" x2="239.0" y2="214.7" stroke="var(--fg)" stroke-width="1"/>
+<line x1="240.9" y1="225.2" x2="237.1" y2="222.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="236.0" y1="230.8" x2="232.4" y2="227.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="230.8" y1="236.0" x2="227.4" y2="232.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="225.2" y1="240.9" x2="222.0" y2="237.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="219.4" y1="245.5" x2="212.3" y2="235.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="204.1" y="229.4" text-anchor="middle" font-size="14" fill="var(--fg)">40</text>
+<line x1="213.2" y1="249.6" x2="210.5" y2="245.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="206.8" y1="253.4" x2="204.4" y2="249.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="200.2" y1="256.8" x2="198.1" y2="252.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="193.4" y1="259.7" x2="191.6" y2="255.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="186.5" y1="262.2" x2="184.0" y2="254.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="179.3" y1="264.3" x2="178.1" y2="259.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="172.1" y1="265.9" x2="171.2" y2="261.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="164.8" y1="267.1" x2="164.2" y2="262.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="157.4" y1="267.8" x2="157.1" y2="262.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="150.0" y1="268.0" x2="150.0" y2="256.0" stroke="var(--fg)" stroke-width="2"/>
+<text x="150.0" y="247.0" text-anchor="middle" font-size="14" fill="var(--fg)">50</text>
+<line x1="142.6" y1="267.8" x2="142.9" y2="262.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="135.2" y1="267.1" x2="135.8" y2="262.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="127.9" y1="265.9" x2="128.8" y2="261.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="120.7" y1="264.3" x2="121.9" y2="259.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="113.5" y1="262.2" x2="116.0" y2="254.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="106.6" y1="259.7" x2="108.4" y2="255.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="99.8" y1="256.8" x2="101.9" y2="252.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="93.2" y1="253.4" x2="95.6" y2="249.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="86.8" y1="249.6" x2="89.5" y2="245.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="80.6" y1="245.5" x2="87.7" y2="235.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="95.9" y="229.4" text-anchor="middle" font-size="14" fill="var(--fg)">60</text>
+<line x1="74.8" y1="240.9" x2="78.0" y2="237.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="69.2" y1="236.0" x2="72.6" y2="232.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="64.0" y1="230.8" x2="67.6" y2="227.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="59.1" y1="225.2" x2="62.9" y2="222.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="54.5" y1="219.4" x2="61.0" y2="214.7" stroke="var(--fg)" stroke-width="1"/>
+<line x1="50.4" y1="213.2" x2="54.6" y2="210.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="46.6" y1="206.8" x2="51.0" y2="204.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="43.2" y1="200.2" x2="47.8" y2="198.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="40.3" y1="193.4" x2="44.9" y2="191.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="37.8" y1="186.5" x2="49.2" y2="182.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="62.5" y="183.4" text-anchor="middle" font-size="14" fill="var(--fg)">70</text>
+<line x1="35.7" y1="179.3" x2="40.6" y2="178.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="34.1" y1="172.1" x2="39.0" y2="171.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.9" y1="164.8" x2="37.9" y2="164.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.2" y1="157.4" x2="37.2" y2="157.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.0" y1="150.0" x2="40.0" y2="150.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.2" y1="142.6" x2="37.2" y2="142.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.9" y1="135.2" x2="37.9" y2="135.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="34.1" y1="127.9" x2="39.0" y2="128.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="35.7" y1="120.7" x2="40.6" y2="121.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="37.8" y1="113.5" x2="49.2" y2="117.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="62.5" y="126.6" text-anchor="middle" font-size="14" fill="var(--fg)">80</text>
+<line x1="40.3" y1="106.6" x2="44.9" y2="108.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="43.2" y1="99.8" x2="47.8" y2="101.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="46.6" y1="93.2" x2="51.0" y2="95.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="50.4" y1="86.8" x2="54.6" y2="89.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="54.5" y1="80.6" x2="61.0" y2="85.3" stroke="var(--fg)" stroke-width="1"/>
+<line x1="59.1" y1="74.8" x2="62.9" y2="78.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="64.0" y1="69.2" x2="67.6" y2="72.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="69.2" y1="64.0" x2="72.6" y2="67.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="74.8" y1="59.1" x2="78.0" y2="62.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="80.6" y1="54.5" x2="87.7" y2="64.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="95.9" y="80.6" text-anchor="middle" font-size="14" fill="var(--fg)">90</text>
+<line x1="86.8" y1="50.4" x2="89.5" y2="54.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="93.2" y1="46.6" x2="95.6" y2="51.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="99.8" y1="43.2" x2="101.9" y2="47.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="106.6" y1="40.3" x2="108.4" y2="44.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="113.5" y1="37.8" x2="116.0" y2="45.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="120.7" y1="35.7" x2="121.9" y2="40.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="127.9" y1="34.1" x2="128.8" y2="39.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="135.2" y1="32.9" x2="135.8" y2="37.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="142.6" y1="32.2" x2="142.9" y2="37.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="150" y1="150" x2="150.0" y2="40.0" stroke="var(--rot)" stroke-width="4"/>
+<circle cx="150" cy="150" r="7" fill="var(--rot)"/>
+<text x="150" y="184" text-anchor="middle" font-size="11" fill="var(--fg)">1 Teilstrich = 0,01 mm</text>
+<text x="150" y="199" text-anchor="middle" font-size="11" fill="var(--fg)">1 Umdrehung = 1 mm</text>
+</svg><p>Zeiger auf 0: das ist dein Nullpunkt.</p></div><div><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<circle cx="150" cy="150" r="134" fill="var(--tisch)" stroke="var(--rand)" stroke-width="4"/>
+<circle cx="150" cy="150" r="120" fill="var(--bg)" stroke="var(--rand)"/>
+<line x1="150.0" y1="32.0" x2="150.0" y2="44.0" stroke="var(--fg)" stroke-width="2"/>
+<text x="150.0" y="63.0" text-anchor="middle" font-size="14" fill="var(--fg)">0</text>
+<line x1="157.4" y1="32.2" x2="157.1" y2="37.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="164.8" y1="32.9" x2="164.2" y2="37.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="172.1" y1="34.1" x2="171.2" y2="39.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="179.3" y1="35.7" x2="178.1" y2="40.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="186.5" y1="37.8" x2="184.0" y2="45.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="193.4" y1="40.3" x2="191.6" y2="44.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="200.2" y1="43.2" x2="198.1" y2="47.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="206.8" y1="46.6" x2="204.4" y2="51.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="213.2" y1="50.4" x2="210.5" y2="54.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="219.4" y1="54.5" x2="212.3" y2="64.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="204.1" y="80.6" text-anchor="middle" font-size="14" fill="var(--fg)">10</text>
+<line x1="225.2" y1="59.1" x2="222.0" y2="62.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="230.8" y1="64.0" x2="227.4" y2="67.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="236.0" y1="69.2" x2="232.4" y2="72.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="240.9" y1="74.8" x2="237.1" y2="78.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="245.5" y1="80.6" x2="239.0" y2="85.3" stroke="var(--fg)" stroke-width="1"/>
+<line x1="249.6" y1="86.8" x2="245.4" y2="89.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="253.4" y1="93.2" x2="249.0" y2="95.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="256.8" y1="99.8" x2="252.2" y2="101.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="259.7" y1="106.6" x2="255.1" y2="108.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="262.2" y1="113.5" x2="250.8" y2="117.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="237.5" y="126.6" text-anchor="middle" font-size="14" fill="var(--fg)">20</text>
+<line x1="264.3" y1="120.7" x2="259.4" y2="121.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="265.9" y1="127.9" x2="261.0" y2="128.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.1" y1="135.2" x2="262.1" y2="135.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.8" y1="142.6" x2="262.8" y2="142.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="268.0" y1="150.0" x2="260.0" y2="150.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.8" y1="157.4" x2="262.8" y2="157.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="267.1" y1="164.8" x2="262.1" y2="164.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="265.9" y1="172.1" x2="261.0" y2="171.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="264.3" y1="179.3" x2="259.4" y2="178.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="262.2" y1="186.5" x2="250.8" y2="182.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="237.5" y="183.4" text-anchor="middle" font-size="14" fill="var(--fg)">30</text>
+<line x1="259.7" y1="193.4" x2="255.1" y2="191.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="256.8" y1="200.2" x2="252.2" y2="198.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="253.4" y1="206.8" x2="249.0" y2="204.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="249.6" y1="213.2" x2="245.4" y2="210.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="245.5" y1="219.4" x2="239.0" y2="214.7" stroke="var(--fg)" stroke-width="1"/>
+<line x1="240.9" y1="225.2" x2="237.1" y2="222.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="236.0" y1="230.8" x2="232.4" y2="227.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="230.8" y1="236.0" x2="227.4" y2="232.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="225.2" y1="240.9" x2="222.0" y2="237.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="219.4" y1="245.5" x2="212.3" y2="235.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="204.1" y="229.4" text-anchor="middle" font-size="14" fill="var(--fg)">40</text>
+<line x1="213.2" y1="249.6" x2="210.5" y2="245.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="206.8" y1="253.4" x2="204.4" y2="249.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="200.2" y1="256.8" x2="198.1" y2="252.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="193.4" y1="259.7" x2="191.6" y2="255.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="186.5" y1="262.2" x2="184.0" y2="254.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="179.3" y1="264.3" x2="178.1" y2="259.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="172.1" y1="265.9" x2="171.2" y2="261.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="164.8" y1="267.1" x2="164.2" y2="262.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="157.4" y1="267.8" x2="157.1" y2="262.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="150.0" y1="268.0" x2="150.0" y2="256.0" stroke="var(--fg)" stroke-width="2"/>
+<text x="150.0" y="247.0" text-anchor="middle" font-size="14" fill="var(--fg)">50</text>
+<line x1="142.6" y1="267.8" x2="142.9" y2="262.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="135.2" y1="267.1" x2="135.8" y2="262.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="127.9" y1="265.9" x2="128.8" y2="261.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="120.7" y1="264.3" x2="121.9" y2="259.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="113.5" y1="262.2" x2="116.0" y2="254.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="106.6" y1="259.7" x2="108.4" y2="255.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="99.8" y1="256.8" x2="101.9" y2="252.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="93.2" y1="253.4" x2="95.6" y2="249.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="86.8" y1="249.6" x2="89.5" y2="245.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="80.6" y1="245.5" x2="87.7" y2="235.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="95.9" y="229.4" text-anchor="middle" font-size="14" fill="var(--fg)">60</text>
+<line x1="74.8" y1="240.9" x2="78.0" y2="237.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="69.2" y1="236.0" x2="72.6" y2="232.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="64.0" y1="230.8" x2="67.6" y2="227.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="59.1" y1="225.2" x2="62.9" y2="222.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="54.5" y1="219.4" x2="61.0" y2="214.7" stroke="var(--fg)" stroke-width="1"/>
+<line x1="50.4" y1="213.2" x2="54.6" y2="210.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="46.6" y1="206.8" x2="51.0" y2="204.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="43.2" y1="200.2" x2="47.8" y2="198.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="40.3" y1="193.4" x2="44.9" y2="191.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="37.8" y1="186.5" x2="49.2" y2="182.8" stroke="var(--fg)" stroke-width="2"/>
+<text x="62.5" y="183.4" text-anchor="middle" font-size="14" fill="var(--fg)">70</text>
+<line x1="35.7" y1="179.3" x2="40.6" y2="178.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="34.1" y1="172.1" x2="39.0" y2="171.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.9" y1="164.8" x2="37.9" y2="164.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.2" y1="157.4" x2="37.2" y2="157.1" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.0" y1="150.0" x2="40.0" y2="150.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.2" y1="142.6" x2="37.2" y2="142.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="32.9" y1="135.2" x2="37.9" y2="135.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="34.1" y1="127.9" x2="39.0" y2="128.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="35.7" y1="120.7" x2="40.6" y2="121.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="37.8" y1="113.5" x2="49.2" y2="117.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="62.5" y="126.6" text-anchor="middle" font-size="14" fill="var(--fg)">80</text>
+<line x1="40.3" y1="106.6" x2="44.9" y2="108.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="43.2" y1="99.8" x2="47.8" y2="101.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="46.6" y1="93.2" x2="51.0" y2="95.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="50.4" y1="86.8" x2="54.6" y2="89.5" stroke="var(--fg)" stroke-width="1"/>
+<line x1="54.5" y1="80.6" x2="61.0" y2="85.3" stroke="var(--fg)" stroke-width="1"/>
+<line x1="59.1" y1="74.8" x2="62.9" y2="78.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="64.0" y1="69.2" x2="67.6" y2="72.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="69.2" y1="64.0" x2="72.6" y2="67.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="74.8" y1="59.1" x2="78.0" y2="62.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="80.6" y1="54.5" x2="87.7" y2="64.2" stroke="var(--fg)" stroke-width="2"/>
+<text x="95.9" y="80.6" text-anchor="middle" font-size="14" fill="var(--fg)">90</text>
+<line x1="86.8" y1="50.4" x2="89.5" y2="54.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="93.2" y1="46.6" x2="95.6" y2="51.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="99.8" y1="43.2" x2="101.9" y2="47.8" stroke="var(--fg)" stroke-width="1"/>
+<line x1="106.6" y1="40.3" x2="108.4" y2="44.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="113.5" y1="37.8" x2="116.0" y2="45.4" stroke="var(--fg)" stroke-width="1"/>
+<line x1="120.7" y1="35.7" x2="121.9" y2="40.6" stroke="var(--fg)" stroke-width="1"/>
+<line x1="127.9" y1="34.1" x2="128.8" y2="39.0" stroke="var(--fg)" stroke-width="1"/>
+<line x1="135.2" y1="32.9" x2="135.8" y2="37.9" stroke="var(--fg)" stroke-width="1"/>
+<line x1="142.6" y1="32.2" x2="142.9" y2="37.2" stroke="var(--fg)" stroke-width="1"/>
+<line x1="150" y1="150" x2="40.2" y2="143.1" stroke="var(--rot)" stroke-width="4"/>
+<circle cx="150" cy="150" r="7" fill="var(--rot)"/>
+<text x="150" y="184" text-anchor="middle" font-size="11" fill="var(--fg)">1 Teilstrich = 0,01 mm</text>
+<text x="150" y="199" text-anchor="middle" font-size="11" fill="var(--fg)">1 Umdrehung = 1 mm</text>
+</svg><p>Beispiel: Zeiger bei 76 = 0,76 mm. Du schreibst immer die <b>Teilstriche</b> auf (76 Striche = 0,76 mm).</p></div></div>
+<p><b>Wichtig:</b> Wenn der Zeiger eine volle Runde macht, zähle sie mit (1 Runde = 1 mm). Notiere auch, in welche Richtung der Zeiger läuft, wenn der Hebel nach oben geht.</p></div>
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 6: Eigengewicht des Hebels (kurz, einmal)</h2>
+<p>Der Hebel selbst wiegt etwas und verschiebt den Nullpunkt (grob 0,1 Nm, also etwa 0,06 kg an der Waage). Prüfe es:</p>
+<ol>
+<li>Gewicht noch <b>nicht</b> anhängen. Waage in die Lastbohrung einhängen.</li>
+<li>Langsam nach oben ziehen und beobachten, bei welcher Anzeige die Messuhr gerade anfängt, sich zu bewegen oder der Hebel «schwebt». Das ist der Wert «Hebel schwebt».</li>
+<li>Aufschreiben. Liegt der Wert unter 0,1 kg und kann deine Waage das nicht sauber anzeigen, schreibst du 0 und vermerkst, dass die Anzeige zu grob war.</li>
+</ol></div>
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 7: Gewicht anhängen</h2>
+<ol>
+<li>Gewicht an die Lastbohrung hängen. Halte es zuerst mit der Hand unten fest, dann nimm die Hand <b>langsam weg</b> («loslassen»): Jetzt trägt der Hebel das Gewicht allein. Er sinkt ein kleines Stück, die Messuhr bewegt sich (das ist normal).</li>
+<li>Warte kurz, bis der Zeiger ruhig steht. Schau auf den Spalt über dem Querträger und die Fangschnur.</li>
+<li>Du hast jetzt <b>zwei</b> Dinge an der Lastbohrung: Gewicht (unten) und gleich die Waage (oben).</li>
+</ol></div>
+
+<div class="schritt"><h2 style="border:none;margin-top:.6em">Schritt 8: Die vier Ablesungen</h2>
+<p>Die Waage hängt in der Lastbohrung, du ziehst mit der Hand <b>langsam senkrecht nach oben</b>. Bei jedem Wert wartest du etwa 3 Sekunden, bis der Zeiger der Messuhr ruhig steht, und liest <b>beide</b> Zahlen ab (Messuhr in mm, Waage in kg). <b>Schreib die abgelesene Waagenanzeige auf, nicht den Sollwert.</b></p>
+<div class="vier"><svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<text x="10" y="24" class="t">Wert 1</text>
+<circle cx="40" cy="120" r="9" fill="var(--rand)"/>
+<polygon points="40,98 290,108 290,132 40,142" fill="var(--hebel)" stroke="var(--rand)"/>
+<line x1="290" y1="120" x2="290" y2="195" stroke="var(--blau)" stroke-width="6" marker-end="url(#mblau)"/>
+<text x="278" y="170" font-size="12" fill="var(--blau)" text-anchor="end">Gewicht</text>
+<line x1="270" y1="120" x2="270" y2="35" stroke="var(--rot)" stroke-width="6" marker-end="url(#mrot)"/>
+<text x="160" y="54" font-size="15" font-weight="700" fill="var(--rot)" text-anchor="middle">Waage zeigt: A (= das Gewicht)</text>
+<text x="160" y="214" font-size="13" fill="var(--fg)" text-anchor="middle">Waage trägt das Gewicht genau</text>
+<text x="14" y="190" font-size="14" font-weight="700" fill="var(--fg)">Moment: 0 Nm</text>
+</svg><svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<text x="10" y="24" class="t">Wert 2</text>
+<circle cx="40" cy="120" r="9" fill="var(--rand)"/>
+<polygon points="40,98 290,108 290,132 40,142" fill="var(--hebel)" stroke="var(--rand)"/>
+<line x1="290" y1="120" x2="290" y2="195" stroke="var(--blau)" stroke-width="6" marker-end="url(#mblau)"/>
+<text x="278" y="170" font-size="12" fill="var(--blau)" text-anchor="end">Gewicht</text>
+<line x1="270" y1="120" x2="270" y2="-51" stroke="var(--rot)" stroke-width="6" marker-end="url(#mrot)"/>
+<text x="160" y="54" font-size="15" font-weight="700" fill="var(--rot)" text-anchor="middle">Waage zeigt: 2 × A</text>
+<text x="160" y="214" font-size="13" fill="var(--fg)" text-anchor="middle">Waage zieht noch einmal so viel</text>
+<text x="14" y="190" font-size="14" font-weight="700" fill="var(--fg)">Moment: ca. +2 Nm</text>
+</svg><svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<text x="10" y="24" class="t">Wert 3</text>
+<circle cx="40" cy="120" r="9" fill="var(--rand)"/>
+<polygon points="40,98 290,108 290,132 40,142" fill="var(--hebel)" stroke="var(--rand)"/>
+<line x1="290" y1="120" x2="290" y2="195" stroke="var(--blau)" stroke-width="6" marker-end="url(#mblau)"/>
+<text x="278" y="170" font-size="12" fill="var(--blau)" text-anchor="end">Gewicht</text>
+<line x1="270" y1="120" x2="270" y2="35" stroke="var(--rot)" stroke-width="6" marker-end="url(#mrot)"/>
+<text x="160" y="54" font-size="15" font-weight="700" fill="var(--rot)" text-anchor="middle">Waage zeigt: A (= das Gewicht)</text>
+<text x="160" y="214" font-size="13" fill="var(--fg)" text-anchor="middle">wieder gleich viel wie das Gewicht</text>
+<text x="14" y="190" font-size="14" font-weight="700" fill="var(--fg)">Moment: 0 Nm</text>
+</svg><svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<text x="10" y="24" class="t">Wert 4</text>
+<circle cx="40" cy="120" r="9" fill="var(--rand)"/>
+<polygon points="40,98 290,108 290,132 40,142" fill="var(--hebel)" stroke="var(--rand)"/>
+<line x1="290" y1="120" x2="290" y2="195" stroke="var(--blau)" stroke-width="6" marker-end="url(#mblau)"/>
+<text x="278" y="170" font-size="12" fill="var(--blau)" text-anchor="end">Gewicht</text>
+<text x="160" y="54" font-size="15" font-weight="700" fill="var(--rot)" text-anchor="middle">Waage zeigt: 0 (nicht angehängt)</text>
+<text x="160" y="214" font-size="13" fill="var(--fg)" text-anchor="middle">Gewicht allein zieht den Hebel</text>
+<text x="14" y="190" font-size="14" font-weight="700" fill="var(--fg)">Moment: ca. −2 Nm</text>
+</svg></div>
+<ol>
+<li><b>Wert 1:</b> von unten kommend langsam ziehen, bis die Waage <b>A</b> zeigt (die Anzeige, die sie hat, wenn sie das Gewicht allein trägt, z. B. 0,995 kg). Dann trägt die Waage genau das Gewicht, das Moment ist 0. Messuhr ablesen.</li>
+<li><b>Wert 2:</b> weiter ziehen bis etwa <b>2 × A</b> (z. B. 1,99 kg). Das sind etwa +2 Nm nach oben. Messuhr ablesen.</li>
+<li><b>Wert 3:</b> Zug <b>langsam nachlassen</b> bis die Waage wieder <b>A</b> zeigt. Wichtig: von oben kommend, nicht nochmals hochziehen. Messuhr ablesen.</li>
+<li><b>Wert 4:</b> Waage ganz lösen (Zug 0). Jetzt zieht nur das Gewicht: etwa −2 Nm. Messuhr ablesen.</li>
+</ol>
+<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" class="klein" role="img">
+<line x1="60" y1="150" x2="480" y2="150" stroke="var(--rand)"/><line x1="70" y1="20" x2="70" y2="280" stroke="var(--rand)"/>
+<line x1="70" y1="260" x2="478.5" y2="40" stroke="var(--mass)" stroke-width="3"/>
+<circle cx="273.3" cy="150" r="10" fill="var(--rot)"/><text x="273.3" y="155" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">1</text>
+<circle cx="478.5" cy="40" r="10" fill="var(--rot)"/><text x="478.5" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">2</text>
+<circle cx="273.3" cy="150" r="10" fill="var(--rot)"/><text x="273.3" y="155" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">3</text>
+<circle cx="70" cy="260" r="10" fill="var(--rot)"/><text x="70" y="265" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">4</text>
+<text x="270" y="296" text-anchor="middle" class="k">Anzeige der Waage (kg)</text>
+<text x="14" y="24" class="k">Moment am Gelenk (Nm)</text>
+<text x="70" y="170" text-anchor="middle" class="k">0</text>
+<text x="273.3" y="170" text-anchor="middle" class="k">1,07</text>
+<text x="478.5" y="170" text-anchor="middle" class="k">2,15</text>
+<text x="28" y="265" class="k">−2</text>
+<text x="28" y="45" class="k">+2</text>
+</svg>
+<p><b>Warum zwei Werte bei 1,07 kg?</b> Beim Hochziehen (Wert 1) und beim Nachlassen (Wert 3) steht die Messuhr nicht gleich, weil das Getriebe Spiel hat und die Reibung festhält. Der Unterschied <b>Wert 1 zu Wert 3</b> ist das Umkehrspiel. Der Unterschied <b>Wert 2 zu Wert 4</b> zeigt, wie weich das Gelenk unter ±2 Nm ist.</p>
+<div class="warn"><b>Häufige Fehler:</b>
+<ul><li>Zu schnell gezogen oder über 1,07 kg hinausgeschossen: Dann Wert nicht gelten lassen und ganz von vorn (Zug lösen, neu beginnen).</li>
+<li>Die Waage zieht schief: immer <b>senkrecht</b> nach oben ziehen.</li>
+<li>Der Zeiger springt oder schwingt: Messuhr nicht anfassen, ruhig warten.</li></ul></div>
+<p><b>Dreimal wiederholen</b> (Lauf 1, 2, 3), jeweils mit allen vier Werten. Zwischen den Läufen den Zug ganz lösen.</p></div>
+
+<h2>Schritt 9: Werte eintragen und Ergebnis ablesen</h2>
+<p>Hier ausfüllen: Messuhr in <b>Teilstrichen</b> (so wie sie auf dem Zifferblatt stehen, ohne umzurechnen), Waage in <b>kg</b>. Gewicht und «Hebel schwebt» darüber eintragen.</p>
+<div class="ok"><b>Wenn der Zeiger über 0 hinausläuft:</b> Die Messuhr kennt kein Minus, sie fängt bei 99 wieder an. Läuft der Zeiger beim Hochziehen über 0 hinaus und zeigt dann z. B. <b>71</b>, trägst du <b>−29</b> ein (71 − 100). Läuft er in die andere Richtung über 99 hinaus und zeigt z. B. 5, trägst du <b>105</b> ein (5 + 100). Die kleine Nebenuhr zählt dabei die vollen Runden (1 Runde = 100 Striche = 1 mm).</div>
+<p>Gewogenes Gewicht in kg (z. B. 0,995 oder die Anzeige A deiner Waage): <input type="number" step="0.001" id="gew" value="0.995"> &nbsp; Hebel schwebt bei (kg): <input type="number" step="0.01" id="heb" value="0"></p>
+<table><tr><th>Lauf</th><th>W1 Striche</th><th>W2 Striche</th><th>W3 Striche</th><th>W4 Striche</th><th>F1 kg</th><th>F2 kg</th><th>F3 kg</th><th>F4 kg</th><th>Ergebnis</th></tr>
+<tr><td>1</td><td><input type="number" step="1" id="w11" aria-label="Messuhr Wert 1 Lauf 1 in Teilstrichen"></td><td><input type="number" step="1" id="w12" aria-label="Messuhr Wert 2 Lauf 1 in Teilstrichen"></td><td><input type="number" step="1" id="w13" aria-label="Messuhr Wert 3 Lauf 1 in Teilstrichen"></td><td><input type="number" step="1" id="w14" aria-label="Messuhr Wert 4 Lauf 1 in Teilstrichen"></td><td><input type="number" step="0.01" id="f11" aria-label="Waage Wert 1 Lauf 1 in kg"></td><td><input type="number" step="0.01" id="f12" aria-label="Waage Wert 2 Lauf 1 in kg"></td><td><input type="number" step="0.01" id="f13" aria-label="Waage Wert 3 Lauf 1 in kg"></td><td><input type="number" step="0.01" id="f14" aria-label="Waage Wert 4 Lauf 1 in kg"></td><td id="r1">–</td></tr><tr><td>2</td><td><input type="number" step="1" id="w21" aria-label="Messuhr Wert 1 Lauf 2 in Teilstrichen"></td><td><input type="number" step="1" id="w22" aria-label="Messuhr Wert 2 Lauf 2 in Teilstrichen"></td><td><input type="number" step="1" id="w23" aria-label="Messuhr Wert 3 Lauf 2 in Teilstrichen"></td><td><input type="number" step="1" id="w24" aria-label="Messuhr Wert 4 Lauf 2 in Teilstrichen"></td><td><input type="number" step="0.01" id="f21" aria-label="Waage Wert 1 Lauf 2 in kg"></td><td><input type="number" step="0.01" id="f22" aria-label="Waage Wert 2 Lauf 2 in kg"></td><td><input type="number" step="0.01" id="f23" aria-label="Waage Wert 3 Lauf 2 in kg"></td><td><input type="number" step="0.01" id="f24" aria-label="Waage Wert 4 Lauf 2 in kg"></td><td id="r2">–</td></tr><tr><td>3</td><td><input type="number" step="1" id="w31" aria-label="Messuhr Wert 1 Lauf 3 in Teilstrichen"></td><td><input type="number" step="1" id="w32" aria-label="Messuhr Wert 2 Lauf 3 in Teilstrichen"></td><td><input type="number" step="1" id="w33" aria-label="Messuhr Wert 3 Lauf 3 in Teilstrichen"></td><td><input type="number" step="1" id="w34" aria-label="Messuhr Wert 4 Lauf 3 in Teilstrichen"></td><td><input type="number" step="0.01" id="f31" aria-label="Waage Wert 1 Lauf 3 in kg"></td><td><input type="number" step="0.01" id="f32" aria-label="Waage Wert 2 Lauf 3 in kg"></td><td><input type="number" step="0.01" id="f33" aria-label="Waage Wert 3 Lauf 3 in kg"></td><td><input type="number" step="0.01" id="f34" aria-label="Waage Wert 4 Lauf 3 in kg"></td><td id="r3">–</td></tr></table>
+<p><button id="rechne" style="font-size:16px;padding:8px 14px">Rechnen</button></p>
+<div id="ergebnis" class="ok">Noch nichts eingetragen.</div>
+
+<h2>Schritt 10: Was heisst das Ergebnis?</h2>
+<ul>
+<li><b>Spiel ≤ 0,3°:</b> in Ordnung (Grenze für dieses Gelenk). Der Gutachter erwartete 0,05 bis 0,15°.</li>
+<li><b>Streuung:</b> Wenn die drei Läufe untereinander mehr abweichen als das Spiel selbst, ist die Messung unbrauchbar (Messuhr lose, Hebel streift, Waage wackelt). Dann Aufbau prüfen und wiederholen.</li>
+<li><b>Steifigkeit:</b> Der Gutachter schätzte 30 bis 100 Nm pro Grad.</li>
+<li><b>Warnungen:</b> Wenn der Rechner meldet, das Moment bei «Wert 1» oder «Wert 3» liege nicht bei 0, ist die Waage falsch eingestellt oder das Eigengewicht des Hebels fehlt.</li>
+</ul>
+<p><b>Danach:</b> Dasselbe mit <b>Variante B</b> (Motor bestromt, ohne Blockierstift) und in der anderen Hebellage, dann Test 2 bis 6 aus dem Messprotokoll (<code>docs/messprotokoll-j2.md</code>).</p>
+
+<p class="warn"><b>Vorbehalt:</b> Die Bilder sind schematische Zeichnungen aus den Massen der Skripte. Die Abläufe und Zahlen stammen aus <code>docs/pruefstand-j2.md</code> und <code>software/j2_auswertung.py</code>. Das Bild zum Blockierstift ist aus den Massen abgeleitet und nicht an deinem Aufbau geprüft.</p>
+
+<script>
+const G=9.81, L=190, R=64;
+function winkel(mm){return Math.atan(mm/R)*180/Math.PI;}
+function moment(f,g,h){return (f-g-h)*G*L/1000;}
+function lauf(w,f,g,h){
+  const m=f.map(x=>moment(x,g,h));
+  const spiel=winkel(Math.abs(w[2]-w[0]));
+  const spanne=winkel(Math.abs(w[1]-w[3]));
+  const hin=[];
+  [0,2].forEach(i=>{ if(Math.abs(m[i])>0.1) hin.push('Wert '+(i+1)+': Moment '+m[i].toFixed(2)+' Nm statt 0'); });
+  if(m[1]<1||m[3]>-1) hin.push('Wert 2/4 liegen bei '+m[1].toFixed(2)+' / '+m[3].toFixed(2)+' Nm statt etwa +2 / −2 Nm');
+  let k=null;
+  if(spanne<=spiel) hin.push('Gesamtausschlag nicht grösser als das Spiel: Reihenfolge oder Messuhr prüfen');
+  else k=(m[1]-m[3])/(spanne-spiel);
+  return {spiel,spanne,k,hin,m};
+}
+function lies(id){const v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v;}
+function liesW(id){const v=lies(id);return v===null?null:v/100;}  // Teilstriche -> mm
+document.getElementById('rechne').onclick=function(){
+  let g=lies('gew'); if(g===null||g<=0) g=0.995; const h=lies('heb')||0;
+  if(g>20){document.getElementById('ergebnis').innerHTML='<b>Gewicht in kg eintragen</b> (z. B. 0,995), nicht in Gramm.';return;}
+  const sp=[],ks=[];let txt='';
+  for(let n=1;n<=3;n++){
+    const w=[1,2,3,4].map(i=>liesW('w'+n+i)), f=[1,2,3,4].map(i=>lies('f'+n+i));
+    if(w.includes(null)||f.includes(null)){document.getElementById('r'+n).textContent='unvollständig';continue;}
+    const e=lauf(w,f,g,h);
+    sp.push(e.spiel); if(e.k!==null) ks.push(e.k);
+    document.getElementById('r'+n).textContent='Spiel '+e.spiel.toFixed(3)+'°'+(e.k!==null?', '+e.k.toFixed(1)+' Nm/°':'');
+    e.hin.forEach(x=>txt+='<li>Lauf '+n+': '+x+'</li>');
+  }
+  const out=document.getElementById('ergebnis');
+  if(!sp.length){out.textContent='Noch keine vollständige Zeile.';return;}
+  const mit=a=>a.reduce((s,x)=>s+x,0)/a.length;
+  const sm=mit(sp), streu=Math.max(...sp)-Math.min(...sp);
+  let s='<b>Umkehrspiel (Mittel aus '+sp.length+' Läufen): '+sm.toFixed(3)+'°</b> ('+(Math.tan(sm*Math.PI/180)*L).toFixed(2)+' mm an der Lastbohrung). Grenze 0,3°: '+(sm<=0.3?'<b>eingehalten</b>':'<b>ÜBERSCHRITTEN</b>')+'.<br>Streuung der Läufe: '+streu.toFixed(3)+'°'+(sp.length>1&&streu>sm?' (grösser als das Spiel selbst: Messung unbrauchbar, wiederholen)':'')+'.';
+  if(ks.length) s+='<br>Steifigkeit (Mittel): '+mit(ks).toFixed(1)+' Nm/° (Schätzung 30 bis 100).';
+  if(txt) s+='<ul>'+txt+'</ul>';
+  out.innerHTML=s;
+};
+</script>
+</body></html>

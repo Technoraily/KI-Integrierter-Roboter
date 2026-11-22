@@ -15,18 +15,20 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
 
-## Stand: 4. November 2026
+## Stand: 22. November 2026
 
-Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren vermessen, denn die Lastrechnung hängt von ihrem Moment ab. Dafür gibt es einen Motorprüfstand, der ganz ohne Kaufteile auskommt (Gutachten 8/10). Danach wird das Schultergelenk J2 als Prüfstand gebaut, weil dort das grösste Risiko liegt: Drei Riemenstufen (72:1) müssen 11,8 Nm übertragen, ohne zu viel Spiel und Nachgiebigkeit. Dessen CAD ist fertig und begutachtet (8/10).
+Der J2-Prüfstand ist aufgebaut und läuft mit 24 V an einem ESP32 mit FluidNC (der Arduino Uno stürzte beim Motoranlauf ab). Ohne Last pendelt er sauber bis ca. 20 °/s am Hebel, bei 24 °/s verliert der Motor Schritte (vermutlich Drehmoment bei hoher Drehzahl). Erste Messung unter Wechsellast ±1,9 Nm (Variante A, Blockierstift, grobe Federwaage): Umkehrspiel unter 0,01°, Steifigkeit vorläufig ca. 7 Nm/° und damit unter der Schätzung des Gutachters (30 bis 100 Nm/°). Als Nächstes folgt Test 2 mit Gewichten statt Federwaage.
+
+Frühere Planung (4. November): Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren vermessen, denn die Lastrechnung hängt von ihrem Moment ab. Dafür gibt es einen Motorprüfstand, der ganz ohne Kaufteile auskommt (Gutachten 8/10). Danach wird das Schultergelenk J2 als Prüfstand gebaut, weil dort das grösste Risiko liegt: Drei Riemenstufen (72:1) müssen 11,8 Nm übertragen, ohne zu viel Spiel und Nachgiebigkeit. Dessen CAD ist fertig und begutachtet (8/10).
 
 | Phase | Inhalt | Stand |
 |---|---|---|
 | 0 | Projektgerüst | fertig |
 | 1 | Detailkonzept, Kinematik, Lastrechnung | fertig, Gutachten 8/10 |
 | 2 | Motorvermessung | Motorprüfstand fertig, Gutachten 8/10 – drucken, messen |
-| 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – Rahmen und Antriebsteile montiert, Elektrik-Schema als Entwurf, restliche Kaufteile bestellen, messen |
+| 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – aufgebaut, läuft mit 24 V; erste Messung (Spiel < 0,01°, Steifigkeit vorläufig ca. 7 Nm/°) – Wiederholung und Test 2 mit Gewichten |
 | 2 | Elektronikgehäuse J2 (Netzteil, Arduino, C14, Sicherung, Klemmenabdeckung) | Entwurf, Gutachten 7/10 – Passproben drucken, Masse an den Teilen prüfen, Freigabe 230-V-Seite durch Elektriker |
-| 2 | Steuerung J2: GRBL-Einstellungen, Testprogramme, Messprotokoll mit Auswertung | fertig, noch nicht am Gerät ausgeführt |
+| 2 | Steuerung J2: GRBL-Einstellungen, Testprogramme, Messprotokoll mit Auswertung | Weblösung `software/j2_steuerung.html` (ESP32/FluidNC und Uno/Grbl) am Gerät getestet; Messanleitung mit Bildern und Rechner in `docs/messung-anleitung.html` |
 | 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter, Not-Aus-Gehäuse) | CAD fertig, STL exportiert – drucken, Passungen messen |
 | 2 | Zubehör J2 (Referenzschalter im Querträger mit Probe, Motorkabelklemme) | Entwurf, Gutachten 8/10 (Runde 3) – Schalter kaufen, Probe drucken und messen |
 | 2b | Machbarkeitstest Steuerung (7 Achsen) | offen |
@@ -105,7 +107,7 @@ Netzteil (Mean Well LRS-350-24) → Kfz-Sicherung 3 A → CNC-Shield mit TMC2209
 - [Verdrahtung](docs/verdrahtung.md)
 - [Elektronikgehäuse J2](docs/elektronikgehaeuse.md) mit [Stückliste](docs/stuecklisten/elektronikgehaeuse.md)
 - [Aufbauanleitung J2 (Lieferung bis erster Test)](docs/aufbauanleitung-j2.md)
-- [GRBL-Einstellungen J2](docs/grbl-j2.md) und [Messprotokoll J2](docs/messprotokoll-j2.md)
+- [GRBL-Einstellungen J2](docs/grbl-j2.md) und [Messprotokoll J2](docs/messprotokoll-j2.md) · [Messanleitung mit Bildern](docs/messung-anleitung.html) · [Bohrbild für das Grundbrett](docs/bohrbild-brett.html)
 - [Zubehör J2](docs/zubehoer-j2.md) mit [Stückliste](docs/stuecklisten/j2-zubehoer.md) · [Schiene: Kabelführung](docs/schiene-kabelfuehrung.md) mit [Stückliste](docs/stuecklisten/schiene-kette.md) · [Werkzeugwechsler und Kamerahalter](docs/werkzeugwechsler.md) mit [Stückliste](docs/stuecklisten/werkzeugwechsler.md) · [Offene Ideen](docs/offene-ideen.md)
 
 **Gutachten.** Jede Idee und jede Baugruppe wird von einem unabhängigen Gutachter mit 1–10 bewertet, höchstens drei Runden:
