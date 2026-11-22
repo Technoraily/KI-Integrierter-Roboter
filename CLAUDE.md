@@ -8,6 +8,8 @@
 
 \- Keine Passwörter oder Tokens in die Datei.
 
+\- **Feierabend-Ablauf (dauerhaft erlaubt, ohne Rückfrage):** Wenn ich "Feierabend", "Schluss" oder "Übergabe" sage: 1. HANDOFF.md ersetzen, 2. index.md nachführen, wenn es einen neuen Stand gibt, 3. Datenschutz-Check (Repo ist öffentlich: nur noreply-Mail, keine private Mailadresse, kein Name, keine Passwörter im Diff gegen origin/main), 4. committen und **pushen** (`git push`), 5. mir melden, ob der Push geklappt hat (`git status -sb` ohne "ahead"). Schlägt der Check oder der Push fehl: nicht pushen bzw. Fehler melden, nicht verschweigen.
+
 \- Beim Start nur HANDOFF.md lesen. Weitere Dateien nur öffnen, wenn der nächste Schritt sie braucht.
 
 \- Wurde HANDOFF.md beim Start geladen: kurz bestätigen und beim "Nächsten Schritt" weitermachen.
