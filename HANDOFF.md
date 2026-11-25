@@ -1,22 +1,21 @@
-# HANDOFF – KI-Integrierter Roboterarm (Stand 25.11.2026 Feierabend; Details: README.md, docs/konzept.md, index.md)
+# HANDOFF – KI-Integrierter Roboterarm (Stand 26.11.2026; Details: README.md, docs/konzept.md, index.md)
 ## Ziel
-6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17) auf 1000-mm-Schiene; Hobbyarm (aufheben, zeichnen, Kamera-KI). J2-Prüfstand: Messphase durch, Prüfstand kann weggestellt werden.
+6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17) auf 1000-mm-Schiene (später); Hobbyarm (aufheben, zeichnen, Kamera-KI), Nachbau durch Dritte muss ohne Fummelei gehen. Gestaltung nach Bildvorlage des Nutzers (liegt nur lokal, nicht im Repo): weisse Schalen, dunkler Sockel (docs/design-vorgabe.md).
 ## Stand
-- Messprotokoll docs/messprotokoll-j2.md ausgefüllt (Tests 1 bis 6). Gewichte gewogen: 0,995 / 3,56 / 6,13 kg; Hebelarm 190 mm, Tastklotz 64 mm.
-- Spiel unter 0,01° (Test 1), Rütteln von Hand 0,125° (Budget ≤ 0,3° ok). Steifigkeit ca. 16,5 bis 18 Nm/° (nach 60 min Dauerlast ca. 15), Ziel 30 nicht erreicht. Kriechen 60 min bei 11,4 Nm: 0,06°, Motor kalt, Riemen/Scheiben ohne Schaden.
-- Rücklauf ohne Strom: 1,9 Nm hält (max. 1 mm), 6,6 Nm (3,56 kg) und 11,4 Nm fallen in unter 1 s. Haltegrenze zwischen 1,9 und 6,6 Nm.
-- konzept.md 3.8 (Feder, Kriterien) und NEU 3.9 (Parkposition, Haltebremse J2/J3, Dämpfung) nachgeführt. Hochrechnung: J3 fällt vermutlich auch, J4/J5 an der Grenze (nur aus einer Messung).
-- software/j2_steuerung.html: Knopf «Motor aus» sendet `$MD`. docs/ruecklauftest-bild.html (auch als Artifact).
+- J2-Messphase durch (docs/messprotokoll-j2.md). Steifigkeit J2 ca. 17 bis 18 Nm/° (Gate wollte 30), Spiel klein, Kriechen 60 min unkritisch. Rücklauf ohne Strom: 1,9 Nm hält, ab 6,6 Nm fällt der Hebel.
+- Motoren: J2 = 17HS24-2104S (60 mm, 0,76 Nm, 2,1 A, ohne hintere Welle); J1/J3/J4 = Cloudray 17CS04A-170E (40 mm, 0,42 Nm, 1,7 A, 2,6 Ω; gemessen 3,3 bis 3,4 Ω). Kandidat Bremsmotor: Doppelwelle 60 mm, 0,76 Nm, 2,1 A (Link/Titel beim Nutzer). Nichts bestellen vor dem Phase-2-Gate.
+- Gutachten Feder/Bremse (docs/reviews/2026-11-25-feder-bremse-parkposition.md): 3.8 = 8/10, 3.9 = 7/10 (Runde 3 offen). konzept.md 3.8/3.9: Feder allein reicht nicht; Parkposition, Haltebremse J2 (J3 erst nach Rücklauftest dort), Dämpfung am Anschlag.
+- NEU 26.11.: Lastrechnung neu (docs/lastrechnung.md): J2 Sicherheit 1,8 nur bei 1,77 A; J3 mit 70:1 ab 1,2 A ok (Vorschlag 70:1, Entscheid Nutzer). Durchhang ca. 3 bis 4 mm pro kg, per Software ausgleichen.
+- NEU docs/kabelkonzept.md (Regeln, 46 Adern, Hohlwelle mind. Ø 25 mm, Basis-Steckerfeld), docs/design-vorgabe.md (Basis austauschbar, Proportionen: H_schulter 170 evtl. 200).
 ## Entscheidungen
-- Nie Stecker bei 24 V ziehen/stecken (TMC2209 max ca. 28 V). Vref max 1,4 V.
-- Kein 24-h-Test, 60 min genügen (Hobbyarm, Nutzer bei Strom dabei).
-- Genauigkeit zuerst per Software-Vorsteuerung und Kamera; Closed-Loop/Encoder später, nichts kaufen.
-- Bremse nur an J2 und J3 (Motor mit Bremse, ca. USD 47 bis 60, nicht geprüft); vorhandene Motoren 17CS04A-170E haben keine hintere Welle, Nachrüsten nicht sinnvoll. Vor dem Phase-2-Gate nichts bestellen.
+- Steuerung: Standard-BTT-Octopus mit grblHAL für den Arm; ESP32/FluidNC nur Prüfstand. Basis austauschbar (Lochbild 120 mm, 4× M5, Steckerfeld).
+- Nie Stecker bei 24 V ziehen/stecken (TMC2209 max ca. 28 V). Vref nur bei 24 V AN einstellen, Modulgrenze 1,77 A (Vref 2,5 V).
+- Kein 24-h-Test; Genauigkeit zuerst Software-Ausgleich und Kamera.
 ## Offen
-- Phase-2-Gate: Feder ja/nein, Bremse J2/J3, Scheiben PETG/PLA. Bauraum hinter dem Motor für Bremse prüfen (CAD).
-- Parkposition-Befehl in Firmware, TPU-Dämpfungsteil als Testteil; Moment J3 am Gelenk prüfen; Nutzlastgewinn der Feder rechnen (grob +0,9 kg).
-- Endschalter + Homing, Lizenz, grbl-j2.md noch auf Grbl, Verkaufsrepo Stand 11.11. nicht synchron.
+- Fusion 360 war nicht verbunden (Add-in starten), dann Design: Gesamtlayout, Basis/J1, Schulter J2 (Bauraum Bremse ca. 30 mm hinter Motor, Feder), Oberarm J3, Hand.
+- Entscheide: H_schulter 170 oder 200; J3 70:1; Greifer-Servo-Ansteuerung (Uno fehlt); Endschalter-Typ; Steckerfamilie (kabelkonzept.md).
+- Gutachten 3.9 Runde 3, Rücklauf mit gezogenem Netzteil, Rücklauf an J3, Aufprallenergie.
 ## Nächster Schritt
-Gutachter-Agent (1 bis 10, max. 3 Runden) für 3.8/3.9 (Feder, Bremse, Parkposition), dann Phase-2-Gate entscheiden.
+Fusion starten, dann Gesamtlayout und Basis mit J1 konstruieren (Hohlwelle, Steckerfeld).
 ## Dateien
-docs/messprotokoll-j2.md, docs/konzept.md (3.8, 3.9), docs/lastrechnung.md, docs/ruecklauftest-bild.html, software/j2_steuerung.html, index.md; kein Fusion-Dokument in dieser Sitzung
+docs/kabelkonzept.md, docs/design-vorgabe.md, docs/lastrechnung.md, docs/konzept.md (3.8, 3.9), docs/messprotokoll-j2.md, docs/motorvermessung.md, docs/reviews/2026-11-25-feder-bremse-parkposition.md; kein Fusion-Dokument in dieser Sitzung

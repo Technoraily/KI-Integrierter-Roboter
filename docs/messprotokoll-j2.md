@@ -11,6 +11,7 @@ Messuhr: 0,01 mm, am Tastklotz 64 mm von der Achse. **0,1° am Abtrieb = 0,11 mm
 | Datum / Uhrzeit | |
 | Netzteil gemessen (V) | |
 | Treiberstrom (A effektiv) / Vref (V) | |
+| Motortyp am Prüfstand (Typ, Länge, hintere Welle?) | 17HS24-2104S (laut `docs/grbl-j2.md` und Aufbauanleitung): NEMA 17, 60 mm, 0,76 Nm bei 2,1 A (Hersteller), Einzelwelle ohne hintere Welle; **nicht** einer der vorhandenen 17CS04A-170E (40 mm, 0,42 Nm). Treiber stand bei den Messungen auf ca. 0,9 A (Vref 1,274 V) |
 | Materialien Scheiben (PETG/PLA) | |
 | Spannung Riemen Stufe 1 / 2 / 3 (Spannweg, Anzugsart) | |
 | Gewicht 1 gewogen (kg), Nennwert 1,07 | |
@@ -78,11 +79,11 @@ Nach dem Abhängen die Messuhr auf Null prüfen: bleibt eine Abweichung, hat sic
 
 ## 3. Kriechen im Haltetest unter 11 Nm (60 min, bewusst statt 24 h)
 
-**Ergebnis 25.11.2026: bestanden.** Gesamtdrift 6,5 Striche in 60 min (ca. 0,06°), in den letzten 30 min nur 1,5 Striche, Rest nach dem Abhängen −3 Striche, Motor nicht warm. Ausschlag nach 60 min: 84 Striche (0,84 mm, ca. 0,75°) bei 11,4 Nm, also ca. 15 Nm/° mit Kriechen (kurz nach dem Anhängen ca. 18 Nm/°).
+**Ergebnis 25.11.2026: bestanden.** Gesamtdrift 6,5 Striche in 60 min (ca. 0,06°), in den letzten 30 min nur 1,5 Striche, Rest nach dem Abhängen −3 Striche, Motor nicht warm. Ausschlag nach 60 min: 84 Striche (0,84 mm, ca. 0,75°) bei 11,4 Nm, also ca. 15 Nm/° mit Kriechen (kurz nach dem Anhängen ca. 16,5 bis 18 Nm/°; Ablesung bei Minute 0 geschätzt, daher die Streuung).
 
 Entscheidung 25.11.2026: Für einen Hobbyarm genügt 1 h. Die Nutzlast trägt der Arm im Betrieb nur kurz, beim Lagern liegt er so, dass er kein Moment trägt. Ein 24-h-Test mit bestromtem Motor ohne Aufsicht entfällt; der Nutzer ist während der Messung anwesend. Das Kriechen läuft zuerst schnell und dann langsamer, die erste Stunde zeigt den Hauptteil.
 
-Gewicht 6,13 kg (11,4 Nm) hängt, Motor bestromt, Hebel waagrecht, Messuhr bleibt stehen, Fangschnur gesetzt. Ablesezeiten: 0, 1, 5, 15, 30, 60 min. Motor und Wange jedes Mal mit der Hand prüfen. Messuhr-Null ohne Gewicht: **0,78 mm (Strich 78)**, Start 25.11.2026.
+Gewicht 6,13 kg (11,4 Nm) hängt, Motor bestromt, Hebel waagrecht, Messuhr bleibt stehen, Fangschnur gesetzt. Ablesezeiten: 0, 1, 5, 15, 30, 60 min. Motor und Wange jedes Mal mit der Hand prüfen. Messuhr-Null ohne Gewicht: **0,30 mm (Strich 30)**, Start 25.11.2026 (zuerst irrtümlich mit 78 notiert).
 
 | Zeit (min) | Messuhr (mm) | Motor/Wange (°C oder Handprobe) | Bemerkung |
 |---|---|---|---|
@@ -137,11 +138,11 @@ Fällt der Hebel bis zum Anschlag, ist das ein Kriterium für die Ausgleichsfede
 
 | Kriterium | Gemessen | Grenze | Erfüllt |
 |---|---|---|---|
-| Umkehrspiel J2 | | ≤ 0,3° | |
-| Steifigkeit | | Schätzung 30 bis 100 Nm/° | |
-| Kriechen 24 h bei 11 Nm | | ≤ 0,1° | |
-| Motorgehäuse im Dauerhalten | | ≤ 70 °C | |
-| Riemenstufe 3 springt nicht | | nie | |
+| Umkehrspiel J2 | kleiner als eine Ablesung (höchstens 1 Strich = 0,009°) laut erster Messung 22.11. (Federwaage, Variante A: Lauf 1 0,009°, Lauf 2 0,000°; Rohwerte nicht in die Tabelle von Test 1 übertragen, Quelle: HANDOFF.md vom 22.11.). Rütteln von Hand am 25.11.: 14 Striche = 0,125° | ≤ 0,3° | ja |
+| Steifigkeit | ca. 17 bis 18 Nm/° (kurz nach dem Anhängen), ca. 15 Nm/° nach 60 min | Gate ≥ 30 Nm/° (Schätzung 30 bis 100) | **nein** |
+| Kriechen bei 11,4 Nm | 0,06° in 60 min (bewusst nicht 24 h) | ≤ 0,1° | ja (60 min) |
+| Motorgehäuse im Dauerhalten | nach 15 min nicht warm (Handprobe, 60 min nicht erneut notiert) | ≤ 70 °C | ja |
+| Riemenstufe 3 springt nicht | nicht gesprungen | nie | ja |
 | Hebel ohne Strom | bleibt bei 1,9 Nm stehen (max. 1 mm Absinken); fällt bei 11,4 Nm sofort | bleibt stehen (sonst Feder) | nein bei voller Last: Ausgleichsfeder oder Haltebremse nötig |
 | Sicherheit J2 mit gemessenem Motormoment | | ≥ 1,5 (`lastrechnung.md`) | |
 

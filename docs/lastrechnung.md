@@ -64,3 +64,30 @@ Die Motoren schaffen es; die Grenze ist die Steifigkeit, nicht die Kraft.
 - Nutzlastschwerpunkt 80 mm vor dem Flansch und 30 mm seitlich versetzt.
 - Gerechnet ist **ohne** Ausgleichsfeder; das ist auch der geplante Bau. Die Feder ist eine Reserve, falls Motorvermessung oder Prüfstand es verlangen (Kriterien in `docs/konzept.md`, 3.8). Mit Teilausgleich von 4 Nm sänke das grösste J2-Moment von 11,8 auf 7,8 Nm.
 - J1 trägt bei senkrechter Achse keine Schwerkraft. Sein Moment bestimmt die Beschleunigung, nicht die Statik.
+
+## Nachrechnung 26.11.2026 (Datenblatt und Prüfstandmessung)
+
+Neu seit der Rechnung vom 11.10.: Datenblatt des 17CS04A-170E gefunden (0,42 Nm, 1,7 A, 40 mm, Shopseite Cloudray), Motor J2 ist der 17HS24-2104S (0,76 Nm bei 2,1 A), Steifigkeit J2 gemessen (ca. 17 bis 18 Nm/°, nach 60 min ca. 15). Das Skript `lastrechnung.py` lief unverändert (Lasten und Sicherheiten wie in der Tabelle oben, bei Motormomenten 0,28 / 0,45 / 0,18 / 0,08 Nm). Die Rechnung unten ersetzt nur die Motormomente und hängt vom **eingestellten Treiberstrom** ab. Nutzbar = Haltemoment × Strom / Nennstrom × 0,7 (Mikroschritte, bis ca. 400 U/min, Annahme wie oben).
+
+**Sicherheit mit Datenblattwerten** (Wirkungsgrad 0,65 für J2 und J3, 0,85 für J4; Last bei 1 kg aussen):
+
+| Strom | J3 nutzbar (Nm) | J3 bei 60:1 | J3 bei 70:1 | J4 bei 20:1 | J2 nutzbar (Nm) | J2 bei 72:1 |
+|---|---|---|---|---|---|---|
+| 1,0 A | 0,173 | 1,24 | 1,45 | 1,77 | – | – |
+| 1,2 A | 0,208 | **1,49** | 1,74 | 2,13 | 0,304 | 1,21 |
+| 1,5 A | 0,259 | 1,87 | 2,18 | 2,66 | 0,380 | **1,51** |
+| 1,7 A | 0,294 | 2,12 | 2,47 | 3,01 | – | – |
+| 1,77 A (Modulgrenze) | – | – | – | – | 0,448 | 1,78 |
+
+Gefordert ist Sicherheit ≥ 1,5. Ergebnis:
+- **J3:** Mit 60:1 braucht es mindestens ca. 1,3 A Treiberstrom (bei 1,2 A 1,49, knapp unter dem Ziel). Mit **70:1 reicht schon 1,2 A (1,74)** und es bleibt Reserve für Wärme und Streuung. Geschwindigkeit bei 70:1 ca. 34 °/s (Ziel ≥ 25 °/s bleibt erfüllt). Vorschlag: **J3 mit 70:1 konstruieren**, weil die Übersetzung die Riemenstufen von J3 festlegt und J3 noch nicht gezeichnet ist (Änderung später kostet Umkonstruktion). Entscheid beim Nutzer.
+- **J2:** Die frühere Sicherheit 1,8 gilt nur bei **1,77 A**, der Obergrenze des Moduls. Bei 1,5 A sind es 1,51, bei 1,2 A nur 1,21. J2 muss also mit hohem Strom laufen (Kühlkörper, Lüfter). Die Haltemessung am Prüfstand (11,4 Nm bei ca. 0,9 A statisch gehalten, wo das Modell nur 0,91 ergibt) zeigt, dass das Modell fürs **statische Halten** konservativ ist; fürs Fahren (Beschleunigen, Drehzahl) bleibt es die vorsichtige Grundlage.
+- **J4:** Auch bei 1,0 A Sicherheit 1,77, also unkritisch.
+- J1, J5, J6 unverändert (J5 und J6 beruhen weiter auf angenommenen Momenten neuer Motoren).
+
+**Durchhang mit gemessener Steifigkeit J2 von 17 Nm/°** (statt 30 Nm/°; 1 kg aussen, Flansch 450 mm von J2 entfernt):
+- J2: Momentenänderung leer gegen 1 kg ca. 5,2 Nm, das ergibt 0,31° und ca. **2,4 mm** am Flansch (bei 30 Nm/° wären es 1,4 mm).
+- J3 (Steifigkeit **nicht gemessen**, hier 17 Nm/° angenommen): ca. 3,2 Nm, 0,19°, ca. 0,8 mm am Flansch.
+- Dazu kommen Biegung der gedruckten Struktur (0,3 bis 1 mm, Schätzung des Gutachters) und J4 bis J6. Insgesamt grob **3 bis 4 mm** lastabhängiger Durchhang bei 1 kg, statt 2 bis 3 mm in der Rechnung vom 11.10.
+- Das ist statisch und wiederholbar. Mit Software-Vorsteuerung (Durchhang aus Stellung und Last vorrechnen) sollte sich der Grossteil ausgleichen lassen. Welcher Anteil übrig bleibt, ist nicht gemessen; als Arbeitsannahme 10 bis 20 % (0,3 bis 0,8 mm), zu bestätigen am gebauten Arm.
+- Eigenfrequenz mit 1 kg ausgestreckt: ca. 7,5 Hz statt ca. 10 Hz (nach der Wurzel der Steifigkeit skaliert, grobe Rechnung).

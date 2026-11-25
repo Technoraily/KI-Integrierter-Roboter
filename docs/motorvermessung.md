@@ -88,10 +88,14 @@ Danach muss die Flasche wieder auf der Bodenmarke stehen, auf ±1 mm genau. Ein 
 
 | Motor | Länge (mm) | Widerstand (Ω) | Netzteil (V) | Strom (A) | Test A: m (g) / M (Nm) | Test B: m (g) bei 60 / 120 / 240 / 360 U/min | Test C ok? |
 |---|---|---|---|---|---|---|---|
-| 1 | | | | | | | |
-| 2 | | | | | | | |
-| 3 | | | | | | | |
+| 1 | 40 | 3,4 (Rot–Blau) / 3,3 (Grün–Schwarz) | | | | | |
+| 2 | 40 | 3,4 / 3,3 | | | | | |
+| 3 | 40 | 3,3 / 3,3 | | | | | |
 | J2 (60 mm) | | | | | | | |
+
+**Sofortmessung 26.11.2026 (Nutzer, Multimeter, Messleitungen abgezogen):** Alle drei Motoren gleich: Gehäuse 40 mm, Welle 5 mm mit Abflachung (15 mm lang), Welle ragt 20 mm aus dem Gehäuse (Erwartung der Anleitung war 22 bis 24 mm). Wicklungspaare liegen im Stecker nebeneinander: Rot–Blau (Spule A), Grün–Schwarz (Spule B), Widerstand 3,3 bis 3,4 Ω. Erwartet waren 1,5 bis 2,5 Ω bei 1,7 A.
+
+**Datenblatt gefunden (26.11.2026, Shopseite Cloudray, vom Nutzer eingefügt; SKU SM47N17CS04A170E, Teilenummer 17CS04A-170E, 8,42 CHF pro Stück):** Haltemoment 0,42 Nm, Nennstrom 1,7 A je Phase, Phasenwiderstand 2,6 Ω ± 10 %, Induktivität 5,1 mH ± 20 %, Schrittwinkel 1,8°, Gehäuse 42 × 42 × 40 mm, Welle Ø 5 mm, Länge 24 mm, Abflachung 15 mm, Gewicht 0,3 kg, Belegung A+ Rot, A− Blau, B+ Grün, B− Schwarz. Das passt zu den Messwerten (Länge, Welle, Abflachung, Paare Rot–Blau und Grün–Schwarz). Der gemessene Widerstand (3,3 bis 3,4 Ω) liegt 27 bis 30 % über dem Datenblatt (2,34 bis 2,86 Ω); Ursache offen (Übergangswiderstand der Messspitzen, Messbereich, Toleranz des Typs). Die Welle ragt gemessen 20 mm heraus gegen 24 mm im Datenblatt (vermutlich anders gemessen, z. B. ab Zentrierbund). **Folge:** Die Annahme der Lastrechnung (1,7 A, 0,42 Nm, im Mikroschrittbetrieb ca. 70 %, also ca. 0,29 Nm nutzbar, angenommen 0,28 Nm) ist durch das Datenblatt gestützt, bei vollem Nennstrom. Bei kleinerem Strom sinkt das Moment ungefähr im Verhältnis (1,2 A: ca. 0,21 Nm nutzbar, 1,0 A: ca. 0,17 Nm). Bei 1,7 A und 2,6 Ω gibt ein Motor im Stillstand etwa 15 W ab. Eine frühere Schätzung «Nennstrom 1,1 bis 1,2 A» aus dem Widerstand allein ist damit überholt.
 
 Die Lastrechnung braucht für die vorhandenen Motoren 0,21 Nm nutzbares Moment, damit J3 mit 60:1 die Sicherheit 1,5 hält (angenommen sind 0,28 Nm). Liegt der Messwert darunter, wird J3 auf 70:1 erhöht (siehe `docs/lastrechnung.md`).
 
