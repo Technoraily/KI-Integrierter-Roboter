@@ -58,7 +58,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 |---|---|---|---|---|---|
 | J0 Schiene | NEMA 17 (neu) | – | GT2 10 mm, Ritzel 20 Z, offener Riemen | – | – |
 | J1 Basis | NEMA 17 (vorhanden) | 20:1 | GT2 10 mm, 20 : 80 | HTD-3M 15 mm, 16 : 80 | – |
-| J2 Schulter | NEMA 17 60 mm (neu) | 72:1 | GT2 10 mm, 20 : 72 | HTD-3M 15 mm, 16 : 64 | HTD-5M 15 mm, 18 : 90 |
+| J2 Schulter | NEMA 17 60 mm (neu) | 72:1 | GT2 10 mm, 20 : 72 | HTD-3M 15 mm, 16 : 80 | HTD-5M **25 mm**, 18 : 72 (Entscheid 26.11.2026, Prüfstand: 16 : 64 / 18 : 90) |
 | J3 Ellbogen | NEMA 17 (vorhanden), Motor nahe Schulter | 70:1 (Entscheid 26.11.2026) | GT2 10 mm, 20 : 70 | HTD-3M 15 mm, 16 : 80 | HTD-5M 15 mm, 15 : 60 |
 | J4 Unterarm-Rolle | NEMA 17 (vorhanden) | 20:1 | GT2 10 mm, 20 : 100 | HTD-3M 15 mm, 16 : 64 | – |
 | J5 Hand-Nicken | NEMA 17 34 mm (neu), im Unterarm | 18,75:1 | GT2 10 mm, 16 : 80 | HTD-3M 15 mm, 16 : 60 | – |
@@ -67,6 +67,7 @@ Ziel ist ein selbst konstruierter, vollwertiger 6-Achs-Desktop-Roboterarm – au
 - **Regel:** zulässige Riemenkraft GT2 10 mm ca. 44 N, HTD-3M 15 mm ca. 168 N, HTD-5M 15 mm ca. 268 N (Herstellertabelle, vom Gutachter nur teilweise gegengeprüft). Die letzte Stufe jedes Gelenks trägt das volle Gelenkmoment; deshalb reicht GT2 dort nur an J6 und an der Schiene.
 - **J2 und J3** sind vom Gutachter durchgerechnet. **J1, J4, J5 und J6 sind eine eigene Auslegung nach derselben Regel und noch nicht begutachtet**; sie werden mit dem CAD der jeweiligen Baugruppe geprüft.
 - **Trumkräfte J2:** Stufe 1: 26 N dauernd / 46 N Spitze; Stufe 2: 77 / 138 N; Stufe 3: 164 / 294 N. Stufe 3 ist in der Spitze leicht überlastet (Faktor 1,1) → falls der Prüfstand das bestätigt, 25 mm Breite.
+- **Änderung 26.11.2026 (Gestaltung, Entscheid des Nutzers):** Endstufe J2 5M 18 : 72 statt 18 : 90 (Scheibe Ø 115 statt 143, damit die Schulter schlank wird), Stufe 2 dafür 3M 16 : 80; Untersetzung bleibt 72:1. Gerechnet: Trumkraft Stufe 3 steigt um Faktor 1,25 auf ca. 205 N dauernd / 368 N Spitze; 5M 25 mm trägt ca. 447 N (268 N × 25/15) → Reserve 1,2. Stufe 2 unverändert 77 / 138 N (Moment und Radius steigen beide um 1,25). Steifigkeit der Endstufe ∝ r² × Breite: 57,3² × 25 ≈ 82 000 gegen 71,6² × 15 ≈ 77 000 → etwa gleich (Schätzung, nicht gemessen). Verworfen: 5M 15 : 60 (Ø 95): Riemen in der Spitze am Limit, Endstufe ca. 25 % weicher.
 - **Bauweise:** Kleine Scheiben (16–20 Zähne) sind gekaufte Aluscheiben, grosse werden gedruckt (PETG). Zwischenwellen 8 mm Stahl in 608-Lagern. Ob Zwischenstufen als ein Druckteil (grosses Rad + kleines Ritzel) auf fester Achse laufen oder auf mitdrehenden Wellen sitzen, entscheidet das CAD.
 - **Erwartete Schwächen gegenüber einem spielfreien Antrieb** (Schätzung des Gutachters, der Prüfstand misst nach): 0,05–0,15° Umkehrspiel in der HTD-Endstufe (0,4–1,2 mm am Flansch) und 30–100 Nm/° Steifigkeit. J2 schwenkt über die Senkrechte, dort wechselt das Schwerkraftmoment das Vorzeichen und das Spiel wirkt voll.
 - **Verworfen:** «alles GT2» auch in der Endstufe (3/10, Riemen 3- bis 6-fach überlastet); Seiltrieb (7/10, vom Nutzer nicht gewünscht); gedrucktes Zykloidgetriebe (nur letzte Rückfallebene).

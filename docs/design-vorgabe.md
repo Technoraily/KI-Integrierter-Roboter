@@ -24,6 +24,7 @@ Vorgabe des Nutzers: Der Arm wird **von unten nach oben** nach einer Bildvorlage
 ## Regeln für die Gestaltung
 
 - Tragende Teile (Lager, Riemen, Motoren) und Schalen werden getrennt konstruiert: Die Schale ist Verkleidung (laut Lastrechnung 0,4 kg für Verkleidung und Kabel eingerechnet) und darf nichts tragen.
+- **Schalen abnehmbar mit Magneten** (Wunsch des Nutzers, 26.11.2026): Die Low-Poly-Schalen sitzen auf dem tragenden Gerüst, gehalten von Neodym-Scheibenmagneten (z. B. 6 × 3 mm, eingeklebt oder beim Druck eingelegt) und geführt von Zentrierstiften gegen Verrutschen. So kommt man ohne Werkzeug an Riemen, Kabel und Stecker. Magnete mit Abstand zu allfälligen Magnet-Drehgebern.
 - Jedes Teil muss auf den A1 (240 mm Kantenlänge) passen und ohne Stützen oder mit einfachen Stützen druckbar sein. Facettierte Flächen (wie im Bild) sind ideal für den Druck.
 - Bauraum freihalten: **Bremse an J2** (hinter dem Motor ca. 30 mm, `konzept.md` 3.9), **Teilausgleichsfeder J2** (Anlenkpunkte 50 bis 80 mm von der Achse, 3.8), Parkposition mit Anschlag und weicher Dämpfung (3.9).
 - Kabel innen führen (Hohlräume in Säule und Oberarm), Zugentlastung an jedem Gelenk.

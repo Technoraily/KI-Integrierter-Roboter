@@ -26,13 +26,13 @@ Zähnezahlen als Ritzel : Rad. GT2 = 2-mm-Teilung, 10 mm breit; 3M/5M = HTD mit 
 |---|---|---|---|---|---|---|---|
 | J0 Schiene | 1000 mm | – | NEMA 17, 40 mm (neu) | GT2, Ritzel 20, offen | – | – | Startwert |
 | J1 | ±170° | 20 | 17CS04A-170E (vorhanden) | GT2 20 : 80 | 3M 16 : 80 | – | Startwert |
-| J2 | ±90° | 72 | NEMA 17, 60 mm (neu) | GT2 20 : 72 | 3M 16 : 64 | 5M 18 : 90 | gerechnet |
+| J2 | ±90° | 72 | NEMA 17, 60 mm (neu) | GT2 20 : 72 | 3M 16 : 80 | 5M 18 : 72, **25 mm breit** | Entscheid 26.11.2026 (Optik, kleinere Endscheibe Ø 115 statt 143); 3,6 × 5 × 4 = 72; Prüfstand lief mit 3M 16 : 64 / 5M 18 : 90 |
 | J3 | ±135° | 70 | 17CS04A-170E (vorhanden) | GT2 20 : 70 | 3M 16 : 80 | 5M 15 : 60 | Entscheid 26.11.2026 (vorher 60:1); 3,5 × 5 × 4 = 70; Zähnezahlen sind ein Vorschlag, Verfügbarkeit der 70er GT2-Scheibe ungeprüft |
 | J4 | ±180° | 20 | 17CS04A-170E (vorhanden) | GT2 20 : 100 | 3M 16 : 64 | – | Startwert |
 | J5 | ±110° | 18,75 | NEMA 17, 34 mm (neu) | GT2 16 : 80 | 3M 16 : 60 | – | Startwert |
 | J6 | ±180° | 8 | NEMA 14 (neu) | GT2 16 : 40 | GT2 16 : 50 | – | Startwert |
 
-Riemenlängen J2: GT2 200 mm, 3M 252 mm, 5M 525 mm; Achsabstände im Prüfstand 51,3 / 61,3 / 111,5 mm (Stufen 2 und 3 mit Spannrolle). Massgebend für alle Masse des Prüfstands sind die Konstanten in `cad/skripte/j2_pruefstand.py`; Beschreibung in `docs/pruefstand-j2.md`. Die übrigen Längen legt das CAD fest.
+Riemenlängen J2 (Prüfstand, alte Stufen 2 und 3): 3M 252 mm, 5M 525 mm; Achsabstände im Prüfstand 51,3 / 61,3 / 111,5 mm (Stufen 2 und 3 mit Spannrolle). Massgebend für alle Masse des Prüfstands sind die Konstanten in `cad/skripte/j2_pruefstand.py`; Beschreibung in `docs/pruefstand-j2.md`. Die übrigen Längen legt das CAD fest.
 
 ## Gemeinsam
 
