@@ -1,23 +1,22 @@
-# HANDOFF – KI-Integrierter Roboterarm (Stand 26.11.2026; Details: README.md, docs/konzept.md, index.md)
+# HANDOFF – KI-Integrierter Roboterarm (Stand 26.11.2026 abends; Details: README.md, docs/konzept.md, index.md)
 ## Ziel
-6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17) auf 1000-mm-Schiene (später); Hobbyarm (aufheben, zeichnen, Kamera-KI), Nachbau durch Dritte muss ohne Fummelei gehen. Gestaltung nach Bildvorlage des Nutzers (liegt nur lokal, nicht im Repo): weisse Schalen, dunkler Sockel (docs/design-vorgabe.md).
+6-Achs-Desktop-Roboterarm (3D-Druck, NEMA 17) auf 1000-mm-Schiene (später); Hobbyarm, Nachbau ohne Fummelei. Optik in der Formsprache des Arctos-Arms (Weg 1: eigenes Design, keine Arctos-Dateien/Masse). Claude konstruiert alles, Nutzer druckt/baut/misst.
 ## Stand
-- J2-Messphase durch (docs/messprotokoll-j2.md). Steifigkeit J2 ca. 17 bis 18 Nm/° (Gate wollte 30), Spiel klein, Kriechen 60 min unkritisch. Rücklauf ohne Strom: 1,9 Nm hält, ab 6,6 Nm fällt der Hebel.
-- Motoren: J2 = 17HS24-2104S (60 mm, 0,76 Nm, 2,1 A, ohne hintere Welle); J1/J3/J4 = Cloudray 17CS04A-170E (40 mm, 0,42 Nm, 1,7 A, 2,6 Ω; gemessen 3,3 bis 3,4 Ω). Kandidat Bremsmotor: Doppelwelle 60 mm, 0,76 Nm, 2,1 A (Link/Titel beim Nutzer). Nichts bestellen vor dem Phase-2-Gate.
-- Gutachten Feder/Bremse (docs/reviews/2026-11-25-feder-bremse-parkposition.md): 3.8 = 8/10, 3.9 = 7/10 (Runde 3 offen). konzept.md 3.8/3.9: Feder allein reicht nicht; Parkposition, Haltebremse J2 (J3 erst nach Rücklauftest dort), Dämpfung am Anschlag.
-- NEU 26.11.: Lastrechnung neu (docs/lastrechnung.md): J2 Sicherheit 1,8 nur bei 1,77 A; J3 mit 70:1 ab 1,2 A ok (70:1 entschieden). Durchhang ca. 3 bis 4 mm pro kg, per Software ausgleichen.
-- NEU docs/kabelkonzept.md (Regeln, 41 Adern, Hohlwelle mind. Ø 25 mm, Basis-Steckerfeld), docs/design-vorgabe.md (Basis austauschbar, Proportionen, H_schulter 200).
+- Gestaltung V4 (Low-Poly-Schalen, beidseitige Gabeln) vom Nutzer so akzeptiert: cad/skripte/arm_gestaltung_v4.py (FUSS = "B"), Renders cad/renders/arm_gestaltung_v4*.png.
+- J2-Endstufe geändert (Entscheid Nutzer): 5M 18:72 mit **25-mm-Riemen**, Stufe 2 3M 16:80 (72:1 bleibt), Scheibe Ø 115 statt 143; parameter.md, konzept.md. Erklärbild cad/renders/j2_antrieb_variante_b.png.
+- **Basis mit J1 V2.2 konstruiert:** cad/skripte/basis_j1.py (Fusion-Komponente Basis_J1), Montageprüfung montage_basis.py (Endzustand, Drehung ±170°, Einschiebewege, Werkzeugzugang, Wand um Einsätze) ohne Meldung. Gutachten 5 → 6 → 7/10, Nachprüfung Claude 8/10 (docs/reviews/2026-11-26-basis-j1.md). Beschreibung docs/basis-j1.md, Stückliste docs/stuecklisten/basis-j1.md, Schnittstelle Säule in parameter.md.
+- STL exportiert (cad/export/stl/Basis_J1/, Druckeinstellungen.md): Passproben + alle Teile ausser Grundplatte, Nabe, Spannring (nach Passprobe 6810) und Schalterhalter (nach Ausmessen KW11).
 ## Entscheidungen
-- Steuerung: Standard-BTT-Octopus mit grblHAL für den Arm; ESP32/FluidNC nur Prüfstand. Basis austauschbar (Lochbild 120 mm, 4× M5, Steckerfeld).
-- Werkzeugwechsler: mechanischer Servo-Riegel, Werkzeugerkennung per Codierwiderstand, kein Kabel über die Trennstelle (design-vorgabe.md). Claude konstruiert alles, Nutzer druckt/baut. Master-Pult (alle Taster, Not-Aus) gewünscht, Umfang offen (offene-ideen.md Nr. 8).
-- Nie Stecker bei 24 V ziehen/stecken (TMC2209 max ca. 28 V). Vref nur bei 24 V AN einstellen, Modulgrenze 1,77 A (Vref 2,5 V).
-- Kein 24-h-Test; Genauigkeit zuerst Software-Ausgleich und Kamera.
-- Entschieden 26.11.: H_schulter 200 mm, J3 mit 70:1 (parameter.py, parameter.md, Lastrechnung angepasst, 20 Tests ok). Von Claude entschieden (Nutzer: «Rest entscheide du»): Greifer-Servo über Raspberry Pi Pico (statt Uno), Endschalter mechanisch als Öffner (2 Adern, Halter KW11/KW12 in standardteile.py), Stecker JST-XH (Motor 4P, Endschalter 2P) und JST-VH (Bremse 2P); 41 Adern, Bündel ca. 10 mm (docs/kabelkonzept.md).
+- J1 ±170° (340°), kein Schleifring. Anschlag ±173°, Referenz an der Halbmond-Flanke bei 0°. Motorstrom J1 1,0 A.
+- Lager 6810ZZ/608ZZ ok (nicht offen). O-Ring **OD 53 × 1,5** (= ID 50). 3M-Riemen 318 mm, GT2 240 mm.
+- Schalen mit Magneten 6×3 abnehmbar; Holzplatte mit Schraubzwingen am Regal (sonst kippt der Arm).
+- Bestand Nutzer: PLA grau/rot/weiss, PETG weiss nur Notfall, 120 Magnete, M3-Einsätze, M5 8–20 mm, Schraubzwingen.
 ## Offen
-- Fusion 360 war nicht verbunden (Add-in starten), dann Design: Gesamtlayout, Basis/J1, Schulter J2 (Bauraum Bremse ca. 30 mm hinter Motor, Feder), Oberarm J3, Hand.
-- Offene Detailentscheide bei der Konstruktion: Lage der Motoren (Gelenk oder Säule), Verfügbarkeit der 70er GT2-Scheibe für J3 (Stufe 20:70 ist Vorschlag).
-- Gutachten 3.9 Runde 3, Rücklauf mit gezogenem Netzteil, Rücklauf an J3, Aufprallenergie.
+- Nutzer bestellt (Liste in Stückliste): 6810ZZ, 608ZZ, Welle 8, 3M-16, GT2-20, Riemen (318 Lieferbarkeit prüfen), O-Ring, KW11 Rolle, M16-Verschraubung, DIN-9021-Scheiben, Schrauben.
+- Passprobe 6810 drucken/melden → Masse L6810 nachführen → Grundplatte/Nabe/Spannring exportieren. KW11 ausmessen → Schalterhalter.
+- Steckerfeld (Platzhalter) mit der Säule konstruieren; Kabelschlaufe ±170° in der Säule.
+- Früher offen: Gutachten 3.9 Runde 3, Rücklauf ohne Netzteil, Rücklauf J3, Aufprallenergie, 70er-GT2-Scheibe J3.
 ## Nächster Schritt
-Fusion starten, dann Gesamtlayout und Basis mit J1 konstruieren (Hohlwelle, Steckerfeld).
+Säule mit Schulter J2 konstruieren (Antrieb Variante B, Bremse hinter Motor, Feder-Bauraum, Parkanschlag), auf die Schnittstelle 120 mm / Ø 65 der Basis.
 ## Dateien
-docs/kabelkonzept.md, docs/design-vorgabe.md, docs/lastrechnung.md, docs/konzept.md (3.8, 3.9), docs/messprotokoll-j2.md, docs/motorvermessung.md, docs/reviews/2026-11-25-feder-bremse-parkposition.md; kein Fusion-Dokument in dieser Sitzung
+cad/skripte/basis_j1.py, montage_basis.py, render_basis.py, kollision.py, arm_gestaltung_v4.py; docs/basis-j1.md, docs/stuecklisten/basis-j1.md, docs/reviews/2026-11-26-basis-j1.md; Fusion: aktives Dokument mit Komponenten Basis_J1 und Arm_Gestaltung_V4 (per Skript neu erzeugbar)

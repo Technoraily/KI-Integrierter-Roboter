@@ -52,3 +52,15 @@ Werden nach einem Toleranz-Testdruck auf dem A1 festgelegt (Phase 2). Testteil: 
 | `tol_passung_steck` | 0,20 mm (gemessen 18.10., Reihe D) | **Steckpassung** (oft lösbar, drehbar): Loch Ø 10,20 mm. Von Hand einpressbar, fällt nicht heraus, lässt sich aber drehen (kein Halt gegen Verdrehen). 10,30 mm fiel fast heraus, 10,40 mm sitzt lose |
 | `d_einschmelz_M3` | 4,0 mm (gemessen 20.10., Reihe C, mit Lötkolben) | Bohrung für M3-Einschmelzgewinde (Messing Ø 5 × 4 mm): 4,0 mm sitzt mit Wärme am besten. 4,2 mm liess sich kalt nicht mehr eindrücken, hält aber warm schlechter; 4,4 mm hat keinen Halt. Kaltes Eindrücken sagt also nichts über den warmen Sitz |
 | `d_einschmelz_M4` | offen | Bohrung für M4-Einschmelzgewinde |
+
+## Schnittstelle Basis ↔ Säule (J1-Teller, Stand 26.11.2026)
+
+Gilt für jede Basis (heute auf der Holzplatte, später auf der Schiene J0), Quelle `cad/skripte/basis_j1.py`:
+
+| Mass | Wert |
+|---|---|
+| Lochbild | 4 × M5 auf Ø 120 mm, bei 45°/135°/225°/315° (x nach vorn); Muttern M5 unten im Teller |
+| Auflagefläche | Teller-Oberseite z = 103,5 mm über der Holzplatte, 12-Eck r 72 |
+| Zentrierung | Zapfen der Säule Ø 65,0 in der Nabenbohrung Ø 65,2, **höchstens 8 mm tief**, innen **≥ Ø 58 frei** (darunter steht der feste Spannring mit Schraubenköpfen bis z 94) |
+| Kabeldurchgang | Hohlzapfen Ø 30 mm frei, steht still (Kabel drehen mit der Säule, Schlaufe in der Säule) |
+| J1-Bereich | ±170°, fester Anschlag ca. ±173°, Referenz an der Halbmond-Flanke bei 0° |

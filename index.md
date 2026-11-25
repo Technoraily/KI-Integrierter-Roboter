@@ -15,7 +15,14 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
 
-## Stand: 25. November 2026
+## Stand: 26. November 2026 (abends)
+
+**Neu:** Das Aussehen des Arms ist festgelegt (Low-Poly-Schalen im Stil des Arctos-Arms, eigenes Design), und die erste Baugruppe ist fertig konstruiert: die **Basis mit J1**. Sie hat einen festen Hohlzapfen für die Kabel, zwei vorgespannte Dünnringlager, zwei Riemenstufen (20:1), einen Endschalter mit Halbmond-Nocken und einen festen Anschlag bei ±173°. Im CAD wurden jeder Montageschritt, die Drehung über ±170° und der Werkzeugzugang zu jeder Schraube geprüft. Gutachten nach drei Runden plus Nachprüfung: 8/10. Für J2 wird die letzte Riemenscheibe kleiner (Ø 115 statt 143, dafür 25 mm breiter Riemen), damit die Schulter schlanker wird.
+
+![Basis J1 aussen](cad/renders/basis_j1_v2_aussen.png)
+![Basis J1 innen](cad/renders/basis_j1_v2_innen.png)
+
+### Stand: 25. November 2026
 
 Die Messphase am J2-Prüfstand ist durch (24 V, ESP32 mit FluidNC). Mit echten Gewichten (3,56 kg und 6,13 kg) liegt die Steifigkeit bei **ca. 17 bis 18 Nm/°** (Ziel 30, nicht erreicht; nach einer Stunde Dauerlast ca. 15 Nm/°). Das Umkehrspiel ist klein (unter 0,01° im ersten Test, 0,125° beim Rütteln von Hand). Das Kriechen unter 11,4 Nm ist in einer Stunde vernachlässigbar (0,06°), der Motor blieb kalt, Riemen und Scheiben zeigten keine Schäden. **Rücklauftest ohne Strom:** Der Hebel hält bei 1,9 Nm, fällt aber bei 6,6 Nm und 11,4 Nm in unter einer Sekunde. Darum kommen für den Arm drei Massnahmen in Frage: eine Parkposition (Abschalten nur in Ruhestellung), eine Haltebremse an J2 und J3 und eine Dämpfung am Anschlag. Die Genauigkeit soll zuerst per Software-Ausgleich und Kamera erreicht werden, nicht durch teurere Motoren. Stand 26. November: Das Datenblatt der vorhandenen Motoren (0,42 Nm, 1,7 A) ist gefunden und die Lastrechnung damit neu gerechnet (J3 mit 70:1 hat genug Reserve). Die Steuerung wird für den BTT Octopus geplant, die Basis wird austauschbar gebaut (die 7. Achse kommt später), und ein Kabelkonzept mit steckbaren, unverwechselbaren Kabelbäumen ist die Grundlage für die Konstruktion von unten nach oben.
 
