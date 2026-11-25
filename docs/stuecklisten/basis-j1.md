@@ -112,3 +112,42 @@ Filament PLA grau/weiss/rot, PETG weiss (alles vorhanden), Sekundenkleber.
 1. **2 × 6810** (ca. 8 CHF) bestellen und die Passproben drucken (`cad/export/stl/Basis_J1/`).
 2. Nach der Passprobe: 2.2 bis 2.8, also 608, Welle, Scheiben, Riemen und O-Ring (ca. 27 CHF).
 3. Dazu, was bei den *klären*-Positionen fehlt.
+
+## Abgleich mit dem AliExpress-Warenkorb (26.11.2026, abends)
+
+Geprüft in Chrome, nur gelesen, nichts geändert oder bestellt. Preise mit Rabatt laut Warenkorb.
+
+| Pos. | Teil laut Stückliste | Im Warenkorb (Variante, Preis) | Ergebnis |
+|---|---|---|---|
+| 2.1 | 2 × 6810ZZ | 6810ZZ 50 × 65 × 7, 2 Stück, CHF 6.97 | ok |
+| 2.2 | 608ZZ | 608ZZ, 10 Stück, CHF 9.57 | ok |
+| 2.3 | Welle Ø 8 | Linearwelle 8 mm × 150 mm, 2 Stück, CHF 5.14 | ok (auf 72 mm kürzen) |
+| 2.4 | 3M-Ritzel 16 Z., 15 mm, Bohrung 8 | **fehlt** | ergänzen |
+| 2.5 | GT2-Ritzel 20 Z., 10 mm, Bohrung 5 | **fehlt** | ergänzen |
+| 2.6 | 3M-Riemen 318, **15 mm** breit | 3M 318 mm / 106 Z., aber **10 mm** breit, CHF 4.21 | **falsche Breite: 15 mm wählen** |
+| 2.7 | GT2-Riemen 240, **10 mm** breit | 2GT 240 mm, aber **6 mm** breit, CHF 1.42 | **falsche Breite: 10 mm wählen** |
+| 2.8 | O-Ring OD 53 × 1,5 (ID 50) | OD 53 / ID 50 / CS 1,5, 50 Stück, CHF 3.85 | ok |
+| 2.9 | Zylinderstift 3 × 12 | GB119 M3 × 12, 20 Stück, CHF 1.79 | ok |
+| 3.1 | Holzschraube 4 × 16 (11) | Rundkopf-Blechschraube M4 × 16, 20 Stück, CHF 1.72 | ok (selbstschneidend, hält in Holz) |
+| 3.2 | Einschmelzgewinde M3 × 5 | M3, Länge 5, **Aussen-Ø 5**, 50 Stück, CHF 1.50 | ok (gleiche Sorte wie im Test vom 20.10.) |
+| 3.3 | M3 × 10 ISO 4762 (19) | M3 × 10 Titan, **10 Stück**, CHF 2.62 | **zu wenig** (19 nötig), ausser du hast noch welche |
+| 3.4 | M3 × 16 **Senkkopf** (2) | DIN 7991, aber **M4 × 16**, CHF 3.22 | **falsch: M3 × 16 wählen** |
+| 3.5 | M3 × 16 ISO 4762 (1) | M3 × 16 Titan, 10 Stück, CHF 2.76 | ok |
+| 3.6 | Mutter M3 (4) | **fehlt** (nur M2 und M5 im Korb) | ergänzen, ausser vorhanden |
+| 3.7 / 3.7a | Scheiben M3 DIN 125 (7), **DIN 9021** (8) | **fehlen** | ergänzen |
+| 3.8 | Madenschraube M3 × 6 | DIN 916 M3 × 6, 50 Stück, CHF 1.34 | ok |
+| 3.9 / 3.10 | M2 × 12 + Mutter M2 | M2 × 12 (100), Mutter M2 (25), CHF 2.96 + 1.32 | ok |
+| 3.11 | Mutter M5 (4) | Mutter M5, 25 Stück, CHF 1.69 | ok |
+| 3.14 | Kabelverschraubung M16 | M16 weiss, 5 Stück, CHF 2.10 | ok |
+| 3.15 | Sekundenkleber | 502-Kleber, 10 Stück, CHF 2.39 | ok |
+| 4.2 | KW11 **mit Rolle** | «5pcs kw11» aus einem Angebot «KW12-3 und KW11-N» | **prüfen:** KW11-N hat meist einen Hebel **ohne** Rolle. Variante mit Rolle (z. B. KW11-3Z mit Rollenhebel) nehmen |
+| – | (nicht für den Arm) | Hülle AirPods Pro 3, CHF 2.97 | – |
+
+**Nachkontrolle (26.11.2026, später):** Der Nutzer hat den Warenkorb angepasst (20 Artikel, ca. CHF 61.79 inkl. Versand und Rabatt).
+- 3M-Riemen jetzt **15 mm** / 318 mm / 106 Z. (CHF 4.87).
+- GT2-Riemen jetzt **10 mm** / 240 mm (CHF 1.66).
+- Senkkopf jetzt **M3 × 16** DIN 7991, 30 Stück (CHF 2.72).
+- M3 × 10 jetzt **2 × 10 Stück**.
+- Endschalter jetzt **KW11-3Z-N, 10 Stück, mit Rollenhebel** (laut Produktbild; Masszeichnung 20 × 10 mm, vor dem Druck des Halters trotzdem nachmessen).
+- Ritzel 3M-16 und GT2-20, Scheiben M3 (DIN 125 und DIN 9021) und Muttern M3 hat der Nutzer schon, zum Teil vom J2-Prüfstand. Status: da.
+- Einschmelzgewinde im Korb: M3, **Aussen-Ø 5 mm**, Länge 5. Das ist **genau die Sorte aus dem Test vom 20.10.** (Messing Ø 5, Bohrung Ø 4,0, `parameter.md`), also ok. Die Variante «M3 (OD 4,2 mm)» passt **nicht** zur Bohrung Ø 4,0.

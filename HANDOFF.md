@@ -12,7 +12,7 @@
 - Schalen mit Magneten 6×3 abnehmbar; Holzplatte mit Schraubzwingen am Regal (sonst kippt der Arm).
 - Bestand Nutzer: PLA grau/rot/weiss, PETG weiss nur Notfall, 120 Magnete, M3-Einsätze, M5 8–20 mm, Schraubzwingen.
 ## Offen
-- Nutzer bestellt (Liste in Stückliste): 6810ZZ, 608ZZ, Welle 8, 3M-16, GT2-20, Riemen (318 Lieferbarkeit prüfen), O-Ring, KW11 Rolle, M16-Verschraubung, DIN-9021-Scheiben, Schrauben.
+- AliExpress-Warenkorb (ca. CHF 61.79) in Chrome geprüft und vom Nutzer korrigiert, bestellfertig (Abgleich unten in docs/stuecklisten/basis-j1.md). Ritzel, Scheiben, M3-Muttern hat er schon. Einsätze M3 OD 5 × 5 = Testsorte (Bohrung 4,0).
 - Passprobe 6810 drucken/melden → Masse L6810 nachführen → Grundplatte/Nabe/Spannring exportieren. KW11 ausmessen → Schalterhalter.
 - Steckerfeld (Platzhalter) mit der Säule konstruieren; Kabelschlaufe ±170° in der Säule.
 - Früher offen: Gutachten 3.9 Runde 3, Rücklauf ohne Netzteil, Rücklauf J3, Aufprallenergie, 70er-GT2-Scheibe J3.
