@@ -67,32 +67,38 @@ Gewicht 2 (5,9 kg, 11 Nm) langsam anhängen, Ausschlag am Tastklotz ablesen. Der
 
 | Last (kg) | Messuhr vor (mm) | Messuhr nach (mm) | Ausschlag (mm) | Ausschlag (°) | Bemerkung |
 |---|---|---|---|---|---|
-| 1,07 | | | | | |
-| 3,5 | | | | | |
-| 5,9 | | | | | |
-| 6,3 (11,8 Nm) | | | | | |
+| 3,56 (6,6 Nm), Lauf 1 | 0,29 | 1,00 | 0,71 | 0,64 | verworfen: Messuhr rutschte aus dem Halter, Null kam nicht zurück (60 statt 29 Striche) |
+| 3,56 (6,6 Nm), Lauf 2 | 0,45 | 0,89 | 0,44 | 0,39 | Null kam zurück (45–46); ca. 17 Nm/° |
+| 3,56 (6,6 Nm), Lauf 3 | 0,79 | 1,24 | 0,45 | 0,40 | Messuhr gesichert; nach Abhängen 0,82 (Rest 3 Striche); ca. 16,5 Nm/° |
+| 6,13 (11,4 Nm) | 0,34 | 1,04 | 0,70 | 0,63 | nach 60 s 0,35 (Rest 1 Strich); nichts geknackt; ca. 18 Nm/°, zwischen den Stufen ca. 21 Nm/° |
+
+Lastmoment mit Hebelarm 190 mm, Tastklotz 64 mm von der Achse (1 Strich = 0,01 mm = ca. 0,009°). Ablesung «mit Last» nach ca. 10 s, «nach» nach 60 s. Ohne zweite Messstelle bleibt das Setzen im Lagersitz als Unsicherheit (ca. ±5 %). Gewichte gewogen: 3,56 kg und 6,13 kg. Stufe 1,07 kg wurde nicht gemessen (Test 1 deckt ±2 Nm ab).
 
 Nach dem Abhängen die Messuhr auf Null prüfen: bleibt eine Abweichung, hat sich etwas gesetzt oder ist gerutscht.
 
-## 3. Kriechen im Haltetest unter 11 Nm
+## 3. Kriechen im Haltetest unter 11 Nm (60 min, bewusst statt 24 h)
 
-Gewicht 2 hängt, Motor bestromt, Hebel waagrecht, Messuhr bleibt stehen. Ablesezeiten: 0, 1, 5, 15, 30, 60 min, dann stündlich, am Ende nach 24 h. Der Kriechtest ist erst nach **24 h** aussagekräftig.
+**Ergebnis 25.11.2026: bestanden.** Gesamtdrift 6,5 Striche in 60 min (ca. 0,06°), in den letzten 30 min nur 1,5 Striche, Rest nach dem Abhängen −3 Striche, Motor nicht warm. Ausschlag nach 60 min: 84 Striche (0,84 mm, ca. 0,75°) bei 11,4 Nm, also ca. 15 Nm/° mit Kriechen (kurz nach dem Anhängen ca. 18 Nm/°).
+
+Entscheidung 25.11.2026: Für einen Hobbyarm genügt 1 h. Die Nutzlast trägt der Arm im Betrieb nur kurz, beim Lagern liegt er so, dass er kein Moment trägt. Ein 24-h-Test mit bestromtem Motor ohne Aufsicht entfällt; der Nutzer ist während der Messung anwesend. Das Kriechen läuft zuerst schnell und dann langsamer, die erste Stunde zeigt den Hauptteil.
+
+Gewicht 6,13 kg (11,4 Nm) hängt, Motor bestromt, Hebel waagrecht, Messuhr bleibt stehen, Fangschnur gesetzt. Ablesezeiten: 0, 1, 5, 15, 30, 60 min. Motor und Wange jedes Mal mit der Hand prüfen. Messuhr-Null ohne Gewicht: **0,78 mm (Strich 78)**, Start 25.11.2026.
 
 | Zeit (min) | Messuhr (mm) | Motor/Wange (°C oder Handprobe) | Bemerkung |
 |---|---|---|---|
-| 0 | | | |
-| 1 | | | |
-| 5 | | | |
-| 15 | | | |
-| 30 | | | |
-| 60 | | | |
-| 1440 (24 h) | | | |
+| 0 | 1,075 (7 bis 8 über 0, geschätzt) | – | Null ohne Gewicht 0,30 (Strich 30); Gewicht 6,13 kg |
+| 1 | 1,09 | – | |
+| 5 (gelesen bei 4) | 1,105 | – | |
+| 15 | 1,12 | Motor nicht warm, Wange kälter | |
+| 30 | 1,125 | – | +0,5 Striche seit 15 min |
+| 60 | 1,14 | – | +1,5 Striche seit 30 min; Gesamtdrift +6,5 Striche (ca. 0,06°) |
+| nach Abhängen, +60 s | 0,27 | – | Null war 0,30: Rest −3 Striche (unter 5, in Ordnung) |
 
 ```
-python software/j2_auswertung.py kriechen --punkte 0:<mm> 60:<mm> 1440:<mm>
+python software/j2_auswertung.py kriechen --punkte 0:<mm> 30:<mm> 60:<mm>
 ```
 
-Grenzen (Ausgleichsfeder wird eingebaut, siehe `konzept.md` 3.8): Drift **> 0,1°** in 24 h, Gehäuse des Motors **> 70 °C**.
+Grenzen (eigene Festlegung für einen Hobbyarm, nicht normiert): in den letzten 30 min höchstens ca. 3 bis 5 Striche Weiterlauf (Warnzeichen ab ca. 10 Striche), Rest nach dem Abhängen unter ca. 5 Striche, Gehäuse des Motors **< 70 °C**. Das Auswerteskript nennt die Grenze 0,1° noch «24 h»; hier gilt die Striche-Grenze. Läuft die Uhr nach 60 min noch deutlich weiter: gezielt verlängern. Ausgleichsfeder siehe `konzept.md` 3.8.
 
 ## 4. Erwärmung
 
@@ -111,8 +117,9 @@ Hebel waagrecht, Fangschnur gesetzt, Messuhr abgenommen, Motor stromlos schalten
 
 | Gewicht | Hebel bleibt stehen? | Sinkt langsam (Zeit bis Anschlag, s) | Fällt (Zeit, s) | Bemerkung |
 |---|---|---|---|---|
-| 1,07 kg (2 Nm) | | | | |
-| 5,9 kg (11 Nm) | | | | |
+| 0,995 kg (ca. 1,9 Nm) | ja, nach kurzem Absinken um max. 1 mm an der Lastbohrung (ca. 0,3°) | – | – | 25.11.2026; Motor per `$MD` aus (Knopf «Motor aus» in j2_steuerung.html); Funktionsprobe ohne Gewicht vorher: Hebel von Hand leicht beweglich, Motor wirklich frei |
+| 3,56 kg (6,6 Nm) | nein | – | in unter 1 s bis zum Anschlag, langsamer als mit 6,13 kg | 25.11.2026; Motor per `$MD` aus. Haltegrenze liegt zwischen 1,9 und 6,6 Nm |
+| 6,13 kg (11,4 Nm) | nein | – | sofort (Zeit nicht gestoppt, Hebel schlug auf die Querstrebe) | 25.11.2026; Motor per `$MD` aus. Schwelle zwischen 1,9 und 11,4 Nm nicht untersucht |
 
 Fällt der Hebel bis zum Anschlag, ist das ein Kriterium für die Ausgleichsfeder.
 
@@ -120,11 +127,11 @@ Fällt der Hebel bis zum Anschlag, ist das ein Kriterium für die Ausgleichsfede
 
 | Frage | Ja / Nein / Bemerkung |
 |---|---|
-| Riemenstufe 3 (5M) springt über oder rutscht (einmal genügt für die Feder-Prüfung) | |
-| Schritte fehlen (Test 2: Messuhr kehrt nach 20 Zyklen nicht auf X0 zurück) | |
-| Gedruckte Scheibe verformt sich oder bekommt Risse (Foto) | |
-| Geräusche, Schleifen, Hebel streift | |
-| Riemenspannung nach dem Versuch noch wie vorher | |
+| Riemenstufe 3 (5M) springt über oder rutscht (einmal genügt für die Feder-Prüfung) | Nein, nirgends (25.11.2026, nach Tests 2, 3, 5) |
+| Schritte fehlen (Test 2: Messuhr kehrt nach 20 Zyklen nicht auf X0 zurück) | Nein: Null kam in Läufen 2, 3 und der 6-kg-Stufe zurück (Rest 1 bis 3 Striche) |
+| Gedruckte Scheibe verformt sich oder bekommt Risse (Foto) | Nein, nichts verformt oder gerissen (Sichtprüfung, kein Foto) |
+| Geräusche, Schleifen, Hebel streift | Nichts Auffälliges, ausser beim Fall mit 6,13 kg: Hebel schlug auf die Querstrebe |
+| Riemenspannung nach dem Versuch noch wie vorher | Ja, überall wie vorher |
 
 ## Ergebnis (nach den Messungen ausfüllen)
 
@@ -135,7 +142,7 @@ Fällt der Hebel bis zum Anschlag, ist das ein Kriterium für die Ausgleichsfede
 | Kriechen 24 h bei 11 Nm | | ≤ 0,1° | |
 | Motorgehäuse im Dauerhalten | | ≤ 70 °C | |
 | Riemenstufe 3 springt nicht | | nie | |
-| Hebel ohne Strom | | bleibt stehen (sonst Feder) | |
+| Hebel ohne Strom | bleibt bei 1,9 Nm stehen (max. 1 mm Absinken); fällt bei 11,4 Nm sofort | bleibt stehen (sonst Feder) | nein bei voller Last: Ausgleichsfeder oder Haltebremse nötig |
 | Sicherheit J2 mit gemessenem Motormoment | | ≥ 1,5 (`lastrechnung.md`) | |
 
 Aus diesen Zeilen folgt das Gate in Phase 2: Arm mit oder ohne Ausgleichsfeder, Scheiben aus PETG oder PLA, Stufe 3 so lassen oder ändern.

@@ -15,9 +15,9 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
 
-## Stand: 22. November 2026
+## Stand: 25. November 2026
 
-Der J2-Prüfstand ist aufgebaut und läuft mit 24 V an einem ESP32 mit FluidNC (der Arduino Uno stürzte beim Motoranlauf ab). Ohne Last pendelt er sauber bis ca. 20 °/s am Hebel, bei 24 °/s verliert der Motor Schritte (vermutlich Drehmoment bei hoher Drehzahl). Erste Messung unter Wechsellast ±1,9 Nm (Variante A, Blockierstift, grobe Federwaage): Umkehrspiel unter 0,01°, Steifigkeit vorläufig ca. 7 Nm/° und damit unter der Schätzung des Gutachters (30 bis 100 Nm/°). Als Nächstes folgt Test 2 mit Gewichten statt Federwaage.
+Die Messphase am J2-Prüfstand ist durch (24 V, ESP32 mit FluidNC). Mit echten Gewichten (3,56 kg und 6,13 kg) liegt die Steifigkeit bei **ca. 17 bis 18 Nm/°** (Ziel 30, nicht erreicht; nach einer Stunde Dauerlast ca. 15 Nm/°). Das Umkehrspiel ist klein (unter 0,01° im ersten Test, 0,125° beim Rütteln von Hand). Das Kriechen unter 11,4 Nm ist in einer Stunde vernachlässigbar (0,06°), der Motor blieb kalt, Riemen und Scheiben zeigten keine Schäden. **Rücklauftest ohne Strom:** Der Hebel hält bei 1,9 Nm, fällt aber bei 6,6 Nm und 11,4 Nm in unter einer Sekunde. Darum kommen für den Arm drei Massnahmen in Frage: eine Parkposition (Abschalten nur in Ruhestellung), eine Haltebremse an J2 und J3 und eine Dämpfung am Anschlag. Die Genauigkeit soll zuerst per Software-Ausgleich und Kamera erreicht werden, nicht durch teurere Motoren.
 
 Frühere Planung (4. November): Das Konzept steht und ist begutachtet. Als Erstes werden die vorhandenen Motoren vermessen, denn die Lastrechnung hängt von ihrem Moment ab. Dafür gibt es einen Motorprüfstand, der ganz ohne Kaufteile auskommt (Gutachten 8/10). Danach wird das Schultergelenk J2 als Prüfstand gebaut, weil dort das grösste Risiko liegt: Drei Riemenstufen (72:1) müssen 11,8 Nm übertragen, ohne zu viel Spiel und Nachgiebigkeit. Dessen CAD ist fertig und begutachtet (8/10).
 
@@ -26,7 +26,7 @@ Frühere Planung (4. November): Das Konzept steht und ist begutachtet. Als Erste
 | 0 | Projektgerüst | fertig |
 | 1 | Detailkonzept, Kinematik, Lastrechnung | fertig, Gutachten 8/10 |
 | 2 | Motorvermessung | Motorprüfstand fertig, Gutachten 8/10 – drucken, messen |
-| 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – aufgebaut, läuft mit 24 V; erste Messung (Spiel < 0,01°, Steifigkeit vorläufig ca. 7 Nm/°) – Wiederholung und Test 2 mit Gewichten |
+| 2 | Prüfstand Schultergelenk J2 | CAD fertig, Gutachten 8/10 – aufgebaut, Messphase durch (Spiel klein, Steifigkeit ca. 17 Nm/°, Kriechen unkritisch, fällt ohne Strom bei Last) – Entscheid Feder/Bremse/Parkposition offen |
 | 2 | Elektronikgehäuse J2 (Netzteil, Arduino, C14, Sicherung, Klemmenabdeckung) | Entwurf, Gutachten 7/10 – Passproben drucken, Masse an den Teilen prüfen, Freigabe 230-V-Seite durch Elektriker |
 | 2 | Steuerung J2: GRBL-Einstellungen, Testprogramme, Messprotokoll mit Auswertung | Weblösung `software/j2_steuerung.html` (ESP32/FluidNC und Uno/Grbl) am Gerät getestet; Messanleitung mit Bildern und Rechner in `docs/messung-anleitung.html` |
 | 2 | Toleranztest und Standardteile (Endschalter-Halter, Kabelhalter, Not-Aus-Gehäuse) | CAD fertig, STL exportiert – drucken, Passungen messen |

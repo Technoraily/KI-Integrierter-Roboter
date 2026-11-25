@@ -121,6 +121,18 @@ Der ganze Roboter steht auf einem Schlitten, der ihn auf einer Schiene verfährt
 | Riemenstufe 3 springt über oder rutscht | Prüfstand J2 | einmal |
 | Arm fällt ohne Strom unkontrolliert | Prüfstand J2, Rücklauftest | Hebel fällt aus der Waagrechten bis zum Anschlag |
 
+**Stand der Kriterien nach dem Prüfstand (25.11.2026):**
+
+| Kriterium | Ergebnis |
+|---|---|
+| Rücklauf ohne Strom | **eingetreten**: bei 1,9 Nm bleibt der Hebel stehen (max. 1 mm), bei 11,4 Nm fällt er sofort auf die Querstrebe. Die Schwelle dazwischen ist nicht gemessen. |
+| Kriechen | nicht eingetreten: 60 min bei 11,4 Nm, Drift 0,06°, Rest −3 Striche (Haltetest bewusst auf 60 min gekürzt, Hobbyarm) |
+| Motor zu warm | nicht eingetreten: Motor nach 15 min unter Last nicht warm |
+| Riemenstufe 3 springt | nicht eingetreten |
+| Sicherheit J2 mit gemessenem Motormoment | noch offen (Motorvermessung) |
+
+**Offene Frage zur Feder:** Hält der Arm ohne Strom mit Teilausgleich? Gemessen sind nur 1,9 Nm (hält) und 11,4 Nm (fällt). Die Momente an J2 mit Teilausgleich (Zeile unten): gestreckt leer 2,6 Nm, gestreckt mit 1 kg 7,8 Nm. Liegt die Haltegrenze des stromlosen Antriebs über 7,8 Nm, genügt die Feder; liegt sie zwischen 2,6 und 7,8 Nm, hält der leere Arm, fällt aber mit Last; liegt sie unter 2,6 Nm, braucht es Parkposition oder Bremse. Zwischenwert gemessen (25.11.2026): Bei 3,56 kg (6,6 Nm, gleich dem gestreckten leeren Arm ohne Feder) fällt der Hebel in unter 1 s auf den Anschlag, langsamer als mit 6,13 kg. Die Haltegrenze des stromlosen Antriebs liegt damit **zwischen 1,9 und 6,6 Nm**. Ohne Feder fällt auch der leere, gestreckte Arm. Mit Teilausgleich (2,6 Nm) bleibt es offen, ob er hält. Verlässlich ist nur eine Parkposition (Arm liegt auf, trägt kein Moment) oder eine Haltebremse.
+
 **Falls nötig, so ausgelegt** (Zahlen aus dem Massenmodell, Stand 14.10.2026):
 
 - **Teilausgleich, rund 4 Nm × sin(J2).** Ein voller Ausgleich (6,6 Nm) würde den gebeugten Arm nach oben drücken. Das Moment wechselte dann das Vorzeichen, und das Getriebespiel wirkte voll.
@@ -129,6 +141,31 @@ Der ganze Roboter steht auf einem Schlitten, der ihn auf einer Schiene verfährt
 - Die Feder greift an der Basis und am Oberarm an. Die Z90 und der Riemen werden dabei entlastet, die Schulterlager zusätzlich belastet.
 
 **Vorsorge ohne Mehraufwand:** Beim CAD der Schulter wird ein Bauraum für die Feder freigehalten, **wenn das nichts kostet**. Es wird nicht konstruiert und nichts bestellt, bevor ein Kriterium eintritt.
+
+### 3.9 Stromausfall: Parkposition, Haltebremse, Dämpfung (Entscheid 25.11.2026)
+
+**Anlass:** Rücklauftest J2 (`docs/messprotokoll-j2.md`, Test 5): Haltegrenze des stromlosen Antriebs zwischen 1,9 und 6,6 Nm; bei 6,6 Nm und 11,4 Nm fällt der Hebel in unter 1 s auf den Anschlag. Gewählt werden drei Massnahmen, die sich ergänzen. Die Ausgleichsfeder (3.8) bleibt eine eigene Entscheidung.
+
+**A. Parkposition (Regel und Firmware, kostet nichts).**
+- Der Arm wird nur in der Parkposition abgeschaltet: Hebel liegt auf einem Anschlag, trägt kein Moment.
+- Firmware: Befehl «Park» fährt langsam in die Parkposition, erst danach darf Motor aus ($MD) bzw. das Netzteil aus. Beim Lagern gilt dasselbe.
+- Grenze: Bei Not-Aus oder Stromausfall mitten in der Bewegung hilft die Regel nicht. Dafür B und C.
+
+**B. Haltebremse an J2 (stromlos geschlossen).**
+- Auslegung: Moment am Motor = Moment am Gelenk / 72. Ohne Feder 11,8 Nm / 72 = **0,16 Nm** (ohne Wirkungsgrad), mit Teilausgleich 7,8 Nm / 72 = 0,11 Nm. Eine Bremse mit **0,25 Nm** Haltemoment gibt damit ca. 1,5-fache Sicherheit ohne Feder (ca. 2,3-fach mit Feder). Rechnung grob, Wirkungsgrad der Stufen nicht berücksichtigt.
+- Bauart: Schrittmotor NEMA 17 mit stromlos haltender Bremse an der hinteren Welle (24 V, kleiner Strom), geschaltet über einen MOSFET mit Freilaufdiode, Signal von der Steuerung und vom Not-Aus (Bremse fällt ein, wenn die Spannung weg ist).
+- Preis (Websuche, nicht geprüft, Stand 25.11.2026): Motor mit Bremse ca. USD 47 bis 60, einzeln. Ob ein solcher Motor in die J2-Halterung passt (Länge, Wellenende hinten) und ob der Motor bisher eine hintere Welle hat, ist **nicht geprüft**. Nichts bestellen vor dem Phase-2-Gate.
+- **Nicht jedes Gelenk braucht eine Bremse.** J1 trägt keine Schwerkraft. Die vorhandenen Motoren 17CS04A-170E (J1, J3, J4) haben keine hintere Welle, ein Nachrüsten ist nicht sinnvoll; eine Wellenverlängerung mit Einzelbremse kostet gleich viel wie ein Motor mit Bremse und belastet Welle und Lager (nicht geprüft). Darum: Motor mit Bremse **nur dort, wo nötig**, der vorhandene Motor bleibt als Reserve.
+- **Moment je Gelenk bei 1 kg ausgestreckt** (`docs/lastrechnung.md`) und Moment am Motor (geteilt durch die Untersetzung, ohne Wirkungsgrad): J2 11,76 Nm / 72 = 0,16 Nm; **J3 5,42 Nm / 60 = 0,09 Nm**; J4 1,66 Nm / 20 = 0,08 Nm; J5 1,68 Nm / 18,75 = 0,09 Nm; J6 0,29 Nm / 8 = 0,04 Nm. Bremse 0,25 Nm genügt damit bei jedem Gelenk, bei J2 knapp (1,5-fach).
+- **Hochrechnung der Haltegrenze (Annahme: sie liegt im Motor, nicht im Riemen):** Gemessen an J2 (Untersetzung 72) zwischen 1,9 und 6,6 Nm am Gelenk, also 0,03 bis 0,09 Nm am Motor. Dasselbe am Motor ergibt an J3 (60:1) 1,6 bis 5,5 Nm gegen 5,42 Nm Last, an J4 (20:1) 0,5 bis 1,8 Nm gegen 1,66 Nm, an J5 (18,75:1) 0,5 bis 1,7 Nm gegen 1,68 Nm. **J3 fällt mit 1 kg ausgestreckt vermutlich ohne Strom, J4 und J5 liegen an der Grenze.** Das ist eine Rechnung aus einer einzigen Messung, nicht gemessen; bei den anderen Motoren (Reibung, Riemen) kann die Grenze anders liegen.
+- **Vorschlag:** Bremse an J2 und J3, J4/J5 nach dem Bau am Arm prüfen (Rücklauf mit Gewicht), J1 und J6 keine.
+- Die Bremse ist eine Haltebremse, keine Betriebsbremse: nur bei Stillstand oder Notfall einfallen lassen.
+
+**C. Dämpfung am Anschlag (Aufprall).**
+- Weicher Anschlag an Parkposition und an den Endanschlägen (TPU oder Gummi, ca. 3 bis 5 mm), damit ein Fall den Hebel und die Querstrebe schont. Aufprallenergie des Armes im Fall ist noch nicht gerechnet (die 1,85 J der Prüfstand-Lastrechnung gelten nur für den Prüfstand).
+- Sehr günstig, zuerst als Testteil drucken.
+
+**Reihenfolge:** A zuerst (Software und Regel), C parallel (billig), B vor dem Konstruieren der Schulter entscheiden, weil sie den Motor und die Halterung ändert.
 
 ## 4. Kosten Kaufteile (AliExpress, ehrlich gerechnet)
 

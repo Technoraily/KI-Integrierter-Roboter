@@ -118,6 +118,10 @@
       <button id="btnNull" disabled>Nullpunkt hier setzen</button>
       <button id="btnAlarm" disabled hidden>Alarm löschen</button>
     </div>
+    <div class="row" style="margin-top:10px">
+      <button id="btnMotorAus" disabled>Motor aus (Rücklauftest)</button>
+      <span class="muted">Sendet <code>$MD</code>: Der Hebel ist danach frei. Fangschnur setzen, Hände weg. Erst mit Hebel ohne Gewicht von Hand prüfen, ob er wirklich frei ist. Danach Nullpunkt neu setzen.</span>
+    </div>
   </div>
 
   <div class="card">
@@ -261,6 +265,7 @@ function aktualisiereTasten() {
   document.querySelectorAll('[data-ziel]').forEach((b) => b.disabled = !frei);
   $('btnNull').disabled = !(bereit() && zustand === 'Idle' && !pendelLaeuft);
   $('btnAccel').disabled = !verbunden;
+  $('btnMotorAus').disabled = !(verbunden && zustand === 'Idle' && !pendelLaeuft);
   $('btnPendelStop').disabled = !pendelLaeuft;
   $('btnTrennen').disabled = !verbunden;
   $('btnVerbinden').disabled = verbunden;
@@ -484,6 +489,7 @@ $('btnPendel').onclick = pendeln;
 $('btnPendelStop').onclick = () => { pendelAbbruch = true; stoppeBewegung(); };
 $('btnNull').onclick = () => { origin = mx; log('Nullpunkt neu gesetzt.'); aktualisiereAnzeige(); };
 $('btnAlarm').onclick = () => zeileSenden('$X');
+$('btnMotorAus').onclick = () => { log('Motor aus: Hebel ist frei. Nullpunkt danach neu setzen.', 'warn'); zeileSenden('$MD'); };
 $('btnAccel').onclick = () => {
   const [, acc] = betriebsBefehle(typ, 0, parseInt($('accel').value, 10));
   zeileSenden(acc[0] + '=' + acc[1]);
