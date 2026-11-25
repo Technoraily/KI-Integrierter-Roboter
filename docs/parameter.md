@@ -11,7 +11,7 @@ Status: **Startwert** = aus dem Konzept, noch nicht geprüft · **gerechnet** = 
 | `L_oberarm` | 200 mm | Achse J2 → Achse J3 | gerechnet |
 | `L_unterarm` | 190 mm | Achse J3 → Handgelenkmitte (J5) | gerechnet |
 | `L_hand` | 60 mm | Handgelenkmitte → Flanschfläche | gerechnet |
-| `H_schulter` | 170 mm | Tischfläche → Achse J2 | Startwert |
+| `H_schulter` | 200 mm | Tischfläche → Achse J2 | Entscheid 26.11.2026 (vorher Startwert 170 mm; Bildvorlage, mehr Platz für Basis, Steckerfeld und Bremse) |
 | `D_flansch_lochkreis` | 31,5 mm | Werkzeugflansch ISO 9409-1, 4× M5 | fix |
 | `Bauraum_max` | 240 mm | grösste Kantenlänge eines Druckteils | fix |
 | `a_lochbild_basis` | 120 mm | Lochbild Basis ↔ Schlitten/Grundplatte, 4× M5 im Quadrat | Startwert |
@@ -27,7 +27,7 @@ Zähnezahlen als Ritzel : Rad. GT2 = 2-mm-Teilung, 10 mm breit; 3M/5M = HTD mit 
 | J0 Schiene | 1000 mm | – | NEMA 17, 40 mm (neu) | GT2, Ritzel 20, offen | – | – | Startwert |
 | J1 | ±170° | 20 | 17CS04A-170E (vorhanden) | GT2 20 : 80 | 3M 16 : 80 | – | Startwert |
 | J2 | ±90° | 72 | NEMA 17, 60 mm (neu) | GT2 20 : 72 | 3M 16 : 64 | 5M 18 : 90 | gerechnet |
-| J3 | ±135° | 60 | 17CS04A-170E (vorhanden) | GT2 16 : 60 | 3M 16 : 64 | 5M 15 : 60 | gerechnet |
+| J3 | ±135° | 70 | 17CS04A-170E (vorhanden) | GT2 20 : 70 | 3M 16 : 80 | 5M 15 : 60 | Entscheid 26.11.2026 (vorher 60:1); 3,5 × 5 × 4 = 70; Zähnezahlen sind ein Vorschlag, Verfügbarkeit der 70er GT2-Scheibe ungeprüft |
 | J4 | ±180° | 20 | 17CS04A-170E (vorhanden) | GT2 20 : 100 | 3M 16 : 64 | – | Startwert |
 | J5 | ±110° | 18,75 | NEMA 17, 34 mm (neu) | GT2 16 : 80 | 3M 16 : 60 | – | Startwert |
 | J6 | ±180° | 8 | NEMA 14 (neu) | GT2 16 : 40 | GT2 16 : 50 | – | Startwert |

@@ -24,7 +24,7 @@ X_SCHLITTEN = -150.0           # Lage des Schlittens auf der Schiene (Mitte = 0)
 Q1, Q2, Q3, Q4, Q5, Q6 = 0.0, 35.0, 65.0, 0.0, 80.0, 0.0   # Grad; Q2..Q5 = 0: Arm senkrecht
 
 # ---------------------------------------------------------------- Masse (aus docs/parameter.md)
-H_SCHULTER, L_OBERARM, L_UNTERARM, L_HAND = 170.0, 200.0, 190.0, 60.0
+H_SCHULTER, L_OBERARM, L_UNTERARM, L_HAND = 200.0, 200.0, 190.0, 60.0
 L_SCHIENE, SPUR = 1250.0, 160.0
 Z_SCHLITTEN = 71.0             # Oberkante Schlittenplatte = Aufstellfläche des Arms
 

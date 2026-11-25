@@ -6,7 +6,7 @@ Längen in Metern, Massen in Kilogramm, Winkel in Grad, Momente in Nm.
 from dataclasses import dataclass
 
 # Geometrie
-H_SCHULTER = 0.170  # Tischfläche -> Achse J2
+H_SCHULTER = 0.200  # Tischfläche -> Achse J2 (Entscheid 26.11.2026, vorher 0,170)
 L_OBERARM = 0.200  # Achse J2 -> Achse J3
 L_UNTERARM = 0.190  # Achse J3 -> Handgelenkmitte
 L_HAND = 0.060  # Handgelenkmitte -> Flanschfläche
@@ -46,7 +46,7 @@ class Antrieb:
 ANTRIEBE = (
     Antrieb("J1", 20, 0.28, 0.85),
     Antrieb("J2", 72, 0.45, 0.65),  # drei Riemenstufen 3,6 x 4 x 5
-    Antrieb("J3", 60, 0.28, 0.65),
+    Antrieb("J3", 70, 0.28, 0.65),  # Entscheid 26.11.2026: 70:1 statt 60:1
     Antrieb("J4", 20, 0.28, 0.85),
     Antrieb("J5", 18.75, 0.18, 0.85),  # 5 x 3,75
     Antrieb("J6", 8, 0.08, 0.90),

@@ -28,5 +28,6 @@ Neu offen aus dieser Runde:
 | Nr. | Idee | Nutzen | Aufwand |
 |---|---|---|---|
 | 5 | Zugentlastung für die drei Motorkabel an der Rückwand des Elektronikgehäuses (Wanne ist gedruckt: Klemme zum Aufstecken oder Kabelbinder-Brücke aussen) | Kabelzug geht nicht in den Stecker des Shields | klein |
-| 6 | Mechanische Verriegelung (Riegel mit Servo) für den Greiferwechsler, falls die Magnetprobe zu wenig Kraft zeigt | 1 kg bei waagrechtem Werkzeug | mittel |
+| 6 | ENTSCHIEDEN 26.11.2026: wird gebaut (mit Werkzeugerkennung, `docs/design-vorgabe.md`) – Mechanische Verriegelung (Riegel mit Servo) für den Greiferwechsler, falls die Magnetprobe zu wenig Kraft zeigt | 1 kg bei waagrechtem Werkzeug | mittel |
 | 7 | Handgelenk konstruieren (ISO-Flansch, Kabelkanal, Kamera-Schraubpunkte), dann Wechsler und Kamerahalter daran anpassen | Voraussetzung für die Passung dieser Entwürfe | gross |
+| 8 | **Master-Pult** (Wunsch des Nutzers, 26.11.2026): ein Bedienpult mit allen Tastern und Schaltern an einem Ort, zum Beispiel Not-Aus, Freigabe, Start/Stopp, Referenzfahrt, Parkposition, Motor/Bremse, Netzteil. Umfang, Belegung und Gehäuse noch nicht festgelegt; der Not-Aus gehört dabei weiter in den Strompfad der Motorspannung und zusätzlich an den E-Stop-Eingang (`docs/verdrahtung.md`). Kabel und Stecker zum Pult in `docs/kabelkonzept.md` aufnehmen, sobald der Umfang feststeht | Bedienung ohne Rechner, Sicherheit an einer Stelle | mittel |

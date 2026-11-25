@@ -17,7 +17,7 @@ Auslegungsziel: **1 kg im ganzen Arbeitsraum**, auch voll ausgestreckt. Der Flan
 |---|---|---|---|---|---|---|
 | J1 | 17CS04A-170E (vorhanden) | 20 | 0,00 | 4,76 | – | 120 |
 | J2 | NEMA 17, 60 mm (neu) | 72 | 11,76 | 21,06 | 1,8 | 33 |
-| J3 | 17CS04A-170E (vorhanden) | 60 | 5,42 | 10,92 | 2,0 | 40 |
+| J3 | 17CS04A-170E (vorhanden) | 70 | 5,42 | 12,74 | 2,4 | 34 |
 | J4 | 17CS04A-170E (vorhanden) | 20 | 1,66 | 4,76 | 2,9 | 120 |
 | J5 | NEMA 17, 34 mm (neu) | 18,75 | 1,68 | 2,87 | 1,7 | 128 |
 | J6 | NEMA 14 (neu) | 8 | 0,29 | 0,58 | 2,0 | 300 |
@@ -43,7 +43,7 @@ J2 ist mit Wirkungsgrad 0,65 für drei Riemenstufen vorsichtig gerechnet (drei S
 | Gelenk | Konzept | jetzt | Grund |
 |---|---|---|---|
 | J2 | vorhandener Motor, 90:1 | NEMA 17 mit 60 mm, 72:1 | 1 kg ganz aussen; 72:1 = drei Riemenstufen 3,6 × 4 × 5 |
-| J3 | 40:1 | 60:1 | Reserve für schwächere Motoren und schwerere Struktur |
+| J3 | 40:1 | 70:1 (Entscheid 26.11.2026, vorher 60:1) | Reserve für schwächere Motoren, schwerere Struktur und kleineren Treiberstrom |
 | J4 | 34-mm-Motor, 12:1 | vorhandener Motor, 20:1 | abgewinkelte Hand erzeugt bis 1,66 Nm um die Unterarmachse |
 | J5 | Pancake, 18:1 | NEMA 17 34 mm, 18,75:1 | Pancake zu schwach; 18,75:1 = zwei Riemenstufen 5 × 3,75 |
 | J6 | 6:1 | 8:1 | Sicherheit 1,5 → 2,0 |
@@ -80,7 +80,7 @@ Neu seit der Rechnung vom 11.10.: Datenblatt des 17CS04A-170E gefunden (0,42 Nm,
 | 1,77 A (Modulgrenze) | – | – | – | – | 0,448 | 1,78 |
 
 Gefordert ist Sicherheit ≥ 1,5. Ergebnis:
-- **J3:** Mit 60:1 braucht es mindestens ca. 1,3 A Treiberstrom (bei 1,2 A 1,49, knapp unter dem Ziel). Mit **70:1 reicht schon 1,2 A (1,74)** und es bleibt Reserve für Wärme und Streuung. Geschwindigkeit bei 70:1 ca. 34 °/s (Ziel ≥ 25 °/s bleibt erfüllt). Vorschlag: **J3 mit 70:1 konstruieren**, weil die Übersetzung die Riemenstufen von J3 festlegt und J3 noch nicht gezeichnet ist (Änderung später kostet Umkonstruktion). Entscheid beim Nutzer.
+- **J3:** Mit 60:1 braucht es mindestens ca. 1,3 A Treiberstrom (bei 1,2 A 1,49, knapp unter dem Ziel). Mit **70:1 reicht schon 1,2 A (1,74)** und es bleibt Reserve für Wärme und Streuung. Geschwindigkeit bei 70:1 ca. 34 °/s (Ziel ≥ 25 °/s bleibt erfüllt). **Entschieden am 26.11.2026: J3 mit 70:1** (Parameter und Skript angepasst; die Tabelle oben zeigt jetzt J3 mit 12,74 Nm verfügbar, Sicherheit 2,4, 34 °/s). Grund: Die Übersetzung legt die Riemenstufen von J3 fest, und J3 ist noch nicht gezeichnet.
 - **J2:** Die frühere Sicherheit 1,8 gilt nur bei **1,77 A**, der Obergrenze des Moduls. Bei 1,5 A sind es 1,51, bei 1,2 A nur 1,21. J2 muss also mit hohem Strom laufen (Kühlkörper, Lüfter). Die Haltemessung am Prüfstand (11,4 Nm bei ca. 0,9 A statisch gehalten, wo das Modell nur 0,91 ergibt) zeigt, dass das Modell fürs **statische Halten** konservativ ist; fürs Fahren (Beschleunigen, Drehzahl) bleibt es die vorsichtige Grundlage.
 - **J4:** Auch bei 1,0 A Sicherheit 1,77, also unkritisch.
 - J1, J5, J6 unverändert (J5 und J6 beruhen weiter auf angenommenen Momenten neuer Motoren).

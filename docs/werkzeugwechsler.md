@@ -4,6 +4,8 @@ Stand 04.11.2026 (nach Gutachten, Runde 2), **Entwurf («nur vorsehen», `docs/k
 
 **Ungeprüft (Netzsuche ergab keine Masse):** ISO 9409-1-31,5-4-M5 (verwendet sind nur der Lochkreis 31,5 mm und 4 × M5 aus `docs/parameter.md`; Zentriermass und Aussendurchmesser fehlen), Magnet Ø 6 × 3 mm (vorhanden), Stahlkugel Ø 6 mm, Pogo-Pins (Bohrung Ø 1,7 mm), Kameramodul (Lochbild 21 × 12,5 mm). Alle sind Startwerte; vor dem Druck am gelieferten Teil nachmessen.
 
+**Entscheid 26.11.2026 (Nutzer):** mechanische Verriegelung mit Servo-Riegel (Magnete nur zum Zentrieren und Vorspannen) und Werkzeugerkennung über einen Codierwiderstand auf zwei Kontakten; Servo-Strom erst nach Erkennung und geschlossenem Riegel. Kein Kabel über die Trennstelle. Anforderungen in `docs/design-vorgabe.md`, Abschnitt Werkzeugwechsler.
+
 ## Aufbau
 
 | Teil | Beschreibung |
