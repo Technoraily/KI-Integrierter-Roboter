@@ -15,7 +15,11 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ![Aufbau und Antriebe](docs/bilder/uebersicht.png)
 
-## Stand: 26. November 2026 (abends)
+## Stand: 27. November 2026
+
+Die Kaufteile für die Basis mit J1 sind im Warenkorb geprüft (Bestellung noch nicht bestätigt). Der erste Gelenktest läuft mit dem vorhandenen ESP32 (FluidNC) vom J2-Prüfstand; das Steuerboard (vorgemerkt: BTT Octopus Pro mit F446) und ein Bedienpult mit Tastern folgen später.
+
+### Stand: 26. November 2026 (abends)
 
 **Neu:** Das Aussehen des Arms ist festgelegt (Low-Poly-Schalen im Stil des Arctos-Arms, eigenes Design), und die erste Baugruppe ist fertig konstruiert: die **Basis mit J1**. Sie hat einen festen Hohlzapfen für die Kabel, zwei vorgespannte Dünnringlager, zwei Riemenstufen (20:1), einen Endschalter mit Halbmond-Nocken und einen festen Anschlag bei ±173°. Im CAD wurden jeder Montageschritt, die Drehung über ±170° und der Werkzeugzugang zu jeder Schraube geprüft. Gutachten nach drei Runden plus Nachprüfung: 8/10. Für J2 wird die letzte Riemenscheibe kleiner (Ø 115 statt 143, dafür 25 mm breiter Riemen), damit die Schulter schlanker wird.
 

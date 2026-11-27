@@ -25,3 +25,6 @@ software/logs/
 
 # Herstellerdatenblatt, Urheberrecht offen: nur lokal
 docs/LRS-350.pdf
+
+# Bildschirmaufnahmen: nie veroeffentlichen (zeigen Kontodaten)
+*.mp4

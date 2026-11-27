@@ -57,7 +57,7 @@ Gramm und Volumen pro Teil: siehe Tabelle am Schluss («Volumen aus dem CAD»). 
 | 2.5 | Zahnscheibe GT2, 20 Zähne, für 10 mm Riemen, Bohrung 5 | 1 | `GT2 20T 10mm bore 5` | 3 | offen |
 | 2.6 | Riemen HTD 3M, geschlossen, **318 mm (106 Zähne)**, 15 mm (Ersatz: 315 mm, dann Lasche anpassen) | 1 | `HTD 3M 318 15mm closed belt` | 5 | offen, Lieferbarkeit prüfen |
 | 2.7 | Riemen GT2, geschlossen, **240 mm (120 Zähne)**, 10 mm | 1 | `GT2 240mm closed loop 10mm` | 3 | offen |
-| 2.8 | O-Ring 50 × 1,5 mm, NBR (2 Stück: Arm und Probe) | 1 (Set) | `O-ring 50x1.5 NBR` | 2 | offen |
+| 2.8 | O-Ring NBR, Schnur 1,5 mm, **OD 52 (ID 49)**, gewählt 27.11.2026; OD 53 (ID 50) geht auch (2 Stück: Arm und Probe) | 1 (10 Stk.) | `NBR O-ring OD 52 CS 1.5` | 2 | offen, vom Nutzer ausgewählt |
 | 2.9 | Zylinderstift 3 × 12 mm, Stahl | 4 | Gehäuse 2, Bockdeckel 2; `dowel pin 3x12` | 2 (Set) | klären |
 
 ## 3 Schrauben, Muttern, Einsätze, Magnete
@@ -151,3 +151,12 @@ Geprüft in Chrome, nur gelesen, nichts geändert oder bestellt. Preise mit Raba
 - Endschalter jetzt **KW11-3Z-N, 10 Stück, mit Rollenhebel** (laut Produktbild; Masszeichnung 20 × 10 mm, vor dem Druck des Halters trotzdem nachmessen).
 - Ritzel 3M-16 und GT2-20, Scheiben M3 (DIN 125 und DIN 9021) und Muttern M3 hat der Nutzer schon, zum Teil vom J2-Prüfstand. Status: da.
 - Einschmelzgewinde im Korb: M3, **Aussen-Ø 5 mm**, Länge 5. Das ist **genau die Sorte aus dem Test vom 20.10.** (Messing Ø 5, Bohrung Ø 4,0, `parameter.md`), also ok. Die Variante «M3 (OD 4,2 mm)» passt **nicht** zur Bohrung Ø 4,0.
+
+## Warenkorb am 27.11.2026 (Bestellung noch nicht bestätigt)
+
+Geprüft in Chrome und anhand von Bildschirmaufnahmen. Abweichungen zum Abgleich oben:
+- O-Ring **OD 52 × 1,5** (10 Stk.), GT2 240 mm / 10 mm (anderer Händler).
+- Endschalter: anderes Angebot (10 Stk. mit Rolle, 3 Anschlüsse), keine Masszeichnung gesehen: **vor dem Druck des Halters ausmessen**.
+- Kabel: Silikon 2-adrig 26 AWG (Endschalter), JST-XH-Set 2 bis 5 Pole. 24 AWG entfällt, der Motor hat 1 m Kabel mit Stecker.
+- Nicht in der Bestellung: Octopus, Pult-Teile, Not-Aus, Lüfter (Octopus und Pult ab 16.12. vorgesehen).
+- J1-Test mit ESP32, CNC-Shield und TMC2209 vom J2-Prüfstand; Vref ca. 1,41 V für 1,0 A (aus dem J2-Wert umgerechnet, am Gerät messen).
