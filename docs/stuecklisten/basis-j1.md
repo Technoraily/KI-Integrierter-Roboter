@@ -152,7 +152,7 @@ Geprüft in Chrome, nur gelesen, nichts geändert oder bestellt. Preise mit Raba
 - Ritzel 3M-16 und GT2-20, Scheiben M3 (DIN 125 und DIN 9021) und Muttern M3 hat der Nutzer schon, zum Teil vom J2-Prüfstand. Status: da.
 - Einschmelzgewinde im Korb: M3, **Aussen-Ø 5 mm**, Länge 5. Das ist **genau die Sorte aus dem Test vom 20.10.** (Messing Ø 5, Bohrung Ø 4,0, `parameter.md`), also ok. Die Variante «M3 (OD 4,2 mm)» passt **nicht** zur Bohrung Ø 4,0.
 
-## Warenkorb am 27.11.2026 (Bestellung noch nicht bestätigt)
+## Bestellt am 27.11.2026 (vom Nutzer bestätigt, Lieferung offen)
 
 Geprüft in Chrome und anhand von Bildschirmaufnahmen. Abweichungen zum Abgleich oben:
 - O-Ring **OD 52 × 1,5** (10 Stk.), GT2 240 mm / 10 mm (anderer Händler).

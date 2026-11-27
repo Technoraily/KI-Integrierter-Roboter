@@ -12,7 +12,7 @@
 - Schalen mit Magneten 6×3 abnehmbar; Holzplatte mit Schraubzwingen am Regal (sonst kippt der Arm).
 - Bestand Nutzer: PLA grau/rot/weiss, PETG weiss nur Notfall, 120 Magnete, M3-Einsätze, M5 8–20 mm, Schraubzwingen.
 ## Offen
-- Basis-Teile: Warenkorb geprüft (Stand 27.11. in docs/stuecklisten/basis-j1.md), **Bestellung noch nicht bestätigt** (Nutzer meldet «bestellt»). Black Friday bis 3.12.
+- Basis-Teile **bestellt am 27.11.** (Liste unten in docs/stuecklisten/basis-j1.md), Lieferung offen; bei Ankunft Varianten prüfen. Offene Punkte des Nutzers (Häkchen, M3-Scheiben, Video) laut Nutzer erledigt.
 - Passprobe 6810 drucken/melden → L6810 nachführen → Grundplatte/Nabe/Spannring exportieren. KW11 ausmessen → Schalterhalter.
 - J1-Test mit ESP32 + Shield (noch zusammengebaut): FluidNC-Konfig und Steuerseite für J1, Vref ca. 1,41 V, Endschalter NC an GPIO (z. B. 32), Adernfolge Motorstecker messen.
 - Ab 16.12. (Windows-Erinnerung auf diesem PC): Octopus Pro F446 V1.0 und Pult-Teile (docs/offene-ideen.md Nr. 8), Relais-Schaltung Not-Aus zeichnen.

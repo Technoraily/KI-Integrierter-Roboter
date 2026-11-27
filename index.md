@@ -17,7 +17,7 @@ Ein selbst konstruierter 6-Achs-Desktop-Roboterarm: 3D-gedruckt (PLA/PETG, Bambu
 
 ## Stand: 27. November 2026
 
-Die Kaufteile für die Basis mit J1 sind im Warenkorb geprüft (Bestellung noch nicht bestätigt). Der erste Gelenktest läuft mit dem vorhandenen ESP32 (FluidNC) vom J2-Prüfstand; das Steuerboard (vorgemerkt: BTT Octopus Pro mit F446) und ein Bedienpult mit Tastern folgen später.
+Die Kaufteile für die Basis mit J1 sind bestellt. Der erste Gelenktest läuft mit dem vorhandenen ESP32 (FluidNC) vom J2-Prüfstand; das Steuerboard (vorgemerkt: BTT Octopus Pro mit F446) und ein Bedienpult mit Tastern folgen später.
 
 ### Stand: 26. November 2026 (abends)
 
